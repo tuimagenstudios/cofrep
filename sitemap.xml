@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://cofrep.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://cofrep.com/demo/coffee-republic/</loc><priority>0.6</priority></url>
+  <url><loc>https://cofrep.com/demo/cafeteria/</loc><priority>0.6</priority></url>
+  <url><loc>https://cofrep.com/demo/dom-coffee/</loc><priority>0.6</priority></url>
+  <url><loc>https://cofrep.com/demo/hamburgueseria/</loc><priority>0.6</priority></url>
+  <url><loc>https://cofrep.com/demo/restaurante/</loc><priority>0.6</priority></url>
+</urlset>
