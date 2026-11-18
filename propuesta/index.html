@@ -169,8 +169,9 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 /* ===== CONFIGURACIÓN DE LA PROPUESTA =====
-   Link personalizado: cofrep.com/propuesta/?cliente=Nombre%20del%20local&modelo=burger
-   modelos: premium, simple, dom, burger, restaurante */
+   Link personalizado: cofrep.com/propuesta/?cliente=Nombre%20del%20local&carta=carpeta-en-p
+   carta = carpeta dentro de /p/ con la carta armada para ese cliente (se muestra primero como "Tu carta")
+   sin carta, elegí un modelo: &modelo=premium | simple | dom | burger | restaurante */
 const CONFIG={
   whatsapp:"79098745709",
   ofertaHasta:"2026-12-10T23:59:59",  /* después de esta fecha se muestra el precio normal */
@@ -179,7 +180,7 @@ const CONFIG={
   mensual:20000,
   anual:200000                         /* 12 meses pagando 10 */
 };
-const MODELOS={
+let MODELOS={
  premium:{nombre:"Cafetería Premium",ruta:"/demo/coffee-republic/",desc:"Para cafeterías de especialidad con carta amplia: categorías con foto, tamaños, video y buscador.",lista:["Categorías visuales con foto","Tamaños y precios por producto","Buscador y modo claro / oscuro","Precios desde Google Sheets"]},
  simple:{nombre:"Cafetería Simple",ruta:"/demo/cafeteria/",desc:"Web completa y liviana para cafés al paso: presentación del local, carta por pestañas y pedido por WhatsApp.",lista:["Portada con la historia del local","Carta por pestañas, fácil de leer","Botón fijo de WhatsApp","Precios desde Google Sheets"]},
  dom:{nombre:"Café y pastelería",ruta:"/demo/dom-coffee/",desc:"Carta elegante para cafés de especialidad y pastelerías, en español e inglés, con fotos de cada producto y pedido por WhatsApp.",lista:["Diseño cálido y elegante","Fotos de cada producto","Español e inglés","Pedido por WhatsApp"]},
@@ -205,6 +206,10 @@ document.getElementById("planes").innerHTML=
  plan("Carta Premium","premium","Para destacar: fotos, video y movimiento.",["Todo lo de la Carta Simple","Video de portada y animaciones","Fotos de cada producto con zoom","Promociones con banner","Diseño a medida de tu marca"],true);
 document.getElementById("wa").href=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola! Vi la propuesta de COFREP"+(cliente?" para "+cliente:"")+" y quiero mi carta digital.")}`;
 
+const carta=(q.get("carta")||"").trim().toLowerCase().replace(/[^a-z0-9-]/g,"");
+if(carta){MODELOS=Object.assign({tu:{nombre:"Tu carta"+(cliente?" · "+cliente:""),ruta:"/p/"+carta+"/",desc:"Esta es la carta que armamos para tu local, con tus productos. Probala como la va a usar tu cliente: tocala, deslizala y abrila en tu celular con el QR.",lista:["Armada con tus productos y precios","Tu logo y tus colores","Lista para publicar en tu propio link","Ajustamos lo que quieras antes de publicar"]}},MODELOS);
+ document.querySelector("#probar h2").innerHTML="Tu carta, <em>funcionando</em>";
+ document.querySelector("#probar .sub").textContent="Esta es la carta que preparamos para tu local. Abajo también podés ver los otros estilos que ofrecemos.";}
 const tabs=document.getElementById("tabs");
 tabs.innerHTML=Object.entries(MODELOS).map(([k,m])=>`<button data-k="${k}">${m.nombre}</button>`).join("");
 let qr=null;
@@ -222,6 +227,6 @@ function mostrar(k){
   const u=new URL(location);u.searchParams.set("modelo",k);history.replaceState(null,"",u);
 }
 tabs.addEventListener("click",e=>{const b=e.target.closest("button");if(b)mostrar(b.dataset.k)});
-mostrar(q.get("modelo")||"premium");
+mostrar(carta?"tu":(q.get("modelo")||"premium"));
 </script>
 </body></html>
