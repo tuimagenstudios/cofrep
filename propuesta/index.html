@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Propuesta COFREP | Tu carta digital</title>
+<meta name="robots" content="noindex">
+<meta name="description" content="Probá tu carta digital antes de decidir.">
+<style>
+  /* ===== Colores de marca COFREP ===== */
+  :root{--fondo:#1c1c1c;--fondo2:#262626;--linea:#333;--acento:#f7a21b;--texto:#f2f2f2;--suave:#a3a3a3}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--fondo);color:var(--texto);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+  h1,h2,h3{font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  .btn{display:inline-block;background:var(--acento);color:#000;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:6px;border:2px solid var(--acento);font-size:.95rem;cursor:pointer;font-family:inherit}
+  .btn:hover{background:transparent;color:var(--acento)}
+  .btn.sec{background:transparent;color:var(--acento)}.btn.sec:hover{background:var(--acento);color:#000}
+  .etq{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acento);border:1px solid var(--acento);padding:4px 10px;border-radius:3px;margin-bottom:16px}
+  em{font-style:normal;color:var(--acento)}
+
+  header.nav{border-bottom:1px solid #2c2c2c}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:700;font-size:1.3rem;letter-spacing:.12em;text-decoration:none}.logo b{color:var(--acento)}
+  .nav small{color:var(--suave);font-size:.8rem}
+
+  .portada{padding:64px 0 40px;background:radial-gradient(circle at 1px 1px,#2c2c2c 1px,transparent 0) 0 0/14px 14px}
+  .portada h1{font-size:clamp(2.3rem,7vw,4.2rem);max-width:16ch}
+  .portada p{color:var(--suave);max-width:52ch;margin:18px 0 26px;font-size:1.08rem}
+  .para{font-size:.95rem;color:var(--suave);margin-bottom:6px}.para b{color:var(--texto)}
+
+  section{padding:60px 0}
+  section h2{font-size:clamp(1.8rem,5.5vw,2.6rem);margin-bottom:8px}
+  .sub{color:var(--suave);max-width:58ch;margin-bottom:28px}
+
+  /* Demo en vivo */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+  .tabs button{background:var(--fondo2);color:var(--texto);border:1px solid var(--linea);padding:10px 16px;border-radius:6px;font:700 .85rem Arial,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
+  .tabs button.on{background:var(--acento);color:#000;border-color:var(--acento)}
+  .vivo{display:grid;gap:36px;align-items:center}
+  @media(min-width:860px){.vivo{grid-template-columns:auto 1fr}}
+  .tel{justify-self:center;width:300px;height:620px;border-radius:44px;background:#000;padding:12px;box-shadow:0 0 0 2px #333,0 30px 70px rgba(0,0,0,.7),0 0 90px rgba(247,162,27,.18);position:relative}
+  .tel::before{content:"";position:absolute;top:20px;left:50%;transform:translateX(-50%);width:90px;height:22px;border-radius:12px;background:#000;z-index:2}
+  .pantalla{width:276px;height:596px;border-radius:32px;overflow:hidden;background:#111}
+  .pantalla iframe{width:390px;height:842px;border:0;display:block;transform:scale(.7077);transform-origin:0 0}
+  .info h3{font-size:1.6rem;margin-bottom:8px}
+  .info p{color:var(--suave);margin-bottom:16px}
+  .info ul{list-style:none;margin:0 0 22px}
+  .info li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid #2c2c2c}
+  .info li::before{content:"";position:absolute;left:0;top:14px;width:14px;height:8px;border-left:3px solid var(--acento);border-bottom:3px solid var(--acento);transform:rotate(-45deg)}
+  .qr{display:flex;gap:18px;align-items:center;background:var(--fondo2);border:1px solid var(--linea);border-left:4px solid var(--acento);border-radius:6px;padding:16px;margin-bottom:18px}
+  .qr #qr{background:#fff;padding:8px;border-radius:6px;flex:none;width:132px;height:132px}
+  .qr #qr img,.qr #qr canvas{width:116px!important;height:116px!important;display:block}
+  .qr b{display:block;margin-bottom:4px}.qr span{color:var(--suave);font-size:.9rem}
+
+  .grid{display:grid;gap:16px}
+  @media(min-width:700px){.g2{grid-template-columns:1fr 1fr}.g3{grid-template-columns:repeat(3,1fr)}}
+  .card{background:var(--fondo2);border:1px solid var(--linea);border-left:4px solid var(--acento);padding:22px;border-radius:6px}
+  .card h3{font-size:1.05rem;margin-bottom:6px}.card p{color:var(--suave);font-size:.94rem}
+  .num{font-size:2.6rem;font-weight:700;color:var(--acento);line-height:1;margin-bottom:10px}
+
+  .plan{background:var(--fondo2);border:1px solid var(--linea);border-radius:8px;overflow:hidden}
+  .plan .cab{background:var(--acento);color:#000;padding:18px 22px}
+  .plan .cab h3{font-size:1.3rem}.plan .cab p{font-weight:700;font-size:.9rem}
+  .cols{display:grid;gap:0}
+  @media(min-width:700px){.cols{grid-template-columns:1fr 1fr}}
+  .cols>div{padding:22px}.cols>div+div{border-top:1px solid var(--linea)}
+  @media(min-width:700px){.cols>div+div{border-top:0;border-left:1px solid var(--linea)}}
+  .cols h4{text-transform:uppercase;font-size:.85rem;letter-spacing:.06em;color:var(--acento);margin-bottom:10px}
+  .cols li{list-style:none;padding:6px 0;color:var(--texto);font-size:.95rem}
+  .cols li::before{content:"→ ";color:var(--acento);font-weight:700}
+  .precio{display:flex;flex-wrap:wrap;gap:24px;padding:18px 22px;border-top:1px solid var(--linea);color:var(--suave);font-size:.9rem}
+  .precio b{display:block;color:var(--texto);font-size:1.4rem}
+
+  .franja{background:var(--acento);color:#000}
+  .franja .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-top:40px;padding-bottom:40px}
+  .franja h2{font-size:clamp(1.7rem,5.5vw,2.5rem)}.franja p{font-weight:700;margin-top:6px}
+  .franja .btn{background:#000;color:var(--acento);border-color:#000}.franja .btn:hover{background:transparent;color:#000}
+  footer{padding:28px 0;text-align:center;color:var(--suave);font-size:.85rem;border-top:1px solid #2c2c2c}
+  footer a{color:var(--acento);text-decoration:none;font-weight:700}
+</style></head><body>
+
+<header class="nav"><div class="wrap"><a class="logo" href="/">COF<b>REP</b></a><small id="fecha"></small></div></header>
+
+<section class="portada"><div class="wrap">
+  <span class="etq">Propuesta de carta digital</span>
+  <p class="para">Preparada para <b id="cliente">tu negocio</b></p>
+  <h1>No te la contamos: <em>probala vos</em></h1>
+  <p>Abajo está la carta funcionando, igual que la va a usar tu cliente en la mesa. Tocala, deslizala, agregá productos al pedido. O escaneá el QR con tu celular.</p>
+  <a class="btn" href="#probar">Probar la carta</a>
+</div></section>
+
+<section id="probar"><div class="wrap">
+  <h2>Probala <em>ahora</em></h2>
+  <p class="sub">Elegí el estilo que más va con tu local. Todos se adaptan con tu logo, tus colores, tus fotos y tus precios.</p>
+  <div class="tabs" id="tabs"></div>
+  <div class="vivo">
+    <div class="tel"><div class="pantalla"><iframe id="demo" title="Carta digital funcionando"></iframe></div></div>
+    <div class="info">
+      <h3 id="tTitulo"></h3>
+      <p id="tDesc"></p>
+      <ul id="tLista"></ul>
+      <div class="qr"><div id="qr"></div><div><b>Abrila en tu celular</b><span>Escaneá el código con la cámara y probala como la vería tu cliente.</span></div></div>
+      <a class="btn sec" id="abrir" target="_blank" rel="noopener">Abrir en pantalla completa ↗</a>
+    </div>
+  </div>
+</div></section>
+
+<section style="background:#181818"><div class="wrap">
+  <h2>Qué gana <em>tu negocio</em></h2>
+  <p class="sub">Una carta que vende sola, siempre actualizada y sin imprimir de nuevo.</p>
+  <div class="grid g2">
+    <div class="card"><h3>Pedidos directo a tu WhatsApp</h3><p>El cliente arma su pedido y te llega ordenado con el total. Sin apps ni comisiones.</p></div>
+    <div class="card"><h3>Precios al día</h3><p>Cambiás un precio desde el celular y la carta se actualiza sola.</p></div>
+    <div class="card"><h3>Fotos que abren el apetito</h3><p>Cada plato con su foto y descripción. Se vende más lo que se ve.</p></div>
+    <div class="card"><h3>Español e inglés</h3><p>Lista para turistas con un toque. Otros idiomas a pedido.</p></div>
+    <div class="card"><h3>QR para tus mesas</h3><p>Te entregamos el código listo para imprimir en mesas, mostrador y vidriera.</p></div>
+    <div class="card"><h3>Tu propio link</h3><p>cofrep.com/<b style="color:var(--acento)">tu-negocio</b>, para Instagram, Google Maps y WhatsApp.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <h2>Cómo <em>lo hacemos</em></h2>
+  <p class="sub">En tres pasos tu carta está funcionando.</p>
+  <div class="grid g3">
+    <div class="card"><div class="num">01</div><h3>Nos pasás tu carta</h3><p>Fotos de la carta actual, tu logo y fotos de los platos (o las sacamos nosotros).</p></div>
+    <div class="card"><div class="num">02</div><h3>Te mostramos la tuya</h3><p>Armamos tu carta y te mandamos el link para revisarla antes de publicar.</p></div>
+    <div class="card"><div class="num">03</div><h3>La publicamos</h3><p>Recibís tu link y el código QR listos para usar.</p></div>
+  </div>
+</div></section>
+
+<section style="background:#181818"><div class="wrap">
+  <h2>Plan <em>Mantenimiento</em></h2>
+  <p class="sub">Vos tenés el control de lo diario. Nosotros nos ocupamos de que siempre se vea profesional.</p>
+  <div class="plan">
+    <div class="cab"><h3>Carta digital + mantenimiento mensual</h3><p>Instalación única + cuota mensual</p></div>
+    <div class="cols">
+      <div><h4>Lo cambiás vos (desde Google Sheets)</h4><ul>
+        <li>Precios</li><li>Nombres y descripciones</li><li>Productos agotados o de temporada</li></ul></div>
+      <div><h4>Lo hacemos nosotros</h4><ul>
+        <li>Fotos nuevas y retoque</li><li>Platos y categorías nuevas</li><li>Promociones y banners</li><li>Cambios de diseño y soporte</li></ul></div>
+    </div>
+    <div class="precio" id="precio"></div>
+  </div>
+</div></section>
+
+<div class="franja"><div class="wrap">
+  <div><h2>¿La querés para tu local?</h2><p>Escribinos y arrancamos con tu carta.</p></div>
+  <a class="btn" id="wa" target="_blank" rel="noopener">Quiero mi carta</a>
+</div></div>
+
+<footer><div class="wrap">COFREP · Menús digitales para gastronomía · Un producto de <a href="https://tuimagenstudios.com" target="_blank" rel="noopener">Tuimagen Studio</a></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ===== CONFIGURACIÓN DE LA PROPUESTA =====
+   Link personalizado: cofrep.com/propuesta/?cliente=Nombre%20del%20local&modelo=burger
+   modelos: premium, simple, dom, burger, restaurante */
+const CONFIG={
+  whatsapp:"5490000000000",
+  instalacion:"A consultar",   /* ej: "$ 150.000" */
+  cuota:"A consultar"           /* ej: "$ 25.000 / mes" */
+};
+const MODELOS={
+ premium:{nombre:"Cafetería Premium",ruta:"/demo/coffee-republic/",desc:"Para cafeterías de especialidad con carta amplia: categorías con foto, tamaños, video y buscador.",lista:["Categorías visuales con foto","Tamaños y precios por producto","Buscador y modo claro / oscuro","Precios desde Google Sheets"]},
+ simple:{nombre:"Cafetería Simple",ruta:"/demo/cafeteria/",desc:"Web completa y liviana para cafés al paso: presentación del local, carta por pestañas y pedido por WhatsApp.",lista:["Portada con la historia del local","Carta por pestañas, fácil de leer","Botón fijo de WhatsApp","Precios desde Google Sheets"]},
+ dom:{nombre:"Café y pastelería",ruta:"/demo/dom-coffee/",desc:"Carta elegante para cafés de especialidad y pastelerías, en español e inglés, con fotos de cada producto y pedido por WhatsApp.",lista:["Diseño cálido y elegante","Fotos de cada producto","Español e inglés","Pedido por WhatsApp"]},
+ burger:{nombre:"Hamburguesería",ruta:"/demo/hamburgueseria/",desc:"Cada producto a pantalla completa, como en las redes. El cliente desliza, agrega al pedido y te lo manda por WhatsApp.",lista:["Fotos a pantalla completa","Carrito con total automático","Retiro o delivery con dirección","Pedido armado directo a tu WhatsApp"]},
+ restaurante:{nombre:"Restaurante",ruta:"/demo/restaurante/",desc:"Carta para la mesa que además te trae clientes: cupón por seguirte en Instagram y pedido de reseña en Google.",lista:["Cupón de descuento por seguirte","Fotos que comparten tus clientes","Reseñas de 4 y 5 estrellas a Google","Quejas privadas a tu WhatsApp"]}
+};
+const q=new URLSearchParams(location.search);
+const cliente=(q.get("cliente")||"").trim();
+if(cliente){document.getElementById("cliente").textContent=cliente;document.title="Propuesta para "+cliente+" | COFREP"}
+document.getElementById("fecha").textContent=new Date().toLocaleDateString("es-AR",{day:"numeric",month:"long",year:"numeric"});
+document.getElementById("precio").innerHTML=`<div>Instalación<b>${CONFIG.instalacion}</b></div><div>Mantenimiento<b>${CONFIG.cuota}</b></div>`;
+document.getElementById("wa").href=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola! Vi la propuesta de COFREP"+(cliente?" para "+cliente:"")+" y quiero mi carta digital.")}`;
+
+const tabs=document.getElementById("tabs");
+tabs.innerHTML=Object.entries(MODELOS).map(([k,m])=>`<button data-k="${k}">${m.nombre}</button>`).join("");
+let qr=null;
+function mostrar(k){
+  const m=MODELOS[k]||MODELOS.premium;k=MODELOS[k]?k:"premium";
+  tabs.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.k===k));
+  document.getElementById("demo").src=m.ruta+(k==="premium"?"?lang=es":"");
+  document.getElementById("tTitulo").textContent=m.nombre;
+  document.getElementById("tDesc").textContent=m.desc;
+  document.getElementById("tLista").innerHTML=m.lista.map(x=>`<li>${x}</li>`).join("");
+  const url=location.origin+m.ruta;
+  document.getElementById("abrir").href=url;
+  const box=document.getElementById("qr");box.innerHTML="";
+  try{qr=new QRCode(box,{text:url,width:116,height:116,colorDark:"#000",colorLight:"#fff",correctLevel:QRCode.CorrectLevel.M})}catch(e){box.textContent="QR"}
+  const u=new URL(location);u.searchParams.set("modelo",k);history.replaceState(null,"",u);
+}
+tabs.addEventListener("click",e=>{const b=e.target.closest("button");if(b)mostrar(b.dataset.k)});
+mostrar(q.get("modelo")||"premium");
+</script>
+</body></html>
