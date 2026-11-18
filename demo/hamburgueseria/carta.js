@@ -201,3 +201,37 @@ document.addEventListener('pointermove', event => {
 setLanguage(query('#language').value);
 
 
+
+
+/* ===== Pedido por WhatsApp =====
+   NEGOCIO_WHATSAPP: número del local con código de país, sin + ni espacios.
+   En el demo llega al WhatsApp de COFREP marcado como prueba. */
+const NEGOCIO_WHATSAPP = '79098745709';
+const ES_DEMO = true;
+let modoPedido = 'mesa';
+const pistas = { mesa: ['Número de mesa', 'Table number'], retiro: ['Tu nombre', 'Your name'], delivery: ['Dirección de entrega', 'Delivery address'] };
+document.querySelectorAll('.wa-op').forEach(boton => boton.addEventListener('click', () => {
+  modoPedido = boton.dataset.modo;
+  document.querySelectorAll('.wa-op').forEach(b => b.classList.toggle('on', b === boton));
+  const dato = query('#wa-dato');
+  dato.placeholder = t(...pistas[modoPedido]);
+  dato.value = '';
+  dato.focus();
+}));
+query('#wa-enviar').addEventListener('click', () => {
+  const elegidos = dishes.filter(dish => quantities.has(dish.id));
+  if (!elegidos.length) return;
+  const dato = query('#wa-dato').value.trim();
+  const etiqueta = { mesa: 'Mesa', retiro: 'Retiro a nombre de', delivery: 'Delivery a' }[modoPedido];
+  const lineas = elegidos.map(dish => `• ${quantities.get(dish.id)} x ${dish.name} — ${money.format(dish.price * quantities.get(dish.id))}`);
+  const texto = [
+    ES_DEMO ? '🧪 PEDIDO DE PRUEBA desde la demo KRAFT de COFREP' : 'Hola! Quiero hacer este pedido:',
+    '',
+    ...lineas,
+    '',
+    `Total: ${money.format(subtotal())}`,
+    dato ? `${etiqueta}: ${dato}` : `${etiqueta}: (sin indicar)`,
+    Number(people.value) > 1 ? `Dividido entre ${people.value} personas` : ''
+  ].filter((linea, i, todas) => linea !== '' || (todas[i - 1] !== '' && i > 0)).join('\n').trim();
+  window.open(`https://wa.me/${NEGOCIO_WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
+});
