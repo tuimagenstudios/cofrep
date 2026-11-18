@@ -121,6 +121,86 @@
   .nota{font-size:.72rem;color:#6d6556;text-align:center;margin-top:10px}
   .aviso{position:fixed;left:50%;top:76px;z-index:50;transform:translate(-50%,-10px);background:var(--crema);color:var(--noche);font-weight:800;font-size:.85rem;padding:10px 16px;border-radius:99px;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}
   .aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+  /* ===== Efectos y microinteracciones ===== */
+  :root{--ease:cubic-bezier(.22,1,.36,1);--rebote:cubic-bezier(.34,1.56,.64,1)}
+  button,.btn-carta,.tabs a{position:relative;overflow:hidden;transition:transform .18s var(--ease),background-color .25s,border-color .25s,box-shadow .25s,color .25s}
+  button:active,.btn-carta:active,.tabs a:active{transform:scale(.95)}
+  :focus-visible{outline:2px solid var(--naranja2);outline-offset:3px;border-radius:10px}
+
+  /* Onda al tocar */
+  .onda{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;opacity:.28;transform:scale(0);animation:onda .6s var(--ease) forwards}
+  @keyframes onda{to{transform:scale(1);opacity:0}}
+
+  /* Botones naranjas con brillo que recorre */
+  .agregar,.btn-carta,.barra button{box-shadow:0 6px 18px rgba(233,148,75,.28),inset 0 -2px 0 rgba(0,0,0,.18)}
+  .agregar::after,.btn-carta::after,.barra button::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .6s var(--ease)}
+  .agregar:hover::after,.btn-carta:hover::after,.barra button:hover::after{left:130%}
+  .agregar:hover,.btn-carta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(233,148,75,.4)}
+  .btn-carta{transition:transform .25s var(--rebote),box-shadow .25s}
+  .btn-carta span+*{display:inline-block}
+
+  /* Tarjetas: borde con degradé que se ilumina */
+  .pz,.emp,.mym{position:relative;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+  .pz::before,.emp::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.5px;background:linear-gradient(140deg,var(--naranja),transparent 40%,transparent 60%,var(--naranja2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s;pointer-events:none;z-index:2}
+  .pz:hover,.emp:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+  .pz:hover::before,.emp:hover::before{opacity:.7}
+  .pz .foto{transition:transform .6s var(--ease),filter .4s}
+  .pz:hover .foto{transform:scale(1.06)}
+  .pz{isolation:isolate}
+  .pz .foto{overflow:hidden}
+
+  /* En el pedido: borde fijo, brillo y sello */
+  .en-pedido{border-color:var(--naranja)!important;box-shadow:0 0 0 1px var(--naranja),0 12px 28px rgba(233,148,75,.18)}
+  .en-pedido::before{opacity:1!important}
+  .pz.en-pedido::after{content:"✓";position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:var(--naranja);color:#1b130b;font-weight:800;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.4);animation:sello .45s var(--rebote);z-index:3}
+  @keyframes sello{from{transform:scale(0) rotate(-90deg)}to{transform:scale(1) rotate(0)}}
+
+  /* Pop al sumar */
+  .pop{animation:pop .45s var(--rebote)}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+  .salto{animation:salto .5s var(--rebote)}
+  @keyframes salto{0%,100%{transform:translateY(0)}35%{transform:translateY(-6px) scale(1.04)}}
+
+  /* Masa y modo: selección con borde animado */
+  .masa button,.modo button{transition:transform .2s var(--ease),border-color .25s,box-shadow .3s,background .25s}
+  .masa button.on{box-shadow:inset 0 0 0 1px var(--naranja),0 0 0 4px rgba(233,148,75,.15);background:linear-gradient(160deg,rgba(233,148,75,.16),var(--noche2))}
+  .masa button.on span::before{content:"● ";color:var(--naranja)}
+
+  /* Pestañas: subrayado que se desliza */
+  .tabs a{transition:background .3s,color .3s,border-color .3s,transform .18s}
+  .tabs a.on{box-shadow:0 6px 16px rgba(233,148,75,.3)}
+
+  /* Contadores + y − */
+  .cant button{transition:transform .15s,background .2s,color .2s}
+  .cant button:hover{background:var(--naranja);color:#1b130b}
+
+  /* Mitad y mitad: la pizza gira un poco al cambiar */
+  .circulo{transition:transform .5s var(--rebote)}
+  .circulo.gira{transform:rotate(-8deg) scale(1.03)}
+  select{transition:border-color .25s,box-shadow .25s}
+  select:focus{border-color:var(--naranja);box-shadow:0 0 0 3px rgba(233,148,75,.2);outline:none}
+
+  /* Casilla de huevo con tilde animada */
+  .extra-huevo input{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid var(--naranja);border-radius:6px;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+  .extra-huevo input::after{content:"";width:6px;height:11px;border:solid #1b130b;border-width:0 3px 3px 0;transform:rotate(45deg) scale(0);transition:transform .25s var(--rebote);margin-top:-2px}
+  .extra-huevo input:checked{background:var(--naranja)}
+  .extra-huevo input:checked::after{transform:rotate(45deg) scale(1)}
+
+  /* Barra de pedido: late cuando cambia */
+  .barra button.late{animation:late .55s var(--rebote)}
+  @keyframes late{0%{transform:scale(1)}30%{transform:scale(1.035)}60%{transform:scale(.99)}100%{transform:scale(1)}}
+  #resumen{display:inline-block;transition:transform .3s var(--rebote)}
+
+  /* Entrada suave de las tarjetas al aparecer */
+  .entra{opacity:0;transform:translateY(18px)}
+  .entra.visto{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+
+  /* Botón WhatsApp */
+  .wa{transition:transform .2s var(--ease),box-shadow .25s,filter .2s}
+  .wa:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.35)}
+
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.entra{opacity:1;transform:none}}
 </style></head><body>
 
 <header class="nav"><div class="wrap"><img src="fotos/logo.webp" alt="La Specialitá"><b>LA SPECIALITÁ</b><button class="idioma" id="idioma">EN</button></div></header>
@@ -245,12 +325,12 @@ const precioMasa = p => p + (masa === "molde" ? RECARGO_MOLDE : 0);
 function listaPizzas() {
   $("#listaPizzas").innerHTML = PIZZAS.map(p => {
     const k = `pz-${p.id}-${masa}`, q = pedido[k] ? pedido[k].cant : 0;
-    return `<article class="pz"><div class="foto" data-foto="${p.id}"></div><div class="t"><h3>${nom(p)}</h3><p>${idioma === "en" ? p.ingEn : p.ing}</p>
+    return `<article class="pz entra visto${q ? " en-pedido" : ""}" data-card="${p.id}"><div class="foto" data-foto="${p.id}"></div><div class="t"><h3>${nom(p)}</h3><p>${idioma === "en" ? p.ingEn : p.ing}</p>
       <div class="pie"><span class="precio">${plata(precioMasa(p.precio))}</span>${q ? `<div class="cant"><button data-k="${k}" data-d="-1">−</button>${q}<button data-k="${k}" data-d="1">+</button></div>` : `<button class="agregar" data-pz="${p.id}">${t("agregar")}</button>`}</div></div></article>`;
   }).join("");
   document.querySelectorAll("[data-foto]").forEach(el => fondo(el, pz(el.dataset.foto)));
 }
-function mitades() {
+let mitades = function () {
   const i = pz($("#selI").value), d = pz($("#selD").value);
   fondo($("#capaI"), i); fondo($("#capaD"), d);
   $("#nomI").textContent = nom(i); $("#nomD").textContent = nom(d);
@@ -259,7 +339,7 @@ function mitades() {
 function precioMym() { return precioMasa(Math.max(pz($("#selI").value).precio, pz($("#selD").value).precio)) + ($("#huevo").checked ? PRECIO_HUEVO : 0); }
 function listaEmp() {
   $("#listaEmp").innerHTML = EMPANADAS.map(e => { const k = `emp-${e.id}`, q = pedido[k] ? pedido[k].cant : 0;
-    return `<div class="emp"><div><b>${nom(e)}</b><small>${plata(e.precio)} ${t("unidad")}</small></div>${q ? `<div class="cant"><button data-k="${k}" data-d="-1">−</button>${q}<button data-k="${k}" data-d="1">+</button></div>` : `<button class="agregar" data-emp="${e.id}">${t("agregar")}</button>`}</div>` }).join("");
+    return `<div class="emp${q ? " en-pedido" : ""}"><div><b>${nom(e)}</b><small>${plata(e.precio)} ${t("unidad")}</small></div>${q ? `<div class="cant"><button data-k="${k}" data-d="-1">−</button>${q}<button data-k="${k}" data-d="1">+</button></div>` : `<button class="agregar" data-emp="${e.id}">${t("agregar")}</button>`}</div>` }).join("");
   $("#docena").textContent = `${t("docena")} ${plata(PRECIO_DOCENA)}`;
 }
 function estado() {
@@ -279,8 +359,8 @@ function textos() {
 }
 
 /* ===== Pedido ===== */
-function sumar(k, nombre, precio) { pedido[k] = pedido[k] || { nombre, precio, cant: 0 }; pedido[k].cant++; avisar(t("agregada")); refrescar(); }
-function cambiar(k, d) { if (!pedido[k]) return; pedido[k].cant += d; if (pedido[k].cant <= 0) delete pedido[k]; refrescar(); }
+let sumar = function (k, nombre, precio) { pedido[k] = pedido[k] || { nombre, precio, cant: 0 }; pedido[k].cant++; avisar(t("agregada")); refrescar(); }
+let cambiar = function (k, d) { if (!pedido[k]) return; pedido[k].cant += d; if (pedido[k].cant <= 0) delete pedido[k]; refrescar(); }
 function cantEmp() { return EMPANADAS.reduce((s, e) => s + (pedido[`emp-${e.id}`] ? pedido[`emp-${e.id}`].cant : 0), 0); }
 function total() {
   let s = 0; for (const k in pedido) if (!k.startsWith("emp-")) s += pedido[k].precio * pedido[k].cant;
@@ -329,6 +409,27 @@ $("#enviar").onclick = () => {
 const tabs = document.querySelectorAll(".tabs a");
 const observador = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) tabs.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id)) }), { rootMargin: "-45% 0px -50% 0px" });
 ["#pizzas", "#mitad", "#empanadas"].forEach(s => observador.observe($(s)));
+
+/* ===== Efectos: onda al tocar, pop al sumar, barra que late, entrada de tarjetas ===== */
+document.addEventListener("pointerdown", e => {
+  const b = e.target.closest("button, .btn-carta, .tabs a"); if (!b || b.disabled) return;
+  const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2;
+  const o = document.createElement("span"); o.className = "onda";
+  o.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
+  b.appendChild(o); setTimeout(() => o.remove(), 650);
+});
+const latir = () => { const b = $("#verPedido"); b.classList.remove("late"); void b.offsetWidth; b.classList.add("late"); };
+const _sumar = sumar;
+sumar = function (k, n, pr) {
+  _sumar(k, n, pr); latir();
+  const id = k.split("-")[1], card = document.querySelector(`[data-card="${id}"]`);
+  if (card) { card.classList.remove("pop"); void card.offsetWidth; card.classList.add("pop"); }
+};
+const _cambiar = cambiar; cambiar = function (k, d) { _cambiar(k, d); latir(); };
+const _mitades = mitades; mitades = function () { _mitades(); const c = $(".circulo"); c.classList.add("gira"); clearTimeout(c._t); c._t = setTimeout(() => c.classList.remove("gira"), 350); };
+["#selI", "#selD", "#huevo"].forEach(s => $(s).addEventListener("change", mitades));
+const aparecer = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("visto"); aparecer.unobserve(en.target); } }), { threshold: .12 });
+document.querySelectorAll(".mym, .emp-foto, .masa").forEach(el => { el.classList.add("entra"); aparecer.observe(el); });
 textos();
 </script>
 </body></html>
