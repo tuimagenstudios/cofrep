@@ -231,7 +231,9 @@ query('#wa-enviar').addEventListener('click', () => {
     '',
     `Total: ${money.format(subtotal())}`,
     dato ? `${etiqueta}: ${dato}` : `${etiqueta}: (sin indicar)`,
-    Number(people.value) > 1 ? `Dividido entre ${people.value} personas` : ''
+    Number(people.value) > 1 ? `Dividido entre ${people.value} personas` : '',
+    '',
+    'Quedo atento/a a la confirmación del pedido.'
   ].filter((linea, i, todas) => linea !== '' || (todas[i - 1] !== '' && i > 0)).join('\n').trim();
   window.open(`https://wa.me/${NEGOCIO_WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
 });

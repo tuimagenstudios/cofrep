@@ -16,6 +16,7 @@
   #wa-dato{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(127,127,127,.5);background:transparent;color:inherit;font:inherit}
   .wa-btn{width:100%;padding:14px;border-radius:12px;background:#25d366!important;color:#08140f!important;border:1px solid #25d366!important;font:inherit;font-weight:800;cursor:pointer}
 </style>
+<style>.confirma{display:flex;gap:10px;align-items:flex-start;margin:12px 0;padding:12px 14px;border-radius:12px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.45);font-size:.85rem;line-height:1.4}.confirma b{font-size:1.1rem;line-height:1}</style>
 </head>
 <body>
   <header class="top">
@@ -198,7 +199,8 @@
             <button type="button" class="wa-op" data-modo="delivery" data-en="Delivery">Delivery</button>
           </div>
           <input id="wa-dato" type="text" placeholder="Número de mesa" data-en-placeholder="Table number" autocomplete="off">
-          <button type="button" id="wa-enviar" class="wa-btn"><span data-en="Send order on WhatsApp">Enviar pedido por WhatsApp</span></button>
+          <p class="confirma" role="note"><b>⏳</b><span data-en="Your order is confirmed once the restaurant replies on WhatsApp with the final total and waiting time.">Tu pedido queda confirmado cuando el local te responde por WhatsApp con el total final y la demora.</span></p>
+<button type="button" id="wa-enviar" class="wa-btn"><span data-en="Send order on WhatsApp">Enviar pedido por WhatsApp</span></button>
         </div>
     </div>
   </dialog>

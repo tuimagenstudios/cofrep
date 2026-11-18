@@ -93,7 +93,8 @@
   .aviso{position:fixed;left:50%;top:70px;z-index:50;transform:translate(-50%,-10px);background:var(--crema);color:var(--fondo);font-weight:800;font-size:.85rem;padding:10px 16px;border-radius:99px;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}
   .aviso.ver{opacity:1;transform:translate(-50%,0)}
   footer{text-align:center;color:var(--suave);font-size:.72rem;margin:28px 0 0}footer a{color:var(--rojo);text-decoration:none;font-weight:700}
-</style></head><body>
+</style><style>.confirma{display:flex;gap:10px;align-items:flex-start;margin:12px 0;padding:12px 14px;border-radius:12px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.45);font-size:.85rem;line-height:1.4}.confirma b{font-size:1.1rem;line-height:1}</style>
+</head><body>
 
 <header><div class="wrap"><div class="marca">DEMO <b>PIZZA</b></div><button class="idioma" id="idioma">EN</button></div></header>
 
@@ -160,6 +161,7 @@
   </div>
   <input id="dato" autocomplete="off">
   <div class="total"><span>Total</span><span id="total"></span></div>
+  <p class="confirma" role="note"><b>⏳</b><span data-t="confirma">Tu pedido queda confirmado cuando el local te responde por WhatsApp con el total final y la demora.</span></p>
   <button class="wa" id="enviar" data-t="enviar">Enviar pedido por WhatsApp</button>
   <p class="nota" data-t="nota">Demo: el pedido se envía como PRUEBA al WhatsApp de COFREP.</p>
 </section>
@@ -202,8 +204,8 @@ const BEBIDAS = [
 
 /* ===== Textos en dos idiomas ===== */
 const TXT = {
-  es: { etq: "PIZZA A LA PIEDRA", h1a: "Armá tu pizza", h1b: "y mirala", h1c: "en vivo", sub: "Elegí tamaño, sabores e ingredientes. Pedila desde tu mesa.", tam: "1 · Tamaño", sabor: "2 · Sabor", entera: "Entera", mitad: "Mitad y mitad", izq: "Mitad izquierda", der: "Mitad derecha", extras: "3 · Ingredientes extra", beb: "Bebidas y postres", firma: "Demo de carta digital por", sumar: "Sumar al pedido", pedido: "Pedido", tuPedido: "Tu pedido", mMesa: "En mi mesa", mRetiro: "Retiro", mDeliv: "Delivery", enviar: "Enviar pedido por WhatsApp", nota: "Demo: el pedido se envía como PRUEBA al WhatsApp de COFREP.", vacio: "Todavía no sumaste nada.", quitar: "Quitar", sumada: "Pizza sumada al pedido", estaPizza: "esta pizza", pMesa: "Número de mesa", pRetiro: "Tu nombre", pDeliv: "Dirección de entrega", mesa: "Mesa", con: "con", extra: "extra" },
-  en: { etq: "STONE-BAKED PIZZA", h1a: "Build your pizza", h1b: "and watch it", h1c: "live", sub: "Pick size, flavors and toppings. Order from your table.", tam: "1 · Size", sabor: "2 · Flavor", entera: "Whole", mitad: "Half & half", izq: "Left half", der: "Right half", extras: "3 · Extra toppings", beb: "Drinks & desserts", firma: "Digital menu demo by", sumar: "Add to order", pedido: "Order", tuPedido: "Your order", mMesa: "At my table", mRetiro: "Pickup", mDeliv: "Delivery", enviar: "Send order on WhatsApp", nota: "Demo: the order is sent as a TEST to COFREP's WhatsApp.", vacio: "Your order is empty.", quitar: "Remove", sumada: "Pizza added to your order", estaPizza: "this pizza", pMesa: "Table number", pRetiro: "Your name", pDeliv: "Delivery address", mesa: "Table", con: "with", extra: "extra" }
+  es: { etq: "PIZZA A LA PIEDRA", h1a: "Armá tu pizza", h1b: "y mirala", h1c: "en vivo", sub: "Elegí tamaño, sabores e ingredientes. Pedila desde tu mesa.", tam: "1 · Tamaño", sabor: "2 · Sabor", entera: "Entera", mitad: "Mitad y mitad", izq: "Mitad izquierda", der: "Mitad derecha", extras: "3 · Ingredientes extra", beb: "Bebidas y postres", firma: "Demo de carta digital por", sumar: "Sumar al pedido", pedido: "Pedido", tuPedido: "Tu pedido", mMesa: "En mi mesa", mRetiro: "Retiro", mDeliv: "Delivery", enviar: "Enviar pedido por WhatsApp", nota: "Demo: el pedido se envía como PRUEBA al WhatsApp de COFREP.", vacio: "Todavía no sumaste nada.", confirma: "Tu pedido queda confirmado cuando el local te responde por WhatsApp con el total final y la demora.", quitar: "Quitar", sumada: "Pizza sumada al pedido", estaPizza: "esta pizza", pMesa: "Número de mesa", pRetiro: "Tu nombre", pDeliv: "Dirección de entrega", mesa: "Mesa", con: "con", extra: "extra" },
+  en: { etq: "STONE-BAKED PIZZA", h1a: "Build your pizza", h1b: "and watch it", h1c: "live", sub: "Pick size, flavors and toppings. Order from your table.", tam: "1 · Size", sabor: "2 · Flavor", entera: "Whole", mitad: "Half & half", izq: "Left half", der: "Right half", extras: "3 · Extra toppings", beb: "Drinks & desserts", firma: "Digital menu demo by", sumar: "Add to order", pedido: "Order", tuPedido: "Your order", mMesa: "At my table", mRetiro: "Pickup", mDeliv: "Delivery", enviar: "Send order on WhatsApp", nota: "Demo: the order is sent as a TEST to COFREP's WhatsApp.", vacio: "Your order is empty.", confirma: "Your order is confirmed once the restaurant replies on WhatsApp with the final total and waiting time.", quitar: "Remove", sumada: "Pizza added to your order", estaPizza: "this pizza", pMesa: "Table number", pRetiro: "Your name", pDeliv: "Delivery address", mesa: "Table", con: "with", extra: "extra" }
 };
 let idioma = (() => { try { return localStorage.getItem("demopizza-idioma") || "es" } catch (e) { return "es" } })();
 const t = k => TXT[idioma][k];
@@ -319,6 +321,7 @@ $("#enviar").onclick = () => {
   pedido.forEach(p => l.push(`🍕 Pizza ${p.desc} — ${plata(p.precio)}`));
   BEBIDAS.filter(b => bebidas[b.id]).forEach(b => l.push(`• ${bebidas[b.id]} x ${b.es} — ${plata(b.precio * bebidas[b.id])}`));
   l.push("", `Total: ${plata(totalPedido())}`, `${etiqueta}: ${dato || "(sin indicar)"}`);
+  l.push("", "Quedo atento/a a la confirmación del pedido.");
   window.open(`https://wa.me/${LOCAL.whatsapp}?text=${encodeURIComponent(l.join("\n"))}`, "_blank", "noopener");
 };
 textos();

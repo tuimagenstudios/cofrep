@@ -292,6 +292,7 @@ document.querySelector('#wa-enviar').addEventListener('click', () => {
     `${etiqueta}: ${dato || '(sin indicar)'}`
   ];
   if (personas > 1) lineas.push(`Dividido entre ${personas} personas`);
+  lineas.push('', 'Quedo atento/a a la confirmación del pedido.');
   window.open(`https://wa.me/${NEGOCIO_WHATSAPP}?text=${encodeURIComponent(lineas.join('\n'))}`, '_blank', 'noopener');
 });
 
