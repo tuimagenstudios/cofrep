@@ -241,11 +241,11 @@ let qr=null;
 function mostrar(k){
   const m=MODELOS[k]||MODELOS.premium;k=MODELOS[k]?k:"premium";
   tabs.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.k===k));
-  document.getElementById("demo").src=m.ruta+(k==="premium"?"?lang=es":"");
+  document.getElementById("demo").src=m.ruta+(k==="premium"?"?lang=es&v=c2":"?v=c2");
   document.getElementById("tTitulo").textContent=m.nombre;
   document.getElementById("tDesc").textContent=m.desc;
   document.getElementById("tLista").innerHTML=m.lista.map(x=>`<li>${x}</li>`).join("");
-  const url=location.origin+m.ruta;
+  const url=location.origin+m.ruta+"?v=c2";
   document.getElementById("abrir").href=url;
   const box=document.getElementById("qr");box.innerHTML="";
   try{qr=new QRCode(box,{text:url,width:116,height:116,colorDark:"#000",colorLight:"#fff",correctLevel:QRCode.CorrectLevel.M})}catch(e){box.textContent="QR"}
