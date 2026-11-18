@@ -13,7 +13,7 @@
 <style>
 :root{
   --bg:#17100d; --bg2:#211814; --card:#2a1f1a; --line:#3d2e27;
-  --cream:#f6ecdc; --muted:#b8a593; --orange:#c89e86; --orange2:#e2c3b1;
+  --cream:#f6ecdc; --muted:#b8a593; --orange:#d9845a; --orange2:#f0b48f;
   --r:22px;
 }
 *{box-sizing:border-box}
@@ -43,7 +43,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 .hero{position:relative;min-height:100svh;display:grid;align-items:end;padding:120px 0 44px;overflow:hidden}
 .hero-bg{position:absolute;inset:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.04);filter:saturate(1.05)}
-.hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,16,13,.35) 0%,rgba(23,16,13,.15) 35%,rgba(23,16,13,.92) 82%,var(--bg) 100%),radial-gradient(80% 60% at 85% 30%,rgba(200,158,134,.18),transparent 60%)}
+.hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,16,13,.35) 0%,rgba(23,16,13,.15) 35%,rgba(23,16,13,.92) 82%,var(--bg) 100%),radial-gradient(80% 60% at 85% 30%,rgba(200,105,62,.18),transparent 60%)}
 .hero-c{position:relative}
 h1{font:400 clamp(56px,10.5vw,168px)/.86 'Instrument Serif',Georgia,serif;letter-spacing:-.035em;margin:22px 0 26px;max-width:11ch}
 h1 i{color:var(--orange)}
@@ -117,7 +117,7 @@ h2 i{color:var(--orange2)}
 .item.feat a{color:var(--orange);font-weight:600;font-size:14px}
 @keyframes in{from{opacity:0;transform:translateY(10px)}}
 .note{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.chip{padding:9px 14px;border-radius:999px;background:rgba(200,158,134,.13);color:var(--orange2);font-size:14px;font-weight:500}
+.chip{padding:9px 14px;border-radius:999px;background:rgba(200,105,62,.13);color:var(--orange2);font-size:14px;font-weight:500}
 
 /* CTA */
 .cta{background:var(--bg2);padding-top:0}
@@ -163,7 +163,7 @@ footer a:hover{color:var(--cream)}
 /* ===== TEMA CLARO ===== */
 :root{
   --bg:#F7F1E6; --bg2:#EFE6D6; --card:#FFFCF6; --line:#E2D5C1;
-  --cream:#2A1E19; --muted:#6E5D51; --orange:#c89e86; --orange2:#79543e; --ink-light:#F6ECDC;
+  --cream:#2A1E19; --muted:#6E5D51; --orange:#c8693e; --orange2:#9a4a26; --ink-light:#F6ECDC;
 }
 .eyebrow,h1 i,.tarr,.item.feat a{color:var(--orange2)}
 .nav.solid{background:rgba(247,241,230,.88);border-bottom:1px solid var(--line)}
@@ -173,8 +173,8 @@ footer a:hover{color:var(--cream)}
 .b .cap{background:rgba(255,252,246,.85);color:var(--cream)}
 .arrow{background:rgba(42,30,25,.07)}
 .b:hover .arrow{background:var(--cream);color:var(--ink-light)}
-.item.feat{background:linear-gradient(120deg,#f0e2d9,#FFFCF6 65%);border-color:#e0c7b8}
-.chip{background:rgba(200,158,134,.25);color:#543625}
+.item.feat{background:linear-gradient(120deg,#f6dccd,#FFFCF6 65%);border-color:#e4b79d}
+.chip{background:rgba(200,105,62,.18);color:#7a3a1d}
 .pill.dark{color:var(--ink-light)}
 .tab:hover{border-color:#B9A58F}
 .marquee .track{color:var(--cream)}
@@ -183,7 +183,7 @@ footer a:hover{color:var(--cream)}
 /* ===== MODO OSCURO (botón) ===== */
 html[data-theme=dark]{
   --bg:#17100d; --bg2:#211814; --card:#2a1f1a; --line:#3d2e27;
-  --cream:#f6ecdc; --muted:#b8a593; --orange2:#e2c3b1; --ink-light:#17100d;
+  --cream:#f6ecdc; --muted:#b8a593; --orange:#d9845a; --orange2:#f0b48f; --ink-light:#17100d;
 }
 html[data-theme=dark] .eyebrow,html[data-theme=dark] h1 i,html[data-theme=dark] .tarr,html[data-theme=dark] .item.feat a{color:var(--orange)}
 html[data-theme=dark] .nav.solid{background:rgba(23,16,13,.82)}
@@ -193,7 +193,7 @@ html[data-theme=dark] .ghost:hover{background:rgba(246,236,220,.1)}
 html[data-theme=dark] .b .cap{background:rgba(23,16,13,.6)}
 html[data-theme=dark] .arrow{background:rgba(246,236,220,.1)}
 html[data-theme=dark] .item.feat{background:linear-gradient(120deg,#31251e,#2a1f1a 60%);border-color:#543e31}
-html[data-theme=dark] .chip{background:rgba(200,158,134,.13);color:var(--orange2)}
+html[data-theme=dark] .chip{background:rgba(200,105,62,.13);color:var(--orange2)}
 html[data-theme=dark] .tab:hover{border-color:#5a463c}
 html[data-theme=dark] .pill.dark{color:#f6ecdc}
 html[data-theme=dark] .hero-bg{box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
