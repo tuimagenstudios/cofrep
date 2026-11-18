@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QR por mesa | COFREP</title>
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{--fondo:#1c1c1c;--fondo2:#262626;--linea:#333;--acento:#ffc21a;--texto:#f2f2f2;--suave:#a3a3a3}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--fondo);color:var(--texto);font-family:Arial,Helvetica,sans-serif}
+  .panel{max-width:960px;margin:0 auto;padding:28px 16px}
+  h1{font-size:1.8rem;text-transform:uppercase;margin-bottom:6px}h1 b{color:var(--acento)}
+  .sub{color:var(--suave);margin-bottom:22px}
+  form{display:grid;gap:12px;background:var(--fondo2);border:1px solid var(--linea);border-left:4px solid var(--acento);border-radius:6px;padding:18px;margin-bottom:24px}
+  @media(min-width:760px){form{grid-template-columns:2fr 1.3fr .7fr .7fr auto;align-items:end}}
+  label{display:grid;gap:6px;font-size:.8rem;color:var(--suave);text-transform:uppercase;letter-spacing:.05em}
+  input{padding:11px 12px;border-radius:6px;border:1px solid var(--linea);background:#151515;color:var(--texto);font:inherit;font-size:.95rem;width:100%}
+  button{padding:12px 18px;border-radius:6px;border:2px solid var(--acento);background:var(--acento);color:#000;font:inherit;font-weight:700;cursor:pointer}
+  button.sec{background:transparent;color:var(--acento)}
+  .acciones{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  #hoja{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:14px}
+  .tarjeta{background:#fff;color:#111;border-radius:10px;padding:18px 14px;text-align:center;break-inside:avoid}
+  .tarjeta .local{font-size:1rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+  .tarjeta .qr{margin:12px auto;width:150px;height:150px}.tarjeta .qr img,.tarjeta .qr canvas{width:150px!important;height:150px!important}
+  .tarjeta .mesa{font-size:1.6rem;font-weight:800}
+  .tarjeta .ayuda{font-size:.72rem;color:#555;margin-top:6px}
+  .tarjeta .firma{font-size:.6rem;color:#999;margin-top:8px;letter-spacing:.06em}
+  @media print{
+    body{background:#fff}.panel>*:not(#hoja){display:none}.panel{padding:0;max-width:none}
+    #hoja{grid-template-columns:repeat(3,1fr);gap:8mm}
+    .tarjeta{border:1px dashed #bbb}
+    @page{size:A4;margin:10mm}
+  }
+</style></head><body>
+<div class="panel">
+  <h1>QR por <b>mesa</b></h1>
+  <p class="sub">Cada mesa tiene su propio QR. El pedido llega por WhatsApp con el número de mesa, sin que el cliente lo escriba.</p>
+  <form id="f">
+    <label>Link de la carta<input id="url" type="url" required placeholder="https://cofrep.com/nombre-del-local/"></label>
+    <label>Nombre del local<input id="local" type="text" placeholder="Nombre del local"></label>
+    <label>Desde mesa<input id="desde" type="number" min="1" value="1"></label>
+    <label>Hasta mesa<input id="hasta" type="number" min="1" value="12"></label>
+    <button>Generar</button>
+  </form>
+  <div class="acciones"><button class="sec" onclick="print()">Imprimir / guardar PDF</button></div>
+  <div id="hoja"></div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+const $ = s => document.querySelector(s);
+const q = new URLSearchParams(location.search);
+['url','local','desde','hasta'].forEach(k => { if (q.get(k)) $('#'+k).value = q.get(k); });
+function generar(){
+  let base = $('#url').value.trim(); if (!base) return;
+  const desde = Math.max(1, parseInt($('#desde').value) || 1), hasta = Math.min(200, Math.max(desde, parseInt($('#hasta').value) || desde));
+  const local = $('#local').value.trim();
+  const hoja = $('#hoja'); hoja.innerHTML = '';
+  for (let n = desde; n <= hasta; n++) {
+    const u = new URL(base); u.searchParams.set('mesa', n);
+    const t = document.createElement('div'); t.className = 'tarjeta';
+    t.innerHTML = `${local ? `<div class="local"></div>` : ''}<div class="qr"></div><div class="mesa">Mesa ${n}</div><div class="ayuda">Escaneá para ver la carta y pedir</div><div class="firma">COFREP · TUIMAGEN STUDIO</div>`;
+    if (local) t.querySelector('.local').textContent = local;
+    hoja.appendChild(t);
+    new QRCode(t.querySelector('.qr'), { text: u.toString(), width: 150, height: 150, correctLevel: QRCode.CorrectLevel.M });
+  }
+  const s = new URL(location); ['url','local','desde','hasta'].forEach(k => s.searchParams.set(k, $('#'+k).value)); history.replaceState(null, '', s);
+}
+$('#f').addEventListener('submit', e => { e.preventDefault(); generar(); });
+if ($('#url').value) generar();
+</script>
+</body></html>

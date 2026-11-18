@@ -200,3 +200,57 @@ splitPeople.addEventListener('change', () => {
 });
 document.querySelector('#open-selection').addEventListener('click', () => selection.showModal());
 changeLanguage();
+
+
+/* ===== Pedido por WhatsApp =====
+   NEGOCIO_WHATSAPP: número del local con código de país, sin + ni espacios.
+   ES_PRUEBA: true mientras es propuesta (el mensaje sale marcado como prueba). */
+const NEGOCIO_WHATSAPP = '79098745709';
+const ES_PRUEBA = true;
+let modoPedido = 'mesa';
+const pistasPedido = { mesa: ['Número de mesa', 'Table number'], retiro: ['Tu nombre', 'Your name'], delivery: ['Dirección de entrega', 'Delivery address'] };
+const enIngles = () => document.documentElement.lang === 'en';
+document.querySelectorAll('.wa-op').forEach(boton => boton.addEventListener('click', () => {
+  modoPedido = boton.dataset.modo;
+  document.querySelectorAll('.wa-op').forEach(b => b.classList.toggle('on', b === boton));
+  const dato = document.querySelector('#wa-dato');
+  dato.placeholder = pistasPedido[modoPedido][enIngles() ? 1 : 0];
+  dato.value = '';
+  dato.focus();
+}));
+document.querySelector('#wa-enviar').addEventListener('click', () => {
+  const items = [...quantities].map(([producto, cantidad]) => ({ cantidad, nombre: producto.name.textContent, importe: pesos.format(producto.price * cantidad) }));
+  if (!items.length) return;
+  const dato = document.querySelector('#wa-dato').value.trim();
+  const etiqueta = { mesa: 'Mesa', retiro: 'Retiro a nombre de', delivery: 'Delivery a' }[modoPedido];
+  const personas = splitCount();
+  const lineas = [
+    ES_PRUEBA ? '🧪 PEDIDO DE PRUEBA · carta digital de Apatheia Coffee (COFREP)' : 'Hola! Quiero hacer este pedido:',
+    '',
+    ...items.map(i => `• ${i.cantidad} x ${i.nombre}${i.importe ? ' — ' + i.importe : ''}`),
+    '',
+    `Total: ${pesos.format([...quantities].reduce((s, [p, c]) => s + p.price * c, 0))}`,
+    `${etiqueta}: ${dato || '(sin indicar)'}`
+  ];
+  if (personas > 1) lineas.push(`Dividido entre ${personas} personas`);
+  window.open(`https://wa.me/${NEGOCIO_WHATSAPP}?text=${encodeURIComponent(lineas.join('\n'))}`, '_blank', 'noopener');
+});
+
+
+/* ===== Mesa desde el QR =====
+   Cada mesa tiene su propio QR con ?mesa=N: el pedido sale con ese número sin escribirlo. */
+(() => {
+  const mesa = (new URLSearchParams(location.search).get('mesa') || '').replace(/[^0-9A-Za-z-]/g, '').slice(0, 6);
+  if (!mesa) return;
+  const dato = document.querySelector('#wa-dato');
+  const opcion = document.querySelector('.wa-op[data-modo="mesa"]');
+  if (!dato || !opcion) return;
+  opcion.click();
+  dato.value = mesa;
+  dato.readOnly = true;
+  dato.setAttribute('aria-label', 'Mesa ' + mesa);
+  dato.style.fontWeight = '800';
+  document.querySelectorAll('.wa-op:not([data-modo="mesa"])').forEach(b => { b.hidden = true; });
+  document.querySelector('.wa-modo').style.gridTemplateColumns = '1fr';
+  opcion.textContent = (document.documentElement.lang === 'en' ? 'Table ' : 'Mesa ') + mesa;
+})();

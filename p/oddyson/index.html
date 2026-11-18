@@ -8,6 +8,14 @@
   <title>ODDYSON | Carta digital</title>
   <link rel="stylesheet" href="estilo.css">
   <script src="carta.js" defer></script>
+<style>
+  .wa-box{display:grid;gap:10px;margin-top:16px}
+  .wa-modo{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .wa-op{padding:10px 6px;border-radius:10px;border:1px solid currentColor;background:transparent;color:inherit;font:inherit;font-weight:700;opacity:.65;cursor:pointer}
+  .wa-op.on{opacity:1;background:#25d366;border-color:#25d366;color:#08140f}
+  #wa-dato{width:100%;padding:12px 14px;border-radius:10px;border:1px solid rgba(127,127,127,.5);background:transparent;color:inherit;font:inherit}
+  .wa-btn{width:100%;padding:14px;border-radius:12px;background:#25d366!important;color:#08140f!important;border:1px solid #25d366!important;font:inherit;font-weight:800;cursor:pointer}
+</style>
 </head>
 <body>
   <header class="top">
@@ -79,9 +87,18 @@
         <p class="total"><strong data-en="Estimated total">Total estimado</strong><strong id="total"></strong></p>
         <label class="split"><span data-en="Split among">Dividir entre</span> <input id="people" type="number" value="1" min="1" max="50" step="1"> <span data-en="people">personas</span></label>
         <p id="split-amount"></p>
+        <div class="wa-box">
+          <div class="wa-modo" role="group" aria-label="Cómo lo recibís">
+            <button type="button" class="wa-op on" data-modo="mesa" data-en="At my table">En mi mesa</button>
+            <button type="button" class="wa-op" data-modo="retiro" data-en="Pickup">Retiro</button>
+            <button type="button" class="wa-op" data-modo="delivery" data-en="Delivery">Delivery</button>
+          </div>
+          <input id="wa-dato" type="text" placeholder="Número de mesa" data-en-placeholder="Table number" autocomplete="off">
+          <button type="button" id="wa-enviar" class="wa-btn"><span data-en="Send order on WhatsApp">Enviar pedido por WhatsApp</span></button>
+        </div>
       </div>
       <p id="pending-prices" class="source-note" data-en="Ask the team for the total when your selection includes items with pending prices." hidden>Consultá el total con el equipo cuando tu selección incluya productos con precio pendiente.</p>
-      <p class="source-note" data-en="Show your selection to our team when you are ready to order.">Mostrale tu selección al equipo de Oddyson cuando quieras pedir.</p>
+      <p class="source-note" data-en="Send your order on WhatsApp or show it to the Oddyson team.">Enviá tu pedido por WhatsApp o mostralo al equipo de Oddyson.</p>
     </div>
   </dialog>
   <div role="status" id="notice" class="sr-only"></div>

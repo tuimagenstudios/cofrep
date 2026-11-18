@@ -235,3 +235,22 @@ query('#wa-enviar').addEventListener('click', () => {
   ].filter((linea, i, todas) => linea !== '' || (todas[i - 1] !== '' && i > 0)).join('\n').trim();
   window.open(`https://wa.me/${NEGOCIO_WHATSAPP}?text=${encodeURIComponent(texto)}`, '_blank', 'noopener');
 });
+
+
+/* ===== Mesa desde el QR =====
+   Cada mesa tiene su propio QR con ?mesa=N: el pedido sale con ese número sin escribirlo. */
+(() => {
+  const mesa = (new URLSearchParams(location.search).get('mesa') || '').replace(/[^0-9A-Za-z-]/g, '').slice(0, 6);
+  if (!mesa) return;
+  const dato = document.querySelector('#wa-dato');
+  const opcion = document.querySelector('.wa-op[data-modo="mesa"]');
+  if (!dato || !opcion) return;
+  opcion.click();
+  dato.value = mesa;
+  dato.readOnly = true;
+  dato.setAttribute('aria-label', 'Mesa ' + mesa);
+  dato.style.fontWeight = '800';
+  document.querySelectorAll('.wa-op:not([data-modo="mesa"])').forEach(b => { b.hidden = true; });
+  document.querySelector('.wa-modo').style.gridTemplateColumns = '1fr';
+  opcion.textContent = (document.documentElement.lang === 'en' ? 'Table ' : 'Mesa ') + mesa;
+})();
