@@ -22,14 +22,19 @@
   .hero h1{font-size:2.1rem;margin:12px 0 6px}.hero h1 span{color:var(--rojo)}
   .hero p{color:var(--suave);font-size:.95rem}
 
-  /* Pizza */
-  .escenario{position:relative;width:min(88vw,380px);aspect-ratio:1;margin:18px auto 8px}
-  .escenario::before{content:"";position:absolute;inset:-6%;border-radius:50%;background:radial-gradient(circle,rgba(232,65,44,.22),transparent 65%)}
-  #pizza{position:relative;width:100%;height:100%;transition:transform .45s cubic-bezier(.3,1.4,.5,1)}
-  .tabla{position:absolute;inset:-3%;border-radius:50%;background:repeating-linear-gradient(90deg,#6b4527 0 14px,#5e3c21 14px 28px);box-shadow:0 18px 40px rgba(0,0,0,.6)}
-  .mitad-tag{position:absolute;top:50%;transform:translateY(-50%);font-size:.7rem;font-weight:800;letter-spacing:.06em;background:var(--crema);color:var(--fondo);padding:4px 8px;border-radius:99px;pointer-events:none;opacity:0;transition:opacity .2s}
+  /* Pizza (foto real) */
+  .escenario{position:relative;width:min(86vw,370px);aspect-ratio:1;margin:18px auto 8px;display:grid;place-items:center}
+  #pizza{position:relative;width:100%;aspect-ratio:1;border-radius:50%;overflow:hidden;box-shadow:0 22px 50px rgba(0,0,0,.65),0 0 0 6px #241d18;transition:width .45s cubic-bezier(.3,1.4,.5,1)}
+  .capa{position:absolute;inset:0;background-repeat:no-repeat;transition:background-image .2s}
+  .capa.der{clip-path:inset(0 0 0 50%);display:none}
+  .mitades .capa.der{display:block}
+  .corte{position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:rgba(20,17,15,.85);display:none;box-shadow:0 0 6px rgba(0,0,0,.6)}
+  .mitades .corte{display:block}
+  .mitad-tag{position:absolute;top:50%;transform:translateY(-50%);font-size:.7rem;font-weight:800;letter-spacing:.06em;background:var(--crema);color:var(--fondo);padding:4px 8px;border-radius:99px;pointer-events:none;opacity:0;transition:opacity .2s;box-shadow:0 4px 12px rgba(0,0,0,.4)}
   .mitad-tag.izq{left:-6px}.mitad-tag.der{right:-6px}
   .mitades .mitad-tag{opacity:1}
+  .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;min-height:8px;margin:4px 0 2px}
+  .chips span{font-size:.72rem;font-weight:700;background:#2c1f1a;border:1px solid var(--rojo);color:var(--crema);padding:4px 9px;border-radius:99px}
 
   /* Controles */
   .panel{background:var(--fondo2);border:1px solid var(--linea);border-radius:16px;padding:16px;margin-top:14px}
@@ -100,10 +105,14 @@
   </section>
 
   <div class="escenario" id="escenario">
-    <div class="tabla"></div>
-    <svg id="pizza" viewBox="-110 -110 220 220" aria-label="Tu pizza"></svg>
+    <div id="pizza" aria-label="Tu pizza">
+      <div class="capa" id="capaIzq"></div>
+      <div class="capa der" id="capaDer"></div>
+      <div class="corte"></div>
+    </div>
     <span class="mitad-tag izq" id="tagIzq"></span><span class="mitad-tag der" id="tagDer"></span>
   </div>
+  <div class="chips" id="chips"></div>
   <div class="precio-vivo" id="precioVivo"></div>
 
   <section class="panel">
@@ -165,23 +174,25 @@ const TAMANOS = [
   { id: "gde", es: "Grande", en: "Large", cm: 40, factor: 1.35 }
 ];
 /* Precio base de cada sabor en tamaño mediano */
+const U = "https://images.unsplash.com/photo-", Q = "?auto=format&fit=crop&w=900&h=900&q=75";
+/* foto: imagen vista desde arriba · x,y: centro de la pizza en la foto (%) · z: zoom para que llene el círculo */
 const SABORES = [
-  { id: "muzza", es: "Muzzarella", en: "Mozzarella", dEs: "Salsa, muzzarella y orégano", dEn: "Tomato, mozzarella and oregano", precio: 9000, top: [] },
-  { id: "marga", es: "Margherita", en: "Margherita", dEs: "Tomate, albahaca fresca", dEn: "Tomato and fresh basil", precio: 10200, top: ["albahaca", "tomate"] },
-  { id: "napo", es: "Napolitana", en: "Neapolitan", dEs: "Rodajas de tomate y ajo", dEn: "Sliced tomato and garlic", precio: 10500, top: ["tomate", "ajo"] },
-  { id: "pepp", es: "Pepperoni", en: "Pepperoni", dEs: "Pepperoni bien crocante", dEn: "Crispy pepperoni", precio: 11800, top: ["peperoni"] },
-  { id: "fuga", es: "Fugazzeta", en: "Onion & cheese", dEs: "Cebolla y doble queso", dEn: "Onion and double cheese", precio: 10800, top: ["cebolla"] },
-  { id: "veggie", es: "Veggie", en: "Veggie", dEs: "Morrón, champiñón y aceitunas", dEn: "Peppers, mushroom and olives", precio: 11200, top: ["morron", "champi", "aceituna"] }
+  { id: "muzza", es: "Muzzarella", en: "Mozzarella", dEs: "Salsa, muzzarella y orégano", dEn: "Tomato, mozzarella and oregano", precio: 9000, foto: U + "1548369937-47519962c11a" + Q, x: 55, y: 44, z: 1.7 },
+  { id: "marga", es: "Margherita", en: "Margherita", dEs: "Tomate cherry y albahaca fresca", dEn: "Cherry tomato and fresh basil", precio: 10200, foto: U + "1595854341625-f33ee10dbf94" + Q, x: 43, y: 50, z: 1.32 },
+  { id: "napo", es: "Napolitana", en: "Neapolitan", dEs: "Horno a leña, tomate y albahaca", dEn: "Wood-fired, tomato and basil", precio: 10500, foto: U + "1574071318508-1cdbab80d002" + Q, x: 48, y: 45, z: 1.2 },
+  { id: "pepp", es: "Pepperoni", en: "Pepperoni", dEs: "Doble pepperoni bien crocante", dEn: "Double crispy pepperoni", precio: 11800, foto: U + "1628840042765-356cda07504e" + Q, x: 46, y: 49, z: 1.16 },
+  { id: "veggie", es: "Verde", en: "Green", dEs: "Espinaca, rúcula y burrata", dEn: "Spinach, arugula and burrata", precio: 11200, foto: U + "1593560708920-61dd98c46a4e" + Q, x: 50, y: 50, z: 1.12 },
+  { id: "especial", es: "Especial", en: "House special", dEs: "Salchicha, aceitunas y champiñón", dEn: "Sausage, olives and mushroom", precio: 12400, foto: U + "1604382354936-07c5d9983bd3" + Q, x: 50, y: 52, z: 1.75 }
 ];
 const EXTRAS = [
-  { id: "peperoni", es: "Pepperoni", en: "Pepperoni", ico: "🍕", precio: 1800 },
-  { id: "champi", es: "Champiñón", en: "Mushroom", ico: "🍄", precio: 1400 },
-  { id: "aceituna", es: "Aceitunas", en: "Olives", ico: "🫒", precio: 900 },
-  { id: "morron", es: "Morrón", en: "Peppers", ico: "🫑", precio: 1100 },
-  { id: "cebolla", es: "Cebolla", en: "Onion", ico: "🧅", precio: 800 },
-  { id: "tomate", es: "Tomate", en: "Tomato", ico: "🍅", precio: 900 },
-  { id: "albahaca", es: "Albahaca", en: "Basil", ico: "🌿", precio: 700 },
-  { id: "jamon", es: "Jamón", en: "Ham", ico: "🥓", precio: 1600 }
+  { id: "peperoni", es: "Pepperoni", en: "Pepperoni", precio: 1800 },
+  { id: "champi", es: "Champiñón", en: "Mushroom", precio: 1400 },
+  { id: "aceituna", es: "Aceitunas", en: "Olives", precio: 900 },
+  { id: "morron", es: "Morrón", en: "Peppers", precio: 1100 },
+  { id: "cebolla", es: "Cebolla", en: "Onion", precio: 800 },
+  { id: "tomate", es: "Tomate", en: "Tomato", precio: 900 },
+  { id: "albahaca", es: "Albahaca", en: "Basil", precio: 700 },
+  { id: "jamon", es: "Jamón", en: "Ham", precio: 1600 }
 ];
 const BEBIDAS = [
   { id: "gaseosa", es: "Gaseosa 1,5 L", en: "Soda 1.5 L", dEs: "Línea Coca-Cola", dEn: "Coca-Cola range", precio: 3200 },
@@ -209,49 +220,23 @@ const pedido = [];
 let modo = "mesa";
 const mesaQR = (new URLSearchParams(location.search).get("mesa") || "").replace(/[^0-9A-Za-z-]/g, "").slice(0, 6);
 
-/* ===== Dibujo de la pizza (posiciones fijas, sin azar) ===== */
-const PUNTOS = (() => { const p = []; for (let i = 0; i < 26; i++) { const a = i * 2.39996, r = 16 + 66 * Math.sqrt((i + .5) / 26); p.push([Math.cos(a) * r, Math.sin(a) * r, (i * 47) % 360]); } return p; })();
-function figura(tipo, x, y, rot, k) {
-  const g = `transform="translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(${rot})"`;
-  switch (tipo) {
-    case "peperoni": return `<g ${g}><circle r="9" fill="#a8261a"/><circle r="9" fill="none" stroke="#7d1a11" stroke-width="1.5"/><circle cx="-3" cy="-2" r="1.6" fill="#d9573f"/><circle cx="3" cy="3" r="1.3" fill="#d9573f"/></g>`;
-    case "champi": return `<g ${g}><path d="M-8 1a8 7 0 0 1 16 0z" fill="#e8dcc4" stroke="#9a8667" stroke-width="1"/><rect x="-2.5" y="1" width="5" height="6" rx="1.5" fill="#d6c7a8"/></g>`;
-    case "aceituna": return `<g ${g}><circle r="4.6" fill="#2b2a24"/><circle r="1.8" fill="#14110f"/></g>`;
-    case "morron": return `<g ${g}><path d="M-9 -2q9 -7 18 0" fill="none" stroke="#2f9a45" stroke-width="3.4" stroke-linecap="round"/></g>`;
-    case "cebolla": return `<g ${g}><path d="M-8 2a8 8 0 0 1 16 0" fill="none" stroke="#efe3f3" stroke-width="2.2" stroke-linecap="round"/></g>`;
-    case "tomate": return `<g ${g}><circle r="8.5" fill="#d93b25"/><circle r="5.6" fill="none" stroke="#f08a6f" stroke-width="1.2"/></g>`;
-    case "albahaca": return `<g ${g}><path d="M0 -9q8 6 0 18q-8 -12 0 -18z" fill="#2e8b3e"/><path d="M0 -8v16" stroke="#1f6a2c" stroke-width=".8"/></g>`;
-    case "jamon": return `<g ${g}><rect x="-8" y="-5" width="16" height="10" rx="3" fill="#eaa3a0" stroke="#c97b77" stroke-width="1"/></g>`;
-    case "ajo": return `<g ${g}><ellipse rx="3" ry="2" fill="#fbf3dc"/></g>`;
-  }
-  return "";
+/* ===== Pizza con foto real ===== */
+function pintarCapa(el, id) {
+  const sb = SABORES.find(x => x.id === id);
+  el.style.backgroundImage = `url("${sb.foto}")`;
+  el.style.backgroundSize = `${sb.z * 100}%`;
+  const px = (sb.x - 50) * sb.z, py = (sb.y - 50) * sb.z;
+  el.style.backgroundPosition = `calc(50% - ${px}%) calc(50% - ${py}%)`;
 }
-function toppingsDe(i) { const s = SABORES.find(x => x.id === sabor[i]); return [...new Set([...s.top, ...extras[i]])]; }
 function dibujar() {
-  const deMitad = (i, lista) => {
-    let out = "";
-    lista.forEach((tp, k) => {
-      PUNTOS.forEach((p, j) => {
-        if (j % lista.length !== k) return;
-        const [x, y, rot] = p;
-        if (mitades && (i === 0 ? x > -3 : x < 3)) return;
-        out += figura(tp, x, y, rot);
-      });
-    });
-    return out;
-  };
-  const queso = Array.from({ length: 14 }, (_, i) => { const a = i * 2.2, r = 20 + (i * 37 % 60); return `<ellipse cx="${(Math.cos(a) * r).toFixed(1)}" cy="${(Math.sin(a) * r).toFixed(1)}" rx="13" ry="8" fill="#fbe7a2" opacity=".7" transform="rotate(${i * 29} ${(Math.cos(a) * r).toFixed(1)} ${(Math.sin(a) * r).toFixed(1)})"/>` }).join("");
-  const izq = deMitad(0, toppingsDe(0)), der = mitades ? deMitad(1, toppingsDe(1)) : "";
-  $("#pizza").innerHTML = `
-    <circle r="104" fill="var(--borde)"/><circle r="100" fill="var(--masa)"/>
-    <circle r="88" fill="var(--salsa)"/><circle r="86" fill="var(--queso)"/>${queso}
-    ${izq}${der}
-    ${mitades ? '<line x1="0" y1="-100" x2="0" y2="100" stroke="#14110f" stroke-width="2" stroke-dasharray="5 5" opacity=".55"/>' : ""}
-    ${[0, 45, 90, 135].map(a => `<line x1="0" y1="-100" x2="0" y2="100" stroke="#b7742f" stroke-width=".8" opacity=".35" transform="rotate(${a})"/>`).join("")}`;
-  $("#pizza").style.transform = `scale(${{ ind: 0.78, med: 0.89, gde: 1 }[tam]})`;
+  pintarCapa($("#capaIzq"), sabor[0]);
+  pintarCapa($("#capaDer"), sabor[1]);
+  $("#pizza").style.width = { ind: "78%", med: "89%", gde: "100%" }[tam];
   $("#escenario").classList.toggle("mitades", mitades);
   $("#tagIzq").textContent = nom(SABORES.find(x => x.id === sabor[0]));
   $("#tagDer").textContent = nom(SABORES.find(x => x.id === sabor[1]));
+  const ex = [...new Set([...extras[0], ...(mitades ? extras[1] : [])])].map(id => EXTRAS.find(x => x.id === id));
+  $("#chips").innerHTML = ex.map(e => `<span>+ ${nom(e)}</span>`).join("");
   $("#precioVivo").innerHTML = `${plata(precioPizza())}<small>${descripcion()}</small>`;
 }
 
@@ -273,7 +258,7 @@ function controles() {
   const f = TAMANOS.find(x => x.id === tam).factor;
   $("#tamanos").innerHTML = TAMANOS.map(x => `<button data-tam="${x.id}" class="${x.id === tam ? "on" : ""}">${nom(x)}<small>${x.cm} cm</small></button>`).join("");
   $("#clasicas").innerHTML = SABORES.map(s => `<button class="clasica ${sabor[lado] === s.id ? "on" : ""}" data-sabor="${s.id}"><b>${nom(s)}</b><span>${idioma === "en" ? s.dEn : s.dEs}</span><span style="color:var(--crema);font-weight:700">${plata(Math.round(s.precio * f / 100) * 100)}</span></button>`).join("");
-  $("#extras").innerHTML = EXTRAS.map(e => `<button class="extra ${extras[lado].has(e.id) ? "on" : ""}" data-extra="${e.id}"><i>${e.ico}</i>${nom(e)}<small>+${plata(e.precio * f * (mitades ? .5 : 1))}</small></button>`).join("");
+  $("#extras").innerHTML = EXTRAS.map(e => `<button class="extra ${extras[lado].has(e.id) ? "on" : ""}" data-extra="${e.id}">${nom(e)}<small>+${plata(e.precio * f * (mitades ? .5 : 1))}</small></button>`).join("");
   $("#bebidas").innerHTML = BEBIDAS.map(b => `<div class="beb"><div><b>${nom(b)}</b><small>${idioma === "en" ? b.dEn : b.dEs} · ${plata(b.precio)}</small></div><div class="cant"><button data-beb="${b.id}" data-d="-1">−</button>${bebidas[b.id] || 0}<button data-beb="${b.id}" data-d="1">+</button></div></div>`).join("");
   document.querySelectorAll("#modoMitad button").forEach(b => b.classList.toggle("on", +b.dataset.mitad === +mitades));
   document.querySelectorAll("#lados button").forEach(b => b.classList.toggle("on", +b.dataset.lado === lado));
@@ -291,7 +276,7 @@ function avisar(m) { const a = $("#aviso"); a.textContent = m; a.classList.add("
 document.body.addEventListener("click", e => {
   const b = e.target.closest("button"); if (!b) return;
   if (b.dataset.tam) { tam = b.dataset.tam; controles(); }
-  else if (b.dataset.mitad !== undefined) { mitades = b.dataset.mitad === "1"; if (!mitades) { lado = 0; } else { sabor[1] = sabor[1] === sabor[0] ? (sabor[0] === "pepp" ? "muzza" : "pepp") : sabor[1]; } controles(); }
+  else if (b.dataset.mitad !== undefined) { mitades = b.dataset.mitad === "1"; if (!mitades) { lado = 0; } else { sabor[1] = sabor[1] === sabor[0] ? (sabor[0] === "pepp" ? "marga" : "pepp") : sabor[1]; } controles(); }
   else if (b.dataset.lado !== undefined) { lado = +b.dataset.lado; controles(); }
   else if (b.dataset.sabor) { sabor[lado] = b.dataset.sabor; if (!mitades) sabor[1] = sabor[0]; controles(); }
   else if (b.dataset.extra) { const s = extras[lado]; s.has(b.dataset.extra) ? s.delete(b.dataset.extra) : s.add(b.dataset.extra); if (!mitades) extras[1] = new Set(extras[0]); controles(); }
@@ -303,7 +288,7 @@ $("#idioma").onclick = () => { idioma = idioma === "es" ? "en" : "es"; try { loc
 $("#sumar").onclick = () => {
   pedido.push({ desc: descripcion(), precio: precioPizza() });
   avisar(t("sumada"));
-  const p = $("#pizza"); p.animate([{ transform: p.style.transform }, { transform: p.style.transform + " rotate(360deg)" }], { duration: 600, easing: "ease-out" });
+  const p = $("#pizza"); p.animate([{ transform: "rotate(0)" }, { transform: "rotate(360deg)" }], { duration: 650, easing: "ease-out" });
   hoja();
 };
 
