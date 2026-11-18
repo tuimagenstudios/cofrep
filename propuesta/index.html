@@ -36,6 +36,9 @@
   .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
   .tabs button{background:var(--fondo2);color:var(--texto);border:1px solid var(--linea);padding:10px 16px;border-radius:6px;font:700 .85rem Arial,sans-serif;cursor:pointer;text-transform:uppercase;letter-spacing:.04em}
   .tabs button.on{background:var(--acento);color:#000;border-color:var(--acento)}
+  .tabs button small{display:block;font-size:.62rem;letter-spacing:.08em;opacity:.7;margin-top:2px}
+  .opciones{background:var(--fondo2);border:1px solid var(--linea);border-left:4px solid var(--acento);border-radius:6px;padding:14px 16px;margin:-10px 0 26px;color:var(--suave);font-size:.95rem}
+  .opciones b{color:var(--texto)}
   .vivo{display:grid;gap:36px;align-items:center}
   @media(min-width:860px){.vivo{grid-template-columns:auto 1fr}}
   .tel{justify-self:center;width:300px;height:620px;border-radius:44px;background:#000;padding:12px;box-shadow:0 0 0 2px #333,0 30px 70px rgba(0,0,0,.7),0 0 90px rgba(255,194,26,.18);position:relative}
@@ -181,11 +184,11 @@ const CONFIG={
   anual:200000                         /* 12 meses pagando 10 */
 };
 let MODELOS={
- premium:{nombre:"Cafetería Premium",ruta:"/demo/coffee-republic/",desc:"Para cafeterías de especialidad con carta amplia: categorías con foto, tamaños, video y buscador.",lista:["Categorías visuales con foto","Tamaños y precios por producto","Buscador y modo claro / oscuro","Precios desde Google Sheets"]},
- simple:{nombre:"Cafetería Simple",ruta:"/demo/cafeteria/",desc:"Web completa y liviana para cafés al paso: presentación del local, carta por pestañas y pedido por WhatsApp.",lista:["Portada con la historia del local","Carta por pestañas, fácil de leer","Botón fijo de WhatsApp","Precios desde Google Sheets"]},
- dom:{nombre:"Café y pastelería",ruta:"/demo/dom-coffee/",desc:"Carta elegante para cafés de especialidad y pastelerías, en español e inglés, con fotos de cada producto y pedido por WhatsApp.",lista:["Diseño cálido y elegante","Fotos de cada producto","Español e inglés","Pedido por WhatsApp"]},
- burger:{nombre:"Hamburguesería",ruta:"/demo/hamburgueseria/",desc:"Cada producto a pantalla completa, como en las redes. El cliente desliza, agrega al pedido y te lo manda por WhatsApp.",lista:["Fotos a pantalla completa","Carrito con total automático","Retiro o delivery con dirección","Pedido armado directo a tu WhatsApp"]},
- restaurante:{nombre:"Restaurante",ruta:"/demo/restaurante/",desc:"Carta para la mesa que además te trae clientes: cupón por seguirte en Instagram y pedido de reseña en Google.",lista:["Cupón de descuento por seguirte","Fotos que comparten tus clientes","Reseñas de 4 y 5 estrellas a Google","Quejas privadas a tu WhatsApp"]}
+ premium:{nombre:"Cafetería Premium",plan:"Premium",ruta:"/demo/coffee-republic/",desc:"Para cafeterías de especialidad con carta amplia: categorías con foto, tamaños, video y buscador.",lista:["Categorías visuales con foto","Tamaños y precios por producto","Buscador y modo claro / oscuro","Precios desde Google Sheets"]},
+ simple:{nombre:"Cafetería Simple",plan:"Simple",ruta:"/demo/cafeteria/",desc:"Web completa y liviana para cafés al paso: presentación del local, carta por pestañas y pedido por WhatsApp.",lista:["Portada con la historia del local","Carta por pestañas, fácil de leer","Botón fijo de WhatsApp","Precios desde Google Sheets"]},
+ dom:{nombre:"Café y pastelería",plan:"Simple",ruta:"/demo/dom-coffee/",desc:"Carta elegante para cafés de especialidad y pastelerías, en español e inglés, con fotos de cada producto y pedido por WhatsApp.",lista:["Diseño cálido y elegante","Fotos de cada producto","Español e inglés","Pedido por WhatsApp"]},
+ burger:{nombre:"Hamburguesería",plan:"Premium",ruta:"/demo/hamburgueseria/",desc:"Cada producto a pantalla completa, como en las redes. El cliente desliza, agrega al pedido y te lo manda por WhatsApp.",lista:["Fotos a pantalla completa","Carrito con total automático","Retiro o delivery con dirección","Pedido armado directo a tu WhatsApp"]},
+ restaurante:{nombre:"Restaurante",plan:"Premium",ruta:"/demo/restaurante/",desc:"Carta para la mesa que además te trae clientes: cupón por seguirte en Instagram y pedido de reseña en Google.",lista:["Cupón de descuento por seguirte","Fotos que comparten tus clientes","Reseñas de 4 y 5 estrellas a Google","Quejas privadas a tu WhatsApp"]}
 };
 const q=new URLSearchParams(location.search);
 const cliente=(q.get("cliente")||"").trim();
@@ -207,11 +210,15 @@ document.getElementById("planes").innerHTML=
 document.getElementById("wa").href=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola! Vi la propuesta de COFREP"+(cliente?" para "+cliente:"")+" y quiero mi carta digital.")}`;
 
 const carta=(q.get("carta")||"").trim().toLowerCase().replace(/[^a-z0-9-]/g,"");
+const tabs=document.getElementById("tabs");
 if(carta){MODELOS=Object.assign({tu:{nombre:"Tu carta"+(cliente?" · "+cliente:""),ruta:"/p/"+carta+"/",desc:"Esta es la carta que armamos para tu local, con tus productos. Probala como la va a usar tu cliente: tocala, deslizala y abrila en tu celular con el QR.",lista:["Armada con tus productos y precios","Tu logo y tus colores","Lista para publicar en tu propio link","Ajustamos lo que quieras antes de publicar"]}},MODELOS);
  document.querySelector("#probar h2").innerHTML="Tu carta, <em>funcionando</em>";
- document.querySelector("#probar .sub").textContent="Esta es la carta que preparamos para tu local. Abajo también podés ver los otros estilos que ofrecemos.";}
-const tabs=document.getElementById("tabs");
-tabs.innerHTML=Object.entries(MODELOS).map(([k,m])=>`<button data-k="${k}">${m.nombre}</button>`).join("");
+ document.querySelector("#probar .sub").textContent="Esta es la carta que preparamos para tu local, con tus productos y tu estilo.";
+ const nota=document.createElement("div");nota.className="opciones";
+ nota.innerHTML="<b>¿Preferís otro estilo?</b> Tenemos opciones <em>más simples</em> y <em>más premium</em>, con video, fotos con zoom y animaciones. Tocá cualquiera de las otras pestañas para probarla: tu carta se puede armar con el estilo que más te guste.";
+ tabs.after(nota);}
+
+tabs.innerHTML=Object.entries(MODELOS).map(([k,m])=>`<button data-k="${k}">${m.nombre}${m.plan?`<small>${m.plan}</small>`:""}</button>`).join("");
 let qr=null;
 function mostrar(k){
   const m=MODELOS[k]||MODELOS.premium;k=MODELOS[k]?k:"premium";
