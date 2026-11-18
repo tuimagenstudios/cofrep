@@ -70,6 +70,20 @@
   .cols li::before{content:"→ ";color:var(--acento);font-weight:700}
   .precio{display:flex;flex-wrap:wrap;gap:24px;padding:18px 22px;border-top:1px solid var(--linea);color:var(--suave);font-size:.9rem}
   .precio b{display:block;color:var(--texto);font-size:1.4rem}
+  .precio small{display:block;font-size:.75rem}
+  .oferta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;background:#2a1f0c;border:1px dashed var(--acento);color:var(--acento);border-radius:6px;padding:12px 16px;margin:0 0 22px;font-weight:700}
+  .oferta span{background:var(--acento);color:#000;padding:3px 8px;border-radius:3px;font-size:.75rem;letter-spacing:.06em}
+  .planes{display:grid;gap:18px;margin-bottom:26px}
+  @media(min-width:700px){.planes{grid-template-columns:1fr 1fr}}
+  .pl{background:var(--fondo2);border:1px solid var(--linea);border-radius:8px;padding:22px;position:relative}
+  .pl.dest{border:2px solid var(--acento)}
+  .pl .badge{position:absolute;top:-12px;right:16px;background:var(--acento);color:#000;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:3px;text-transform:uppercase;letter-spacing:.06em}
+  .pl h3{font-size:1.2rem;margin-bottom:4px}.pl .que{color:var(--suave);font-size:.9rem;margin-bottom:14px}
+  .pl .antes{color:var(--suave);text-decoration:line-through;font-size:1rem}
+  .pl .ahora{font-size:2.2rem;font-weight:700;color:var(--acento);line-height:1.1}
+  .pl .ahorro{display:inline-block;font-size:.75rem;font-weight:700;color:#000;background:var(--acento);padding:2px 8px;border-radius:3px;margin-top:6px}
+  .pl ul{list-style:none;margin-top:14px}.pl li{padding:5px 0;font-size:.92rem}.pl li::before{content:"✓ ";color:var(--acento);font-weight:700}
+  .pl .pago{margin-top:14px;padding-top:12px;border-top:1px solid var(--linea);color:var(--suave);font-size:.82rem}
 
   .franja{background:var(--acento);color:#000}
   .franja .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-top:40px;padding-bottom:40px}
@@ -130,7 +144,9 @@
 
 <section style="background:#181818"><div class="wrap">
   <h2>Plan <em>Mantenimiento</em></h2>
-  <p class="sub">Vos tenés el control de lo diario. Nosotros nos ocupamos de que siempre se vea profesional.</p>
+  <p class="sub">Elegí tu carta. Vos tenés el control de lo diario; nosotros nos ocupamos de que siempre se vea profesional.</p>
+  <div class="oferta" id="oferta"></div>
+  <div class="planes" id="planes"></div>
   <div class="plan">
     <div class="cab"><h3>Carta digital + mantenimiento mensual</h3><p>Instalación única + cuota mensual</p></div>
     <div class="cols">
@@ -157,8 +173,11 @@
    modelos: premium, simple, dom, burger, restaurante */
 const CONFIG={
   whatsapp:"79098745709",
-  instalacion:"A consultar",   /* ej: "$ 150.000" */
-  cuota:"A consultar"           /* ej: "$ 25.000 / mes" */
+  ofertaHasta:"2026-12-10T23:59:59",  /* después de esta fecha se muestra el precio normal */
+  simple:{normal:120000,oferta:90000},
+  premium:{normal:170000,oferta:140000},
+  mensual:20000,
+  anual:200000                         /* 12 meses pagando 10 */
 };
 const MODELOS={
  premium:{nombre:"Cafetería Premium",ruta:"/demo/coffee-republic/",desc:"Para cafeterías de especialidad con carta amplia: categorías con foto, tamaños, video y buscador.",lista:["Categorías visuales con foto","Tamaños y precios por producto","Buscador y modo claro / oscuro","Precios desde Google Sheets"]},
@@ -171,7 +190,19 @@ const q=new URLSearchParams(location.search);
 const cliente=(q.get("cliente")||"").trim();
 if(cliente){document.getElementById("cliente").textContent=cliente;document.title="Propuesta para "+cliente+" | COFREP"}
 document.getElementById("fecha").textContent=new Date().toLocaleDateString("es-AR",{day:"numeric",month:"long",year:"numeric"});
-document.getElementById("precio").innerHTML=`<div>Instalación<b>${CONFIG.instalacion}</b></div><div>Mantenimiento<b>${CONFIG.cuota}</b></div>`;
+const $$=n=>"$ "+n.toLocaleString("es-AR");
+const enOferta=new Date()<=new Date(CONFIG.ofertaHasta);
+document.getElementById("precio").innerHTML=`<div>Mantenimiento mensual<b>${$$(CONFIG.mensual)}</b></div><div>Pago anual adelantado<b>${$$(CONFIG.anual)}</b><small>12 meses al precio de 10</small></div>`;
+const caja=document.getElementById("oferta");
+if(enOferta){const d=Math.ceil((new Date(CONFIG.ofertaHasta)-new Date())/864e5);caja.innerHTML=`<span>OFERTA DE LANZAMIENTO</span> Precio especial hasta el 10 de diciembre · quedan ${d} día${d===1?"":"s"}`}else caja.style.display="none";
+const plan=(n,k,que,items,dest)=>{const p=CONFIG[k],precio=enOferta?p.oferta:p.normal,pct=Math.round((1-p.oferta/p.normal)*100);
+ return `<div class="pl${dest?" dest":""}">${dest?'<div class="badge">Más completo</div>':""}<h3>${n}</h3><p class="que">${que}</p>
+ ${enOferta?`<div class="antes">${$$(p.normal)}</div>`:""}<div class="ahora">${$$(precio)}</div>${enOferta?`<div class="ahorro">Ahorrás ${$$(p.normal-p.oferta)} (${pct}%)</div>`:""}
+ <ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul>
+ <p class="pago">Instalación en 2 pagos: ${$$(precio/2)} al empezar y ${$$(precio/2)} al publicar. Después, ${$$(CONFIG.mensual)} por mes.</p></div>`};
+document.getElementById("planes").innerHTML=
+ plan("Carta Simple","simple","Cafeterías, bares y locales con carta clara.",["Diseño con tu logo y colores","Carga de todos tus productos","Pedido por WhatsApp","Español e inglés","QR para imprimir y tu link"],false)+
+ plan("Carta Premium","premium","Para destacar: fotos, video y movimiento.",["Todo lo de la Carta Simple","Video de portada y animaciones","Fotos de cada producto con zoom","Promociones con banner","Diseño a medida de tu marca"],true);
 document.getElementById("wa").href=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola! Vi la propuesta de COFREP"+(cliente?" para "+cliente:"")+" y quiero mi carta digital.")}`;
 
 const tabs=document.getElementById("tabs");
