@@ -126,7 +126,7 @@
     <div class="card"><h3>Pedidos directo a tu WhatsApp</h3><p>El cliente arma su pedido y te llega ordenado con el total. Sin apps ni comisiones.</p></div>
     <div class="card"><h3>Precios al día</h3><p>Cambiás un precio desde el celular y la carta se actualiza sola.</p></div>
     <div class="card"><h3>Fotos que abren el apetito</h3><p>Cada plato con su foto y descripción. Se vende más lo que se ve.</p></div>
-    <div class="card"><h3>Español e inglés</h3><p>Lista para turistas con un toque. Otros idiomas a pedido.</p></div>
+    <div class="card"><h3>En dos idiomas</h3><p>Tu carta viene en español e inglés, lista para turistas con un toque. Si necesitás otro idioma, lo agregamos.</p></div>
     <div class="card"><h3>QR para tus mesas</h3><p>Te entregamos el código listo para imprimir en mesas, mostrador y vidriera.</p></div>
     <div class="card"><h3>Tu propio link</h3><p>cofrep.com/<b style="color:var(--acento)">tu-negocio</b>, para Instagram, Google Maps y WhatsApp.</p></div>
   </div>
@@ -201,7 +201,7 @@ const plan=(n,k,que,items,dest)=>{const p=CONFIG[k],precio=enOferta?p.oferta:p.n
  <ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul>
  <p class="pago">Instalación en 2 pagos: ${$$(precio/2)} al empezar y ${$$(precio/2)} al publicar. Después, ${$$(CONFIG.mensual)} por mes.</p></div>`};
 document.getElementById("planes").innerHTML=
- plan("Carta Simple","simple","Cafeterías, bares y locales con carta clara.",["Diseño con tu logo y colores","Carga de todos tus productos","Pedido por WhatsApp","Español e inglés","QR para imprimir y tu link"],false)+
+ plan("Carta Simple","simple","Cafeterías, bares y locales con carta clara.",["Diseño con tu logo y colores","Carga de todos tus productos","Pedido por WhatsApp","Carta en español e inglés (otro idioma a pedido)","QR para imprimir y tu link"],false)+
  plan("Carta Premium","premium","Para destacar: fotos, video y movimiento.",["Todo lo de la Carta Simple","Video de portada y animaciones","Fotos de cada producto con zoom","Promociones con banner","Diseño a medida de tu marca"],true);
 document.getElementById("wa").href=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola! Vi la propuesta de COFREP"+(cliente?" para "+cliente:"")+" y quiero mi carta digital.")}`;
 
