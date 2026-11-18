@@ -3,8 +3,8 @@
   --surface: #fffcf6;
   --ink: #27271e;
   --muted: #625e4f;
-  --olive: #394430;
-  --olive-light: #e8ebde;
+  --olive: #452f33;
+  --olive-light: #ecdde0;
   --line: #ddd6c7;
   --serif: Georgia, 'Times New Roman', serif;
 }
@@ -39,7 +39,7 @@ select { min-height: 44px; padding: 0 7px; border: 1px solid var(--line); border
   margin-top: 25px;
   border-radius: 15px;
   overflow: hidden;
-  background: #3e4932;
+  background: #4a3136;
   color: #fff8e6;
 }
 .hero-copy { display: grid; align-content: center; justify-items: start; padding: clamp(24px, 4vw, 58px); }
@@ -117,7 +117,7 @@ select { min-height: 44px; padding: 0 7px; border: 1px solid var(--line); border
   min-height: clamp(140px, 22vw, 244px);
   background: var(--cover) center var(--crop)/cover;
 }
-.menu-group summary:hover { background: #dce2d1; }
+.menu-group summary:hover { background: #e3d0d4; }
 .menu-group[open] summary { border-radius: 15px 15px 0 0; }
 .menu-group h3 { font-size: clamp(1.65rem, 4vw, 3.8rem); }
 .category-toggle {
@@ -256,7 +256,7 @@ select { min-height: 44px; padding: 0 7px; border: 1px solid var(--line); border
   html { scroll-behavior: auto; }
   .button { transition: none; }
 }
-.selection-dialog { --dialog-line: #ffffff35; background: #2d3327; color: #fff8e6; border-color: var(--dialog-line); }
+.selection-dialog { --dialog-line: #ffffff35; background: #342629; color: #fff8e6; border-color: var(--dialog-line); }
 .selection-dialog .eyebrow { color: #ebd6a5; margin: 0 0 9px; }
 .selection-dialog .quantity-button { color: #fff8e6; background: #ffffff0d; border-color: var(--dialog-line); }
 .selection-dialog .quantity-button:hover { background: #ffffff26; }
@@ -270,7 +270,7 @@ select { min-height: 44px; padding: 0 7px; border: 1px solid var(--line); border
 .selection-total { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-weight: 700; }
 .selection-total output, .split-result output { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .split-label { display: flex; align-items: center; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
-.split-label input { width: 70px; min-height: 44px; padding: 6px 9px; border: 1px solid var(--dialog-line); border-radius: 8px; background: #23271e; color: inherit; font: inherit; }
+.split-label input { width: 70px; min-height: 44px; padding: 6px 9px; border: 1px solid var(--dialog-line); border-radius: 8px; background: #271e20; color: inherit; font: inherit; }
 .selection-summary .split-result { margin-top: 6px; }
 .selection-summary .selection-note { margin-top: 16px; font-size: .82rem; }
 @media (max-width: 880px) {

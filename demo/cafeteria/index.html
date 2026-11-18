@@ -13,7 +13,7 @@
 <style>
 :root{
   --bg:#17100d; --bg2:#211814; --card:#2a1f1a; --line:#3d2e27;
-  --cream:#f6ecdc; --muted:#b8a593; --orange:#9cc48a; --orange2:#c4dfb4;
+  --cream:#f6ecdc; --muted:#b8a593; --orange:#c89e86; --orange2:#e2c3b1;
   --r:22px;
 }
 *{box-sizing:border-box}
@@ -35,7 +35,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 .nav-links{display:flex;align-items:center;gap:4px}
 .nav a.l{padding:9px 14px;border-radius:999px;font-size:14px;font-weight:500;color:var(--cream);transition:.2s}
 .nav a.l:hover{background:rgba(246,236,220,.1)}
-.pill{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:var(--orange);color:#13200f;font-weight:600;font-size:14px;transition:transform .2s,background .2s}
+.pill{display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border-radius:999px;background:var(--orange);color:#21150e;font-weight:600;font-size:14px;transition:transform .2s,background .2s}
 .pill:hover{background:var(--orange2);transform:translateY(-1px)}
 .pill svg{width:17px;height:17px}
 
@@ -43,7 +43,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--orange);outline-off
 .hero{position:relative;min-height:100svh;display:grid;align-items:end;padding:120px 0 44px;overflow:hidden}
 .hero-bg{position:absolute;inset:0}
 .hero-bg img{width:100%;height:100%;object-fit:cover;object-position:50% 40%;transform:scale(1.04);filter:saturate(1.05)}
-.hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,16,13,.35) 0%,rgba(23,16,13,.15) 35%,rgba(23,16,13,.92) 82%,var(--bg) 100%),radial-gradient(80% 60% at 85% 30%,rgba(156,196,138,.18),transparent 60%)}
+.hero-bg:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(23,16,13,.35) 0%,rgba(23,16,13,.15) 35%,rgba(23,16,13,.92) 82%,var(--bg) 100%),radial-gradient(80% 60% at 85% 30%,rgba(200,158,134,.18),transparent 60%)}
 .hero-c{position:relative}
 h1{font:400 clamp(56px,10.5vw,168px)/.86 'Instrument Serif',Georgia,serif;letter-spacing:-.035em;margin:22px 0 26px;max-width:11ch}
 h1 i{color:var(--orange)}
@@ -76,8 +76,8 @@ h2 i{color:var(--orange2)}
 .b.txt{padding:24px;display:flex;flex-direction:column;justify-content:space-between}
 .b.txt .k{font-size:13px;color:var(--muted)}
 .b.txt .v{font:400 clamp(30px,3vw,44px)/1 'Instrument Serif',serif;letter-spacing:-.02em}
-.b.orange{background:var(--orange);color:#13200f;border:0}
-.b.orange .k{color:#2c4424}
+.b.orange{background:var(--orange);color:#21150e;border:0}
+.b.orange .k{color:#462f22}
 .b1{grid-column:span 2;grid-row:span 2}
 .b2{grid-column:span 1}
 .b5{grid-column:span 2}
@@ -113,23 +113,23 @@ h2 i{color:var(--orange2)}
 .item h3{margin:0;font-size:17px;font-weight:600;letter-spacing:-.01em}
 .item p{margin:5px 0 0;font-size:14px;color:var(--muted);line-height:1.4}
 .price{flex:none;font:400 24px/1 'Instrument Serif',serif;color:var(--orange2);white-space:nowrap}
-.item.feat{grid-column:1/-1;background:linear-gradient(120deg,#24301f,#2a1f1a 60%);border-color:#3d5233;align-items:center}
+.item.feat{grid-column:1/-1;background:linear-gradient(120deg,#31251e,#2a1f1a 60%);border-color:#543e31;align-items:center}
 .item.feat a{color:var(--orange);font-weight:600;font-size:14px}
 @keyframes in{from{opacity:0;transform:translateY(10px)}}
 .note{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.chip{padding:9px 14px;border-radius:999px;background:rgba(156,196,138,.13);color:var(--orange2);font-size:14px;font-weight:500}
+.chip{padding:9px 14px;border-radius:999px;background:rgba(200,158,134,.13);color:var(--orange2);font-size:14px;font-weight:500}
 
 /* CTA */
 .cta{background:var(--bg2);padding-top:0}
-.cta-box{position:relative;border-radius:36px;overflow:hidden;padding:clamp(40px,7vw,90px);background:var(--orange);color:#13200f;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
-.cta-box h2{color:#13200f}
-.cta-box h2 i{color:#2c4424}
-.cta-box .seal{position:absolute;right:-60px;bottom:-60px;width:300px;opacity:.16;color:#13200f;animation:spin 40s linear infinite}
+.cta-box{position:relative;border-radius:36px;overflow:hidden;padding:clamp(40px,7vw,90px);background:var(--orange);color:#21150e;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.cta-box h2{color:#21150e}
+.cta-box h2 i{color:#462f22}
+.cta-box .seal{position:absolute;right:-60px;bottom:-60px;width:300px;opacity:.16;color:#21150e;animation:spin 40s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .cta-box ul{list-style:none;margin:0;padding:0;position:relative}
 .cta-box li{display:flex;justify-content:space-between;gap:12px;padding:14px 0;border-top:1px solid rgba(26,15,8,.18);font-weight:500}
-.cta-box li span:first-child{color:#2c4424}
-.pill.dark{background:#13200f;color:var(--cream)}
+.cta-box li span:first-child{color:#462f22}
+.pill.dark{background:#21150e;color:var(--cream)}
 .pill.dark:hover{background:#000}
 
 footer{background:var(--bg2);padding:40px 0 110px;color:var(--muted);font-size:14px}
@@ -163,7 +163,7 @@ footer a:hover{color:var(--cream)}
 /* ===== TEMA CLARO ===== */
 :root{
   --bg:#F7F1E6; --bg2:#EFE6D6; --card:#FFFCF6; --line:#E2D5C1;
-  --cream:#2A1E19; --muted:#6E5D51; --orange:#9cc48a; --orange2:#4A7542; --ink-light:#F6ECDC;
+  --cream:#2A1E19; --muted:#6E5D51; --orange:#c89e86; --orange2:#79543e; --ink-light:#F6ECDC;
 }
 .eyebrow,h1 i,.tarr,.item.feat a{color:var(--orange2)}
 .nav.solid{background:rgba(247,241,230,.88);border-bottom:1px solid var(--line)}
@@ -173,8 +173,8 @@ footer a:hover{color:var(--cream)}
 .b .cap{background:rgba(255,252,246,.85);color:var(--cream)}
 .arrow{background:rgba(42,30,25,.07)}
 .b:hover .arrow{background:var(--cream);color:var(--ink-light)}
-.item.feat{background:linear-gradient(120deg,#E4EFDB,#FFFCF6 65%);border-color:#C9DDBB}
-.chip{background:rgba(156,196,138,.25);color:#2F5128}
+.item.feat{background:linear-gradient(120deg,#f0e2d9,#FFFCF6 65%);border-color:#e0c7b8}
+.chip{background:rgba(200,158,134,.25);color:#543625}
 .pill.dark{color:var(--ink-light)}
 .tab:hover{border-color:#B9A58F}
 .marquee .track{color:var(--cream)}
@@ -183,7 +183,7 @@ footer a:hover{color:var(--cream)}
 /* ===== MODO OSCURO (botón) ===== */
 html[data-theme=dark]{
   --bg:#17100d; --bg2:#211814; --card:#2a1f1a; --line:#3d2e27;
-  --cream:#f6ecdc; --muted:#b8a593; --orange2:#c4dfb4; --ink-light:#17100d;
+  --cream:#f6ecdc; --muted:#b8a593; --orange2:#e2c3b1; --ink-light:#17100d;
 }
 html[data-theme=dark] .eyebrow,html[data-theme=dark] h1 i,html[data-theme=dark] .tarr,html[data-theme=dark] .item.feat a{color:var(--orange)}
 html[data-theme=dark] .nav.solid{background:rgba(23,16,13,.82)}
@@ -192,8 +192,8 @@ html[data-theme=dark] .ghost{border-color:rgba(246,236,220,.3)}
 html[data-theme=dark] .ghost:hover{background:rgba(246,236,220,.1)}
 html[data-theme=dark] .b .cap{background:rgba(23,16,13,.6)}
 html[data-theme=dark] .arrow{background:rgba(246,236,220,.1)}
-html[data-theme=dark] .item.feat{background:linear-gradient(120deg,#24301f,#2a1f1a 60%);border-color:#3d5233}
-html[data-theme=dark] .chip{background:rgba(156,196,138,.13);color:var(--orange2)}
+html[data-theme=dark] .item.feat{background:linear-gradient(120deg,#31251e,#2a1f1a 60%);border-color:#543e31}
+html[data-theme=dark] .chip{background:rgba(200,158,134,.13);color:var(--orange2)}
 html[data-theme=dark] .tab:hover{border-color:#5a463c}
 html[data-theme=dark] .pill.dark{color:#f6ecdc}
 html[data-theme=dark] .hero-bg{box-shadow:0 30px 60px -30px rgba(0,0,0,.8)}
@@ -301,7 +301,7 @@ h1{font-size:clamp(54px,7.4vw,120px);color:var(--cream)}
     <div class="cta-box reveal">
       <svg class="seal" viewBox="0 0 500 500" aria-hidden="true"><use href="#logo"/></svg>
       <div>
-        <div class="eyebrow" style="color:#2c4424">Pedidos</div>
+        <div class="eyebrow" style="color:#462f22">Pedidos</div>
         <h2>Escribinos <i>y listo.</i></h2>
         <p style="max-width:34ch;margin:18px 0 26px;font-weight:500">Armamos tu pedido para que pases a buscarlo o te lo mandamos.</p>
         <a class="pill dark" href="https://wa.me/5490000000000" target="_blank" rel="noopener"><svg><use href="#wa"/></svg>Pedir por WhatsApp</a>
