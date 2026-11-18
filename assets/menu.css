@@ -1,0 +1,45 @@
+/* Cofrep — estilo base de los menús. Colores por negocio en window.MENU.tema */
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--bg:#0d0d0d;--bg2:#161616;--linea:#262626;--fg:#f2f2f2;--suave:#a3a3a3;--accent:#f5a524;--sobre:#000}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:Arial,Helvetica,sans-serif;line-height:1.5;padding-bottom:96px}
+h1,h2,h3{font-weight:700;text-transform:uppercase;letter-spacing:.03em;line-height:1.1}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px}
+
+.hero{position:relative;min-height:300px;display:flex;align-items:flex-end;background:#000 center/cover no-repeat}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.15) 0%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.85) 100%)}
+.hero .wrap{position:relative;z-index:1;width:100%;padding-top:40px;padding-bottom:22px}
+.marca{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--sobre);background:var(--accent);border:1px solid var(--accent);padding:4px 10px;border-radius:3px;margin-bottom:12px}
+.hero h1{font-size:clamp(2.2rem,9vw,3.4rem);color:#fff}
+.hero p{color:#ddd;margin-top:6px;max-width:44ch}
+.datos{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:.85rem;color:#d4d4d4}
+.datos span{display:flex;align-items:center;gap:6px}
+.datos svg{width:15px;height:15px;color:#fff;flex:none}
+
+.tabs{position:sticky;top:0;z-index:5;background:color-mix(in srgb,var(--bg) 94%,transparent);backdrop-filter:blur(6px);border-bottom:1px solid var(--linea)}
+.tabs .wrap{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+.tabs button{flex:none;background:none;border:none;border-bottom:3px solid transparent;color:var(--suave);padding:15px 12px 12px;font:inherit;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer}
+.tabs button.on{color:var(--fg);border-bottom-color:var(--accent)}
+
+section{padding-top:34px}
+section h2{font-size:1.35rem;display:flex;align-items:center;gap:12px;margin-bottom:14px}
+section h2::after{content:"";flex:1;height:1px;background:var(--linea)}
+section h2 small{color:var(--accent);font-size:.8rem}
+
+.item{display:flex;gap:14px;align-items:center;padding:14px 0;border-bottom:1px solid var(--linea)}
+.item img{width:84px;height:84px;object-fit:cover;border-radius:6px;flex:none;background:var(--bg2)}
+.item .txt{flex:1;min-width:0}
+.item h3{font-size:.95rem;letter-spacing:.02em}
+.item p{font-size:.84rem;color:var(--suave);margin-top:3px}
+.item .precio{font-weight:700;color:var(--accent);margin-top:6px}
+.tag{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--accent);color:var(--sobre);padding:2px 6px;border-radius:3px;margin-left:6px;vertical-align:middle}
+
+.ctl{flex:none}
+.add,.qty button{width:36px;height:36px;border-radius:6px;border:2px solid var(--accent);background:transparent;color:var(--accent);font:inherit;font-size:1.2rem;font-weight:700;cursor:pointer;display:grid;place-items:center}
+.add:hover,.qty button:hover{background:var(--accent);color:var(--sobre)}
+.qty{display:flex;align-items:center;gap:10px;font-weight:700}
+
+.cart{position:fixed;left:16px;right:16px;bottom:16px;max-width:728px;margin:0 auto;background:var(--accent);color:var(--sobre);border:none;border-radius:8px;padding:16px 18px;font:inherit;font-weight:700;display:none;justify-content:space-between;align-items:center;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.45);text-transform:uppercase;letter-spacing:.04em;font-size:.9rem}
+.cart.show{display:flex}
+footer{text-align:center;font-size:.75rem;color:var(--suave);padding:46px 16px 10px}
+footer a{color:var(--accent);text-decoration:none;font-weight:700}

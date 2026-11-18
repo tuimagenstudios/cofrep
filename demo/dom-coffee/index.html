@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#3e4932">
+  <meta name="robots" content="noindex">
+  <title>Dom-coffee | Demo de carta digital</title>
+  <link rel="stylesheet" href="estilo.css">
+  <script src="carta.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="shell top-row">
+      <a class="wordmark" href="#inicio">Dom-coffee</a>
+      <nav aria-label="Navegación" data-en-label="Site navigation">
+        <a href="#carta" data-en="Menu">Carta</a>
+        <a class="events-link" href="#eventos" data-en="Events">Eventos</a>
+        <select id="language" aria-label="Idioma" data-en-label="Language">
+          <option value="es" lang="es">Español</option>
+          <option value="en" lang="en">English</option>
+        </select>
+      </nav>
+    </div>
+  </header>
+  <main id="inicio">
+    <section class="hero shell" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="demo-signature">Dom-coffee</p>
+        <h1 id="hero-title" data-en="Specialty coffee &amp; pastries">Café y pastelería de especialidad</h1>
+        <a class="button" href="#carta"><span data-en="Explore the menu">Explorá la carta</span> <span aria-hidden="true">↓</span></a>
+      </div>
+      <img class="hero-image" src="fotos/portada.webp" alt="" fetchpriority="high">
+    </section>
+
+    <section class="menu shell" id="carta" aria-labelledby="menu-title">
+      <div class="menu-heading">
+        <h2 id="menu-title" data-en="The menu">La carta</h2>
+        <div class="menu-search">
+          <label id="search-field" class="search-field" hidden>
+            <span class="visually-hidden" data-en="Search the menu">Buscar en la carta</span>
+            <input id="menu-search" type="search" autocomplete="off" placeholder="Buscar en la carta" data-en-placeholder="Search the menu">
+          </label>
+          <button id="search-toggle" class="search-toggle" type="button" aria-expanded="false" aria-controls="search-field" aria-label="Buscar en la carta">
+            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+              <circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4.5 4.5"/>
+            </svg>
+            <svg class="search-close" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true">
+              <path d="m6 6 12 12M18 6 6 18"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div class="menu-grid">
+        <details class="menu-group" data-group="cafe">
+          <summary>
+            <h3 data-en="Coffee">Cafetería</h3>
+            <span class="category-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="category-products">
+            <ul>
+              <li data-price="4500">Latte</li>
+              <li data-price="4800">Cappuccino</li>
+              <li data-price="5400" data-en="Caramel latte">Latte de caramelo</li>
+              <li data-price="5300" data-en="Iced coffee">Café frío</li>
+            </ul>
+          </div>
+        </details>
+        <details class="menu-group" data-group="pasteleria">
+          <summary>
+            <h3 data-en="Pastries &amp; cakes">Pastelería</h3>
+            <span class="category-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="category-products">
+            <ul>
+              <li data-price="8500" data-en="Mixed berry cheesecake">Cheesecake de frutos rojos</li>
+              <li data-price="7800">Pavlova</li>
+              <li data-price="7400">Chocotorta</li>
+              <li data-price="7900">Choco Oreo</li>
+              <li data-price="7500">Carrot cake</li>
+              <li data-price="8900">Ferrero Rocher</li>
+              <li data-price="8200">Red Velvet</li>
+              <li data-price="8400" data-en="Mixed berry marquise">Marquise de frutos rojos</li>
+              <li data-price="7600" data-en="Cookie cake">Torta cookie</li>
+              <li data-price="7800" data-en="Key lime pie">Key lime</li>
+              <li data-price="7200">Lemon pie</li>
+              <li data-price="8000">Rogel</li>
+            </ul>
+          </div>
+          <img class="cake-selection" src="fotos/seleccion-tortas.webp" width="800" height="1000" alt="Red Velvet, Choco Oreo y Key lime" data-en-alt="Red Velvet, Choco Oreo and Key Lime" loading="lazy">
+          <div class="pastry-photos">
+            <img src="fotos/chocotorta.webp" alt="Porción de Chocotorta" data-en-alt="Slice of Chocotorta" loading="lazy">
+            <img src="fotos/ferrero.webp" alt="Torta Ferrero Rocher" data-en-alt="Ferrero Rocher cake" loading="lazy">
+            <img src="fotos/medialunas.webp" alt="Medialunas doradas" data-en-alt="Golden Argentine croissants" loading="lazy">
+          </div>
+        </details>
+        <details class="menu-group" data-group="salados">
+          <summary>
+            <h3 data-en="Savory options">Salados</h3>
+            <span class="category-toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="category-products">
+            <ul>
+              <li data-price="10500" data-en="Focaccia sandwich">Sándwich en focaccia</li>
+              <li data-price="9800" data-en="Salads">Ensaladas</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+      <p id="no-results" class="note" role="status" data-en="No matching products." hidden>No encontramos productos con esa búsqueda.</p>
+      <p class="note" data-en="Sample menu and prices in Argentine pesos (ARS).">Carta y precios de muestra en pesos argentinos (ARS).</p>
+    </section>
+
+    <section class="shell events" id="eventos" aria-labelledby="events-title">
+      <div class="events-heading">
+        <p class="eyebrow" data-en="Sample events">Eventos de muestra</p>
+        <h2 id="events-title" data-en="A coffee and a chance to create">Un café para crear</h2>
+      </div>
+      <div class="event-grid">
+        <article class="event">
+          <h3>Art and Coffee</h3>
+          <p data-en="Paint a piece, share an afternoon snack and enjoy a coffee. The session includes materials and step-by-step guidance.">Pintá una pieza y compartí una merienda con café. La actividad incluye materiales y una guía paso a paso.</p>
+        </article>
+        <img class="event-storefront" src="fotos/vidriera.webp" width="800" height="400" alt="Vidriera de una cafetería con mesas y lámparas" data-en-alt="Café storefront with tables and pendant lights" loading="lazy">
+        <article class="event">
+          <h3>Coffee and Journaling</h3>
+          <p data-en="A gathering for free writing over a cup of coffee.">Un encuentro de escritura libre para compartir una pausa con un café.</p>
+        </article>
+      </div>
+    </section>
+    <section class="shell visit" id="local" aria-labelledby="visit-title">
+      <h2 id="visit-title" data-en="Find us">Encontranos</h2>
+      <p>Azul, Buenos Aires</p>
+    </section>
+  </main>
+  <footer class="shell footer">
+    <small data-en="Digital menu demo · Cofrep">Demo de carta digital · Cofrep</small>
+    <a href="#inicio" data-en="Back to top ↑">Volver arriba ↑</a>
+  </footer>
+  <button id="open-selection" class="selection-toggle" type="button" aria-haspopup="dialog" aria-controls="selection">
+    <span data-en="My selection">Mi selección</span>
+    <span id="selection-count" class="selection-count">0</span>
+  </button>
+  <p id="selection-status" class="visually-hidden" role="status"></p>
+  <dialog id="selection" class="selection-dialog" aria-labelledby="selection-title">
+    <div class="selection-heading">
+      <div><p class="eyebrow" data-en="Your table">Tu mesa</p><h2 id="selection-title" data-en="My selection">Mi selección</h2></div>
+      <form method="dialog">
+        <button class="quantity-button" type="submit" aria-label="Cerrar selección" data-en-label="Close selection" autofocus>×</button>
+      </form>
+    </div>
+    <p id="selection-empty" data-en="Your selection is empty.">Todavía no agregaste productos.</p>
+    <ul id="selection-items" class="selection-items"></ul>
+    <div id="selection-summary" class="selection-summary" hidden>
+      <div class="selection-total">
+        <strong data-en="Estimated total">Total estimado</strong>
+        <output id="selection-total" aria-live="polite"></output>
+      </div>
+      <label class="split-label">
+        <span data-en="Split among">Dividir entre</span>
+        <input id="split-people" type="number" min="1" step="1" value="1" inputmode="numeric" aria-label="Cantidad de personas" data-en-label="Number of people">
+        <span data-en="people">personas</span>
+      </label>
+      <p class="split-result">
+        <span data-en="Approx.">Aprox.</span>
+        <output id="selection-share" for="split-people"></output>
+        <span data-en="per person">por persona</span>
+      </p>
+      <p class="selection-note" data-en="Sample prices in Argentine pesos (ARS).">Precios de muestra en pesos argentinos (ARS).</p>
+    </div>
+  </dialog>
+</body>
+</html>
+

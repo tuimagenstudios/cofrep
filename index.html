@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COFREP | Menús digitales con QR para gastronomía</title>
+<meta name="description" content="Menús digitales con código QR para cafeterías, hamburgueserías, pizzerías y restaurantes. Pedidos directo a tu WhatsApp.">
+<style>
+  /* ===== Colores de marca COFREP ===== */
+  :root{--fondo:#1c1c1c;--fondo2:#262626;--linea:#333;--acento:#f7a21b;--texto:#f2f2f2;--suave:#a3a3a3}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--fondo);color:var(--texto);font-family:Arial,Helvetica,sans-serif;line-height:1.55}
+  h1,h2,h3{font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 16px}
+  header.nav{position:sticky;top:0;z-index:10;background:rgba(28,28,28,.94);backdrop-filter:blur(6px);border-bottom:1px solid #1e1e1e}
+  .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+  .logo{font-weight:700;font-size:1.35rem;letter-spacing:.12em;text-decoration:none}
+  .logo b{color:var(--acento)}
+  .nav nav{display:none;gap:24px;font-size:.88rem}
+  .nav nav a{text-decoration:none;color:var(--suave)}.nav nav a:hover{color:var(--acento)}
+  @media(min-width:760px){.nav nav{display:flex}}
+  .btn{display:inline-block;background:var(--acento);color:#000;font-weight:700;text-decoration:none;padding:13px 22px;border-radius:6px;border:2px solid var(--acento);font-size:.95rem}
+  .btn:hover{background:transparent;color:var(--acento)}
+  .btn.sec{background:transparent;color:var(--acento)}.btn.sec:hover{background:var(--acento);color:#000}
+  .nav .btn{padding:9px 14px;font-size:.82rem}
+
+  .hero{padding:70px 0 60px;background:radial-gradient(circle at 1px 1px,#2c2c2c 1px,transparent 0) 0 0/14px 14px;overflow:hidden}
+  .hero .wrap{display:grid;gap:40px;align-items:center}
+  @media(min-width:860px){.hero .wrap{grid-template-columns:1.1fr .9fr}}
+  .etq{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--acento);border:1px solid var(--acento);padding:4px 10px;border-radius:3px;margin-bottom:18px}
+  .hero h1{font-size:clamp(2.5rem,8vw,4.6rem);max-width:13ch}
+  .hero h1 span{color:var(--acento)}
+  .hero p{color:var(--suave);max-width:46ch;margin:18px 0 26px;font-size:1.05rem}
+  .acciones{display:flex;flex-wrap:wrap;gap:12px}
+  .dato{margin-top:24px;color:var(--suave);font-size:.9rem}.dato b{color:var(--acento)}
+  /* Teléfono con demo en vivo */
+  .tel{justify-self:center;width:300px;height:auto;border-radius:40px;background:#000;padding:12px;box-shadow:0 0 0 2px #2a2a2a,0 30px 70px rgba(0,0,0,.7),0 0 80px rgba(247,162,27,.18)}
+  .tel img{width:100%;height:auto;border-radius:30px;display:block;background:#111}
+
+  section{padding:64px 0}
+  section h2{font-size:clamp(1.9rem,6vw,2.8rem);margin-bottom:8px}
+  section h2 em{font-style:normal;color:var(--acento)}
+  .sub{color:var(--suave);max-width:58ch;margin-bottom:30px}
+  .grid{display:grid;gap:16px}
+  @media(min-width:640px){.g2{grid-template-columns:1fr 1fr}}
+  @media(min-width:900px){.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}}
+  @media(min-width:640px) and (max-width:899px){.g4,.g3{grid-template-columns:1fr 1fr}}
+
+  .modelo{position:relative;display:block;aspect-ratio:3/4;border-radius:8px;overflow:hidden;text-decoration:none;border:1px solid #2a2a2a;background:#111}
+  .modelo img{width:100%;height:100%;object-fit:cover;transition:transform .4s}
+  .modelo:hover img{transform:scale(1.05)}
+  .modelo div{position:absolute;inset:auto 0 0 0;padding:40px 16px 16px;background:linear-gradient(transparent,rgba(0,0,0,.92))}
+  .modelo h3{font-size:1.3rem}
+  .modelo span{color:var(--acento);font-weight:700;font-size:.85rem}
+
+  .card{background:var(--fondo2);border:1px solid var(--linea);border-left:4px solid var(--acento);padding:22px;border-radius:6px}
+  .card svg{width:28px;height:28px;color:var(--acento);margin-bottom:12px}
+  .card h3{font-size:1.1rem;margin-bottom:6px}
+  .card p{color:var(--suave);font-size:.94rem}
+  .paso{display:flex;gap:16px;align-items:flex-start}
+  .num{font-size:2.6rem;font-weight:700;color:var(--acento);line-height:1;min-width:52px}
+  .paso h3{font-size:1.1rem;margin-bottom:4px}.paso p{color:var(--suave);font-size:.94rem}
+  .url{display:inline-block;margin-top:24px;background:var(--fondo2);border:1px dashed var(--acento);border-radius:6px;padding:12px 16px;font-family:Consolas,monospace;font-size:1rem}
+  .url b{color:var(--acento)}
+
+  .franja{background:var(--acento);color:#000}
+  .franja .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;padding-top:40px;padding-bottom:40px}
+  .franja h2{font-size:clamp(1.8rem,6vw,2.6rem);margin:0}
+  .franja p{font-weight:700;margin-top:6px}
+  .franja .btn{background:#000;color:var(--acento);border-color:#000}.franja .btn:hover{background:transparent;color:#000}
+  footer{padding:30px 0;text-align:center;color:var(--suave);font-size:.85rem;border-top:1px solid #1e1e1e}
+</style></head><body>
+
+<header class="nav"><div class="wrap">
+  <a class="logo" href="#">COF<b>REP</b></a>
+  <nav><a href="#modelos">Modelos</a><a href="#incluye">Qué incluye</a><a href="#como">Cómo funciona</a></nav>
+  <a class="btn" href="https://wa.me/5490000000000?text=Hola!%20Quiero%20un%20men%C3%BA%20digital">Quiero mi menú</a>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <span class="etq">Menús digitales para gastronomía</span>
+    <h1>Tu carta en el celular de <span>cada cliente</span></h1>
+    <p>Menú online con código QR, fotos de tus platos y pedidos que llegan directo a tu WhatsApp. Sin apps, sin comisiones.</p>
+    <div class="acciones"><a class="btn" href="#modelos">Ver modelos</a><a class="btn sec" href="#como">Cómo funciona</a></div>
+    <p class="dato">Listo en <b>48 horas</b> · Cambios de precios incluidos</p>
+  </div>
+  <div class="tel"><img src="assets/img/captura-cafeteria.webp" alt="Menú digital de cafetería en el celular"></div>
+</div></section>
+
+<section id="modelos"><div class="wrap">
+  <h2>Elegí tu <em>modelo</em></h2>
+  <p class="sub">Cada modelo se adapta con tu logo, tus colores, tus fotos y tus precios. Tocá uno para probarlo como lo vería tu cliente.</p>
+  <div class="grid g4">
+    <a class="modelo" href="demo/coffee-republic/index.html"><img src="assets/img/captura-cafeteria.webp" alt="Modelo cafetería premium" loading="lazy" style="object-position:top"><div><h3>Cafetería Premium</h3><span>Ver demo →</span></div></a>
+    <a class="modelo" href="demo/cafeteria/index.html"><img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=600&h=800&q=70" alt="Modelo cafetería simple" loading="lazy"><div><h3>Cafetería Simple</h3><span>Ver demo →</span></div></a>
+    <a class="modelo" href="demo/dom-coffee/index.html"><img src="demo/dom-coffee/fotos/portada.webp" alt="Café frío en un vaso de vidrio" loading="lazy" style="object-position:center 69%"><div><h3>Dom-coffee · Café y pastelería</h3><span>Ver demo →</span></div></a>
+    <a class="modelo" href="demo/hamburgueseria/index.html"><img src="demo/hamburgueseria/fotos/portada.webp" alt="Demo KRAFT de hamburguesería" loading="lazy"><div><h3>KRAFT · Hamburguesería</h3><span>Ver demo →</span></div></a>
+    <a class="modelo" href="demo/restaurante/index.html"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&h=800&q=70" alt="Modelo restaurante" loading="lazy"><div><h3>Restaurante</h3><span>Ver demo →</span></div></a>
+  </div>
+</div></section>
+
+<section id="incluye" style="background:#151515"><div class="wrap">
+  <h2>Qué <em>incluye</em></h2>
+  <p class="sub">Todo lo necesario para que tus clientes vean la carta y pidan sin esperar al mozo.</p>
+  <div class="grid g3">
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM20 14v.01M14 20h.01M17 20h4v-3"/></svg><h3>Código QR</h3><p>Listo para imprimir y poner en mesas, mostrador o vidriera.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 21l2.1-5.6A8.4 8.4 0 1 1 21 11.5z"/></svg><h3>Pedidos por WhatsApp</h3><p>El cliente arma su pedido y te llega ordenado con el total.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="10" r="2"/><path d="M21 16l-5-5-8 8"/></svg><h3>Fotos de tus platos</h3><p>Cada producto con su foto, descripción y precio.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg><h3>Pensado para celular</h3><p>Carga rápido y se lee cómodo en cualquier teléfono.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/></svg><h3>Tu propio link</h3><p>Fácil de compartir en Instagram, Google Maps y WhatsApp.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></svg><h3>Cambios de precios</h3><p>Actualizamos tu carta cuando cambian los precios.</p></div>
+  </div>
+</div></section>
+
+<section id="como"><div class="wrap">
+  <h2>Cómo <em>funciona</em></h2>
+  <p class="sub">Tres pasos y tu negocio tiene su menú digital funcionando.</p>
+  <div class="grid g3">
+    <div class="paso"><div class="num">01</div><div><h3>Elegís el modelo</h3><p>Nos mandás tu carta, logo y fotos por WhatsApp.</p></div></div>
+    <div class="paso"><div class="num">02</div><div><h3>Lo armamos</h3><p>Te pasamos una vista previa para revisar antes de publicar.</p></div></div>
+    <div class="paso"><div class="num">03</div><div><h3>Lo publicamos</h3><p>Recibís tu link y tu código QR listos para usar.</p></div></div>
+  </div>
+  <div class="url">cofrep.com/<b>tu-negocio</b></div>
+</div></section>
+
+<div class="franja"><div class="wrap">
+  <div><h2>¿Querés el tuyo?</h2><p>Escribinos y te mostramos cómo quedaría tu carta.</p></div>
+  <a class="btn" href="https://wa.me/5490000000000?text=Hola!%20Quiero%20un%20men%C3%BA%20digital">Hablar por WhatsApp</a>
+</div></div>
+
+<footer><div class="wrap">© 2026 COFREP · Menús digitales para gastronomía</div></footer>
+</body></html>

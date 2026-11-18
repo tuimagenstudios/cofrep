@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Casa Olivo | Carta</title>
+<meta name="theme-color" content="#1f4d3f">
+<style>
+/* ===== COLORES DEL LOCAL ===== */
+:root{--marca:#1f4d3f;--marca2:#2c6a57;--suave:#eef3f1;--fondo:#f7f7f5;--texto:#1b1b1b;--gris:#6b6b6b;--linea:#e7e7e3;--oro:#f5b301}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--fondo);color:var(--texto);font-family:Arial,Helvetica,sans-serif;line-height:1.4}
+button,input,textarea{font:inherit;color:inherit}button{cursor:pointer;border:none;background:none}
+.app{max-width:520px;margin:0 auto;min-height:100vh;background:#fff;padding-bottom:30px}
+
+/* Cabecera */
+.cab{background:var(--marca);color:#fff;padding:calc(14px + env(safe-area-inset-top)) 16px 18px;border-radius:0 0 22px 22px}
+.cab .fila{display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.15rem}
+.logo i{width:34px;height:34px;border-radius:50%;background:#fff;color:var(--marca);display:grid;place-items:center;font-style:normal;font-weight:800}
+.mesa{font-size:.75rem;background:rgba(255,255,255,.15);padding:6px 10px;border-radius:99px}
+.buscar{margin-top:14px;display:flex;align-items:center;gap:8px;background:#fff;border-radius:12px;padding:0 12px}
+.buscar svg{width:18px;height:18px;color:var(--gris);flex:none}
+.buscar input{flex:1;border:none;outline:none;padding:12px 0;background:none;color:var(--texto)}
+
+/* Cupón */
+.cupon{margin:16px 16px 0;display:flex;align-items:center;gap:14px;background:linear-gradient(120deg,#13332a,var(--marca2));color:#fff;border-radius:16px;padding:14px 16px;text-align:left;width:calc(100% - 32px)}
+.cupon b{font-size:1.5rem;line-height:1}.cupon span{font-size:.85rem;flex:1}.cupon em{font-style:normal;font-size:.75rem;font-weight:700;background:#fff;color:var(--marca);padding:7px 10px;border-radius:99px;white-space:nowrap}
+
+h2{font-size:1.05rem;margin:22px 16px 10px;display:flex;justify-content:space-between;align-items:baseline}
+h2 small{font-size:.75rem;color:var(--gris);font-weight:400}
+
+/* Lo que comparten los clientes */
+.historias{display:flex;gap:10px;overflow-x:auto;padding:0 16px;scrollbar-width:none}
+.historias::-webkit-scrollbar{display:none}
+.hist{flex:none;width:118px;height:170px;border-radius:16px;overflow:hidden;position:relative;background:#ddd}
+.hist img{width:100%;height:100%;object-fit:cover}
+.hist span{position:absolute;left:8px;bottom:8px;font-size:.7rem;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+.hist.subir{background:linear-gradient(160deg,#ff5f6d,#b23a8a);color:#fff;padding:12px;display:flex;flex-direction:column;justify-content:space-between;text-align:left}
+.hist.subir b{font-size:.95rem;line-height:1.2}.hist.subir em{font-style:normal;font-size:.7rem;background:#fff;color:#b23a8a;font-weight:700;padding:6px 10px;border-radius:99px;align-self:flex-start}
+
+/* Categorías en círculo */
+.cats{position:sticky;top:0;z-index:5;background:#fff;display:flex;gap:14px;overflow-x:auto;padding:14px 16px 10px;scrollbar-width:none;border-bottom:1px solid var(--linea)}
+.cats::-webkit-scrollbar{display:none}
+.cats button{flex:none;width:64px;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.7rem;color:var(--gris);text-align:center}
+.cats .c{width:56px;height:56px;border-radius:50%;overflow:hidden;border:2px solid transparent;display:grid;place-items:center;background:var(--suave)}
+.cats .c img{width:100%;height:100%;object-fit:cover}
+.cats button.on{color:var(--texto);font-weight:700}.cats button.on .c{border-color:var(--marca)}
+.cats .c svg{width:24px;height:24px;color:#fff}.cats .todo .c{background:var(--marca)}
+
+/* Lista */
+.seccion h3{font-size:1rem;margin:20px 16px 4px}
+.item{display:flex;gap:12px;align-items:center;padding:12px 16px;width:100%;text-align:left;border-bottom:1px solid var(--linea)}
+.item img{width:74px;height:74px;border-radius:14px;object-fit:cover;flex:none;background:var(--suave)}
+.item .t{flex:1;min-width:0}.item b{display:block;font-size:.95rem}
+.item p{font-size:.8rem;color:var(--gris);margin:2px 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.item .p{font-weight:800;font-size:.92rem}
+.item .flecha{width:30px;height:30px;border-radius:50%;background:var(--suave);display:grid;place-items:center;flex:none;color:var(--marca)}
+.tag{display:inline-block;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--marca);background:var(--suave);padding:2px 6px;border-radius:4px;margin-left:6px;vertical-align:middle}
+.nada{text-align:center;color:var(--gris);padding:30px 16px}
+.firma{text-align:center;font-size:.7rem;color:#999;margin-top:26px}.firma a{color:#999}
+
+/* Hojas emergentes */
+.velo{position:fixed;inset:0;z-index:30;background:rgba(0,0,0,.45);opacity:0;pointer-events:none;transition:opacity .25s}
+.velo.ver{opacity:1;pointer-events:auto}
+.hoja{position:fixed;left:0;right:0;bottom:0;z-index:31;max-width:520px;margin:0 auto;background:#fff;border-radius:22px 22px 0 0;padding:10px 18px calc(22px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .3s ease;max-height:90%;overflow-y:auto}
+.hoja.ver{transform:none}
+.asa{width:40px;height:5px;border-radius:3px;background:#ddd;margin:0 auto 14px}
+.hoja .foto{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:16px}
+.hoja h4{font-size:1.25rem;margin:14px 0 4px}.hoja .d{color:var(--gris);font-size:.92rem}
+.hoja .p{font-size:1.2rem;font-weight:800;margin-top:10px;color:var(--marca)}
+.centro{text-align:center}
+.estrellas{display:flex;justify-content:center;gap:8px;margin:14px 0 6px}
+.estrellas button{font-size:2rem;color:#d6d6d6;transition:transform .1s}
+.estrellas button.on{color:var(--oro)}.estrellas button:active{transform:scale(1.2)}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;padding:14px;border-radius:14px;background:var(--marca);color:#fff;font-weight:800;margin-top:14px;text-decoration:none}
+.btn.wa{background:#25d366}.btn.sec{background:var(--suave);color:var(--marca)}
+.btn svg{width:18px;height:18px}
+.hoja input,.hoja textarea{width:100%;border:1px solid var(--linea);border-radius:12px;padding:12px 14px;margin-top:10px;outline-color:var(--marca)}
+.codigo{font-size:1.6rem;font-weight:800;letter-spacing:.12em;border:2px dashed var(--marca);color:var(--marca);border-radius:12px;padding:12px;margin-top:12px}
+.calificar{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:10;display:flex;align-items:center;gap:6px;background:var(--marca);color:#fff;font-weight:700;font-size:.82rem;padding:11px 15px;border-radius:99px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+@media(min-width:552px){.calificar{right:calc(50% - 244px)}}
+</style></head><body>
+<div class="app">
+  <header class="cab">
+    <div class="fila"><div class="logo"><i>CO</i>Casa Olivo</div><div style="display:flex;gap:6px;align-items:center"><span class="mesa" id="tMesa">Abierto · 12 a 00 h</span><button class="mesa" id="idioma" style="font-weight:800">EN</button></div></div>
+    <label class="buscar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><input id="buscar" type="search" placeholder="Buscar un plato o bebida"></label>
+  </header>
+
+  <button class="cupon" id="abrirCupon"><b>10%<br><small style="font-size:.7rem">OFF</small></b><span id="tCupon"></span><em id="tQuiero"></em></button>
+
+  <h2><span id="tComparten"></span> <small>@casaolivo</small></h2>
+  <div class="historias" id="historias"></div>
+
+  <nav class="cats" id="cats"></nav>
+  <main id="carta"></main>
+  <p class="firma"><span id="tFirma"></span> <a href="../../index.html">COFREP</a></p>
+</div>
+
+<button class="calificar" id="abrirResena">★ Calificar visita</button>
+
+<div class="velo" id="velo"></div>
+<section class="hoja" id="hojaPlato"></section>
+<section class="hoja centro" id="hojaCupon"></section>
+<section class="hoja centro" id="hojaResena"></section>
+
+<script>
+/* ===== DATOS DEL LOCAL ===== */
+const LOCAL={
+ nombre:"Casa Olivo",whatsapp:"5490000000000",moneda:"$",
+ instagram:"https://www.instagram.com/",
+ resenaGoogle:"https://www.google.com/maps",   /* link "Escribir una reseña" de Google del local */
+ cupon:"OLIVO10"
+};
+const U="https://images.unsplash.com/photo-",Q="?auto=format&fit=crop&w=700&q=70";
+const CATS=[
+ {n:"Entradas",img:U+"1546069901-ba9599a7e63c"+Q},
+ {n:"Principales",img:U+"1555939594-58d7cb561ad1"+Q},
+ {n:"Pastas",img:U+"1621996346565-e3dbc646d9a9"+Q},
+ {n:"Postres",img:U+"1571877227200-a0d98ea607e9"+Q},
+ {n:"Bebidas",img:U+"1510812431401-41d2bd2722f3"+Q}
+];
+const MENU=[
+ {cat:"Entradas",nombre:"Bowl del huerto",desc:"Pollo grillado, palta, huevo, choclo y vegetales frescos con aderezo de la casa.",precio:8900,img:U+"1546069901-ba9599a7e63c"+Q,tag:"Para compartir"},
+ {cat:"Entradas",nombre:"Ensalada de estación",desc:"Hojas verdes, palta, semillas tostadas y vinagreta de cítricos.",precio:6900,img:U+"1512621776951-a57141f2eefd"+Q},
+ {cat:"Principales",nombre:"Ojo de bife",desc:"400 g a la parrilla, papas rústicas y chimichurri de la casa.",precio:18500,img:U+"1555939594-58d7cb561ad1"+Q,tag:"Del chef"},
+ {cat:"Principales",nombre:"Salmón grillado",desc:"Con vegetales salteados y salsa de manteca y limón.",precio:19900,img:U+"1467003909585-2f8a72700288"+Q},
+ {cat:"Principales",nombre:"Plato del día",desc:"Consultá al mozo por la propuesta de hoy.",precio:12800,img:U+"1504674900247-0877df9cc836"+Q},
+ {cat:"Pastas",nombre:"Spaghetti al pomodoro",desc:"Pasta fresca, salsa de tomates italianos y parmesano.",precio:11200,img:U+"1621996346565-e3dbc646d9a9"+Q},
+ {cat:"Postres",nombre:"Tiramisú",desc:"Receta clásica con café de especialidad.",precio:5200,img:U+"1571877227200-a0d98ea607e9"+Q},
+ {cat:"Bebidas",nombre:"Malbec por copa",desc:"Selección de bodegas de Mendoza.",precio:4500,img:U+"1510812431401-41d2bd2722f3"+Q},
+ {cat:"Bebidas",nombre:"Limonada de la casa",desc:"Con menta y jengibre.",precio:3200,img:U+"1621263764928-df1444c5e859"+Q}
+];
+const HISTORIAS=[U+"1517248135467-4c7edcad34c4",U+"1414235077428-338989a2e8c0",U+"1559339352-11d035aa65de",U+"1555396273-367ea4eb4db5"];
+
+
+/* ===== IDIOMAS (español / inglés) ===== */
+const EN={
+ "Entradas":"Starters","Principales":"Mains","Pastas":"Pasta","Postres":"Desserts","Bebidas":"Drinks",
+ "Para compartir":"To share","Del chef":"Chef's pick",
+ "Bowl del huerto":["Garden bowl","Grilled chicken, avocado, egg, corn and fresh vegetables with house dressing."],
+ "Ensalada de estación":["Seasonal salad","Greens, avocado, toasted seeds and citrus vinaigrette."],
+ "Ojo de bife":["Rib eye steak","14 oz grilled, with rustic potatoes and house chimichurri."],
+ "Salmón grillado":["Grilled salmon","With sautéed vegetables and lemon butter sauce."],
+ "Plato del día":["Dish of the day","Ask your waiter about today's special."],
+ "Spaghetti al pomodoro":["Spaghetti al pomodoro","Fresh pasta, Italian tomato sauce and parmesan."],
+ "Tiramisú":["Tiramisu","Classic recipe with specialty coffee."],
+ "Malbec por copa":["Malbec by the glass","A selection of Mendoza wineries."],
+ "Limonada de la casa":["House lemonade","With mint and ginger."]
+};
+const TXT={es:{buscar:"Buscar un plato o bebida",abierto:"Abierto · 12 a 00 h",cupon:"Seguinos en Instagram y llevate un descuento en esta visita.",quiero:"Quiero",comparten:"Lo que comparten nuestros clientes",todo:"Ver todo",calificar:"★ Calificar visita",firma:"Menú digital por",nada:"No encontramos",volver:"Volver a la carta",compartirT:"Compartí tu visita",subir:"Subir foto",compartirD:"Subí una historia etiquetando a <b>@casaolivo</b> y aparecé en nuestra carta.",abrirIG:"Abrir Instagram",cuponT:"10% OFF en esta visita",cuponD:"Seguinos en Instagram y dejanos tu WhatsApp para recibir promociones.",seguir:"1 · Seguir en Instagram",tuWa:"Tu WhatsApp",obtener:"2 · Obtener mi cupón",listo:"¡Listo! 🎉",mostrar:"Mostrale este código al mozo al pedir la cuenta.",como:"¿Cómo estuvo tu visita?",ayuda:"Tu opinión nos ayuda a mejorar.",gracias:"¡Gracias!",resena:"¿Nos dejás una reseña en Google? Nos ayuda muchísimo.",dejar:"Dejar reseña en Google",ahoraNo:"Ahora no",lamento:"Lamentamos que no haya sido perfecta",conta:"Contanos qué pasó y lo vemos personalmente.",comentario:"Tu comentario",encargado:"Enviar al encargado"},
+ en:{buscar:"Search a dish or drink",abierto:"Open · 12 pm to 12 am",cupon:"Follow us on Instagram and get a discount on this visit.",quiero:"Get it",comparten:"What our guests share",todo:"See all",calificar:"★ Rate your visit",firma:"Digital menu by",nada:"No results for",volver:"Back to the menu",compartirT:"Share your visit",subir:"Upload photo",compartirD:"Post a story tagging <b>@casaolivo</b> and appear on our menu.",abrirIG:"Open Instagram",cuponT:"10% OFF on this visit",cuponD:"Follow us on Instagram and leave your WhatsApp to get our offers.",seguir:"1 · Follow on Instagram",tuWa:"Your WhatsApp",obtener:"2 · Get my coupon",listo:"Done! 🎉",mostrar:"Show this code to your waiter when you ask for the bill.",como:"How was your visit?",ayuda:"Your feedback helps us improve.",gracias:"Thank you!",resena:"Would you leave us a Google review? It helps a lot.",dejar:"Leave a Google review",ahoraNo:"Not now",lamento:"We're sorry it wasn't perfect",conta:"Tell us what happened and we'll look into it personally.",comentario:"Your comment",encargado:"Send to the manager"}};
+let idioma=(()=>{try{return localStorage.getItem("olivo-idioma")||"es"}catch(e){return "es"}})();
+const t=k=>TXT[idioma][k];
+const tr=w=>idioma==="en"&&typeof EN[w]==="string"?EN[w]:w;
+const nom=p=>idioma==="en"&&EN[p.nombre]?EN[p.nombre][0]:p.nombre;
+const des=p=>idioma==="en"&&EN[p.nombre]?EN[p.nombre][1]:p.desc;
+const $=s=>document.querySelector(s);
+const plata=n=>LOCAL.moneda+" "+n.toLocaleString("es-AR");
+const flecha='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m9 6 6 6-6 6"/></svg>';
+const waIco='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2z"/></svg>';
+
+function cabecera(){document.documentElement.lang=idioma;$("#idioma").textContent=idioma==="es"?"EN":"ES";$("#tMesa").textContent=t("abierto");$("#buscar").placeholder=t("buscar");$("#tCupon").textContent=t("cupon");$("#tQuiero").textContent=t("quiero");$("#tComparten").textContent=t("comparten");$("#tFirma").textContent=t("firma");$("#abrirResena").textContent=t("calificar");
+$("#historias").innerHTML=`<button class="hist subir" id="compartir"><b>${t("compartirT")}</b><em>${t("subir")}</em></button>`+
+ HISTORIAS.map((h,i)=>`<div class="hist"><img src="${h}?auto=format&fit=crop&w=300&h=440&q=70" alt="Foto de un cliente" loading="lazy"><span>@cliente${i+1}</span></div>`).join("");
+$("#cats").innerHTML=`<button class="todo on" data-c=""><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg></span>${t("todo")}</button>`+
+ CATS.map(c=>`<button data-c="${c.n}"><span class="c"><img src="${c.img}" alt=""></span>${tr(c.n)}</button>`).join("");}
+cabecera();
+
+function carta(filtro=""){
+ const f=filtro.trim().toLowerCase();
+ const html=CATS.map(c=>{const it=MENU.map((p,i)=>({...p,i})).filter(p=>p.cat===c.n&&(!f||(nom(p)+" "+des(p)).toLowerCase().includes(f)));
+  return it.length?`<section class="seccion" id="s-${c.n}"><h3>${tr(c.n)}</h3>${it.map(p=>`<button class="item" data-i="${p.i}"><img src="${p.img}" alt="${nom(p)}" loading="lazy"><div class="t"><b>${nom(p)}${p.tag?`<span class="tag">${tr(p.tag)}</span>`:""}</b><p>${des(p)}</p><span class="p">${plata(p.precio)}</span></div><span class="flecha">${flecha}</span></button>`).join("")}</section>`:""}).join("");
+ $("#carta").innerHTML=html||`<p class="nada">${t("nada")} "${filtro}".</p>`;
+}
+carta();
+
+let abierta=null;
+function abrir(id,html){if(abierta&&abierta!==$(id))abierta.classList.remove("ver");if(html!=null)$(id).innerHTML='<div class="asa"></div>'+html;abierta=$(id);abierta.classList.add("ver");$("#velo").classList.add("ver")}
+function cerrar(){abierta&&abierta.classList.remove("ver");$("#velo").classList.remove("ver");abierta=null}
+$("#velo").onclick=cerrar;
+
+$("#buscar").oninput=e=>carta(e.target.value);
+$("#idioma").onclick=()=>{idioma=idioma==="es"?"en":"es";try{localStorage.setItem("olivo-idioma",idioma)}catch(e){};cabecera();carta($("#buscar").value)};
+document.addEventListener("click",e=>{
+ const it=e.target.closest(".item");
+ if(it){const p=MENU[it.dataset.i];abrir("#hojaPlato",`<img class="foto" src="${p.img.replace("w=700","w=1000")}" alt="${nom(p)}"><h4>${nom(p)}</h4><p class="d">${des(p)}</p><p class="p">${plata(p.precio)}</p><button class="btn sec" onclick="cerrar()">${t("volver")}</button>`);return}
+ const c=e.target.closest(".cats button");
+ if(c){document.querySelectorAll(".cats button").forEach(b=>b.classList.toggle("on",b===c));
+  if(!c.dataset.c){scrollTo({top:$("#cats").offsetTop,behavior:"smooth"});return}
+  const s=document.getElementById("s-"+c.dataset.c);s&&scrollTo({top:s.offsetTop-$("#cats").offsetHeight,behavior:"smooth"});return}
+ if(e.target.closest("#compartir")){abrir("#hojaCupon",`<h4>${t("compartirT")}</h4><p class="d">${t("compartirD")}</p><a class="btn" href="${LOCAL.instagram}" target="_blank" rel="noopener">${t("abrirIG")}</a>`);return}
+});
+
+$("#abrirCupon").onclick=()=>abrir("#hojaCupon",`<h4>${t("cuponT")}</h4><p class="d">${t("cuponD")}</p>
+ <a class="btn" href="${LOCAL.instagram}" target="_blank" rel="noopener">${t("seguir")}</a>
+ <input id="tel" type="tel" placeholder="${t("tuWa")}" autocomplete="tel"><button class="btn wa" id="pedirCupon">${waIco}${t("obtener")}</button>`);
+document.addEventListener("click",e=>{if(e.target.closest("#pedirCupon")){
+ const t=($("#tel").value||"").replace(/\D/g,"");if(t.length<8){$("#tel").focus();$("#tel").placeholder="Ingresá tu WhatsApp";return}
+ abrir("#hojaCupon",`<h4>${t("listo")}</h4><p class="d">${t("mostrar")}</p><div class="codigo">${LOCAL.cupon}</div><button class="btn sec" onclick="cerrar()">${t("volver")}</button>`);
+ window.open(`https://wa.me/${LOCAL.whatsapp}?text=${encodeURIComponent("Hola! Quiero recibir promociones de "+LOCAL.nombre+". Mi número: "+t)}`,"_blank")}});
+
+/* Reseñas: 4-5 estrellas → Google; 1-3 → comentario privado por WhatsApp */
+function pedirResena(){abrir("#hojaResena",`<h4>${t("como")}</h4><p class="d">${t("ayuda")}</p><div class="estrellas">${[1,2,3,4,5].map(n=>`<button data-e="${n}" aria-label="${n} estrellas">★</button>`).join("")}</div>`)}
+$("#abrirResena").onclick=pedirResena;
+document.addEventListener("click",e=>{const s=e.target.closest("[data-e]");if(!s)return;const n=+s.dataset.e;
+ document.querySelectorAll("[data-e]").forEach(b=>b.classList.toggle("on",+b.dataset.e<=n));
+ setTimeout(()=>{
+  if(n>=4)abrir("#hojaResena",`<div class="estrellas">${"<button class='on'>★</button>".repeat(5)}</div><h4>${t("gracias")}</h4><p class="d">${t("resena")}</p><a class="btn" href="${LOCAL.resenaGoogle}" target="_blank" rel="noopener">${t("dejar")}</a><button class="btn sec" onclick="cerrar()">${t("ahoraNo")}</button>`);
+  else abrir("#hojaResena",`<h4>${t("lamento")}</h4><p class="d">${t("conta")}</p><textarea id="queja" rows="3" placeholder="${t("comentario")}"></textarea><button class="btn wa" id="mandarQueja">${waIco}${t("encargado")}</button>`);
+ },350)});
+document.addEventListener("click",e=>{if(e.target.closest("#mandarQueja")){const t=$("#queja").value.trim();
+ window.open(`https://wa.me/${LOCAL.whatsapp}?text=${encodeURIComponent("Comentario sobre mi visita a "+LOCAL.nombre+": "+t)}`,"_blank");cerrar()}});
+setTimeout(()=>{if(!abierta)pedirResena()},45000);
+</script>
+</body></html>

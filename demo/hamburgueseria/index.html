@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es-AR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0c0a09">
+  <meta name="robots" content="noindex">
+  <title>KRAFT | Demo de carta digital</title>
+  <link rel="stylesheet" href="estilo.css">
+  <script src="carta.js" defer></script>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap top-inner">
+      <a class="top-brand" href="#inicio" aria-label="KRAFT, inicio" data-en-label="KRAFT, home">KRAFT</a>
+      <div class="top-controls">
+        <select id="language" class="language" aria-label="Idioma" data-en-label="Language">
+          <option value="es" lang="es">Español</option>
+          <option value="en" lang="en">English</option>
+        </select>
+        <button class="outline" id="open-selection"><span data-en="My selection">Mi selección</span> <span id="count">0</span></button>
+      </div>
+    </div>
+  </header>
+  <main id="inicio">
+    <section class="hero" aria-labelledby="title">
+      <img class="hero-photo" src="fotos/portada.webp" alt="" fetchpriority="high">
+      <div class="wrap hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow"><span></span> <b class="menu-label" data-en="Cofrep demo · Burger joint">Demo Cofrep · Hamburguesería</b></p>
+          <h1 id="title">
+            <span data-en="The menu at">La carta de</span>
+            <strong class="kraft-wordmark">KRAFT</strong>
+          </h1>
+          <p data-en="Smash burgers, combos and crispy sides.">Hamburguesas smash, combos y acompañamientos.</p>
+          <a class="primary" href="#carta"><span data-en="Explore the menu">Explorá la carta</span> <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+    <nav class="category-bar" aria-label="Categorías de la carta" data-en-label="Menu categories">
+      <div class="wrap nav-inner" id="category-nav"></div>
+    </nav>
+    <section class="wrap menu" id="carta" aria-labelledby="menu-title">
+      <div class="menu-head">
+        <div><p class="eyebrow"><b class="menu-label" data-en="Menu">Menú</b> <span></span> ARS</p><h2 id="menu-title">Toda la carta</h2></div>
+        <label class="search"><span data-en="Search the menu">Buscar plato</span> <input id="search" type="search" placeholder="Ej. cheddar" data-en-placeholder="e.g. bacon" autocomplete="off"></label>
+      </div>
+      <div id="menu-items"></div>
+      <p class="source-note" data-en="Photos and prices are for illustration.">Fotos y precios ilustrativos.</p>
+    </section>
+  </main>
+  <footer class="wrap foot"><a href="../../index.html" data-en="Back to Cofrep ↗">Volver a Cofrep ↗</a><a href="#inicio" data-en="Back to top ↑">Volver arriba ↑</a></footer>
+  <dialog id="dish" aria-labelledby="dish-title">
+    <form method="dialog"><button class="close" aria-label="Cerrar ficha" data-en-label="Close dish details">×</button></form>
+    <div id="dish-content"></div>
+  </dialog>
+  <dialog id="selection" aria-labelledby="selection-title">
+    <form method="dialog"><button class="close" aria-label="Cerrar selección" data-en-label="Close selection">×</button></form>
+    <div class="dialog-copy">
+      <p class="eyebrow" data-en="Your table">Tu mesa</p><h2 id="selection-title" data-en="My selection">Mi selección</h2>
+      <div id="selection-items"></div>
+      <div id="selection-summary" hidden>
+        <p class="total"><strong data-en="Estimated total">Total estimado</strong><strong id="total"></strong></p>
+        <label class="split"><span data-en="Split among">Dividir entre</span> <input id="people" type="number" value="1" min="1" max="50" step="1"> <span data-en="people">personas</span></label>
+        <p id="split-amount"></p>
+      </div>
+      <p class="source-note" data-en="This demo calculates your total. It does not place an order.">En esta demo podés calcular el total. No se envía un pedido.</p>
+    </div>
+  </dialog>
+  <div role="status" id="notice" class="sr-only"></div>
+</body>
+</html>

@@ -1,0 +1,207 @@
+﻿ID (no tocar),Categoría,Nombre ES,Nombre EN,Tamaño,Precio,Disponible (SI/NO),Descripción ES,Descripción EN
+0-0,Combos,Set de capuchinos,Cappuccino set,1200 g,980,SI,Cuatro capuchinos clásicos de 300 ml,Four classic 300 ml cappuccinos.
+1-0,Combos,Coffee break de oficina,Office coffee break,1140 g,1580,SI,Dos porciones de draniki con salmón y café,Two servings of potato pancakes with lightly cured salmon and coffee.
+2-0,Combos,Gran almuerzo,Grand lunch,980 g,1250,SI,"Ensalada César con pollo, borsch con pan Borodinski y salo",Chicken Caesar salad and borscht with Borodinsky rye bread and cured pork fat.
+3-0,Combos,Caja de sýrniki + café,Syrniki and coffee box,1450 g,1790,SI,Ocho sýrniki con crema agria y tres cafés clásicos,Eight cottage cheese pancakes with sour cream and three classic coffees.
+4-0,Desayunos,Gran desayuno con salmón y draniki,Big breakfast with salmon and potato pancakes,320 g,880,SI,"Salmón curado, huevos tiernos, draniki y mix de hojas","Lightly cured salmon, soft-centered eggs, potato pancakes and mixed greens."
+5-0,Desayunos,Desayuno balanceado,Balanced breakfast,270 g,660,SI,"Palta, edamame, brócoli y huevos tiernos","Avocado, edamame, broccoli and soft-centered eggs."
+6-0,Desayunos,Desayuno del Lejano Oriente con salmón,Far Eastern breakfast with salmon,220 g,660,SI,"Salmón curado, dos huevos fritos, mix de hojas y tostada","Lightly cured salmon, two fried eggs, mixed greens and toast."
+7-0,Desayunos,Desayuno europeo con panceta,European breakfast with bacon,220 g,660,SI,"Panceta, papas al horno y dos huevos fritos","Bacon, oven-roasted potatoes and two fried eggs."
+8-0,Desayunos,Huevos a la sartén con mortadela,Skillet eggs with mortadella,190 g,580,SI,Dos huevos fritos con mortadela italiana,Two fried eggs with Italian mortadella.
+9-0,Desayunos,Omelette verde con queso crema,Spinach omelet with cream cheese,250 g,580,SI,Omelette de espinaca con queso crema y mix de hojas,A spinach omelet with cream cheese and mixed greens.
+10-0,Desayunos,Draniki con crema agria,Potato pancakes with sour cream,230 g,450,SI,Clásicas tortitas de papa con crema agria,Classic potato pancakes served with sour cream.
+11-0,Desayunos,Draniki con salmón y huevo poché,Potato pancakes with salmon and a poached egg,270 g,640,SI,Tortitas de papa con salmón curado y huevo poché,Potato pancakes with lightly cured salmon and a poached egg.
+12-0,Desayunos,Trigo sarraceno verde con guacamole y huevo,Green buckwheat with guacamole and egg,220 g,490,SI,"Trigo sarraceno verde, huevo frito, tomates secos y parmesano","Green buckwheat with a fried egg, sun-dried tomatoes and Parmesan."
+13-0,Desayunos,Sýrniki con mermelada de madreselva,Syrniki with honeyberry jam,210 g,580,SI,Sýrniki de ricota 9% con mermelada de madreselva y crema agria,"Pancakes made with 9% cottage cheese, served with honeyberry jam and sour cream."
+14-0,Desayunos,Sýrniki con salsa de cereza,Syrniki with cherry sauce,210 g,550,SI,Sýrniki de ricota 9% con salsa de cereza y crema agria,"Pancakes made with 9% cottage cheese, served with cherry sauce and sour cream."
+15-0,Desayunos,Avena con madreselva y nueces caramelizadas,Oatmeal with honeyberries and caramelized nuts,300 g,420,SI,Avena con leche y mermelada de madreselva,Oats cooked in milk and served with honeyberry jam.
+16-0,Desayunos,Blinis caseros con frutos frescos,Homemade blini with fresh berries,160 g,350,SI,"Blinis con leche, frutos de estación y crema agria",Milk-based crêpes with fresh seasonal berries and sour cream.
+17-0,Desayunos,Waffle con rillette de salmón,Waffle with salmon rillettes,230 g,590,SI,Waffle belga con rillette de salmón y queso crema,A Belgian waffle with salmon rillettes and cream cheese.
+18-0,Desayunos,Waffle con roast beef y vitello tonnato,Roast beef waffle with tonnato sauce,220 g,660,SI,Waffle belga con roast beef casero,A Belgian waffle with house-made roast beef.
+19-0,Desayunos,Waffle de maní con mermelada de madreselva y helado,Peanut butter waffle with honeyberry jam and ice cream,220 g,590,SI,"Con pasta de maní, mermelada de madreselva, nueces caramelizadas y una bola de helado.","Peanut butter, honeyberry jam, caramelized nuts and a scoop of ice cream."
+20-0,Ensaladas y entradas,Ensalada de berenjena y queso crema,Eggplant and cream cheese salad,180 g,590,SI,Berenjenas en salsa chili dulce con almendras laminadas,Eggplant with sweet chili sauce and sliced almonds.
+21-0,Ensaladas y entradas,Ensalada de salmón y palta,Salmon and avocado salad,230 g,680,SI,Salmón curado y palta con ponzu cítrico,Lightly cured salmon and avocado with citrus ponzu.
+22-0,Ensaladas y entradas,Ensalada César con pollo,Chicken Caesar salad,180 g,590,SI,Clásica con lechuga romana y pollo,A classic Caesar with romaine lettuce and chicken.
+23-0,Ensaladas y entradas,Ensalada César con langostinos,Shrimp Caesar salad,180 g,660,SI,Clásica con lechuga romana y langostinos salteados,A classic Caesar with romaine lettuce and sautéed shrimp.
+24-0,Ensaladas y entradas,Bowl de quinoa y palta,Quinoa and avocado bowl,210 g,590,SI,Bowl nutritivo de quinoa con salsa de frutos secos,A quinoa bowl with nut dressing.
+25-0,Ensaladas y entradas,Bowl de salmón y quinoa,Salmon and quinoa bowl,210 g,680,SI,Quinoa con salsa de frutos secos y salmón curado,Quinoa with nut dressing and lightly cured salmon.
+26-0,Ensaladas y entradas,Ensalada verde con zucchini y edamame,Green salad with zucchini and edamame,200 g,490,SI,"Zucchini, espinaca, pepino fresco y edamame","Zucchini, spinach, fresh cucumber and edamame."
+27-0,Ensaladas y entradas,Ensalada de roast beef y tomates secos,Roast beef and sun-dried tomato salad,200 g,680,SI,"Roast beef casero, papas y tomates secos",House-made roast beef with potatoes and sun-dried tomatoes.
+28-0,Ensaladas y entradas,Langostinos grillados con palta,Grilled shrimp with avocado,200 g,680,SI,Langostinos grillados en salsa chili dulce con palta,Grilled shrimp in sweet chili sauce with avocado.
+29-0,Ensaladas y entradas,Roast beef vitello tonnato,Roast beef with tonnato sauce,140 g,680,SI,Roast beef casero con salsa vitello tonnato,House-made roast beef with tonnato sauce.
+30-0,Ensaladas y entradas,"Tabla de tres quesos, fiambres, almendras y miel",Cheese and charcuterie board with almonds and honey,220 g,690,SI,,
+31-0,Sobre pan,Muffin inglés con salsa de madreselva,English muffin with honeyberry sauce,200 g,680,SI,Una alternativa a la hamburguesa en pan suave,A burger alternative served on a soft bun.
+32-0,Sobre pan,Croissant con roast beef y vitello tonnato,Roast beef croissant with tonnato sauce,170 g,680,SI,Croissant con roast beef casero y hojas verdes,A croissant with house-made roast beef and salad greens.
+33-0,Sobre pan,Tostada de palta,Avocado toast,150 g,490,SI,Pan de semillas con guacamole y palta,Seeded bread with guacamole and avocado.
+34-0,Sobre pan,Tostada de palta con salmón,Avocado toast with salmon,150 g,590,SI,Pan de semillas con guacamole y salmón curado,Seeded bread with guacamole and lightly cured salmon.
+35-0,Sobre pan,Sándwich de ciabatta con pollo,Chicken ciabatta sandwich,180 g,490,SI,Ciabatta crocante con pechuga de pollo,Crisp ciabatta with tender chicken breast.
+36-0,Sopas,Caldo de pollo con huevo y fideos,Chicken broth with egg and noodles,320 g,450,SI,Caldo con fideos y trozos de pechuga,Broth with noodles and pieces of chicken breast.
+37-0,Sopas,Borsch con crema agria y pan Borodinski,Borscht with sour cream and Borodinsky rye bread,400 g,590,SI,Borsch intenso con carne de res tierna,Rich beet soup with tender beef.
+38-0,Sopas,Crema de hongos,Cream of mushroom soup,280 g,550,SI,Crema de champiñones frescos con crutones y queso crema,Fresh mushroom soup with croutons and cream cheese.
+39-0,Platos calientes,Res con papas y hongos,Beef with potatoes and mushrooms,290 g,790,SI,Roast beef salteado con papas y hongos,Pan-fried roast beef with potatoes and mushrooms.
+40-0,Platos calientes,Fideos con pollo y verduras,Chicken and vegetable noodles,300 g,580,SI,"Fideos estilo asiático con pollo, tomate y zucchini","Asian-style noodles with chicken, tomatoes and zucchini."
+41-0,Platos calientes,Fideos con res y verduras,Beef and vegetable noodles,300 g,620,SI,"Fideos estilo asiático con roast beef, tomate y zucchini","Asian-style noodles with roast beef, tomatoes and zucchini."
+42-0,Platos calientes,Spaghetti carbonara,Spaghetti carbonara,240 g,550,SI,Spaghetti con panceta de granja en salsa cremosa,Spaghetti with farmhouse bacon in a cream sauce.
+43-0,Platos calientes,Spaghetti con mariscos,Seafood spaghetti,220 g,690,SI,Spaghetti con langostinos tigre y vieiras,Spaghetti with tiger shrimp and scallops.
+44-0,Platos calientes,Pechuga grillada con quinoa,Grilled chicken breast with quinoa,300 g,790,SI,Pechuga con quinoa y salsa cremosa de hongos,Chicken breast with quinoa and a creamy mushroom sauce.
+45-0,Platos calientes,Gemelli con pollo y hongos,Chicken and mushroom gemelli,250 g,590,SI,Pasta con pechuga y champiñones en salsa cremosa,Gemelli with chicken breast and mushrooms in a cream sauce.
+46-0,Café,Americano,Americano,200 ml,220,SI,Clásico a base de espresso con agua caliente,Espresso topped with hot water.
+46-1,Café,,,400 ml,290,SI,,
+47-0,Café,Capuchino,Cappuccino,180 ml,240,SI,Espresso con leche caliente y espuma suave,Espresso with steamed milk and soft foam.
+47-1,Café,,,300 ml,290,SI,,
+47-2,Café,,,400 ml,370,SI,,
+48-0,Café,Latte,Latte,250 ml,270,SI,Suave bebida de espresso con mucha leche,Smooth espresso with plenty of steamed milk.
+48-1,Café,,,350 ml,330,SI,,
+49-0,Café,Flat white,Flat white,190 ml,290,SI,"Intenso, a base de doble espresso",A rich coffee made with a double espresso.
+50-0,Café,Espresso,Espresso,30 ml,140,SI,Café corto y concentrado.,"A small, concentrated shot of coffee."
+51-0,Café,Doppio,Doppio,60 ml,200,SI,Doble porción de espresso.,A double shot of espresso.
+52-0,Café,Café de filtro,Filter coffee,200 ml,230,SI,Café preparado por filtrado.,Coffee brewed through a filter.
+52-1,Café,,,350 ml,290,SI,,
+53-0,Café,Chemex,Chemex,,380,SI,"Granos a elección de Colombia, Brasil, Etiopía o Kenia.","Choose beans from Colombia, Brazil, Ethiopia or Kenya."
+54-0,Café,Pour-over,Pour-over,,380,SI,"Granos a elección de Colombia, Brasil, Etiopía o Kenia.","Choose beans from Colombia, Brazil, Ethiopia or Kenya."
+55-0,Café de autor,Coffee Republic con madreselva,Coffee Republic with honeyberries,350 ml,370,SI,Bebida de autor a base de café de filtro,A house specialty made with filter coffee.
+56-0,Café de autor,Latte Stanislavski,Stanislavski latte,300 ml,420,SI,Latte con espuma de queso y un toque de coco,A latte with cheese foam and a hint of coconut.
+57-0,Café de autor,Latte de la taiga,Taiga latte,350 ml,370,SI,Café con mermelada natural,Coffee with fruit preserves.
+58-0,Café de autor,Raf clásico,Classic raf coffee,300 ml,410,SI,Café cremoso a base de espresso,A creamy espresso-based drink.
+58-1,Café de autor,,,400 ml,490,SI,,
+59-0,Café de autor,Raf de maní,Peanut raf coffee,300 ml,450,SI,Café cremoso con maní,Creamy coffee with peanuts.
+59-1,Café de autor,,,400 ml,550,SI,,
+60-0,Café de autor,Capuchino de mango y tabaco,Mango and tobacco cappuccino,180 ml,280,SI,Capuchino de autor con notas de mango y tabaco.,A signature cappuccino with notes of mango and tobacco.
+61-0,Sin café,Matcha latte,Matcha latte,300 ml,320,SI,Té verde japonés matcha con leche caliente,Japanese matcha green tea with hot milk.
+61-1,Sin café,,,400 ml,390,SI,,
+62-0,Sin café,Cacao clásico,Classic hot cocoa,300 ml,280,SI,Bebida caliente de sabor intenso y aterciopelado,"A rich, velvety hot cocoa."
+62-1,Sin café,,,400 ml,360,SI,,
+63-0,Sin café,Cacao con malvaviscos,Hot cocoa with marshmallows,300 ml,310,SI,Cacao caliente con malvaviscos,Hot cocoa with marshmallows.
+63-1,Sin café,,,400 ml,380,SI,,
+64-0,Sin café,Achicoria cremosa,Creamy chicory,350 ml,390,SI,Bebida caliente de achicoria con textura cremosa.,A hot chicory drink with a creamy flavor.
+65-0,Bebidas frescas,«No-whisky» con cola,Zero-proof whisky and cola,400 ml,390,SI,Cóctel sin alcohol de carácter intenso,A bold alcohol-free cocktail.
+66-0,Bebidas frescas,Aperol spritz sin alcohol,Alcohol-free Aperol spritz,300 ml,380,SI,Cóctel refrescante con aroma cítrico,A refreshing cocktail with a citrus aroma.
+67-0,Bebidas frescas,Riesling del Lejano Oriente,Far Eastern Riesling,350 ml,390,SI,Cóctel de autor sin alcohol,A house alcohol-free cocktail.
+68-0,Bebidas frescas,Limonada sandía y grosella,Watermelon and gooseberry lemonade,400 ml,380,SI,Limonada refrescante con acidez de frutos rojos,Refreshing lemonade with a tart berry finish.
+68-1,Bebidas frescas,,,1000 ml,750,SI,,
+69-0,Bebidas frescas,Limonada ruibarbo y frutilla,Rhubarb and strawberry lemonade,400 ml,390,SI,"Puré de ruibarbo y frutilla, fresca y ácida",Tangy rhubarb and strawberry purée.
+69-1,Bebidas frescas,,,1000 ml,750,SI,,
+70-0,Bebidas frescas,Mojito clásico sin alcohol,Classic virgin mojito,400 ml,410,SI,"Cóctel sin alcohol, por vaso o por jarra.",An alcohol-free cocktail served by the glass or carafe.
+70-1,Bebidas frescas,,,1000 ml,770,SI,,
+71-0,Bebidas frescas,Limonada de maracuyá y mandarina,Passion fruit and mandarin lemonade,400 ml,380,SI,"Limonada de la casa, por vaso o por jarra.",House lemonade served by the glass or carafe.
+71-1,Bebidas frescas,,,1000 ml,750,SI,,
+72-0,Bebidas frescas,Limonada de durazno y mora de los pantanos,Peach and cloudberry lemonade,400 ml,380,SI,"Limonada de la casa, por vaso o por jarra.",House lemonade served by the glass or carafe.
+72-1,Bebidas frescas,,,1000 ml,750,SI,,
+73-0,Bebidas wellness,Jugo de naranja exprimido,Freshly squeezed orange juice,200 ml,460,SI,Jugo de naranja recién exprimido,Freshly squeezed orange juice.
+74-0,Bebidas wellness,Smoothie proteico de café,Coffee protein smoothie,350 ml,490,SI,Bebida nutritiva de textura cremosa,"A nourishing drink with a smooth, creamy texture."
+75-0,Bebidas wellness,Smoothie espino amarillo y banana,Sea buckthorn and banana smoothie,350 ml,450,SI,Smoothie vitamínico de espino amarillo y banana,Sea buckthorn blended with ripe banana.
+76-0,Bebidas wellness,Smoothie verde,Green smoothie,350 ml,590,SI,"Kiwi, palta, manzana, pepino y miel.","Kiwi, avocado, apple, cucumber and honey."
+77-0,Café frío y matcha,Latte helado de arándanos,Iced blueberry latte,400 ml,390,SI,Café frío con puré de arándanos y leche,Iced coffee with blueberry purée and milk.
+78-0,Café frío y matcha,Espresso tonic de pera,Pear espresso tonic,400 ml,390,SI,Espresso aromático con tónica y pera,Espresso with tonic water and pear.
+79-0,Café frío y matcha,Matcha tonic cítrico,Citrus matcha tonic,400 ml,390,SI,Matcha con tónica y notas cítricas.,Matcha with tonic water and citrus notes.
+80-0,Café frío y matcha,Matcha umami,Umami matcha,400 ml,380,SI,Matcha fría de la carta de la casa.,A house iced matcha.
+81-0,Café frío y matcha,Cacao helado de coco,Iced coconut cocoa,400 ml,350,SI,Cacao frío con notas de coco.,Iced cocoa with coconut notes.
+82-0,Café frío y matcha,Espresso tonic de maracuyá y mandarina,Passion fruit and mandarin espresso tonic,400 ml,390,SI,"Espresso con tónica, maracuyá y mandarina.","Espresso with tonic water, passion fruit and mandarin."
+83-0,Café frío y matcha,Bumble,Bumble,400 ml,390,SI,Café frío de la casa.,A house iced coffee.
+84-0,Tés,Té de espino amarillo,Sea buckthorn tea,500 ml,390,SI,"Espino amarillo, canela y miel de flores. La miel se sirve aparte.","Sea buckthorn, cinnamon and wildflower honey. Honey is served on the side."
+84-1,Tés,,,1000 ml,490,SI,,
+85-0,Tés,Bosque de Shishkin,Shishkin Forest,500 ml,480,SI,Notas de piña de cedro y frutos del bosque. El jarabe de arándano rojo se sirve aparte.,Notes of Siberian pine cones and forest berries. Lingonberry syrup is served on the side.
+85-1,Tés,,,1000 ml,640,SI,,
+86-0,Tés,Arándano rojo de la taiga,Taiga lingonberry,500 ml,440,SI,Arándano rojo del bosque y naranja fresca. El jarabe de arándano rojo se sirve aparte.,Wild lingonberries and fresh orange. Lingonberry syrup is served on the side.
+86-1,Tés,,,1000 ml,630,SI,,
+87-0,Tés,Té del Lejano Oriente,Far Eastern tea,500 ml,440,SI,Bayas de schisandra del Lejano Oriente con escaramujo y miel de flores. La miel se sirve aparte.,Far Eastern schisandra berries with rose hips and wildflower honey. Honey is served on the side.
+87-1,Tés,,,1000 ml,610,SI,,
+88-0,Tés,Assam,Assam,500 ml,290,SI,"Té negro clásico de la India, sabor profundo",Classic Indian black tea with a deep flavor.
+89-0,Tés,Earl Grey,Earl Grey,500 ml,290,SI,Té negro con aroma de bergamota,Black tea scented with bergamot.
+90-0,Tés,Té verde clásico,Classic green tea,500 ml,290,SI,"Suave y aromático, con notas herbales","Light, aromatic green tea with grassy notes."
+91-0,Tés,Oolong lechoso,Milk oolong,500 ml,290,SI,Té con suave aroma cremoso y lácteo,"Oolong with a delicate, milky aroma."
+92-0,Tés,Tónico de la taiga,Taiga tonic tea,500 ml,290,SI,"Iván-chai con sagán-dailia, frambuesa y frutilla silvestre","Fireweed tea with sagan-dailya, raspberry and wild strawberry."
+93-0,Tés,Cóctel del Lejano Oriente,Far Eastern herbal blend,500 ml,290,SI,"Té de hierbas con melisa, hoja de grosella y manzanilla","Herbal tea with lemon balm, currant leaf and chamomile."
+94-0,Tés,Zorro astuto,Clever Fox,500 ml,290,SI,"Té de hierbas con lemongrass, goji y hoja de mora","Herbal tea with lemongrass, goji berries and blackberry leaf."
+95-0,Tés,Relajante de la noche,Evening herbal tea,500 ml,290,SI,"Té de hierbas con lavanda, manzanilla y hoja de abedul","Herbal tea with lavender, chamomile and birch leaf."
+96-0,Tés,Té de frambuesa y menta,Raspberry and mint tea,500 ml,460,SI,La miel se sirve aparte.,Honey is served on the side.
+96-1,Tés,,,1000 ml,640,SI,,
+97-0,Bebidas,Mors de arándano rojo,Lingonberry mors,200 ml,200,SI,Bebida tradicional de frutos rojos,A traditional berry drink.
+97-1,Bebidas,,,1000 ml,750,SI,,
+98-0,Bebidas,Jugo de manzana,Apple juice,200 ml,210,SI,Disponible por vaso o por jarra.,Served by the glass or carafe.
+98-1,Bebidas,,,1000 ml,850,SI,,
+99-0,Bebidas,Jugo de naranja,Orange juice,200 ml,210,SI,Disponible por vaso o por jarra.,Served by the glass or carafe.
+99-1,Bebidas,,,1000 ml,850,SI,,
+100-0,Bebidas,Jugo de cereza,Cherry juice,200 ml,210,SI,Disponible por vaso o por jarra.,Served by the glass or carafe.
+100-1,Bebidas,,,1000 ml,850,SI,,
+101-0,Bebidas,Agua del Baikal sin gas,Still Baikal water,500 ml,290,SI,Agua natural del Baikal.,Still water from Lake Baikal.
+102-0,Bebidas,Agua del Baikal con gas,Sparkling Baikal water,500 ml,290,SI,Agua con gas del Baikal.,Sparkling water from Lake Baikal.
+103-0,Bebidas,Cola Dobry,Dobry Cola,350 ml,350,SI,"Gaseosa de cola, disponible en dos tamaños.","Cola, available in two sizes."
+103-1,Bebidas,,,500 ml,390,SI,,
+104-0,Bebidas,Cola Dobry sin azúcar,Sugar-free Dobry Cola,250 ml,290,SI,Gaseosa de cola sin azúcar.,Sugar-free cola.
+105-0,Postres y hojaldres,Tarta de queso vasca,Basque cheesecake,130 g,390,SI,,
+106-0,Postres y hojaldres,Napoleón,Napoleon cake,130 g,450,SI,Clásico hojaldre con crema pastelera,Layers of puff pastry and custard.
+107-0,Postres y hojaldres,Torta de miel con arándano rojo,Honey cake with lingonberries,85 g,390,SI,Capas de miel con crema agria y arándano rojo,Honey cake layers with sour cream frosting and lingonberries.
+108-0,Postres y hojaldres,Pastelito «Kartoshka»,Kartoshka chocolate cake,70 g,270,SI,Postre de chocolate con intenso sabor a cacao,A rich chocolate dessert with a deep cocoa flavor.
+109-0,Postres y hojaldres,Tiramisú,Tiramisu,120 g,460,SI,Postre italiano con crema aireada de mascarpone,An Italian dessert with light mascarpone cream.
+110-0,Postres y hojaldres,Croissant clásico,Classic croissant,55 g,210,SI,Croissant clásico de manteca,A classic butter croissant.
+111-0,Postres y hojaldres,Croissant con merengue,Meringue croissant,160 g,280,SI,Croissant con merengue italiano,A croissant topped with Italian meringue.
+112-0,Postres y hojaldres,Croissant con crema de pistacho,Pistachio cream croissant,150 g,380,SI,Croissant con crema y trocitos de pistacho,A croissant filled with pistachio cream and crushed pistachios.
+113-0,Postres y hojaldres,Croissant tiramisú,Tiramisu croissant,90 g,360,SI,Croissant con crema estilo tiramisú,A croissant with tiramisu-style cream.
+114-0,Postres y hojaldres,Torta de zanahoria con caramelo,Carrot cake with caramel,130 g,430,SI,Bizcocho de zanahoria con cítricos y nueces,Carrot sponge cake with citrus and walnuts.
+115-0,Postres y hojaldres,Jejtsir,Khekhtsir,80 g,470,SI,Postre de autor con textura liviana de cheesecake,A signature dessert with the texture of a light cheesecake.
+116-0,Vinos tintos,Urban Sun Merlot,Urban Sun Merlot,125 ml,490,SI,Seco · Rusia,Dry · Russia
+116-1,Vinos tintos,,,750 ml,2950,SI,,
+117-0,Vinos tintos,Estrella del Mar Cabernet Sauvignon,Estrella del Mar Cabernet Sauvignon,125 ml,490,SI,Semidulce · España,Medium sweet · Spain
+117-1,Vinos tintos,,,750 ml,2950,SI,,
+118-0,Vinos tintos,Cellar Selection Carmenere,Cellar Selection Carmenere,125 ml,490,SI,Semiseco · Chile,Off-dry · Chile
+118-1,Vinos tintos,,,750 ml,2950,SI,,
+119-0,Vinos tintos,Kindzmarauli Askaneli,Kindzmarauli Askaneli,125 ml,580,SI,Semidulce · Georgia,Medium sweet · Georgia
+119-1,Vinos tintos,,,750 ml,3490,SI,,
+120-0,Vinos tintos,Alaris Tempranillo,Alaris Tempranillo,125 ml,520,SI,Semiseco · Chile,Off-dry · Chile
+120-1,Vinos tintos,,,750 ml,3100,SI,,
+121-0,Vinos tintos,Sol de Chile Cabernet Sauvignon,Sol de Chile Cabernet Sauvignon,125 ml,540,SI,Seco · Chile,Dry · Chile
+121-1,Vinos tintos,,,750 ml,3250,SI,,
+122-0,Vinos tintos,Love Revolution Pinotage,Love Revolution Pinotage,125 ml,590,SI,Seco · Sudáfrica,Dry · South Africa
+122-1,Vinos tintos,,,750 ml,3540,SI,,
+123-0,Vinos tintos,Ninja Kicks Pinot Noir,Ninja Kicks Pinot Noir,125 ml,580,SI,Semiseco · Alemania,Off-dry · Germany
+123-1,Vinos tintos,,,750 ml,3480,SI,,
+124-0,Vinos blancos,High Roof Tsitronny Magaracha,High Roof Tsitronny Magaracha,125 ml,490,SI,Seco · Rusia,Dry · Russia
+124-1,Vinos blancos,,,750 ml,2950,SI,,
+125-0,Vinos blancos,Estrella del Mar,Estrella del Mar,125 ml,490,SI,Semidulce · España,Medium sweet · Spain
+125-1,Vinos blancos,,,750 ml,2950,SI,,
+126-0,Vinos blancos,Alazani Valley Askaneli,Alazani Valley Askaneli,125 ml,550,SI,Semidulce · Georgia,Medium sweet · Georgia
+126-1,Vinos blancos,,,750 ml,3300,SI,,
+127-0,Vinos blancos,Tradicion Sauvignon Blanc,Tradicion Sauvignon Blanc,125 ml,520,SI,Seco · Chile,Dry · Chile
+127-1,Vinos blancos,,,750 ml,3100,SI,,
+128-0,Vinos blancos,Estrella del Mar Pinot Grigio,Estrella del Mar Pinot Grigio,125 ml,550,SI,Seco · España,Dry · Spain
+128-1,Vinos blancos,,,750 ml,3280,SI,,
+129-0,Vinos blancos,Landgut Riesling,Landgut Riesling,125 ml,610,SI,Seco · Austria,Dry · Austria
+129-1,Vinos blancos,,,750 ml,3680,SI,,
+130-0,Vinos blancos,Grotto Bay Sauvignon Blanc,Grotto Bay Sauvignon Blanc,125 ml,650,SI,Seco · Sudáfrica,Dry · South Africa
+130-1,Vinos blancos,,,750 ml,3950,SI,,
+131-0,Vinos blancos,Ninja Kicks Riesling,Ninja Kicks Riesling,125 ml,580,SI,Semiseco · Alemania,Off-dry · Germany
+131-1,Vinos blancos,,,750 ml,3480,SI,,
+132-0,Vinos rosados,High Roof Rose,High Roof Rose,125 ml,490,SI,Seco · Rusia,Dry · Russia
+132-1,Vinos rosados,,,750 ml,2950,SI,,
+133-0,Vinos rosados,Petula Rose,Petula Rose,125 ml,600,SI,Semiseco · Portugal,Off-dry · Portugal
+133-1,Vinos rosados,,,750 ml,3600,SI,,
+134-0,Espumantes,Adagum Brut,Adagum Brut,125 ml,490,SI,Brut · Rusia,Brut · Russia
+134-1,Espumantes,,,750 ml,2900,SI,,
+135-0,Espumantes,Adagum Demi-sec,Adagum Demi-sec,750 ml,2900,SI,Semidulce · Rusia,Medium sweet · Russia
+136-0,Espumantes,Montelliana Prosecco,Montelliana Prosecco,125 ml,590,SI,Seco · Italia,Dry · Italy
+136-1,Espumantes,,,750 ml,3500,SI,,
+137-0,Espumantes,Cava Divino Oro,Cava Divino Oro,750 ml,3800,SI,Brut · España,Brut · Spain
+138-0,Cócteles,Republic,Republic,350 ml,620,SI,Licor de arándano rojo con notas cítricas.,Lingonberry infusion with citrus notes.
+139-0,Cócteles,Aperol Spritz,Aperol Spritz,320 ml,620,SI,Aperitivo italiano con un ligero amargor cítrico.,Italian aperitif with a hint of bitter citrus.
+140-0,Cócteles,Mojito,Mojito,400 ml,650,SI,"Ron blanco, menta y lima.","White rum, mint and lime."
+141-0,Cócteles,Mai Tai,Mai Tai,560 ml,590,SI,Ron con notas cítricas.,Rum with citrus notes.
+142-0,Cócteles,Long Island,Long Island,400 ml,650,SI,"Ron, vodka, tequila, gin y licor cítrico.","Rum, vodka, tequila, gin and citrus liqueur."
+143-0,Cócteles,Whisky con cola,Whisky and cola,320 ml,450,SI,Whisky servido con cola.,Whisky served with cola.
+144-0,Cócteles,Gin tonic,Gin and tonic,400 ml,550,SI,Gin con tónica.,Gin with tonic water.
+145-0,Cócteles,Tequila Sunrise,Tequila Sunrise,400 ml,650,SI,"Tequila, jugo de naranja y jarabe de frutos rojos.","Tequila, orange juice and berry syrup."
+146-0,Bebidas calientes con alcohol,Vino caliente blanco o tinto,White or red mulled wine,300 ml,490,SI,Vino caliente con especias y cítricos.,Warm wine with spices and citrus.
+147-0,Bebidas calientes con alcohol,Café con whisky,Coffee with whisky,300 ml,450,SI,Café recién preparado con whisky.,Freshly brewed coffee with whisky.
+148-0,Bebidas calientes con alcohol,Café con coñac,Coffee with cognac,300 ml,470,SI,Café recién preparado con coñac.,Freshly brewed coffee with cognac.
+149-0,Destilados,Whisky Highland Cattle,Highland Cattle whisky,50 ml,420,SI,"Escocia · Fruta seca, caramelo, especias y humo de turba.","Scotland · Dried fruit, caramel, spices and peat smoke."
+150-0,Destilados,Whisky Jim Beam,Jim Beam whiskey,50 ml,550,SI,"Estados Unidos · Frutas confitadas, vainilla, caramelo y madera.","United States · Candied fruit, vanilla, caramel and oak notes."
+151-0,Destilados,Brandy Ararat 5 años,Ararat 5-year-old brandy,50 ml,490,SI,"Armenia · Caramelo, toffee y notas de panadería.","Armenia · Caramel, toffee and fresh pastry."
+152-0,Destilados,Gin Lockwood Original Dry,Lockwood Original Dry Gin,50 ml,350,SI,"Rusia · Enebro, anís, romero y cítricos.","Russia · Juniper, anise, rosemary and citrus."
+153-0,Destilados,Ron Caribbean Sunset,Caribbean Sunset rum,50 ml,390,SI,"Rusia · Fruta, flores y hierbas secas.","Russia · Fruit, flowers and dried herbs."
+154-0,Destilados,Tequila La Pavesa Plata,La Pavesa Plata tequila,50 ml,510,SI,México · Notas de agave azul maduro.,Mexico · Notes of ripe blue agave.
+155-0,Cervezas,Corona Extra,Corona Extra,330 ml,390,SI,"Lager americana rubia, filtrada.",Filtered American pale lager.
+156-0,Cervezas,Krušovice rubia,Krušovice pale lager,450 ml,330,SI,"Lager checa rubia, filtrada.",Filtered Czech pale lager.
+157-0,Cervezas,Krušovice negra,Krušovice dark lager,450 ml,330,SI,"Lager checa negra, filtrada.",Filtered Czech dark lager.
+158-0,Cervezas,Edelweiss,Edelweiss,430 ml,350,SI,"Ale alemana rubia, sin filtrar.",Unfiltered German pale ale.
+159-0,Cervezas,Maison Arne Blonde Ale,Maison Arne Blonde Ale,400 ml,360,SI,"Ale belga rubia, filtrada.",Filtered Belgian blonde ale.
+160-0,Cervezas sin alcohol,Krušovice sin alcohol,Alcohol-free Krušovice,330 ml,190,SI,"Lager checa rubia, filtrada y sin alcohol.","Filtered, alcohol-free Czech pale lager."
