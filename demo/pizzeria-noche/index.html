@@ -1,0 +1,436 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>NOTTE Pizzería | Demo de carta digital</title>
+<meta name="description" content="Demo de carta digital COFREP para pizzerías: masa, mitad y mitad, empanadas y pedido por WhatsApp.">
+<meta name="theme-color" content="#141210">
+<link rel="icon" href="logo.svg">
+<style>
+  /* ===== Colores de NOTTE (del logo) ===== */
+  :root{--noche:#141210;--noche2:#1f1b18;--verde:#2a2420;--naranja:#e0482c;--naranja2:#f07a5a;--crema:#f6eee2;--suave:#bdb1a3;--linea:#332b26}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html{scroll-behavior:smooth}
+  body{background:var(--noche);color:var(--crema);font-family:Arial,Helvetica,sans-serif;line-height:1.45;padding-bottom:96px}
+  button,input{font:inherit;color:inherit}button{cursor:pointer;border:none;background:none}
+  .wrap{max-width:620px;margin:0 auto;padding:0 16px}
+  h1,h2,h3{text-transform:uppercase;letter-spacing:.03em;line-height:1.05}
+
+  /* Barra */
+  .nav{position:sticky;top:0;z-index:20;background:rgba(20,18,16,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--linea)}
+  .nav .wrap{display:flex;align-items:center;gap:10px;height:60px}
+  .nav img{width:42px;height:42px;border-radius:50%;background:var(--crema)}
+  .nav b{flex:1;font-size:.95rem;letter-spacing:.08em}
+  .nav .idioma{border:1px solid var(--linea);border-radius:99px;padding:7px 12px;font-size:.75rem;font-weight:700}
+
+  /* Portada (estructura tipo KRAFT) */
+  .portada{position:relative;min-height:88vh;max-height:760px;display:flex;align-items:flex-end;background:#000 url("https://images.unsplash.com/photo-1593504049359-74330189a345?auto=format&fit=crop&w=1000&q=75") center 40%/cover no-repeat}
+  .portada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,18,16,.15) 0%,rgba(20,18,16,.45) 40%,rgba(20,18,16,.97) 88%)}
+  .portada .wrap{position:relative;z-index:1;width:100%;padding-bottom:30px}
+  .eyebrow{display:flex;align-items:center;gap:8px;font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--naranja2)}
+  .eyebrow i{width:8px;height:8px;background:var(--naranja);transform:rotate(45deg)}
+  .portada h1{margin-top:14px;text-transform:none;letter-spacing:0}
+  .h1a{display:block;font-family:Georgia,"Times New Roman",serif;font-weight:400;font-size:1.9rem;color:var(--crema)}
+  .marca-grande{display:block;font-size:clamp(2.7rem,13vw,4.4rem);font-weight:800;letter-spacing:.01em;line-height:.95;color:var(--naranja);text-shadow:0 4px 24px rgba(0,0,0,.45)}
+  .lema{color:var(--crema);font-weight:700;letter-spacing:.08em;font-size:.78rem;margin-top:10px;text-transform:uppercase;opacity:.85}
+  .sub{color:var(--crema);margin-top:12px;max-width:30ch;font-size:1rem}
+  .acciones{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:20px}
+  .btn-carta{display:inline-block;background:var(--naranja);color:#fff4ee;font-weight:800;text-decoration:none;padding:13px 20px;border-radius:12px}
+  .estado{display:inline-flex;align-items:center;gap:6px;font-size:.8rem;font-weight:700}
+  .estado i{width:9px;height:9px;border-radius:50%;background:var(--naranja);box-shadow:0 0 0 4px rgba(224,72,44,.25)}
+
+  /* Pestañas */
+  .tabs{position:sticky;top:60px;z-index:15;background:var(--noche);border-bottom:1px solid var(--linea)}
+  .tabs .wrap{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding-top:10px;padding-bottom:10px}
+  .tabs .wrap::-webkit-scrollbar{display:none}
+  .tabs a{flex:none;text-decoration:none;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:9px 14px;border-radius:99px;border:1px solid var(--linea);color:var(--suave)}
+  .tabs a.on{background:var(--naranja);border-color:var(--naranja);color:#fff4ee}
+
+  section{padding-top:30px;scroll-margin-top:120px}
+  .tit{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:6px}
+  .tit h2{font-size:1.4rem}.tit small{color:var(--naranja2);font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+  .bajada{color:var(--suave);font-size:.88rem;margin-bottom:16px}
+
+  /* Masa */
+  .masa{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:16px}
+  .masa button{border:1px solid var(--linea);border-radius:12px;padding:11px 8px;font-weight:700;font-size:.88rem;background:var(--noche2)}
+  .masa button small{display:block;font-weight:400;color:var(--suave);font-size:.72rem;margin-top:2px}
+  .masa button.on{border-color:var(--naranja);box-shadow:inset 0 0 0 1px var(--naranja)}
+
+  /* Grilla de pizzas (foto grande, como KRAFT) */
+  .pizzas{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .pz{display:flex;flex-direction:column;background:var(--noche2);border:1px solid var(--linea);border-radius:16px;overflow:hidden}
+  .pz .foto{width:100%;aspect-ratio:4/5;background:#0d0b0a center/cover no-repeat}
+  .pz .t{padding:12px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .pz h3{font-size:.98rem}
+  .pz p{font-size:.78rem;color:var(--suave);display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .pz .pie{display:flex;align-items:center;justify-content:space-between;gap:6px;margin-top:auto;padding-top:4px}
+  .precio{font-weight:800;color:var(--naranja2)}
+  .agregar{background:var(--naranja);color:#fff4ee;font-weight:800;font-size:.75rem;text-transform:uppercase;padding:8px 11px;border-radius:10px}
+  .cant{display:flex;align-items:center;gap:8px;font-weight:800}
+  .cant button{width:30px;height:30px;border-radius:50%;border:1px solid var(--naranja);color:var(--naranja2);font-size:1.05rem;font-weight:800}
+  @media(min-width:560px){.pizzas{grid-template-columns:repeat(3,1fr)}}
+
+  /* Mitad y mitad */
+  .mym{background:var(--noche2);border:1px solid var(--linea);border-radius:18px;padding:18px}
+  .circulo{position:relative;width:min(76vw,300px);aspect-ratio:1;margin:6px auto 16px;border-radius:50%;overflow:hidden;box-shadow:0 18px 40px rgba(0,0,0,.6),0 0 0 6px #0d0b0a}
+  .circulo .capa{position:absolute;inset:0;background-repeat:no-repeat}
+  .circulo .capa.d{clip-path:inset(0 0 0 50%)}
+  .circulo .corte{position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:rgba(15,25,18,.9)}
+  .mitad-nom{position:absolute;top:50%;transform:translateY(-50%);font-size:.68rem;font-weight:800;text-transform:uppercase;background:var(--crema);color:var(--noche);padding:4px 8px;border-radius:99px}
+  .mitad-nom.i{left:6px}.mitad-nom.d{right:6px}
+  .elegir{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .elegir label{display:grid;gap:6px;font-size:.72rem;font-weight:700;color:var(--suave);text-transform:uppercase;letter-spacing:.06em}
+  select{width:100%;padding:11px 10px;border-radius:10px;border:1px solid var(--linea);background:var(--noche);color:var(--crema);font:inherit;font-size:.9rem}
+  .extra-huevo{display:flex;align-items:center;gap:10px;margin-top:12px;font-size:.88rem}
+  .extra-huevo input{width:20px;height:20px;accent-color:var(--naranja)}
+  .mym .fila{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+  .mym .precio{font-size:1.4rem}
+
+  /* Empanadas */
+  .emp-foto{width:100%;aspect-ratio:16/9;border-radius:16px;background:#000 url("https://images.unsplash.com/photo-1624128082323-beb6b8b508db?auto=format&fit=crop&w=1000&q=75") center 50%/cover no-repeat;margin-bottom:12px}
+  .emp{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--noche2);border:1px solid var(--linea);border-radius:14px;padding:12px 14px;margin-bottom:8px}
+  .emp b{display:block;font-size:.95rem}.emp small{color:var(--suave);font-size:.8rem}
+  .docena{font-size:.8rem;color:var(--naranja2);margin:6px 0 0}
+
+  .pagos{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .pagos span{font-size:.8rem;font-weight:700;border:1px dashed var(--naranja);color:var(--naranja2);padding:7px 12px;border-radius:99px}
+  .muestra{font-size:.72rem;color:var(--suave);text-align:center;margin-top:26px}
+  footer{text-align:center;color:var(--suave);font-size:.72rem;margin-top:10px}footer a{color:var(--naranja2);text-decoration:none;font-weight:700}
+
+  /* Barra de pedido y hoja */
+  .barra{position:fixed;left:0;right:0;bottom:0;z-index:30;padding:14px 0 calc(14px + env(safe-area-inset-bottom));background:linear-gradient(transparent,var(--noche) 35%)}
+  .barra button{width:100%;display:flex;justify-content:space-between;align-items:center;background:var(--naranja);color:#fff4ee;border-radius:14px;padding:15px 18px;font-weight:800;text-transform:uppercase;letter-spacing:.03em;box-shadow:0 10px 30px rgba(0,0,0,.45)}
+  .barra button[disabled]{opacity:.5}
+  .velo{position:fixed;inset:0;z-index:40;background:rgba(0,0,0,.55);opacity:0;pointer-events:none;transition:.25s}.velo.ver{opacity:1;pointer-events:auto}
+  .hoja{position:fixed;left:0;right:0;bottom:0;z-index:41;max-width:620px;margin:0 auto;max-height:88%;overflow-y:auto;background:var(--crema);color:#1d1a14;border-radius:22px 22px 0 0;padding:18px 18px calc(20px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .3s}
+  .hoja.ver{transform:none}
+  .hoja h3{display:flex;justify-content:space-between;align-items:center;font-size:1.15rem;margin-bottom:6px}
+  .hoja .x{width:34px;height:34px;border-radius:50%;background:#e6dcc9}
+  .ln{display:flex;gap:10px;align-items:center;padding:11px 0;border-bottom:1px solid #e1d6c2}
+  .ln .t{flex:1}.ln b{display:block;font-size:.92rem}.ln small{color:#6d6556;font-size:.78rem}
+  .ln .pr{font-weight:800;color:#b5651d;white-space:nowrap}
+  .ln .q{display:flex;gap:6px;align-items:center;font-weight:800}
+  .ln .q button{width:28px;height:28px;border-radius:50%;background:#e6dcc9;font-weight:800}
+  .modo{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:14px 0 10px}
+  .modo button{padding:11px;border-radius:10px;border:1px solid #cfc2aa;font-weight:700}
+  .modo button.on{background:var(--noche);color:var(--crema);border-color:var(--noche)}
+  .hoja input[type=text]{width:100%;padding:12px 14px;border-radius:10px;border:1px solid #cfc2aa;background:#fff;margin-bottom:8px}
+  .total{display:flex;justify-content:space-between;font-weight:800;font-size:1.2rem;margin:10px 0 12px}
+  .wa{width:100%;background:#25d366;color:#08140f;border-radius:14px;padding:15px;font-weight:800;font-size:1rem}
+  .wa:disabled{opacity:.4}
+  .nota{font-size:.72rem;color:#6d6556;text-align:center;margin-top:10px}
+  .aviso{position:fixed;left:50%;top:76px;z-index:50;transform:translate(-50%,-10px);background:var(--crema);color:var(--noche);font-weight:800;font-size:.85rem;padding:10px 16px;border-radius:99px;opacity:0;transition:.25s;pointer-events:none;white-space:nowrap}
+  .aviso.ver{opacity:1;transform:translate(-50%,0)}
+
+  /* ===== Efectos y microinteracciones ===== */
+  :root{--ease:cubic-bezier(.22,1,.36,1);--rebote:cubic-bezier(.34,1.56,.64,1)}
+  button,.btn-carta,.tabs a{position:relative;overflow:hidden;transition:transform .18s var(--ease),background-color .25s,border-color .25s,box-shadow .25s,color .25s}
+  button:active,.btn-carta:active,.tabs a:active{transform:scale(.95)}
+  :focus-visible{outline:2px solid var(--naranja2);outline-offset:3px;border-radius:10px}
+
+  /* Onda al tocar */
+  .onda{position:absolute;border-radius:50%;pointer-events:none;background:currentColor;opacity:.28;transform:scale(0);animation:onda .6s var(--ease) forwards}
+  @keyframes onda{to{transform:scale(1);opacity:0}}
+
+  /* Botones naranjas con brillo que recorre */
+  .agregar,.btn-carta,.barra button{box-shadow:0 6px 18px rgba(224,72,44,.28),inset 0 -2px 0 rgba(0,0,0,.18)}
+  .agregar::after,.btn-carta::after,.barra button::after{content:"";position:absolute;top:0;bottom:0;left:-60%;width:40%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);transition:left .6s var(--ease)}
+  .agregar:hover::after,.btn-carta:hover::after,.barra button:hover::after{left:130%}
+  .agregar:hover,.btn-carta:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(224,72,44,.4)}
+  .btn-carta{transition:transform .25s var(--rebote),box-shadow .25s}
+  .btn-carta span+*{display:inline-block}
+
+  /* Tarjetas: borde con degradé que se ilumina */
+  .pz,.emp,.mym{position:relative;transition:transform .3s var(--ease),border-color .3s,box-shadow .3s}
+  .pz::before,.emp::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1.5px;background:linear-gradient(140deg,var(--naranja),transparent 40%,transparent 60%,var(--naranja2));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;opacity:0;transition:opacity .35s;pointer-events:none;z-index:2}
+  .pz:hover,.emp:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(0,0,0,.4)}
+  .pz:hover::before,.emp:hover::before{opacity:.7}
+  .pz .foto{transition:transform .6s var(--ease),filter .4s}
+  .pz:hover .foto{transform:scale(1.06)}
+  .pz{isolation:isolate}
+  .pz .foto{overflow:hidden}
+
+  /* En el pedido: borde fijo, brillo y sello */
+  .en-pedido{border-color:var(--naranja)!important;box-shadow:0 0 0 1px var(--naranja),0 12px 28px rgba(224,72,44,.18)}
+  .en-pedido::before{opacity:1!important}
+  .pz.en-pedido::after{content:"✓";position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;background:var(--naranja);color:#fff4ee;font-weight:800;display:grid;place-items:center;box-shadow:0 4px 12px rgba(0,0,0,.4);animation:sello .45s var(--rebote);z-index:3}
+  @keyframes sello{from{transform:scale(0) rotate(-90deg)}to{transform:scale(1) rotate(0)}}
+
+  /* Pop al sumar */
+  .pop{animation:pop .45s var(--rebote)}
+  @keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.06)}100%{transform:scale(1)}}
+  .salto{animation:salto .5s var(--rebote)}
+  @keyframes salto{0%,100%{transform:translateY(0)}35%{transform:translateY(-6px) scale(1.04)}}
+
+  /* Masa y modo: selección con borde animado */
+  .masa button,.modo button{transition:transform .2s var(--ease),border-color .25s,box-shadow .3s,background .25s}
+  .masa button.on{box-shadow:inset 0 0 0 1px var(--naranja),0 0 0 4px rgba(224,72,44,.15);background:linear-gradient(160deg,rgba(224,72,44,.16),var(--noche2))}
+  .masa button.on span::before{content:"● ";color:var(--naranja)}
+
+  /* Pestañas: subrayado que se desliza */
+  .tabs a{transition:background .3s,color .3s,border-color .3s,transform .18s}
+  .tabs a.on{box-shadow:0 6px 16px rgba(224,72,44,.3)}
+
+  /* Contadores + y − */
+  .cant button{transition:transform .15s,background .2s,color .2s}
+  .cant button:hover{background:var(--naranja);color:#fff4ee}
+
+  /* Mitad y mitad: la pizza gira un poco al cambiar */
+  .circulo{transition:transform .5s var(--rebote)}
+  .circulo.gira{transform:rotate(-8deg) scale(1.03)}
+  select{transition:border-color .25s,box-shadow .25s}
+  select:focus{border-color:var(--naranja);box-shadow:0 0 0 3px rgba(224,72,44,.2);outline:none}
+
+  /* Casilla de huevo con tilde animada */
+  .extra-huevo input{appearance:none;-webkit-appearance:none;width:22px;height:22px;border:2px solid var(--naranja);border-radius:6px;display:grid;place-items:center;cursor:pointer;transition:background .2s}
+  .extra-huevo input::after{content:"";width:6px;height:11px;border:solid #fff4ee;border-width:0 3px 3px 0;transform:rotate(45deg) scale(0);transition:transform .25s var(--rebote);margin-top:-2px}
+  .extra-huevo input:checked{background:var(--naranja)}
+  .extra-huevo input:checked::after{transform:rotate(45deg) scale(1)}
+
+  /* Barra de pedido: late cuando cambia */
+  .barra button.late{animation:late .55s var(--rebote)}
+  @keyframes late{0%{transform:scale(1)}30%{transform:scale(1.035)}60%{transform:scale(.99)}100%{transform:scale(1)}}
+  #resumen{display:inline-block;transition:transform .3s var(--rebote)}
+
+  /* Entrada suave de las tarjetas al aparecer */
+  .entra{opacity:0;transform:translateY(18px)}
+  .entra.visto{opacity:1;transform:none;transition:opacity .6s var(--ease),transform .6s var(--ease)}
+
+  /* Botón WhatsApp */
+  .wa{transition:transform .2s var(--ease),box-shadow .25s,filter .2s}
+  .wa:not(:disabled):hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(37,211,102,.35)}
+
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.entra{opacity:1;transform:none}}
+</style><style>.confirma{display:flex;gap:10px;align-items:flex-start;margin:12px 0;padding:12px 14px;border-radius:12px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.45);font-size:.85rem;line-height:1.4}.confirma b{font-size:1.1rem;line-height:1}</style>
+</head><body>
+
+<header class="nav"><div class="wrap"><img src="logo.svg" alt="NOTTE"><b>NOTTE</b><button class="idioma" id="idioma">EN</button></div></header>
+
+<section class="portada" id="inicio" style="padding-top:0"><div class="wrap">
+  <p class="eyebrow"><i></i> <span data-t="eyebrow">Demo COFREP · Pizzería</span></p>
+  <h1><span class="h1a" data-t="laCarta">La carta de</span><strong class="marca-grande">NOTTE</strong></h1>
+  <p class="lema" data-t="lema">Pizza de noche, masa madre</p>
+  <p class="sub" data-t="sub">Pizzas a la piedra y al molde, y empanadas caseras.</p>
+  <div class="acciones"><a class="btn-carta" href="#pizzas"><span data-t="explorar">Explorá la carta</span> ↓</a><span class="estado"><i></i><span id="estado"></span></span></div>
+</div></section>
+
+<nav class="tabs"><div class="wrap">
+  <a href="#pizzas" class="on" data-t="tPizzas">Pizzas</a><a href="#mitad" data-t="tMitad">Mitad y mitad</a><a href="#empanadas" data-t="tEmp">Empanadas</a>
+</div></nav>
+
+<main class="wrap">
+  <section id="pizzas">
+    <div class="tit"><h2 data-t="pizzas">Nuestras pizzas</h2><small data-t="masaMadre">Masa madre</small></div>
+    <p class="bajada" data-t="bajada">Elegí la masa y sumá las que quieras. Todas llevan salsa de tomate casera.</p>
+    <div class="masa" id="masa">
+      <button class="on" data-masa="piedra"><span data-t="piedra">A la piedra</span><small data-t="piedraD">Fina y crocante</small></button>
+      <button data-masa="molde"><span data-t="molde">Al molde</span><small data-t="moldeD">Alta y esponjosa</small></button>
+    </div>
+    <div class="pizzas" id="listaPizzas"></div>
+  </section>
+
+  <section id="mitad">
+    <div class="tit"><h2 data-t="mymT">Mitad y mitad</h2><small data-t="dosGustos">Dos gustos</small></div>
+    <p class="bajada" data-t="mymB">Elegí un gusto para cada mitad. Se cobra la mitad más cara.</p>
+    <div class="mym">
+      <div class="circulo"><div class="capa" id="capaI"></div><div class="capa d" id="capaD"></div><div class="corte"></div><span class="mitad-nom i" id="nomI"></span><span class="mitad-nom d" id="nomD"></span></div>
+      <div class="elegir">
+        <label><span data-t="izq">Mitad izquierda</span><select id="selI"></select></label>
+        <label><span data-t="der">Mitad derecha</span><select id="selD"></select></label>
+      </div>
+      <label class="extra-huevo"><input type="checkbox" id="huevo"><span data-t="huevo">Extra huevo</span> <span class="precio" id="precioHuevo"></span></label>
+      <div class="fila"><span class="precio" id="precioMym"></span><button class="agregar" id="sumarMym" data-t="sumar">Sumar</button></div>
+    </div>
+  </section>
+
+  <section id="empanadas">
+    <div class="tit"><h2 data-t="empT">Empanadas</h2><small data-t="rotiseras">Caseras</small></div>
+    <div class="emp-foto" role="img" aria-label="Empanadas"></div>
+    <div id="listaEmp"></div>
+    <p class="docena" id="docena"></p>
+  </section>
+
+  <section>
+    <div class="tit"><h2 data-t="pagoT">Formas de pago</h2></div>
+    <div class="pagos"><span>Cuenta DNI</span><span>Mercado Pago</span><span data-t="efectivo">Efectivo</span></div>
+  </section>
+
+  <p class="muestra" data-t="muestra">Demo de COFREP: marca, fotos y precios de ejemplo.</p>
+  <footer><span data-t="firma">Carta digital por</span> <a href="https://cofrep.com">COFREP</a> · Tuimagen Studio</footer>
+</main>
+
+<div class="barra"><div class="wrap"><button id="verPedido" disabled><span data-t="verPedido">Ver mi pedido</span><span id="resumen">0 · $ 0</span></button></div></div>
+<div class="velo" id="velo"></div>
+<section class="hoja" id="hoja" aria-label="Tu pedido">
+  <h3><span data-t="tuPedido">Tu pedido</span><button class="x" id="cerrar" aria-label="Cerrar">✕</button></h3>
+  <div id="lineas"></div>
+  <div class="modo" id="modo"><button class="on" data-m="delivery">Delivery</button><button data-m="retiro" data-t="retiro">Retiro</button></div>
+  <input type="text" id="nombre" autocomplete="name">
+  <input type="text" id="direccion" autocomplete="street-address">
+  <div class="total"><span>Total</span><span id="total"></span></div>
+  <p class="confirma" role="note"><b>⏳</b><span data-t="confirma">Tu pedido queda confirmado cuando el local te responde por WhatsApp con el total final y la demora.</span></p>
+  <button class="wa" id="enviar" data-t="enviar">Enviar pedido por WhatsApp</button>
+  <p class="nota" data-t="nota">Demo: el pedido se envía como PRUEBA al WhatsApp de COFREP.</p>
+</section>
+<div class="aviso" id="aviso"></div>
+
+<script>
+/* ===== DATOS DEL LOCAL ===== */
+const LOCAL = { nombre: "NOTTE", whatsapp: "79098745709", prueba: true };
+/* Horario: miércoles (3) a domingo (0), de 20 a 24 h */
+const DIAS_ABIERTO = [0, 3, 4, 5, 6], ABRE = 20, CIERRA = 24;
+const RECARGO_MOLDE = 1500, PRECIO_HUEVO = 1200;
+const U = "https://images.unsplash.com/photo-", Q = "?auto=format&fit=crop&w=1000&q=75";
+/* Pizzas del demo. foto: id de Unsplash · x,y: centro de la pizza en la foto (%) · z: zoom */
+const PIZZAS = [
+  { id: "muzza", es: "Muzzarella", en: "Mozzarella", ing: "Salsa de tomate, muzzarella, orégano y aceitunas.", ingEn: "Tomato sauce, mozzarella, oregano and olives.", precio: 9500, foto: "1548369937-47519962c11a", x: 56, y: 42, z: 1.6 },
+  { id: "marga", es: "Margherita", en: "Margherita", ing: "Tomate cherry, muzzarella, albahaca fresca y aceite de oliva.", ingEn: "Cherry tomato, mozzarella, fresh basil and olive oil.", precio: 11000, foto: "1595854341625-f33ee10dbf94", x: 45, y: 50, z: 1.3 },
+  { id: "napo", es: "Napolitana", en: "Neapolitan", ing: "Horno a leña, tomate, muzzarella y albahaca.", ingEn: "Wood-fired, tomato, mozzarella and basil.", precio: 11000, foto: "1574071318508-1cdbab80d002", x: 48, y: 46, z: 1.2 },
+  { id: "pepp", es: "Pepperoni", en: "Pepperoni", ing: "Doble pepperoni bien crocante y muzzarella.", ingEn: "Double crispy pepperoni and mozzarella.", precio: 12500, foto: "1628840042765-356cda07504e", x: 48, y: 50, z: 1.15 },
+  { id: "quesos", es: "Cuatro quesos", en: "Four cheese", ing: "Muzzarella, parmesano, fontina y roquefort.", ingEn: "Mozzarella, parmesan, fontina and blue cheese.", precio: 13000, foto: "1513104890138-7c749659a591", x: 64, y: 45, z: 1.55 },
+  { id: "pollo", es: "Pollo BBQ", en: "BBQ chicken", ing: "Pollo, cebolla morada, salsa barbacoa y cilantro.", ingEn: "Chicken, red onion, barbecue sauce and cilantro.", precio: 13000, foto: "1565299624946-b28f40a0ae38", x: 45, y: 50, z: 1.15 },
+  { id: "verde", es: "Verde", en: "Green", ing: "Espinaca, rúcula, burrata y aceite de oliva.", ingEn: "Spinach, arugula, burrata and olive oil.", precio: 12500, foto: "1593560708920-61dd98c46a4e", x: 50, y: 50, z: 1.12 },
+  { id: "especial", es: "Especial", en: "House special", ing: "Salchicha, aceitunas, champiñón y morrón.", ingEn: "Sausage, olives, mushroom and peppers.", precio: 13500, foto: "1604382354936-07c5d9983bd3", x: 50, y: 52, z: 1.75 }
+];
+const EMPANADAS = [
+  { id: "carne", es: "Carne", en: "Beef", precio: 1500 },
+  { id: "pollo", es: "Pollo", en: "Chicken", precio: 1500 },
+  { id: "jyq", es: "Jamón y queso", en: "Ham & cheese", precio: 1500 },
+  { id: "verdura", es: "Verdura", en: "Vegetable", precio: 1500 }
+];
+const PRECIO_DOCENA = 16000;
+
+const TXT = {
+  es: { eyebrow: "Demo COFREP · Pizzería", laCarta: "La carta de", sub: "Pizzas a la piedra y al molde, y empanadas caseras.", explorar: "Explorá la carta", h1: "Pizzas de masa madre", lema: "Pizza de noche, masa madre", d1: "A la piedra y al molde", d2: "Empanadas", d3: "Mié a dom · solo de noche", tPizzas: "Pizzas", tMitad: "Mitad y mitad", tEmp: "Empanadas", pizzas: "Nuestras pizzas", masaMadre: "Masa madre", bajada: "Elegí la masa y sumá las que quieras. Todas llevan salsa de tomate casera.", piedra: "A la piedra", piedraD: "Fina y crocante", molde: "Al molde", moldeD: "Alta y esponjosa", mymT: "Mitad y mitad", dosGustos: "Dos gustos", mymB: "Elegí un gusto para cada mitad. Se cobra la mitad más cara.", izq: "Mitad izquierda", der: "Mitad derecha", huevo: "Extra huevo", sumar: "Sumar", empT: "Empanadas", rotiseras: "Caseras", pagoT: "Formas de pago", efectivo: "Efectivo", muestra: "Demo de COFREP: marca, fotos y precios de ejemplo.", firma: "Carta digital por", verPedido: "Ver mi pedido", tuPedido: "Tu pedido", retiro: "Retiro", enviar: "Enviar pedido por WhatsApp", nota: "Demo: el pedido se envía como PRUEBA al WhatsApp de COFREP.", agregar: "Sumar", abierto: "Abierto ahora · hasta las 24 h", cerrado: "Hoy abrimos a las 20 h", cerradoDia: "Abrimos de miércoles a domingo, de noche", nombre: "Tu nombre", dir: "Dirección de entrega", docena: "La docena (12 a elección) sale", agregada: "Sumado al pedido", confirma: "Tu pedido queda confirmado cuando el local te responde por WhatsApp con el total final y la demora.", vacio: "Todavía no sumaste nada.", unidad: "c/u", masaP: "a la piedra", masaM: "al molde", conHuevo: "con huevo" },
+  en: { eyebrow: "COFREP demo · Pizzeria", laCarta: "The menu at", sub: "Stone-baked and pan pizzas, plus homemade empanadas.", explorar: "Explore the menu", h1: "Sourdough pizzas", lema: "Night pizza, sourdough", d1: "Stone-baked & pan", d2: "Empanadas", d3: "Wed to Sun · nights only", tPizzas: "Pizzas", tMitad: "Half & half", tEmp: "Empanadas", pizzas: "Our pizzas", masaMadre: "Sourdough", bajada: "Pick your crust and add as many as you like. All with homemade tomato sauce.", piedra: "Stone-baked", piedraD: "Thin and crispy", molde: "Pan pizza", moldeD: "Thick and fluffy", mymT: "Half & half", dosGustos: "Two flavors", mymB: "Pick a flavor for each half. You pay the pricier half.", izq: "Left half", der: "Right half", huevo: "Extra egg", sumar: "Add", empT: "Empanadas", rotiseras: "Homemade", pagoT: "Payment", efectivo: "Cash", muestra: "COFREP demo: sample brand, photos and prices.", firma: "Digital menu by", verPedido: "See my order", tuPedido: "Your order", retiro: "Pickup", enviar: "Send order on WhatsApp", nota: "Demo: the order is sent as a TEST to COFREP's WhatsApp.", agregar: "Add", abierto: "Open now · until midnight", cerrado: "We open today at 8 pm", cerradoDia: "Open Wednesday to Sunday, nights", nombre: "Your name", dir: "Delivery address", docena: "A dozen (12 of your choice) is", agregada: "Added to your order", confirma: "Your order is confirmed once the restaurant replies on WhatsApp with the final total and waiting time.", vacio: "Your order is empty.", unidad: "each", masaP: "stone-baked", masaM: "pan", conHuevo: "with egg" }
+};
+let idioma = (() => { try { return localStorage.getItem("notte-idioma") || "es" } catch (e) { return "es" } })();
+const t = k => TXT[idioma][k];
+const nom = o => idioma === "en" ? o.en : o.es;
+const $ = s => document.querySelector(s);
+const plata = n => "$ " + Math.round(n).toLocaleString("es-AR");
+const pz = id => PIZZAS.find(p => p.id === id);
+
+let masa = "piedra", modo = "delivery";
+const pedido = {};          /* clave → {nombre, precio, cant} */
+
+function fondo(el, p) {
+  if (!p.foto) { el.style.background = "var(--verde) url('logo.svg') center/45% no-repeat"; return; }
+  el.style.background = `#0d0b0a url('${U}${p.foto}${Q}') no-repeat`;
+  el.style.backgroundSize = `${p.z * 100}%`;
+  const pos = (c, z) => Math.max(0, Math.min(100, (0.5 - c / 100 * z) / (1 - z) * 100));
+  el.style.backgroundPosition = `${pos(p.x, p.z)}% ${pos(p.y, p.z)}%`;
+}
+const precioMasa = p => p + (masa === "molde" ? RECARGO_MOLDE : 0);
+
+function listaPizzas() {
+  $("#listaPizzas").innerHTML = PIZZAS.map(p => {
+    const k = `pz-${p.id}-${masa}`, q = pedido[k] ? pedido[k].cant : 0;
+    return `<article class="pz entra visto${q ? " en-pedido" : ""}" data-card="${p.id}"><div class="foto" data-foto="${p.id}"></div><div class="t"><h3>${nom(p)}</h3><p>${idioma === "en" ? p.ingEn : p.ing}</p>
+      <div class="pie"><span class="precio">${plata(precioMasa(p.precio))}</span>${q ? `<div class="cant"><button data-k="${k}" data-d="-1">−</button>${q}<button data-k="${k}" data-d="1">+</button></div>` : `<button class="agregar" data-pz="${p.id}">${t("agregar")}</button>`}</div></div></article>`;
+  }).join("");
+  document.querySelectorAll("[data-foto]").forEach(el => fondo(el, pz(el.dataset.foto)));
+}
+let mitades = function () {
+  const i = pz($("#selI").value), d = pz($("#selD").value);
+  fondo($("#capaI"), i); fondo($("#capaD"), d);
+  $("#nomI").textContent = nom(i); $("#nomD").textContent = nom(d);
+  $("#precioMym").textContent = plata(precioMym());
+}
+function precioMym() { return precioMasa(Math.max(pz($("#selI").value).precio, pz($("#selD").value).precio)) + ($("#huevo").checked ? PRECIO_HUEVO : 0); }
+function listaEmp() {
+  $("#listaEmp").innerHTML = EMPANADAS.map(e => { const k = `emp-${e.id}`, q = pedido[k] ? pedido[k].cant : 0;
+    return `<div class="emp${q ? " en-pedido" : ""}"><div><b>${nom(e)}</b><small>${plata(e.precio)} ${t("unidad")}</small></div>${q ? `<div class="cant"><button data-k="${k}" data-d="-1">−</button>${q}<button data-k="${k}" data-d="1">+</button></div>` : `<button class="agregar" data-emp="${e.id}">${t("agregar")}</button>`}</div>` }).join("");
+  $("#docena").textContent = `${t("docena")} ${plata(PRECIO_DOCENA)}`;
+}
+function estado() {
+  const a = new Date(), h = a.getHours(), dia = a.getDay();
+  $("#estado").textContent = DIAS_ABIERTO.includes(dia) ? (h >= ABRE && h < CIERRA ? t("abierto") : t("cerrado")) : t("cerradoDia");
+}
+function textos() {
+  document.documentElement.lang = idioma;
+  document.querySelectorAll("[data-t]").forEach(el => { if (TXT[idioma][el.dataset.t]) el.textContent = t(el.dataset.t) });
+  $("#idioma").textContent = idioma === "es" ? "EN" : "ES";
+  $("#nombre").placeholder = t("nombre"); $("#direccion").placeholder = t("dir");
+  const opts = PIZZAS.filter(p => p.foto).map(p => `<option value="${p.id}">${nom(p)}</option>`).join("");
+  const vi = $("#selI").value || "marga", vd = $("#selD").value || "pepp";
+  $("#selI").innerHTML = opts; $("#selD").innerHTML = opts; $("#selI").value = vi; $("#selD").value = vd;
+  $("#precioHuevo").textContent = "+" + plata(PRECIO_HUEVO);
+  listaPizzas(); mitades(); listaEmp(); estado(); hoja();
+}
+
+/* ===== Pedido ===== */
+let sumar = function (k, nombre, precio) { pedido[k] = pedido[k] || { nombre, precio, cant: 0 }; pedido[k].cant++; avisar(t("agregada")); refrescar(); }
+let cambiar = function (k, d) { if (!pedido[k]) return; pedido[k].cant += d; if (pedido[k].cant <= 0) delete pedido[k]; refrescar(); }
+function cantEmp() { return EMPANADAS.reduce((s, e) => s + (pedido[`emp-${e.id}`] ? pedido[`emp-${e.id}`].cant : 0), 0); }
+function total() {
+  let s = 0; for (const k in pedido) if (!k.startsWith("emp-")) s += pedido[k].precio * pedido[k].cant;
+  const n = cantEmp(), docenas = Math.floor(n / 12), sueltas = n % 12;
+  return s + docenas * PRECIO_DOCENA + sueltas * EMPANADAS[0].precio;
+}
+function refrescar() {
+  listaPizzas(); listaEmp(); hoja();
+  const n = Object.values(pedido).reduce((s, x) => s + x.cant, 0);
+  $("#resumen").textContent = `${n} · ${plata(total())}`;
+  $("#verPedido").disabled = !n;
+}
+function hoja() {
+  const ks = Object.keys(pedido);
+  $("#lineas").innerHTML = ks.length ? ks.map(k => `<div class="ln"><div class="t"><b>${pedido[k].nombre}</b><small>${plata(pedido[k].precio)}</small></div><div class="q"><button data-k="${k}" data-d="-1">−</button>${pedido[k].cant}<button data-k="${k}" data-d="1">+</button></div></div>`).join("") : `<p class="nota">${t("vacio")}</p>`;
+  $("#total").textContent = plata(total());
+  $("#enviar").disabled = !ks.length;
+}
+function avisar(m) { const a = $("#aviso"); a.textContent = m; a.classList.add("ver"); clearTimeout(a._t); a._t = setTimeout(() => a.classList.remove("ver"), 1400) }
+const abrir = v => { $("#hoja").classList.toggle("ver", v); $("#velo").classList.toggle("ver", v) };
+
+document.body.addEventListener("click", e => {
+  const b = e.target.closest("button"); if (!b) return;
+  if (b.dataset.masa) { masa = b.dataset.masa; document.querySelectorAll("#masa button").forEach(x => x.classList.toggle("on", x === b)); listaPizzas(); mitades(); }
+  else if (b.dataset.pz) { const p = pz(b.dataset.pz); sumar(`pz-${p.id}-${masa}`, `Pizza ${p.es} (${masa === "molde" ? "al molde" : "a la piedra"})`, precioMasa(p.precio)); }
+  else if (b.dataset.emp) { const em = EMPANADAS.find(x => x.id === b.dataset.emp); sumar(`emp-${em.id}`, `Empanada de ${em.es.toLowerCase()}`, em.precio); }
+  else if (b.dataset.k) { cambiar(b.dataset.k, +b.dataset.d); }
+  else if (b.dataset.m) { modo = b.dataset.m; document.querySelectorAll("#modo button").forEach(x => x.classList.toggle("on", x === b)); $("#direccion").style.display = modo === "delivery" ? "block" : "none"; }
+});
+$("#sumarMym").onclick = () => {
+  const i = pz($("#selI").value), d = pz($("#selD").value), h = $("#huevo").checked;
+  sumar(`mym-${i.id}-${d.id}-${masa}-${h ? 1 : 0}`, `Pizza ½ ${i.es} / ½ ${d.es} (${masa === "molde" ? "al molde" : "a la piedra"})${h ? " + huevo" : ""}`, precioMym());
+};
+["#selI", "#selD", "#huevo"].forEach(s => $(s).addEventListener("change", mitades));
+$("#idioma").onclick = () => { idioma = idioma === "es" ? "en" : "es"; try { localStorage.setItem("notte-idioma", idioma) } catch (e) {} textos(); };
+$("#verPedido").onclick = () => abrir(true); $("#cerrar").onclick = () => abrir(false); $("#velo").onclick = () => abrir(false);
+$("#enviar").onclick = () => {
+  const l = [LOCAL.prueba ? "🧪 PEDIDO DE PRUEBA · demo NOTTE de COFREP" : "Hola NOTTE! Quiero pedir:", ""];
+  for (const k in pedido) l.push(`• ${pedido[k].cant} x ${pedido[k].nombre} — ${plata(pedido[k].precio * pedido[k].cant)}`);
+  if (cantEmp() >= 12) l.push(`(Empanadas: ${Math.floor(cantEmp() / 12)} docena/s a precio de docena)`);
+  l.push("", `Total: ${plata(total())}`, modo === "delivery" ? `Delivery a: ${$("#direccion").value.trim() || "(sin indicar)"}` : "Retiro en el local");
+  const n = $("#nombre").value.trim(); if (n) l.push(`Nombre: ${n}`);
+  l.push("", "Quedo atento/a a la confirmación del pedido.");
+  window.open(`https://wa.me/${LOCAL.whatsapp}?text=${encodeURIComponent(l.join("\n"))}`, "_blank", "noopener");
+};
+/* Pestaña activa al desplazarse */
+const tabs = document.querySelectorAll(".tabs a");
+const observador = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) tabs.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id)) }), { rootMargin: "-45% 0px -50% 0px" });
+["#pizzas", "#mitad", "#empanadas"].forEach(s => observador.observe($(s)));
+
+/* ===== Efectos: onda al tocar, pop al sumar, barra que late, entrada de tarjetas ===== */
+document.addEventListener("pointerdown", e => {
+  const b = e.target.closest("button, .btn-carta, .tabs a"); if (!b || b.disabled) return;
+  const r = b.getBoundingClientRect(), d = Math.max(r.width, r.height) * 2.2;
+  const o = document.createElement("span"); o.className = "onda";
+  o.style.cssText = `width:${d}px;height:${d}px;left:${e.clientX - r.left - d / 2}px;top:${e.clientY - r.top - d / 2}px`;
+  b.appendChild(o); setTimeout(() => o.remove(), 650);
+});
+const latir = () => { const b = $("#verPedido"); b.classList.remove("late"); void b.offsetWidth; b.classList.add("late"); };
+const _sumar = sumar;
+sumar = function (k, n, pr) {
+  _sumar(k, n, pr); latir();
+  const id = k.split("-")[1], card = document.querySelector(`[data-card="${id}"]`);
+  if (card) { card.classList.remove("pop"); void card.offsetWidth; card.classList.add("pop"); }
+};
+const _cambiar = cambiar; cambiar = function (k, d) { _cambiar(k, d); latir(); };
+const _mitades = mitades; mitades = function () { _mitades(); const c = $(".circulo"); c.classList.add("gira"); clearTimeout(c._t); c._t = setTimeout(() => c.classList.remove("gira"), 350); };
+["#selI", "#selD", "#huevo"].forEach(s => $(s).addEventListener("change", mitades));
+const aparecer = new IntersectionObserver(es => es.forEach(en => { if (en.isIntersecting) { en.target.classList.add("visto"); aparecer.unobserve(en.target); } }), { threshold: .12 });
+document.querySelectorAll(".mym, .emp-foto, .masa").forEach(el => { el.classList.add("entra"); aparecer.observe(el); });
+textos();
+</script>
+</body></html>
