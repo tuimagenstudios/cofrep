@@ -205,7 +205,7 @@ changeLanguage();
 /* ===== Pedido por WhatsApp =====
    NEGOCIO_WHATSAPP: número del local con código de país, sin + ni espacios.
    ES_PRUEBA: true mientras es propuesta (el mensaje sale marcado como prueba). */
-const NEGOCIO_WHATSAPP = '79098745709';
+const NEGOCIO_WHATSAPP = '5492281565279';
 const ES_PRUEBA = true;
 let modoPedido = 'mesa';
 const pistasPedido = { mesa: ['Número de mesa', 'Table number'], retiro: ['Tu nombre', 'Your name'], delivery: ['Dirección de entrega', 'Delivery address'] };

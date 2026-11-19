@@ -206,7 +206,7 @@ setLanguage(query('#language').value);
 /* ===== Pedido por WhatsApp =====
    NEGOCIO_WHATSAPP: número del local con código de país, sin + ni espacios.
    En el demo llega al WhatsApp de COFREP marcado como prueba. */
-const NEGOCIO_WHATSAPP = '79098745709';
+const NEGOCIO_WHATSAPP = '5492281565279';
 const ES_DEMO = true;
 let modoPedido = 'mesa';
 const pistas = { mesa: ['Número de mesa', 'Table number'], retiro: ['Tu nombre', 'Your name'], delivery: ['Dirección de entrega', 'Delivery address'] };
