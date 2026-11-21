@@ -629,3 +629,11 @@ img { max-width: 100%; }
 }
 .idioma:hover { background: var(--fondo); border-color: var(--roble); }
 @media (max-width: 380px) { .top-acciones { gap: 6px; } .idioma { min-width: 40px; padding: 0 9px; } }
+
+/* Eventos en el celular: la sección es alta y angosta y la fachada se agrandaba demasiado.
+   Acá la foto queda como una franja arriba, a su tamaño, y se funde con el fondo arena. */
+@media (max-width: 700px) {
+  .ritual-fondo { bottom: auto; height: auto; aspect-ratio: 592 / 282; }
+  .ritual-fondo img { transform: none; object-position: center 45%; }
+  .ritual-fondo::after { background: linear-gradient(180deg, color-mix(in srgb, var(--arena) 45%, transparent) 0%, color-mix(in srgb, var(--arena) 70%, transparent) 60%, var(--arena) 100%); }
+}
