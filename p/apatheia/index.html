@@ -5,19 +5,19 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="COFREP · TuimagenStudio">
   <meta property="og:locale" content="es_AR">
-  <meta property="og:title" content="Tu carta digital, de regalo · Apatheia Coffee">
-  <meta property="og:description" content="Propuesta para Karen Aducci. Mirá tu carta y descargá la presentación.">
+  <meta property="og:title" content="Tu carta digital y cómo usarla · Apatheia Coffee">
+  <meta property="og:description" content="Propuesta y guía paso a paso para Karen Aducci. Descargá el PDF, los QR para imprimir y las historias para Instagram.">
   <meta property="og:url" content="https://cofrep.com/p/apatheia/">
   <meta property="og:image" content="https://cofrep.com/p/apatheia/tarjeta.jpg?v=2">
   <meta property="og:image:secure_url" content="https://cofrep.com/p/apatheia/tarjeta.jpg?v=2">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Tu carta digital, de regalo · Apatheia Coffee">
+  <meta property="og:image:alt" content="Tu carta digital y cómo usarla · Apatheia Coffee">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#E9E5DC">
-  <title>Apatheia Coffee | Propuesta de carta digital</title>
+  <title>Apatheia Coffee | Tu carta digital y cómo usarla</title>
   <link rel="icon" href="logo.webp" type="image/webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -55,6 +55,26 @@
     .cierre .btn-verde { background: var(--soft); color: var(--verde); border-color: var(--soft); }
     .cierre .btn-linea { color: var(--soft); border-color: rgba(248, 247, 244, .5); }
     .cierre .btn-linea:hover { background: rgba(248, 247, 244, .08); }
+    .descargas { padding: 8px 0 64px; scroll-margin-top: 16px; }
+    .descargas h2 { margin: 0 0 8px; font: 200 clamp(30px, 5vw, 44px)/1.1 Manrope, sans-serif; letter-spacing: -.02em; }
+    .descargas h2 span { color: var(--verde); }
+    .descargas .bajada { margin: 0 0 28px; }
+    .grilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(14px, 2.5vw, 24px); }
+    .item { background: var(--soft); border-radius: 3px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 18px 40px -30px rgba(41, 33, 27, .45); }
+    .item .vista { aspect-ratio: 4 / 5; background: var(--sand); overflow: hidden; }
+    .item .vista img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .item .vista.pdf { display: grid; place-items: center; background: var(--verde); color: var(--soft); text-align: center; padding: 24px; }
+    .item .vista.pdf b { display: block; font: 200 34px/1.1 Manrope, sans-serif; font-weight: 200; }
+    .item .vista.pdf small { display: block; margin-top: 10px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--sand); }
+    .item .info { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .item h3 { margin: 0; font: 500 16px/1.3 Inter, sans-serif; }
+    .item p { margin: 0; font-size: 14px; color: var(--gris); }
+    .item .btn { justify-content: center; margin-top: auto; }
+    .item .info p + .btn { margin-top: 14px; }
+    .links { margin-top: 28px; padding: 22px 24px; background: var(--soft); border-left: 2px solid var(--oak); }
+    .links h3 { margin: 0 0 10px; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gris); font-weight: 400; }
+    .links ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+    .links a { color: var(--verde); word-break: break-all; }
     footer { padding: 24px 0 40px; font-size: 11px; letter-spacing: .1em; color: var(--gris); text-align: center; }
   </style>
 </head>
@@ -67,32 +87,60 @@
 
     <section class="intro">
       <p class="eyebrow">Para Karen Aducci · Apatheia Coffee</p>
-      <h1>Tu carta digital,<br><span>de regalo.</span></h1>
-      <p class="bajada">Acá está la propuesta completa. Podés verla desde el celular, bajarla en PDF o entrar directo a tu carta y probarla.</p>
+      <h1>Tu carta digital<br><span>y cómo usarla.</span></h1>
+      <p class="bajada">Acá está todo: la propuesta, una guía paso a paso para manejar tu carta sola, los QR para imprimir y las historias para Instagram.</p>
       <div class="acciones">
         <a class="btn btn-verde" href="https://cofrep.com/apatheia/" target="_blank" rel="noopener">Ver mi carta ↗</a>
-        <a class="btn btn-linea" href="Propuesta-Apatheia-Coffee.pdf" download>Descargar PDF ↓</a>
+        <a class="btn btn-linea" href="#descargas">Descargas ↓</a>
       </div>
     </section>
 
     <p class="girar">Tip: girá el celular para ver las láminas más grandes.</p>
     <section class="laminas" aria-label="Láminas de la propuesta">
-      <figure><img src="laminas/01.webp" alt="Portada: Propuesta de carta digital para Karen Aducci, de Apatheia Coffee" width="1600" height="900"><figcaption>01 · Portada</figcaption></figure>
-      <figure><img src="laminas/02.webp" alt="No te la contamos: probala vos. QR a cofrep.com/apatheia" width="1600" height="900" loading="lazy"><figcaption>02 · Probala vos</figcaption></figure>
-      <figure><img src="laminas/03.webp" alt="Así se ve la carta en el celular" width="1600" height="900" loading="lazy"><figcaption>03 · Así se ve</figcaption></figure>
-      <figure><img src="laminas/04.webp" alt="Qué gana Apatheia: seis beneficios" width="1600" height="900" loading="lazy"><figcaption>04 · Qué gana Apatheia</figcaption></figure>
-      <figure><img src="laminas/05.webp" alt="Vivos y completos, en el momento presente" width="1600" height="900" loading="lazy"><figcaption>05 · Armonía, paz y libertad</figcaption></figure>
-      <figure><img src="laminas/06.webp" alt="El control es tuyo: la planilla de Google" width="1600" height="900" loading="lazy"><figcaption>06 · El control es tuyo</figcaption></figure>
-      <figure><img src="laminas/07.webp" alt="Cómo seguimos: tres pasos" width="1600" height="900" loading="lazy"><figcaption>07 · Cómo seguimos</figcaption></figure>
-      <figure><img src="laminas/08.webp" alt="Inversión: cero pesos, es un regalo" width="1600" height="900" loading="lazy"><figcaption>08 · Inversión</figcaption></figure>
-      <figure><img src="laminas/09.webp" alt="Karen, ¿la sumamos a tus mesas?" width="1600" height="900" loading="lazy"><figcaption>09 · Para dejarla lista</figcaption></figure>
+      <figure><img src="laminas/01.webp?v=2" alt="Portada: Tu carta digital y cómo usarla" width="1600" height="900"><figcaption>01 · Portada</figcaption></figure>
+      <figure><img src="laminas/02.webp?v=2" alt="Probala vos: QR a cofrep.com/apatheia" width="1600" height="900" loading="lazy"><figcaption>02 · Probala vos</figcaption></figure>
+      <figure><img src="laminas/03.webp?v=2" alt="Así se ve la carta en el celular" width="1600" height="900" loading="lazy"><figcaption>03 · Así se ve</figcaption></figure>
+      <figure><img src="laminas/04.webp?v=2" alt="Qué gana Apatheia: seis beneficios" width="1600" height="900" loading="lazy"><figcaption>04 · Qué gana Apatheia</figcaption></figure>
+      <figure><img src="laminas/05.webp?v=2" alt="Vivos y completos, en el momento presente" width="1600" height="900" loading="lazy"><figcaption>05 · Armonía, paz y libertad</figcaption></figure>
+      <figure><img src="laminas/06.webp?v=2" alt="El control es tuyo: la planilla de Google" width="1600" height="900" loading="lazy"><figcaption>06 · El control es tuyo</figcaption></figure>
+      <figure><img src="laminas/07.webp?v=2" alt="Guía de uso: todo lo que necesitás saber, paso a paso" width="1600" height="900" loading="lazy"><figcaption>07 · Guía de uso</figcaption></figure>
+      <figure><img src="laminas/08.webp?v=2" alt="Guía A: entrar a tu planilla" width="1600" height="900" loading="lazy"><figcaption>08 · Guía A · Entrar a tu planilla</figcaption></figure>
+      <figure><img src="laminas/09.webp?v=2" alt="Guía B: qué va en cada columna" width="1600" height="900" loading="lazy"><figcaption>09 · Guía B · Cada columna</figcaption></figure>
+      <figure><img src="laminas/10.webp?v=2" alt="Guía C: los cambios del día a día" width="1600" height="900" loading="lazy"><figcaption>10 · Guía C · El día a día</figcaption></figure>
+      <figure><img src="laminas/11.webp?v=2" alt="Guía D: cómo la usa tu cliente" width="1600" height="900" loading="lazy"><figcaption>11 · Guía D · Tu cliente</figcaption></figure>
+      <figure><img src="laminas/12.webp?v=2" alt="Guía E: tu carta en inglés" width="1600" height="900" loading="lazy"><figcaption>12 · Guía E · En inglés</figcaption></figure>
+      <figure><img src="laminas/13.webp?v=2" alt="Guía F: si algo no anda" width="1600" height="900" loading="lazy"><figcaption>13 · Guía F · Si algo no anda</figcaption></figure>
+      <figure><img src="laminas/14.webp?v=2" alt="Cómo quedó: lo que está listo y lo que falta" width="1600" height="900" loading="lazy"><figcaption>14 · Cómo quedó</figcaption></figure>
+      <figure><img src="laminas/15.webp?v=2" alt="Inversión: cero pesos, es un regalo" width="1600" height="900" loading="lazy"><figcaption>15 · Inversión</figcaption></figure>
+      <figure><img src="laminas/16.webp?v=2" alt="Karen, ahora la carta está en tus manos" width="1600" height="900" loading="lazy"><figcaption>16 · Cualquier duda</figcaption></figure>
+    </section>
+
+    <section class="descargas" id="descargas" aria-labelledby="desc-h">
+      <p class="eyebrow">Para descargar</p>
+      <h2 id="desc-h">Todo listo <span>para usar.</span></h2>
+      <p class="bajada">Tocá «Descargar» y se guarda en tu celular o en tu compu.</p>
+      <div class="grilla">
+        <article class="item"><div class="vista pdf"><div><b>Propuesta<br>y guía</b><small>PDF · 16 láminas</small></div></div><div class="info"><h3>Propuesta y guía de uso</h3><p>Para guardar y tener a mano.</p><a class="btn btn-verde" href="Propuesta-Apatheia-Coffee.pdf?v=2" download="Apatheia-Coffee-Propuesta-y-guia.pdf">Descargar PDF ↓</a></div></article>
+        <article class="item"><div class="vista"><img src="descargas/qr-a4-hoja-1.jpg" alt="Hoja A4 con 16 tarjetas con QR de la carta, para recortar" loading="lazy"></div><div class="info"><h3>QR para imprimir · A4</h3><p>16 por hoja. Hoja 1 para cualquier mesa; hoja 2 numerada del 1 al 16.</p><a class="btn btn-verde" href="descargas/Apatheia-QR-para-imprimir-A4.pdf" download="Apatheia-QR-para-imprimir-A4.pdf">Descargar PDF ↓</a></div></article>
+        <article class="item"><div class="vista"><img src="descargas/historia-1.jpg" alt="Historia de Instagram: Nuestra carta, ahora en tu celular, con QR" loading="lazy"></div><div class="info"><h3>Historia 1 · La carta</h3><p>Instagram · 1080 × 1920</p><a class="btn btn-verde" href="descargas/historia-1.jpg" download="Apatheia-historia-1.jpg">Descargar ↓</a></div></article>
+        <article class="item"><div class="vista"><img src="descargas/historia-2.jpg" alt="Historia de Instagram: ¿Qué torta te espera hoy?, con QR" loading="lazy"></div><div class="info"><h3>Historia 2 · Las tortas</h3><p>Instagram · 1080 × 1920</p><a class="btn btn-verde" href="descargas/historia-2.jpg" download="Apatheia-historia-2.jpg">Descargar ↓</a></div></article>
+        <article class="item"><div class="vista"><img src="descargas/tarjeta-qr.jpg" alt="Tarjeta con QR de la carta para el feed o WhatsApp" loading="lazy"></div><div class="info"><h3>Tarjeta con QR</h3><p>Para el feed de Instagram o WhatsApp.</p><a class="btn btn-verde" href="descargas/tarjeta-qr.jpg" download="Apatheia-tarjeta-QR.jpg">Descargar ↓</a></div></article>
+      </div>
+      <div class="links">
+        <h3>Tus links</h3>
+        <ul>
+          <li>Tu carta: <a href="https://cofrep.com/apatheia/" target="_blank" rel="noopener">cofrep.com/apatheia</a></li>
+          <li>Tu carta en inglés: <a href="https://cofrep.com/apatheia/?lang=en" target="_blank" rel="noopener">cofrep.com/apatheia/?lang=en</a></li>
+          <li>Tu planilla: <a href="https://docs.google.com/spreadsheets/d/1AoAXBVnL55oU1Eug04pMr6slKdRLeIYaKVychGlZM-4/edit" target="_blank" rel="noopener">abrir en Google Sheets</a></li>
+        </ul>
+      </div>
     </section>
   </div>
 
   <section class="cierre">
     <div class="wrap">
-      <h2>¿La sumamos a tus mesas?</h2>
-      <p>Solo necesito tu WhatsApp para los pedidos, tu Gmail para la planilla y tus precios actuales.</p>
+      <h2>¿Alguna duda?</h2>
+      <p>Escribime cuando quieras y lo vemos juntas. Si algo se rompe, lo arreglo sin costo.</p>
       <div class="acciones">
         <a class="btn btn-verde" href="https://wa.me/5492281565279?text=Hola%20Natalia!%20Vi%20la%20propuesta%20de%20la%20carta%20de%20Apatheia%20Coffee." target="_blank" rel="noopener">Escribime por WhatsApp ↗</a>
         <a class="btn btn-linea" href="https://cofrep.com/apatheia/" target="_blank" rel="noopener">Ver mi carta ↗</a>
