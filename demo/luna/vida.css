@@ -142,3 +142,11 @@ dialog[open]{animation:luna-pop .4s cubic-bezier(.2,.8,.2,1)}
   .hero-copy h1 em::after{clip-path:none}
   .product-card,.section-heading,.demo-note,.menu-tools,.ritual-copy,.ritual-stamp,.site-footer>*{opacity:1;translate:none}
 }
+
+/* ============ PIE ordenado ============ */
+.site-footer{flex-wrap:wrap;column-gap:40px;row-gap:26px}
+.site-footer .wordmark{white-space:nowrap}
+.site-footer .ti-credit-wrap{order:10;margin-top:0!important;padding-top:22px;border-top:1px solid var(--line)}
+@media (min-width:641px){
+  .site-footer>p,.site-footer>span{white-space:nowrap}
+}
