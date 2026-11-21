@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#E9E5DC">
+  <title>Apatheia Coffee | Propuesta de carta digital</title>
+  <link rel="icon" href="logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@200;300&display=swap" rel="stylesheet">
+  <style>
+    :root { --soft:#F8F7F4; --ivory:#E9E5DC; --sand:#D5C8B8; --oak:#B79A7B; --char:#292929; --gris:#6B655E; --verde:#435037; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--ivory); color: var(--char); font: 400 16px/1.6 Inter, Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 48px); }
+    header { padding: 28px 0 12px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    header img { height: 64px; width: auto; display: block; }
+    header span { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gris); text-align: right; }
+    .intro { padding: clamp(32px, 7vw, 72px) 0 clamp(28px, 5vw, 48px); }
+    .eyebrow { margin: 0 0 18px; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: var(--gris); }
+    h1 { margin: 0; font: 200 clamp(38px, 7vw, 72px)/1.04 Manrope, Inter, sans-serif; letter-spacing: -.025em; }
+    h1 span { color: var(--verde); }
+    .bajada { margin: 22px 0 0; max-width: 46ch; color: var(--gris); font-size: 17px; }
+    .acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 2px; text-decoration: none; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; transition: background-color 500ms, color 500ms, border-color 500ms; }
+    .btn-verde { background: var(--verde); color: var(--soft); border: 1px solid var(--verde); }
+    .btn-verde:hover { background: #36412C; }
+    .btn-linea { border: 1px solid var(--oak); color: var(--verde); }
+    .btn-linea:hover { background: var(--soft); }
+    .laminas { display: grid; gap: clamp(16px, 3vw, 28px); padding-bottom: 56px; }
+    .laminas figure { margin: 0; }
+    .laminas img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 3px; background: var(--sand); box-shadow: 0 18px 40px -28px rgba(41, 33, 27, .45); }
+    .laminas figcaption { margin-top: 8px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gris); }
+    .girar { display: none; margin: 0 0 20px; padding: 12px 14px; border-left: 2px solid var(--oak); background: var(--soft); font-size: 13px; color: var(--gris); }
+    @media (max-width: 700px) and (orientation: portrait) { .girar { display: block; } }
+    .cierre { background: var(--verde); color: var(--soft); padding: clamp(40px, 7vw, 72px) 0; }
+    .cierre h2 { margin: 0 0 12px; font: 200 clamp(30px, 5vw, 48px)/1.1 Manrope, sans-serif; }
+    .cierre p { margin: 0; opacity: .85; }
+    .cierre .btn-verde { background: var(--soft); color: var(--verde); border-color: var(--soft); }
+    .cierre .btn-linea { color: var(--soft); border-color: rgba(248, 247, 244, .5); }
+    .cierre .btn-linea:hover { background: rgba(248, 247, 244, .08); }
+    footer { padding: 24px 0 40px; font-size: 11px; letter-spacing: .1em; color: var(--gris); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="logo-verde.webp" alt="Apatheia Coffee" width="439" height="300">
+      <span>Un regalo de<br>TuimagenStudio · COFREP</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">Para Karen Aducci · Apatheia Coffee</p>
+      <h1>Tu carta digital,<br><span>de regalo.</span></h1>
+      <p class="bajada">Acá está la propuesta completa. Podés verla desde el celular, bajarla en PDF o entrar directo a tu carta y probarla.</p>
+      <div class="acciones">
+        <a class="btn btn-verde" href="https://cofrep.com/apatheia/" target="_blank" rel="noopener">Ver mi carta ↗</a>
+        <a class="btn btn-linea" href="Propuesta-Apatheia-Coffee.pdf" download>Descargar PDF ↓</a>
+      </div>
+    </section>
+
+    <p class="girar">Tip: girá el celular para ver las láminas más grandes.</p>
+    <section class="laminas" aria-label="Láminas de la propuesta">
+      <figure><img src="laminas/01.webp" alt="Portada: Propuesta de carta digital para Karen Aducci, de Apatheia Coffee" width="1600" height="900"><figcaption>01 · Portada</figcaption></figure>
+      <figure><img src="laminas/02.webp" alt="No te la contamos: probala vos. QR a cofrep.com/apatheia" width="1600" height="900" loading="lazy"><figcaption>02 · Probala vos</figcaption></figure>
+      <figure><img src="laminas/03.webp" alt="Así se ve la carta en el celular" width="1600" height="900" loading="lazy"><figcaption>03 · Así se ve</figcaption></figure>
+      <figure><img src="laminas/04.webp" alt="Qué gana Apatheia: seis beneficios" width="1600" height="900" loading="lazy"><figcaption>04 · Qué gana Apatheia</figcaption></figure>
+      <figure><img src="laminas/05.webp" alt="Vivos y completos, en el momento presente" width="1600" height="900" loading="lazy"><figcaption>05 · Armonía, paz y libertad</figcaption></figure>
+      <figure><img src="laminas/06.webp" alt="El control es tuyo: la planilla de Google" width="1600" height="900" loading="lazy"><figcaption>06 · El control es tuyo</figcaption></figure>
+      <figure><img src="laminas/07.webp" alt="Cómo seguimos: tres pasos" width="1600" height="900" loading="lazy"><figcaption>07 · Cómo seguimos</figcaption></figure>
+      <figure><img src="laminas/08.webp" alt="Inversión: cero pesos, es un regalo" width="1600" height="900" loading="lazy"><figcaption>08 · Inversión</figcaption></figure>
+      <figure><img src="laminas/09.webp" alt="Karen, ¿la sumamos a tus mesas?" width="1600" height="900" loading="lazy"><figcaption>09 · Para dejarla lista</figcaption></figure>
+    </section>
+  </div>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>¿La sumamos a tus mesas?</h2>
+      <p>Solo necesito tu WhatsApp para los pedidos, tu Gmail para la planilla y tus precios actuales.</p>
+      <div class="acciones">
+        <a class="btn btn-verde" href="https://wa.me/5492281565279?text=Hola%20Natalia!%20Vi%20la%20propuesta%20de%20la%20carta%20de%20Apatheia%20Coffee." target="_blank" rel="noopener">Escribime por WhatsApp ↗</a>
+        <a class="btn btn-linea" href="https://cofrep.com/apatheia/" target="_blank" rel="noopener">Ver mi carta ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer>© 2026 · TuimagenStudio · COFREP</footer>
+</body>
+</html>
