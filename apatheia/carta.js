@@ -72,6 +72,139 @@
       (DIBUJOS[tipo] || DIBUJOS.espresso).replace(/<path /g, '<path pathLength="1" ') + '</svg>';
   }
 
+  /* ---------- Idioma (Español / English) ----------
+     EN_CARTA traduce los productos y secciones escritos acá. Si la planilla
+     trae columnas en inglés (Producto EN, Descripción EN, Categoría EN,
+     Etiqueta EN), esas mandan. Lo que no tenga traducción sale en español. */
+  var EN_CARTA = {
+    secciones: {
+      'cafeteria': ['Coffee', 'Specialty coffee, hot or iced.'],
+      'pasteleria': ['Pastries', 'House cakes, by the slice.'],
+      'salados': ['Savory', 'For lunch or an afternoon snack.']
+    },
+    productos: {
+      'latte': ['Latte', 'Espresso, steamed milk and a thin layer of foam.'],
+      'cappuccino': ['Cappuccino', 'Equal parts coffee, milk and foam.'],
+      'latte-de-caramelo': ['Caramel latte', 'Our latte with caramel.'],
+      'cafe-frio': ['Iced coffee', 'Coffee over ice, served in a glass.'],
+      'cheesecake-de-frutos-rojos': ['Berry cheesecake', 'Crunchy base, cream cheese and red berries.'],
+      'pavlova': ['Pavlova', 'Meringue, cream and fruit.'],
+      'chocotorta': ['Chocotorta', 'An Argentine classic: chocolate cookies, dulce de leche and cream cheese.'],
+      'choco-oreo': ['Choco Oreo', 'Chocolate and Oreo cookies.'],
+      'carrot-cake': ['Carrot cake', 'Carrot, spices and cream cheese frosting.'],
+      'ferrero-rocher': ['Ferrero Rocher', 'Chocolate, hazelnuts and Ferrero chocolates.'],
+      'red-velvet': ['Red Velvet', 'Red sponge cake with cream cheese frosting.'],
+      'marquise-de-frutos-rojos': ['Berry marquise', 'Rich chocolate, cream and red berries.'],
+      'torta-cookie': ['Cookie cake', 'Cookie dough cake with chocolate chips.'],
+      'key-lime': ['Key lime pie', 'Lime cream on a crunchy base.'],
+      'lemon-pie': ['Lemon pie', 'Lemon cream and meringue.'],
+      'rogel': ['Rogel', 'An Argentine classic: thin crisp layers, dulce de leche and meringue.'],
+      'sandwich-en-focaccia': ['Focaccia sandwich', 'House focaccia, warm and filled.'],
+      'ensaladas': ['Salads', 'Ask for the salad of the day.']
+    },
+    etiquetas: { 'nuevo': 'New', 'nueva': 'New', 'de-la-casa': 'House favorite', 'recomendado': 'Recommended', 'sin-tacc': 'Gluten free', 'vegano': 'Vegan', 'vegana': 'Vegan', 'del-dia': 'Of the day' }
+  };
+
+  var TXT = {
+    es: {
+      skip: 'Ir a la carta', seleccion: 'Selección', heroEyebrow: 'Cafetería y pastelería de especialidad',
+      heroH1: 'Café, pastelería<br><span>y un poco de calma.</span>',
+      heroBajada: 'Apatheia es armonía, paz y libertad: sentirnos vivos y completos en el momento presente. Vení a vivirlo con un café y algo dulce.',
+      verCarta: 'Ver la carta <span aria-hidden="true">↓</span>', portadaAlt: 'Café para llevar de Apatheia junto a flores y una caja de pastelería',
+      figcaption: 'Nuestra casa · Azul, Buenos Aires', horario: 'Horario', direccion: 'Dirección', mascotas: 'Mascotas',
+      avisoDemo: 'Precios de muestra en ARS. Los precios y productos definitivos se cargan desde la planilla del local.',
+      eventosEyebrow: 'Eventos en Apatheia', eventosH2: 'Un café<br>para crear.',
+      evento1: '<span class="num">01 · Art and Coffee</span> Pintá una pieza y compartí una merienda con café. Incluye materiales y una guía paso a paso.',
+      evento2: '<span class="num">02 · Coffee and Journaling</span> Un encuentro de escritura libre para compartir una pausa con un café.',
+      evento3: '<span class="num">03 · Próximos encuentros</span> Las fechas y los cupos se anuncian en Instagram. <a class="link-flecha" href="https://www.instagram.com/apatheia.coffee_/" target="_blank" rel="noopener">Consultá fechas <span aria-hidden="true">↗</span></a>',
+      pieFrase: 'La armonía también<br>se comparte.', comoLlegar: 'Cómo llegar ↗', fotos: 'Fotos: Apatheia Coffee',
+      verSeleccion: 'Ver selección <span aria-hidden="true">→</span>', tuSeleccion: 'Tu selección', paraMomento: 'Para este momento.', paraMesa: 'Para la mesa {n}.',
+      tuNombre: 'Tu nombre', nombrePh: '¿Cómo te llamás?', donde: '¿Dónde lo disfrutás?', enSalon: 'En el salón', paraLlevar: 'Para llevar',
+      numMesa: 'Número de mesa', opcional: '(opcional)', notas: 'Notas', notasPh: 'Sin azúcar, para llevar a las 17 h…',
+      pedidoMuestra: 'Pedido de muestra', copiar: 'Copiar', vaciar: 'Vaciar selección', total: 'Total', cerrar: 'Cerrar',
+      infoMuestra: 'Modo muestra: el pedido se prepara para copiar, todavía no se envía al local.',
+      infoWa: 'Se abrirá WhatsApp con tu pedido para que el local lo confirme.',
+      preparar: 'Preparar pedido', enviarWa: 'Enviar por WhatsApp',
+      producto: 'producto', productos: 'productos', enSeleccion: 'en tu selección', agregar: 'Agregar', agregado: 'agregado',
+      legal: 'Consultá alérgenos y disponibilidad en la barra.', vacia: 'Todavía no elegiste nada. Tocá un producto para ver su ficha.',
+      quitarUno: 'Quitar uno', sumarUno: 'Sumar uno', faltaNombre: 'Escribí tu nombre para preparar el pedido',
+      copiado: 'Pedido copiado. No se envió al local.', copiaManual: 'Seleccionamos el texto: copialo desde el menú de tu teléfono.',
+      vaciada: 'Selección vacía', noche: 'Noche', dia: 'Día', aNoche: 'Cambiar a modo noche', aDia: 'Cambiar a modo día',
+      otroIdioma: 'EN', otroIdiomaAria: 'Read the menu in English', titulo: 'Apatheia Coffee | Carta'
+    },
+    en: {
+      skip: 'Skip to menu', seleccion: 'Order', heroEyebrow: 'Specialty coffee & pastry shop',
+      heroH1: 'Coffee, pastries<br><span>and a little calm.</span>',
+      heroBajada: 'Apatheia means harmony, peace and freedom: feeling alive and whole in the present moment. Come and enjoy it with a coffee and something sweet.',
+      verCarta: 'See the menu <span aria-hidden="true">↓</span>', portadaAlt: 'Apatheia takeaway coffee next to flowers and a pastry box',
+      figcaption: 'Our place · Azul, Buenos Aires', horario: 'Hours', direccion: 'Address', mascotas: 'Pets',
+      avisoDemo: 'Sample prices in ARS (Argentine pesos). Final prices and products are loaded from the shop’s sheet.',
+      eventosEyebrow: 'Events at Apatheia', eventosH2: 'A coffee<br>to create.',
+      evento1: '<span class="num">01 · Art and Coffee</span> Paint a piece and share an afternoon snack with coffee. Materials and a step-by-step guide included.',
+      evento2: '<span class="num">02 · Coffee and Journaling</span> A free-writing gathering to share a pause over coffee.',
+      evento3: '<span class="num">03 · Upcoming events</span> Dates and spots are announced on Instagram. <a class="link-flecha" href="https://www.instagram.com/apatheia.coffee_/" target="_blank" rel="noopener">See dates <span aria-hidden="true">↗</span></a>',
+      pieFrase: 'Harmony is also<br>meant to be shared.', comoLlegar: 'Directions ↗', fotos: 'Photos: Apatheia Coffee',
+      verSeleccion: 'View order <span aria-hidden="true">→</span>', tuSeleccion: 'Your order', paraMomento: 'For this moment.', paraMesa: 'For table {n}.',
+      tuNombre: 'Your name', nombrePh: 'What’s your name?', donde: 'Where will you enjoy it?', enSalon: 'Eat in', paraLlevar: 'Takeaway',
+      numMesa: 'Table number', opcional: '(optional)', notas: 'Notes', notasPh: 'No sugar, pick up at 5 pm…',
+      pedidoMuestra: 'Sample order', copiar: 'Copy', vaciar: 'Clear order', total: 'Total', cerrar: 'Close',
+      infoMuestra: 'Sample mode: your order is ready to copy, it is not sent to the shop yet.',
+      infoWa: 'WhatsApp will open with your order so the shop can confirm it.',
+      preparar: 'Prepare order', enviarWa: 'Send via WhatsApp',
+      producto: 'item', productos: 'items', enSeleccion: 'in your order', agregar: 'Add', agregado: 'added',
+      legal: 'Ask at the counter about allergens and availability.', vacia: 'Nothing here yet. Tap a product to see its details.',
+      quitarUno: 'Remove one', sumarUno: 'Add one', faltaNombre: 'Please type your name to prepare the order',
+      copiado: 'Order copied. It was not sent to the shop.', copiaManual: 'Text selected: copy it from your phone’s menu.',
+      vaciada: 'Order cleared', noche: 'Night', dia: 'Day', aNoche: 'Switch to night mode', aDia: 'Switch to day mode',
+      otroIdioma: 'ES', otroIdiomaAria: 'Ver la carta en español', titulo: 'Apatheia Coffee | Menu'
+    }
+  };
+  var idioma = 'es';
+  var mesaFija = '';
+  var txt = function (k) { return (TXT[idioma] && TXT[idioma][k]) || TXT.es[k] || k; };
+  var slugT = function (s) {
+    return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  };
+  // Nombre, descripción, bajada y etiqueta en el idioma elegido
+  function nom(x) {
+    if (idioma !== 'en') return x.nombre;
+    if (x.nombre_en) return x.nombre_en;
+    var d = EN_CARTA.productos[slugT(x.nombre)] || EN_CARTA.secciones[slugT(x.nombre)];
+    return d ? d[0] : x.nombre;
+  }
+  function des(x) {
+    if (idioma !== 'en') return x.desc;
+    if (x.desc_en) return x.desc_en;
+    var d = EN_CARTA.productos[slugT(x.nombre)];
+    return d && d[1] ? d[1] : x.desc;
+  }
+  function baj(s) {
+    if (idioma !== 'en') return s.bajada;
+    var d = EN_CARTA.secciones[slugT(s.nombre)];
+    return d && d[1] ? d[1] : s.bajada;
+  }
+  function etq(x) {
+    if (!x.etiqueta || idioma !== 'en') return x.etiqueta;
+    return x.etiqueta_en || EN_CARTA.etiquetas[slugT(x.etiqueta)] || x.etiqueta;
+  }
+
+  function aplicarIdioma(l) {
+    idioma = l === 'en' ? 'en' : 'es';
+    document.documentElement.lang = idioma;
+    document.title = txt('titulo');
+    document.querySelectorAll('[data-t]').forEach(function (el) { el.innerHTML = txt(el.dataset.t); });
+    document.querySelectorAll('[data-t-ph]').forEach(function (el) { el.placeholder = txt(el.dataset.tPh); });
+    document.querySelectorAll('[data-t-alt]').forEach(function (el) { el.alt = txt(el.dataset.tAlt); });
+    document.querySelectorAll('[data-t-aria]').forEach(function (el) { el.setAttribute('aria-label', txt(el.dataset.tAria)); });
+    var b = $('#idioma');
+    if (b) { b.textContent = txt('otroIdioma'); b.lang = idioma === 'en' ? 'es' : 'en'; b.setAttribute('aria-label', txt('otroIdiomaAria')); }
+    $('#sel-info').textContent = NEGOCIO.whatsapp ? txt('infoWa') : txt('infoMuestra');
+    $('#sel-enviar').textContent = NEGOCIO.whatsapp ? txt('enviarWa') : txt('preparar');
+    $('#sel-h').textContent = mesaFija ? txt('paraMesa').replace('{n}', mesaFija) : txt('paraMomento');
+    aplicarTema(document.documentElement.dataset.tema || 'dia');
+    $('#sel-preview').hidden = true;
+  }
+
   /* ---------- Utilidades ---------- */
   var $ = function (s, r) { return (r || document).querySelector(s); };
   var esc = function (s) {
@@ -110,14 +243,14 @@
   function render() {
     indexar();
     $('#indice-pista').innerHTML = SECCIONES.map(function (s, i) {
-      return '<a href="#' + s.id + '"><span class="num">' + dos(i + 1) + '</span>' + esc(s.nombre) + '</a>';
+      return '<a href="#' + s.id + '"><span class="num">' + dos(i + 1) + '</span>' + esc(nom(s)) + '</a>';
     }).join('');
     $('#secciones').innerHTML = SECCIONES.map(function (s, i) {
       return '<section class="seccion" id="' + s.id + '" aria-labelledby="h-' + s.id + '">' +
         '<header class="seccion-cab revelar">' +
         '<figure class="seccion-foto"><img src="' + (s.foto || fotoDe(s.items[0] && s.items[0].tipo)) + '" alt="" loading="lazy"></figure>' +
         '<span class="num">' + dos(i + 1) + ' / ' + dos(SECCIONES.length) + '</span>' +
-        '<h2 id="h-' + s.id + '">' + esc(s.nombre) + '</h2>' + (s.bajada ? '<p>' + esc(s.bajada) + '</p>' : '') + '</header>' +
+        '<h2 id="h-' + s.id + '">' + esc(nom(s)) + '</h2>' + (baj(s) ? '<p>' + esc(baj(s)) + '</p>' : '') + '</header>' +
         '<ul class="lista">' + s.items.map(itemHTML).join('') + '</ul></section>';
     }).join('');
     observar();
@@ -126,10 +259,10 @@
   function itemHTML(p, i) {
     var c = seleccion[p.id] || 0;
     return '<li class="item revelar" style="--i:' + (i || 0) + '"><button class="item-btn" type="button" data-prod="' + p.id + '">' +
-      '<span class="item-nombre">' + esc(p.nombre) + (p.etiqueta ? '<span class="item-tag">' + esc(p.etiqueta) + '</span>' : '') + '</span>' +
+      '<span class="item-nombre">' + esc(nom(p)) + (p.etiqueta ? '<span class="item-tag">' + esc(etq(p)) + '</span>' : '') + '</span>' +
       '<span class="item-precio">' + plata(p.precio) + '</span>' +
-      (p.desc ? '<p class="item-desc">' + esc(p.desc) + '</p>' : '') +
-      '<span class="item-cant" data-cant="' + p.id + '"' + (c ? '' : ' hidden') + '>' + c + ' en tu selección</span>' +
+      (des(p) ? '<p class="item-desc">' + esc(des(p)) + '</p>' : '') +
+      '<span class="item-cant" data-cant="' + p.id + '"' + (c ? '' : ' hidden') + '>' + c + ' ' + txt('enSeleccion') + '</span>' +
       '</button></li>';
   }
 
@@ -141,12 +274,12 @@
     }).join('') + '</dl>' : '';
     $('#prod-cuerpo').innerHTML =
       '<figure class="prod-foto"><img src="' + (p.foto || p.fotoSeccion || fotoDe(p.tipo)) + '" alt=""><span class="prod-sello">' + dibujo(p.tipo) + '</span></figure>' +
-      (p.etiqueta ? '<p class="eyebrow">' + esc(p.etiqueta) + '</p>' : '') +
-      '<h2 id="prod-nombre">' + esc(p.nombre) + '</h2>' +
-      (p.desc ? '<p class="prod-desc">' + esc(p.desc) + '</p>' : '') + notas +
+      (p.etiqueta ? '<p class="eyebrow">' + esc(etq(p)) + '</p>' : '') +
+      '<h2 id="prod-nombre">' + esc(nom(p)) + '</h2>' +
+      (des(p) ? '<p class="prod-desc">' + esc(des(p)) + '</p>' : '') + notas +
       '<div class="prod-pie"><span class="prod-precio">' + plata(p.precio) + '</span>' +
-      '<button class="btn" type="button" data-sumar="' + p.id + '">Agregar <span aria-hidden="true">+</span></button></div>' +
-      '<p class="prod-legal">Consultá alérgenos y disponibilidad en la barra.</p>';
+      '<button class="btn" type="button" data-sumar="' + p.id + '">' + txt('agregar') + ' <span aria-hidden="true">+</span></button></div>' +
+      '<p class="prod-legal">' + txt('legal') + '</p>';
     abrir('prod-dialog');
   }
 
@@ -167,22 +300,22 @@
     var t = totales();
     $('#sel-num').textContent = t.cant;
     $('#barra-sel').hidden = !t.cant;
-    $('#barra-cant').textContent = t.cant + (t.cant === 1 ? ' producto' : ' productos');
+    $('#barra-cant').textContent = t.cant + ' ' + (t.cant === 1 ? txt('producto') : txt('productos'));
     $('#barra-total').textContent = plata(t.total);
     $('#sel-total').textContent = plata(t.total);
     document.querySelectorAll('[data-cant]').forEach(function (el) {
       var c = seleccion[el.dataset.cant] || 0;
-      el.hidden = !c; el.textContent = c + ' en tu selección';
+      el.hidden = !c; el.textContent = c + ' ' + txt('enSeleccion');
     });
     var ids = Object.keys(seleccion);
     $('#sel-lista').innerHTML = ids.length ? ids.map(function (id) {
       var p = productos[id];
-      return '<div class="sel-item"><div><div class="sel-item-nombre">' + esc(p.nombre) + '</div>' +
+      return '<div class="sel-item"><div><div class="sel-item-nombre">' + esc(nom(p)) + '</div>' +
         '<div class="sel-item-precio">' + plata(p.precio * seleccion[id]) + '</div></div>' +
-        '<div class="cant"><button type="button" data-cambiar="-1" data-id="' + id + '" aria-label="Quitar uno de ' + esc(p.nombre) + '">−</button>' +
+        '<div class="cant"><button type="button" data-cambiar="-1" data-id="' + id + '" aria-label="' + txt('quitarUno') + ': ' + esc(nom(p)) + '">−</button>' +
         '<span>' + seleccion[id] + '</span>' +
-        '<button type="button" data-cambiar="1" data-id="' + id + '" aria-label="Sumar uno de ' + esc(p.nombre) + '">+</button></div></div>';
-    }).join('') : '<p class="sel-vacia">Todavía no elegiste nada. Tocá un producto para ver su ficha.</p>';
+        '<button type="button" data-cambiar="1" data-id="' + id + '" aria-label="' + txt('sumarUno') + ': ' + esc(nom(p)) + '">+</button></div></div>';
+    }).join('') : '<p class="sel-vacia">' + txt('vacia') + '</p>';
     $('#sel-checkout').hidden = false;
     $('#sel-form').hidden = !ids.length;
     $('.sel-total').hidden = !ids.length;
@@ -198,6 +331,7 @@
     lineas.push('Nombre: ' + datos.nombre);
     lineas.push('Modo: ' + datos.modo + (datos.modo === 'Mesa' && datos.mesa ? ' ' + datos.mesa : ''));
     if (datos.notas) lineas.push('Notas: ' + datos.notas);
+    if (idioma === 'en') lineas.push('(Cliente que lee la carta en inglés)');
     return lineas.join('\n');
   }
 
@@ -219,8 +353,8 @@
   function aplicarTema(t) {
     document.documentElement.dataset.tema = t;
     $('meta[name="theme-color"]').setAttribute('content', t === 'noche' ? '#111111' : '#F8F7F4');
-    $('.tema-txt').textContent = t === 'noche' ? 'Día' : 'Noche';
-    $('#tema').setAttribute('aria-label', t === 'noche' ? 'Cambiar a modo día' : 'Cambiar a modo noche');
+    $('.tema-txt').textContent = t === 'noche' ? txt('dia') : txt('noche');
+    $('#tema').setAttribute('aria-label', t === 'noche' ? txt('aDia') : txt('aNoche'));
   }
 
   /* ---------- Entradas progresivas e índice activo ---------- */
@@ -273,7 +407,9 @@
         mapa[f.categoria] = { nombre: f.categoria, bajada: previa ? previa.bajada : '', foto: previa && previa.foto, items: [] };
         orden.push(mapa[f.categoria]);
       }
-      mapa[f.categoria].items.push({ nombre: f.producto, precio: f.precio, desc: f.descripcion, etiqueta: f.etiqueta || '', tipo: tipoPara(f.producto, f.categoria), foto: FOTO_PRODUCTO[slug(f.producto)] });
+      if (f.categoria_en && !mapa[f.categoria].nombre_en) mapa[f.categoria].nombre_en = f.categoria_en;
+      mapa[f.categoria].items.push({ nombre: f.producto, precio: f.precio, desc: f.descripcion, etiqueta: f.etiqueta || '', tipo: tipoPara(f.producto, f.categoria), foto: FOTO_PRODUCTO[slug(f.producto)],
+        nombre_en: f.producto_en || '', desc_en: f.descripcion_en || '', etiqueta_en: f.etiqueta_en || '' });
     });
     if (!orden.length) return;
     SECCIONES = orden;
@@ -286,10 +422,6 @@
     $('#dato-horario').textContent = NEGOCIO.horario;
     $('#dato-direccion').textContent = NEGOCIO.direccion;
     $('#dato-wifi').textContent = NEGOCIO.wifi;
-    if (NEGOCIO.whatsapp) {
-      $('#sel-info').textContent = 'Se abrirá WhatsApp con tu pedido para que el local lo confirme.';
-      $('#sel-enviar').textContent = 'Enviar por WhatsApp';
-    }
     try { seleccion = JSON.parse(leerLS(CLAVE_SEL)) || {}; } catch (e) { seleccion = {}; }
 
     // Siempre abre en modo claro; el modo noche es opcional desde el botón.
@@ -297,6 +429,19 @@
     $('#tema').addEventListener('click', function () {
       var t = document.documentElement.dataset.tema === 'noche' ? 'dia' : 'noche';
       aplicarTema(t);
+    });
+
+    // Idioma: ?lang=en en el link (o en el QR), lo último elegido, o el idioma del teléfono
+    var params = new URLSearchParams(location.search);
+    var langURL = (params.get('lang') || '').toLowerCase();
+    var langInicial = /^(en|es)$/.test(langURL) ? langURL :
+      (leerLS('apatheia-idioma') || ((navigator.language || 'es').toLowerCase().indexOf('en') === 0 ? 'en' : 'es'));
+    mesaFija = (params.get('mesa') || '').replace(/\D/g, '').slice(0, 4);
+    aplicarIdioma(langInicial);
+    $('#idioma').addEventListener('click', function () {
+      var l = idioma === 'en' ? 'es' : 'en';
+      aplicarIdioma(l); guardar('apatheia-idioma', l); render();
+      aviso(l === 'en' ? 'Menu in English' : 'Carta en español');
     });
 
     render();
@@ -309,7 +454,7 @@
       if ((b = e.target.closest('[data-prod]'))) { abrirProducto(b.dataset.prod); return; }
       if ((b = e.target.closest('[data-sumar]'))) {
         cambiar(b.dataset.sumar, 1); $('#prod-dialog').close(); destacar(b.dataset.sumar);
-        aviso(productos[b.dataset.sumar].nombre + ' · agregado'); return;
+        aviso(nom(productos[b.dataset.sumar]) + ' · ' + txt('agregado')); return;
       }
       if ((b = e.target.closest('[data-cambiar]'))) { cambiar(b.dataset.id, Number(b.dataset.cambiar)); return; }
       if ((b = e.target.closest('[data-cerrar]'))) { $('#' + b.dataset.cerrar).close(); return; }
@@ -327,7 +472,7 @@
     var form = $('#sel-form');
     // QR por mesa: el link ?mesa=4 deja la mesa cargada en el pedido
     var mesaQR = (new URLSearchParams(location.search).get('mesa') || '').replace(/\D/g, '').slice(0, 4);
-    if (mesaQR) { form.elements.mesa.value = mesaQR; $('#sel-h').textContent = 'Para la mesa ' + mesaQR + '.'; }
+    if (mesaQR) { form.elements.mesa.value = mesaQR; $('#sel-h').textContent = txt('paraMesa').replace('{n}', mesaQR); }
     form.addEventListener('change', function (e) {
       if (e.target.name === 'modo') $('#mesa-label').hidden = e.target.value !== 'Mesa';
       $('#sel-preview').hidden = true;
@@ -337,7 +482,7 @@
       if (!totales().cant) return;
       var datos = Object.fromEntries(new FormData(form));
       datos.nombre = (datos.nombre || '').trim();
-      if (!datos.nombre) { form.elements.nombre.focus(); aviso('Escribí tu nombre para preparar el pedido'); return; }
+      if (!datos.nombre) { form.elements.nombre.focus(); aviso(txt('faltaNombre')); return; }
       var msg = textoPedido(datos);
       if (NEGOCIO.whatsapp) {
         window.open('https://wa.me/' + NEGOCIO.whatsapp.replace(/\D/g, '') + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
@@ -350,11 +495,11 @@
     $('#sel-copiar').addEventListener('click', function () {
       var t = $('#sel-texto');
       (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject())
-        .then(function () { $('#sel-estado').textContent = 'Pedido copiado. No se envió al local.'; })
-        .catch(function () { t.select(); $('#sel-estado').textContent = 'Seleccionamos el texto: copialo desde el menú de tu teléfono.'; });
+        .then(function () { $('#sel-estado').textContent = txt('copiado'); })
+        .catch(function () { t.select(); $('#sel-estado').textContent = txt('copiaManual'); });
     });
     $('#sel-vaciar').addEventListener('click', function () {
-      seleccion = {}; guardar(CLAVE_SEL, '{}'); pintarSeleccion(); aviso('Selección vacía');
+      seleccion = {}; guardar(CLAVE_SEL, '{}'); pintarSeleccion(); aviso(txt('vaciada'));
     });
 
     if (window.CofrepPlanilla) window.CofrepPlanilla.cargar({ alGuardada: desdePlanilla, alNueva: desdePlanilla });

@@ -72,7 +72,12 @@
     descripcion: ['descripcion', 'detalle'],
     precio: ['precio', 'valor'],
     mostrar: ['mostrar', 'disponible', 'visible'],
-    etiqueta: ['etiqueta', 'destacado']
+    etiqueta: ['etiqueta', 'destacado'],
+    // Opcionales, para la carta en inglés (vacío = se usa la traducción de carta.js o el español)
+    categoria_en: ['categoria en', 'categoria (en)', 'categoria ingles', 'category'],
+    producto_en: ['producto en', 'producto (en)', 'producto ingles', 'product'],
+    descripcion_en: ['descripcion en', 'descripcion (en)', 'descripcion ingles', 'description'],
+    etiqueta_en: ['etiqueta en', 'etiqueta (en)', 'etiqueta ingles', 'tag']
   };
 
   function aFilas(csv) {
@@ -94,6 +99,10 @@
         descripcion: limpio(get('descripcion')),
         precio: precio(get('precio')),
         etiqueta: limpio(get('etiqueta')),
+        categoria_en: limpio(get('categoria_en')),
+        producto_en: limpio(get('producto_en')),
+        descripcion_en: limpio(get('descripcion_en')),
+        etiqueta_en: limpio(get('etiqueta_en')),
         mostrar: sinTildes(get('mostrar')) !== 'no'
       };
     }).filter(function (p) { return p.producto && p.precio > 0 && p.mostrar; });

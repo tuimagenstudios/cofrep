@@ -618,3 +618,14 @@ img { max-width: 100%; }
 :root[data-tema="noche"] .marca-logo .logo-noche { display: block; }
 @media (max-width: 420px) { .marca-logo img { height: 50px; } }
 @media (max-width: 420px) { .indice { top: 71px; } }
+
+/* Botón de idioma (Español / English) */
+.idioma {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 40px; min-width: 44px; padding: 0 12px;
+  background: none; border: 1px solid var(--linea); border-radius: 2px; color: var(--texto);
+  font-size: 12px; font-weight: 500; letter-spacing: .14em;
+  transition: border-color 500ms var(--suave), background-color 500ms var(--suave);
+}
+.idioma:hover { background: var(--fondo); border-color: var(--roble); }
+@media (max-width: 380px) { .top-acciones { gap: 6px; } .idioma { min-width: 40px; padding: 0 9px; } }
