@@ -23,12 +23,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="estilo.css?v=20261122b">
+  <link rel="stylesheet" href="estilo.css?v=20261122c">
   <!-- Planilla de Google del local: pegar el ID o el link completo en content.
        Vacío = se muestra la carta escrita en carta.js -->
   <meta name="cofrep-planilla" content="1AoAXBVnL55oU1Eug04pMr6slKdRLeIYaKVychGlZM-4">
-  <script src="planilla.js?v=20261122b" defer></script>
-  <script src="carta.js?v=20261122b" defer></script>
+  <script src="planilla.js?v=20261122c" defer></script>
+  <script src="carta.js?v=20261122c" defer></script>
 </head>
 <body>
   <a class="skip" href="#carta" data-t="skip">Ir a la carta</a>
@@ -112,25 +112,7 @@
     <div id="sel-lista"></div>
     <div id="sel-checkout">
       <div class="sel-total"><span data-t="total">Total</span><strong id="sel-total">$0</strong></div>
-      <form id="sel-form" novalidate>
-        <label><span data-t="tuNombre">Tu nombre</span><input name="nombre" autocomplete="name" maxlength="60" placeholder="¿Cómo te llamás?" data-t-ph="nombrePh"></label>
-        <fieldset>
-          <legend data-t="donde">¿Dónde lo disfrutás?</legend>
-          <div class="opciones">
-            <label><input type="radio" name="modo" value="Mesa" checked><span data-t="enSalon">En el salón</span></label>
-            <label><input type="radio" name="modo" value="Para llevar"><span data-t="paraLlevar">Para llevar</span></label>
-          </div>
-        </fieldset>
-        <label id="mesa-label"><span><span data-t="numMesa">Número de mesa</span> <span class="opc" data-t="opcional">(opcional)</span></span><input name="mesa" inputmode="numeric" maxlength="4"></label>
-        <label><span><span data-t="notas">Notas</span> <span class="opc" data-t="opcional">(opcional)</span></span><textarea name="notas" rows="2" maxlength="300" placeholder="Sin azúcar, para llevar a las 17 h…" data-t-ph="notasPh"></textarea></label>
-        <p class="sel-info" id="sel-info">Modo muestra: el pedido se prepara para copiar, todavía no se envía al local.</p>
-        <button class="btn" type="submit" id="sel-enviar">Preparar pedido</button>
-      </form>
-      <div id="sel-preview" hidden>
-        <label><span data-t="pedidoMuestra">Pedido de muestra</span><textarea id="sel-texto" rows="8" readonly></textarea></label>
-        <button class="btn btn-sec" type="button" id="sel-copiar" data-t="copiar">Copiar</button>
-        <p id="sel-estado" role="status"></p>
-      </div>
+      <p class="sel-info" id="sel-info" data-t="mostrarMozo">Mostrale esta lista a quien te atiende en la mesa.</p>
       <button class="vaciar" type="button" id="sel-vaciar" data-t="vaciar">Vaciar selección</button>
     </div>
   </dialog>

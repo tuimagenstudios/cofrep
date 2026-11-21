@@ -122,7 +122,7 @@
       tuNombre: 'Tu nombre', nombrePh: '¿Cómo te llamás?', donde: '¿Dónde lo disfrutás?', enSalon: 'En el salón', paraLlevar: 'Para llevar',
       numMesa: 'Número de mesa', opcional: '(opcional)', notas: 'Notas', notasPh: 'Sin azúcar, para llevar a las 17 h…',
       pedidoMuestra: 'Pedido de muestra', copiar: 'Copiar', vaciar: 'Vaciar selección', total: 'Total', cerrar: 'Cerrar',
-      infoMuestra: 'Modo muestra: el pedido se prepara para copiar, todavía no se envía al local.',
+      mostrarMozo: 'Mostrale esta lista a quien te atiende en la mesa.',
       infoWa: 'Se abrirá WhatsApp con tu pedido para que el local lo confirme.',
       preparar: 'Preparar pedido', enviarWa: 'Enviar por WhatsApp',
       producto: 'producto', productos: 'productos', enSeleccion: 'en tu selección', agregar: 'Agregar', agregado: 'agregado',
@@ -133,7 +133,7 @@
       otroIdioma: 'EN', otroIdiomaAria: 'Read the menu in English', titulo: 'Apatheia Coffee | Carta'
     },
     en: {
-      skip: 'Skip to menu', seleccion: 'Order', heroEyebrow: 'Specialty coffee & pastry shop',
+      skip: 'Skip to menu', seleccion: 'My list', heroEyebrow: 'Specialty coffee & pastry shop',
       heroH1: 'Coffee, pastries<br><span>and a little calm.</span>',
       heroBajada: 'Apatheia means harmony, peace and freedom: feeling alive and whole in the present moment. Come and enjoy it with a coffee and something sweet.',
       verCarta: 'See the menu <span aria-hidden="true">↓</span>', portadaAlt: 'Apatheia takeaway coffee next to flowers and a pastry box',
@@ -144,18 +144,18 @@
       evento2: '<span class="num">02 · Coffee and Journaling</span> A free-writing gathering to share a pause over coffee.',
       evento3: '<span class="num">03 · Upcoming events</span> Dates and spots are announced on Instagram. <a class="link-flecha" href="https://www.instagram.com/apatheia.coffee_/" target="_blank" rel="noopener">See dates <span aria-hidden="true">↗</span></a>',
       pieFrase: 'Harmony is also<br>meant to be shared.', comoLlegar: 'Directions ↗', fotos: 'Photos: Apatheia Coffee',
-      verSeleccion: 'View order <span aria-hidden="true">→</span>', tuSeleccion: 'Your order', paraMomento: 'For this moment.', paraMesa: 'For table {n}.',
+      verSeleccion: 'View list <span aria-hidden="true">→</span>', tuSeleccion: 'Your list', paraMomento: 'For this moment.', paraMesa: 'For table {n}.',
       tuNombre: 'Your name', nombrePh: 'What’s your name?', donde: 'Where will you enjoy it?', enSalon: 'Eat in', paraLlevar: 'Takeaway',
       numMesa: 'Table number', opcional: '(optional)', notas: 'Notes', notasPh: 'No sugar, pick up at 5 pm…',
-      pedidoMuestra: 'Sample order', copiar: 'Copy', vaciar: 'Clear order', total: 'Total', cerrar: 'Close',
-      infoMuestra: 'Sample mode: your order is ready to copy, it is not sent to the shop yet.',
+      pedidoMuestra: 'Sample order', copiar: 'Copy', vaciar: 'Clear list', total: 'Total', cerrar: 'Close',
+      mostrarMozo: 'Show this list to your server at the table.',
       infoWa: 'WhatsApp will open with your order so the shop can confirm it.',
       preparar: 'Prepare order', enviarWa: 'Send via WhatsApp',
-      producto: 'item', productos: 'items', enSeleccion: 'in your order', agregar: 'Add', agregado: 'added',
+      producto: 'item', productos: 'items', enSeleccion: 'on your list', agregar: 'Add', agregado: 'added',
       legal: 'Ask at the counter about allergens and availability.', vacia: 'Nothing here yet. Tap a product to see its details.',
       quitarUno: 'Remove one', sumarUno: 'Add one', faltaNombre: 'Please type your name to prepare the order',
       copiado: 'Order copied. It was not sent to the shop.', copiaManual: 'Text selected: copy it from your phone’s menu.',
-      vaciada: 'Order cleared', noche: 'Night', dia: 'Day', aNoche: 'Switch to night mode', aDia: 'Switch to day mode',
+      vaciada: 'List cleared', noche: 'Night', dia: 'Day', aNoche: 'Switch to night mode', aDia: 'Switch to day mode',
       otroIdioma: 'ES', otroIdiomaAria: 'Ver la carta en español', titulo: 'Apatheia Coffee | Menu'
     }
   };
@@ -198,11 +198,8 @@
     document.querySelectorAll('[data-t-aria]').forEach(function (el) { el.setAttribute('aria-label', txt(el.dataset.tAria)); });
     var b = $('#idioma');
     if (b) { b.textContent = txt('otroIdioma'); b.lang = idioma === 'en' ? 'es' : 'en'; b.setAttribute('aria-label', txt('otroIdiomaAria')); }
-    $('#sel-info').textContent = NEGOCIO.whatsapp ? txt('infoWa') : txt('infoMuestra');
-    $('#sel-enviar').textContent = NEGOCIO.whatsapp ? txt('enviarWa') : txt('preparar');
     $('#sel-h').textContent = mesaFija ? txt('paraMesa').replace('{n}', mesaFija) : txt('paraMomento');
     aplicarTema(document.documentElement.dataset.tema || 'dia');
-    $('#sel-preview').hidden = true;
   }
 
   /* ---------- Utilidades ---------- */
@@ -317,10 +314,9 @@
         '<button type="button" data-cambiar="1" data-id="' + id + '" aria-label="' + txt('sumarUno') + ': ' + esc(nom(p)) + '">+</button></div></div>';
     }).join('') : '<p class="sel-vacia">' + txt('vacia') + '</p>';
     $('#sel-checkout').hidden = false;
-    $('#sel-form').hidden = !ids.length;
+    $('#sel-info').hidden = !ids.length;
     $('.sel-total').hidden = !ids.length;
     $('#sel-vaciar').hidden = !ids.length;
-    if (!ids.length) $('#sel-preview').hidden = true;
   }
   function textoPedido(datos) {
     var lineas = ['Hola ' + NEGOCIO.nombre + ', quiero pedir:', ''];
@@ -467,35 +463,8 @@
       });
     });
 
-    var form = $('#sel-form');
-    // QR por mesa: el link ?mesa=4 deja la mesa cargada en el pedido
-    var mesaQR = (new URLSearchParams(location.search).get('mesa') || '').replace(/\D/g, '').slice(0, 4);
-    if (mesaQR) { form.elements.mesa.value = mesaQR; $('#sel-h').textContent = txt('paraMesa').replace('{n}', mesaQR); }
-    form.addEventListener('change', function (e) {
-      if (e.target.name === 'modo') $('#mesa-label').hidden = e.target.value !== 'Mesa';
-      $('#sel-preview').hidden = true;
-    });
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      if (!totales().cant) return;
-      var datos = Object.fromEntries(new FormData(form));
-      datos.nombre = (datos.nombre || '').trim();
-      if (!datos.nombre) { form.elements.nombre.focus(); aviso(txt('faltaNombre')); return; }
-      var msg = textoPedido(datos);
-      if (NEGOCIO.whatsapp) {
-        window.open('https://wa.me/' + NEGOCIO.whatsapp.replace(/\D/g, '') + '?text=' + encodeURIComponent(msg), '_blank', 'noopener');
-      } else {
-        $('#sel-texto').value = 'PEDIDO DE MUESTRA\n\n' + msg;
-        $('#sel-preview').hidden = false; $('#sel-estado').textContent = '';
-        $('#sel-texto').focus();
-      }
-    });
-    $('#sel-copiar').addEventListener('click', function () {
-      var t = $('#sel-texto');
-      (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject())
-        .then(function () { $('#sel-estado').textContent = txt('copiado'); })
-        .catch(function () { t.select(); $('#sel-estado').textContent = txt('copiaManual'); });
-    });
+    // Los pedidos se toman en la mesa: la selección es una lista para mostrarle a quien atiende.
+    // QR por mesa: el link ?mesa=4 muestra "Para la mesa 4." arriba de la lista.
     $('#sel-vaciar').addEventListener('click', function () {
       seleccion = {}; guardar(CLAVE_SEL, '{}'); pintarSeleccion(); aviso(txt('vaciada'));
     });
