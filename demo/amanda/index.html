@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F8F7F4">
+  <meta name="description" content="Amanda. Café de especialidad. Un buen café, un momento para vos. Carta digital.">
+  <meta name="robots" content="noindex">
+  <title>Amanda | Demo de carta digital</title>
+  <link rel="icon" href="assets/marca.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css?v=1">
+  <!-- Planilla de Google del local: pegar el ID o el link completo en content.
+       Vacío = se muestra la carta escrita en carta.js -->
+  <meta name="cofrep-planilla" content="">
+  <script src="../../assets/planilla.js" defer></script>
+  <script src="carta.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#carta">Ir a la carta</a>
+
+  <header class="top" id="top">
+    <a class="marca" href="#inicio" aria-label="Amanda, inicio">
+      <span class="marca-nombre">AMANDA</span>
+      <span class="marca-sub">CAFÉ DE ESPECIALIDAD</span>
+    </a>
+    <div class="top-acciones">
+      <button class="tema" id="tema" type="button" aria-label="Cambiar a modo noche"><span class="tema-punto" aria-hidden="true"></span><span class="tema-txt">Noche</span></button>
+      <button class="sel-btn" id="sel-abrir" type="button" aria-haspopup="dialog" aria-controls="sel-dialog">Selección <span class="sel-num" id="sel-num">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <p class="eyebrow">Carta · Temporada 2026</p>
+      <h1 class="hero-h1">Un buen café.<br><span>Un momento para vos.</span></h1>
+      <div class="hero-pie">
+        <p class="hero-bajada">Menos ruido. Más esencia. Elegí sin apuro: cada taza se prepara al momento, frente a vos.</p>
+        <a class="link-flecha" href="#carta">Ver la carta <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="hero-foto">
+        <img src="https://images.unsplash.com/photo-1763873993447-1d0be71a96d9?w=1600&q=78&auto=format&fit=crop" alt="Mostrador escultórico de tonos claros en un espacio luminoso y sereno" width="1600" height="1067" fetchpriority="high">
+        <figcaption>El mostrador · donde empieza el ritual</figcaption>
+      </figure>
+      <dl class="hero-datos">
+        <div><dt>Horario</dt><dd id="dato-horario">Lun a Sáb · 8 a 20 h</dd></div>
+        <div><dt>Dirección</dt><dd id="dato-direccion">Dirección a confirmar</dd></div>
+        <div><dt>Wi-Fi</dt><dd id="dato-wifi">Consultá en la barra</dd></div>
+      </dl>
+    </section>
+
+    <nav class="indice" id="indice" aria-label="Secciones de la carta">
+      <div class="indice-pista" id="indice-pista"></div>
+    </nav>
+
+    <section class="carta" id="carta" aria-label="Carta">
+      <p class="aviso-demo" id="aviso-demo">Carta y precios de muestra en ARS. Los datos definitivos del local se cargan desde su planilla.</p>
+      <div id="secciones"></div>
+    </section>
+
+    <section class="ritual" aria-labelledby="ritual-h">
+      <div class="ritual-fondo" aria-hidden="true"><img src="https://images.unsplash.com/photo-1783685158361-a82d34288149?w=1800&q=75&auto=format&fit=crop" alt="" loading="lazy"></div>
+      <p class="eyebrow">El ritual</p>
+      <h2 id="ritual-h">La belleza de las<br>pequeñas cosas.</h2>
+      <div class="ritual-cols">
+        <p><span class="num">01</span> Molemos cada dosis al momento. El aroma es la primera parte del café.</p>
+        <p><span class="num">02</span> Granos de especialidad, tueste claro a medio. Preguntá por el origen de la semana.</p>
+        <p><span class="num">03</span> Leche entera, de avena o de almendras. Sin costo extra la vegetal en el flat white.</p>
+      </div>
+      <div class="materiales" aria-hidden="true">
+        <span style="background:#F8F7F4;color:#59463A">Lino</span>
+        <span style="background:#E9E5DC;color:#59463A">Travertino</span>
+        <span style="background:#B79A7B;color:#292929">Roble</span>
+        <span style="background:#777B68;color:#F8F7F4">Oliva</span>
+        <span style="background:#59463A;color:#E9E5DC">Café</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <p class="pie-frase">Cada elemento justifica su presencia.<br>El espacio vacío también comunica.</p>
+    <div class="pie-fila">
+      <span class="marca-nombre">AMANDA</span>
+      <span id="pie-contacto">Café de especialidad</span>
+    </div>
+    <p class="credito"><a href="https://tuimagenstudios.com/" target="_blank" rel="noopener">© 2026 · Carta digital por TuimagenStudio</a> · Fotos de muestra: Unsplash</p>
+  </footer>
+
+  <button class="barra-sel" id="barra-sel" type="button" aria-haspopup="dialog" aria-controls="sel-dialog" hidden>
+    <span class="barra-txt"><span id="barra-cant">0 productos</span><span class="barra-sep" aria-hidden="true">·</span><strong id="barra-total">$0</strong></span>
+    <span class="barra-cta">Ver selección <span aria-hidden="true">→</span></span>
+  </button>
+
+  <dialog class="hoja" id="prod-dialog" aria-labelledby="prod-nombre">
+    <button class="cerrar" type="button" data-cerrar="prod-dialog" aria-label="Cerrar">Cerrar</button>
+    <div id="prod-cuerpo"></div>
+  </dialog>
+
+  <dialog class="hoja" id="sel-dialog" aria-labelledby="sel-h">
+    <button class="cerrar" type="button" data-cerrar="sel-dialog" aria-label="Cerrar">Cerrar</button>
+    <p class="eyebrow">Tu selección</p>
+    <h2 id="sel-h">Para este momento.</h2>
+    <div id="sel-lista"></div>
+    <div id="sel-checkout">
+      <div class="sel-total"><span>Total</span><strong id="sel-total">$0</strong></div>
+      <form id="sel-form" novalidate>
+        <label>Tu nombre<input name="nombre" autocomplete="name" maxlength="60" placeholder="¿Cómo te llamás?"></label>
+        <fieldset>
+          <legend>¿Dónde lo disfrutás?</legend>
+          <div class="opciones">
+            <label><input type="radio" name="modo" value="Mesa" checked><span>En el salón</span></label>
+            <label><input type="radio" name="modo" value="Para llevar"><span>Para llevar</span></label>
+          </div>
+        </fieldset>
+        <label id="mesa-label"><span>Número de mesa <span class="opc">(opcional)</span></span><input name="mesa" inputmode="numeric" maxlength="4"></label>
+        <label><span>Notas <span class="opc">(opcional)</span></span><textarea name="notas" rows="2" maxlength="300" placeholder="Leche de avena, sin azúcar…"></textarea></label>
+        <p class="sel-info" id="sel-info">Modo muestra: el pedido se prepara para copiar, todavía no se envía al local.</p>
+        <button class="btn" type="submit" id="sel-enviar">Preparar pedido</button>
+      </form>
+      <div id="sel-preview" hidden>
+        <label>Pedido de muestra<textarea id="sel-texto" rows="8" readonly></textarea></label>
+        <button class="btn btn-sec" type="button" id="sel-copiar">Copiar</button>
+        <p id="sel-estado" role="status"></p>
+      </div>
+      <button class="vaciar" type="button" id="sel-vaciar">Vaciar selección</button>
+    </div>
+  </dialog>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">Para ver la carta, activá JavaScript en tu navegador.</p></noscript>
+</body>
+</html>
