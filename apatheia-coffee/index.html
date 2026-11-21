@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#F8F7F4">
+  <meta name="description" content="Apatheia Coffee. Cafetería y pastelería de especialidad en Azul, Buenos Aires. Pet friendly, abierto de lunes a lunes. Carta digital.">
+  <meta name="robots" content="noindex">
+  <title>Apatheia Coffee | Carta</title>
+  <link rel="icon" href="fotos/logo.webp" type="image/webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Manrope:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="estilo.css?v=1">
+  <!-- Planilla de Google del local: pegar el ID o el link completo en content.
+       Vacío = se muestra la carta escrita en carta.js -->
+  <meta name="cofrep-planilla" content="">
+  <script src="planilla.js" defer></script>
+  <script src="carta.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#carta">Ir a la carta</a>
+
+  <header class="top" id="top">
+    <a class="marca" href="#inicio" aria-label="Apatheia Coffee, inicio">
+      <span class="marca-nombre">APATHEIA</span>
+      <span class="marca-sub">COFFEE · AZUL</span>
+    </a>
+    <div class="top-acciones">
+      <button class="tema" id="tema" type="button" aria-label="Cambiar a modo noche"><span class="tema-punto" aria-hidden="true"></span><span class="tema-txt">Noche</span></button>
+      <button class="sel-btn" id="sel-abrir" type="button" aria-haspopup="dialog" aria-controls="sel-dialog">Selección <span class="sel-num" id="sel-num">0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+      <p class="eyebrow">Cafetería y pastelería de especialidad</p>
+      <h1 class="hero-h1">Café, pastelería<br><span>y un poco de calma.</span></h1>
+      <div class="hero-pie">
+        <p class="hero-bajada">Apatheia es esa calma que no se altera. Vení a buscarla en una taza, con algo dulce y sin apuro.</p>
+        <a class="link-flecha" href="#carta">Ver la carta <span aria-hidden="true">↓</span></a>
+      </div>
+      <figure class="hero-foto">
+        <img src="fotos/portada.webp" alt="Café para llevar de Apatheia junto a flores y una caja de pastelería" width="1086" height="1446" fetchpriority="high">
+        <figcaption>Nuestra casa · Azul, Buenos Aires</figcaption>
+      </figure>
+      <dl class="hero-datos">
+        <div><dt>Horario</dt><dd id="dato-horario">Abierto de lunes a lunes</dd></div>
+        <div><dt>Dirección</dt><dd id="dato-direccion">Dirección a confirmar</dd></div>
+        <div><dt>Mascotas</dt><dd id="dato-wifi">Pet friendly</dd></div>
+      </dl>
+    </section>
+
+    <nav class="indice" id="indice" aria-label="Secciones de la carta">
+      <div class="indice-pista" id="indice-pista"></div>
+    </nav>
+
+    <section class="carta" id="carta" aria-label="Carta">
+      <p class="aviso-demo" id="aviso-demo">Precios de muestra en ARS. Los precios y productos definitivos se cargan desde la planilla del local.</p>
+      <div id="secciones"></div>
+    </section>
+
+    <section class="ritual" id="eventos" aria-labelledby="ritual-h">
+      <div class="ritual-fondo" aria-hidden="true"><img src="fotos/fachada.webp" alt="" loading="lazy"></div>
+      <p class="eyebrow">Eventos en Apatheia</p>
+      <h2 id="ritual-h">Un café<br>para crear.</h2>
+      <div class="ritual-cols">
+        <p><span class="num">01 · Art and Coffee</span> Pintá una pieza y compartí una merienda con café. Incluye materiales y una guía paso a paso.</p>
+        <p><span class="num">02 · Coffee and Journaling</span> Un encuentro de escritura libre para compartir una pausa con un café.</p>
+        <p><span class="num">03 · Próximos encuentros</span> Las fechas y los cupos se anuncian en Instagram. <a class="link-flecha" href="https://www.instagram.com/apatheia.coffee_/" target="_blank" rel="noopener">Consultá fechas <span aria-hidden="true">↗</span></a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="pie-marca"><img src="fotos/logo.webp" alt="Apatheia Coffee" width="96" height="96" loading="lazy"><p class="pie-frase">La calma también<br>se comparte.</p></div>
+    <div class="pie-fila">
+      <span>Rubén César de Paula 569, Azul, Buenos Aires</span>
+      <span class="pie-links"><a href="https://www.google.com/maps/search/?api=1&amp;query=Apatheia%20Coffee%2C%20Rub%C3%A9n%20C%C3%A9sar%20de%20Paula%20569%2C%20Azul" target="_blank" rel="noopener">Cómo llegar ↗</a><a href="https://www.instagram.com/apatheia.coffee_/" target="_blank" rel="noopener">Instagram ↗</a></span>
+    </div>
+    <p class="credito"><a href="https://tuimagenstudios.com/" target="_blank" rel="noopener">© 2026 · Carta digital por TuimagenStudio</a> · Fotos: Apatheia Coffee</p>
+  </footer>
+
+  <button class="barra-sel" id="barra-sel" type="button" aria-haspopup="dialog" aria-controls="sel-dialog" hidden>
+    <span class="barra-txt"><span id="barra-cant">0 productos</span><span class="barra-sep" aria-hidden="true">·</span><strong id="barra-total">$0</strong></span>
+    <span class="barra-cta">Ver selección <span aria-hidden="true">→</span></span>
+  </button>
+
+  <dialog class="hoja" id="prod-dialog" aria-labelledby="prod-nombre">
+    <button class="cerrar" type="button" data-cerrar="prod-dialog" aria-label="Cerrar">Cerrar</button>
+    <div id="prod-cuerpo"></div>
+  </dialog>
+
+  <dialog class="hoja" id="sel-dialog" aria-labelledby="sel-h">
+    <button class="cerrar" type="button" data-cerrar="sel-dialog" aria-label="Cerrar">Cerrar</button>
+    <p class="eyebrow">Tu selección</p>
+    <h2 id="sel-h">Para este momento.</h2>
+    <div id="sel-lista"></div>
+    <div id="sel-checkout">
+      <div class="sel-total"><span>Total</span><strong id="sel-total">$0</strong></div>
+      <form id="sel-form" novalidate>
+        <label>Tu nombre<input name="nombre" autocomplete="name" maxlength="60" placeholder="¿Cómo te llamás?"></label>
+        <fieldset>
+          <legend>¿Dónde lo disfrutás?</legend>
+          <div class="opciones">
+            <label><input type="radio" name="modo" value="Mesa" checked><span>En el salón</span></label>
+            <label><input type="radio" name="modo" value="Para llevar"><span>Para llevar</span></label>
+          </div>
+        </fieldset>
+        <label id="mesa-label"><span>Número de mesa <span class="opc">(opcional)</span></span><input name="mesa" inputmode="numeric" maxlength="4"></label>
+        <label><span>Notas <span class="opc">(opcional)</span></span><textarea name="notas" rows="2" maxlength="300" placeholder="Sin azúcar, para llevar a las 17 h…"></textarea></label>
+        <p class="sel-info" id="sel-info">Modo muestra: el pedido se prepara para copiar, todavía no se envía al local.</p>
+        <button class="btn" type="submit" id="sel-enviar">Preparar pedido</button>
+      </form>
+      <div id="sel-preview" hidden>
+        <label>Pedido de muestra<textarea id="sel-texto" rows="8" readonly></textarea></label>
+        <button class="btn btn-sec" type="button" id="sel-copiar">Copiar</button>
+        <p id="sel-estado" role="status"></p>
+      </div>
+      <button class="vaciar" type="button" id="sel-vaciar">Vaciar selección</button>
+    </div>
+  </dialog>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+  <noscript><p class="noscript">Para ver la carta, activá JavaScript en tu navegador.</p></noscript>
+</body>
+</html>
