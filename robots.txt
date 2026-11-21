@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /p/
+Disallow: /apatheia/
 Disallow: /propuesta/
 Disallow: /qr/
 
