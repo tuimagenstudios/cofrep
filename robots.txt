@@ -1,3 +1,18 @@
+# Vistas previas de links (tarjetas de WhatsApp, Facebook e Instagram):
+# pueden leer todo, incluidas las páginas ocultas que se mandan por link.
+User-agent: WhatsApp
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Facebot
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# Buscadores y demás: no indexar propuestas ni cartas en revisión.
 User-agent: *
 Disallow: /p/
 Disallow: /apatheia/
