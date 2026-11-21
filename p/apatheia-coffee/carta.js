@@ -263,15 +263,17 @@
     for (var i = 0; i < DESDE_NOMBRE.length; i++) if (DESDE_NOMBRE[i][0].test(t)) return DESDE_NOMBRE[i][1];
     return 'espresso';
   }
+  var FOTO_PRODUCTO = {};   // fotos propias por producto, para conservarlas al leer la planilla
   function desdePlanilla(filas) {
     var mapa = {}, orden = [];
+    SECCIONES.forEach(function (x) { x.items.forEach(function (it) { if (it.foto) FOTO_PRODUCTO[slug(it.nombre)] = it.foto; }); });
     filas.forEach(function (f) {
       if (!mapa[f.categoria]) {
         var previa = SECCIONES.filter(function (x) { return slug(x.nombre) === slug(f.categoria); })[0];
         mapa[f.categoria] = { nombre: f.categoria, bajada: previa ? previa.bajada : '', foto: previa && previa.foto, items: [] };
         orden.push(mapa[f.categoria]);
       }
-      mapa[f.categoria].items.push({ nombre: f.producto, precio: f.precio, desc: f.descripcion, etiqueta: f.etiqueta || '', tipo: tipoPara(f.producto, f.categoria) });
+      mapa[f.categoria].items.push({ nombre: f.producto, precio: f.precio, desc: f.descripcion, etiqueta: f.etiqueta || '', tipo: tipoPara(f.producto, f.categoria), foto: FOTO_PRODUCTO[slug(f.producto)] });
     });
     if (!orden.length) return;
     SECCIONES = orden;
