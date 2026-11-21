@@ -431,16 +431,14 @@
       aplicarTema(t);
     });
 
-    // Idioma: ?lang=en en el link (o en el QR), lo último elegido, o el idioma del teléfono
+    // Idioma: siempre abre en español. Solo abre en inglés con ?lang=en en el link (o en el QR).
     var params = new URLSearchParams(location.search);
-    var langURL = (params.get('lang') || '').toLowerCase();
-    var langInicial = /^(en|es)$/.test(langURL) ? langURL :
-      (leerLS('apatheia-idioma') || ((navigator.language || 'es').toLowerCase().indexOf('en') === 0 ? 'en' : 'es'));
+    var langInicial = (params.get('lang') || '').toLowerCase() === 'en' ? 'en' : 'es';
     mesaFija = (params.get('mesa') || '').replace(/\D/g, '').slice(0, 4);
     aplicarIdioma(langInicial);
     $('#idioma').addEventListener('click', function () {
       var l = idioma === 'en' ? 'es' : 'en';
-      aplicarIdioma(l); guardar('apatheia-idioma', l); render();
+      aplicarIdioma(l); render();
       aviso(l === 'en' ? 'Menu in English' : 'Carta en español');
     });
 
