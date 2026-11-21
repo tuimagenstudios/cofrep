@@ -325,6 +325,9 @@
     });
 
     var form = $('#sel-form');
+    // QR por mesa: el link ?mesa=4 deja la mesa cargada en el pedido
+    var mesaQR = (new URLSearchParams(location.search).get('mesa') || '').replace(/\D/g, '').slice(0, 4);
+    if (mesaQR) { form.elements.mesa.value = mesaQR; $('#sel-h').textContent = 'Para la mesa ' + mesaQR + '.'; }
     form.addEventListener('change', function (e) {
       if (e.target.name === 'modo') $('#mesa-label').hidden = e.target.value !== 'Mesa';
       $('#sel-preview').hidden = true;
