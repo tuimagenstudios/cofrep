@@ -161,22 +161,33 @@
   };
   var idioma = 'es';
   var mesaFija = '';
+  // Descripciones originales en español: si Karen cambia una, se deja de usar la traducción cuidada
+  // y pasa a la traducción automática de la planilla.
+  var DESC_ORIGINAL = {};
+  SECCIONES.forEach(function (sec) { sec.items.forEach(function (p) {
+    DESC_ORIGINAL[String(p.nombre).normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '')] =
+      String(p.desc || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+  }); });
   var txt = function (k) { return (TXT[idioma] && TXT[idioma][k]) || TXT.es[k] || k; };
   var slugT = function (s) {
     return String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
   };
   // Nombre, descripción, bajada y etiqueta en el idioma elegido
+  // Orden: 1) traducción cuidada de EN_CARTA (si el texto en español no cambió),
+  //        2) traducción automática de la planilla (columnas «Producto EN», «Descripción EN», «Categoría EN»),
+  //        3) el español, para que nunca quede vacío.
   function nom(x) {
     if (idioma !== 'en') return x.nombre;
-    if (x.nombre_en) return x.nombre_en;
     var d = EN_CARTA.productos[slugT(x.nombre)] || EN_CARTA.secciones[slugT(x.nombre)];
-    return d ? d[0] : x.nombre;
+    if (d) return d[0];
+    return x.nombre_en || x.nombre;
   }
   function des(x) {
     if (idioma !== 'en') return x.desc;
-    if (x.desc_en) return x.desc_en;
     var d = EN_CARTA.productos[slugT(x.nombre)];
-    return d && d[1] ? d[1] : x.desc;
+    var sinCambios = DESC_ORIGINAL[slugT(x.nombre)] === slugT(x.desc);
+    if (d && d[1] && sinCambios) return d[1];
+    return x.desc_en || (d && d[1] && !x.desc ? d[1] : x.desc);
   }
   function baj(s) {
     if (idioma !== 'en') return s.bajada;
