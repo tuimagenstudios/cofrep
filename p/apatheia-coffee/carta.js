@@ -292,11 +292,11 @@
     }
     try { seleccion = JSON.parse(leerLS(CLAVE_SEL)) || {}; } catch (e) { seleccion = {}; }
 
-    var temaGuardado = leerLS('apatheia-tema');
-    aplicarTema(temaGuardado || (window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches ? 'noche' : 'dia'));
+    // Siempre abre en modo claro; el modo noche es opcional desde el botón.
+    aplicarTema('dia');
     $('#tema').addEventListener('click', function () {
       var t = document.documentElement.dataset.tema === 'noche' ? 'dia' : 'noche';
-      aplicarTema(t); guardar('apatheia-tema', t);
+      aplicarTema(t);
     });
 
     render();
