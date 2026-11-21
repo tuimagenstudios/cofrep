@@ -43,7 +43,8 @@ function showProduct(id){
  $('#product-detail').innerHTML=`<img class="detail-image" src="${asset(p)}" alt="Ilustración de ${p.name}" width="200" height="200"><div class="eyebrow">UN PEQUEÑO ANTOJO</div><h2>${p.name}</h2><p class="detail-description">${p.description}</p><div class="detail-footer"><strong class="detail-price">${money(p.price)}</strong><button class="button primary" data-detail-add="${p.id}">Sumar a mi pausa <span>+</span></button></div><p class="detail-note">Producto, precio e imagen ilustrativos. Consultá ingredientes y disponibilidad con la cafetería.</p>`;
  openDialog('product-dialog');
 }
-$('#categories').innerHTML=categories.map(c=>`<button class="category" data-category="${c.id}" aria-pressed="${c.id===category}">${c.name}</button>`).join('');
+function renderCategories(){$('#categories').innerHTML=categories.map(c=>`<button class="category" data-category="${c.id}" aria-pressed="${c.id===category}">${c.name}</button>`).join('');}
+renderCategories();
 $('#categories').addEventListener('click',event=>{const button=event.target.closest('[data-category]');if(!button)return;category=button.dataset.category;$('#categories').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b===button)));renderProducts();});
 $('#search').addEventListener('input',event=>{query=event.target.value;renderProducts();});
 document.addEventListener('click',event=>{
@@ -78,3 +79,22 @@ $('#ribbon-toggle').addEventListener('click',event=>{
  $('.ribbon').classList.toggle('loop-paused',paused);
 });
 renderProducts();renderCart();
+
+/* ===== Carta desde Google Sheets (COFREP) =====
+   Si la página tiene <meta name="cofrep-planilla" content="ID">, los productos,
+   precios y categorías salen de la planilla del local. Si no, queda la carta de menu.js. */
+const slug=s=>cleanText(s).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||'item';
+const KINDS=[[/latte|capuc|cappuc|flat|cortado|lagrima|con leche/,'latte'],[/iced|frio|fria|cold|helad|limonada|jugo|licuado/,'iced'],[/croissant|medialuna|factura|vigilante/,'croissant'],[/torta|cake|cheese|brownie|budin|alfajor|postre|dulce|tabla/,'cake'],[/cookie|galleta|scon/,'cookie'],[/palta|avocado|ensalada|bowl/,'avocado'],[/tostado|sandw|tostada|pan|toast|wrap/,'toast'],[/cafe|espresso|americano|ristretto|te |mate/,'coffee']];
+const kindFor=(name,cat)=>{const t=cleanText(`${name} ${cat}`);const k=KINDS.find(([re])=>re.test(t));return k?k[1]:'coffee';};
+function fromSheet(rows){
+ const used=new Set(),cats=[];
+ const list=rows.map(r=>{let id=slug(r.producto),n=2;while(used.has(id))id=`${slug(r.producto)}-${n++}`;used.add(id);
+  const cid=slug(r.categoria);if(!cats.some(c=>c.id===cid))cats.push({id:cid,name:r.categoria});
+  return {id,name:r.producto,category:cid,price:r.precio*100,description:r.descripcion,kind:kindFor(r.producto,r.categoria),tag:r.etiqueta||undefined};});
+ products.splice(0,products.length,...list);
+ categories.splice(0,categories.length,{id:'todos',name:'Todo'},...cats);
+ if(!categories.some(c=>c.id===category))category='todos';
+ cart=normalizeCart(cart);
+ renderCategories();renderProducts();renderCart();
+}
+window.CofrepPlanilla?.cargar({alGuardada:fromSheet,alNueva:fromSheet});
