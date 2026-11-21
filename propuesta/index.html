@@ -169,17 +169,16 @@
 </div></section>
 
 <section style="background:#181818"><div class="wrap">
-  <h2>Plan <em>Mantenimiento</em></h2>
-  <p class="sub">Elegí tu carta. Vos tenés el control de lo diario; nosotros nos ocupamos de que siempre se vea profesional.</p>
-  <div class="oferta" id="oferta"></div>
+  <h2>Tu carta, <em>un solo pago</em></h2>
+  <p class="sub">Pagás el diseño una sola vez y te la dejamos lista para usar. Sin cuotas mensuales: los precios y productos los manejás vos.</p>
   <div class="planes" id="planes"></div>
   <div class="plan">
-    <div class="cab"><h3>Carta digital + mantenimiento mensual</h3><p>Instalación única + cuota mensual</p></div>
+    <div class="cab"><h3>Después de publicar, el control es tuyo</h3><p>Sin cuota mensual · Sin permanencia</p></div>
     <div class="cols">
-      <div><h4>Lo cambiás vos (desde Google Sheets)</h4><ul>
-        <li>Precios</li><li>Nombres y descripciones</li><li>Productos agotados o de temporada</li></ul></div>
-      <div><h4>Lo hacemos nosotros</h4><ul>
-        <li>Fotos nuevas y retoque</li><li>Platos y categorías nuevas</li><li>Promociones y banners</li><li>Cambios de diseño y soporte</li></ul></div>
+      <div><h4>Lo cambiás vos, gratis (Google Sheets)</h4><ul>
+        <li>Precios</li><li>Productos nuevos, nombres y descripciones</li><li>Agotados y productos de temporada</li></ul></div>
+      <div><h4>Arreglos sin costo</h4><ul>
+        <li>Si se borró algo o se cargó mal por error, lo dejamos como estaba</li><li>Si la carta deja de funcionar, la revisamos y la arreglamos</li></ul></div>
     </div>
     <div class="precio" id="precio"></div>
   </div>
@@ -209,11 +208,9 @@
    sin carta, elegí un modelo: &modelo=premium | simple | dom | burger | restaurante */
 const CONFIG={
   whatsapp:"5492281565279",
-  ofertaHasta:"2026-12-10T23:59:59",  /* después de esta fecha se muestra el precio normal */
-  simple:{normal:120000,oferta:90000},
-  premium:{normal:170000,oferta:140000},
-  mensual:20000,
-  anual:200000                         /* 12 meses pagando 10 */
+  simple:25000,      /* pago único por el diseño */
+  premium:35000,     /* pago único por el diseño */
+  renovacion:5000    /* por cada pedido de cambio que hagamos nosotros */
 };
 let MODELOS={
  premium:{nombre:"Cafetería Premium",plan:"Premium",ruta:"/demo/coffee-republic/",desc:"Para cafeterías de especialidad con carta amplia: categorías con foto, tamaños, video y buscador.",lista:["Categorías visuales con foto","Tamaños y precios por producto","Buscador y modo claro / oscuro","Precios desde Google Sheets"]},
@@ -229,17 +226,14 @@ const cliente=(q.get("cliente")||"").trim();
 if(cliente){document.getElementById("cliente").textContent=cliente;document.title="Propuesta para "+cliente+" | COFREP"}
 document.getElementById("fecha").textContent=new Date().toLocaleDateString("es-AR",{day:"numeric",month:"long",year:"numeric"});
 const $$=n=>"$ "+n.toLocaleString("es-AR");
-const enOferta=new Date()<=new Date(CONFIG.ofertaHasta);
-document.getElementById("precio").innerHTML=`<div>Mantenimiento mensual<b>${$$(CONFIG.mensual)}</b></div><div>Pago anual adelantado<b>${$$(CONFIG.anual)}</b><small>12 meses al precio de 10</small></div>`;
-const caja=document.getElementById("oferta");
-if(enOferta){const d=Math.ceil((new Date(CONFIG.ofertaHasta)-new Date())/864e5);caja.innerHTML=`<span>OFERTA DE LANZAMIENTO</span> Precio especial hasta el 10 de diciembre · quedan ${d} día${d===1?"":"s"}`}else caja.style.display="none";
-const plan=(n,k,que,items,dest)=>{const p=CONFIG[k],precio=enOferta?p.oferta:p.normal,pct=Math.round((1-p.oferta/p.normal)*100);
+document.getElementById("precio").innerHTML=`<div>Renovaciones<b>${$$(CONFIG.renovacion)}</b><small>por pedido: fotos nuevas, cambios de diseño o productos que prefieras que carguemos nosotros</small></div><div>Arreglos por errores<b>Gratis</b><small>si se borró o se rompió algo, lo dejamos como estaba</small></div>`;
+const plan=(n,k,que,items,dest)=>{const precio=CONFIG[k];
  return `<div class="pl${dest?" dest":""}">${dest?'<div class="badge">Más completo</div>':""}<h3>${n}</h3><p class="que">${que}</p>
- ${enOferta?`<div class="antes">${$$(p.normal)}</div>`:""}<div class="ahora">${$$(precio)}</div>${enOferta?`<div class="ahorro">Ahorrás ${$$(p.normal-p.oferta)} (${pct}%)</div>`:""}
+ <div class="ahora">${$$(precio)}</div><div class="ahorro">Pago único · sin cuota mensual</div>
  <ul>${items.map(i=>`<li>${i}</li>`).join("")}</ul>
- <p class="pago">Instalación en 2 pagos: ${$$(precio/2)} al empezar y ${$$(precio/2)} al publicar. Después, ${$$(CONFIG.mensual)} por mes.</p></div>`};
+ <p class="pago">En 2 pagos: ${$$(precio/2)} al empezar y ${$$(precio/2)} al publicar. Después no pagás nada más por mes.</p></div>`};
 document.getElementById("planes").innerHTML=
- plan("Carta Simple","simple","Cafeterías, bares y locales con carta clara.",["Diseño con tu logo y colores","Carga de todos tus productos","Pedido por WhatsApp con número de mesa","Carta en español e inglés (otro idioma a pedido)","QR para imprimir y tu link"],false)+
+ plan("Carta Simple","simple","Cafeterías, bares y locales con carta clara.",["Diseño con tu logo y colores","Carga de todos tus productos","Precios y productos editables desde Google Sheets","Pedido por WhatsApp con número de mesa","Carta en español e inglés (otro idioma a pedido)","QR para imprimir y tu link"],false)+
  plan("Carta Premium","premium","Para destacar: fotos, video y movimiento.",["Todo lo de la Carta Simple","Video de portada y animaciones","Fotos de cada producto con zoom","Promociones con banner","Diseño a medida de tu marca"],true);
 document.getElementById("wa").href=`https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent("Hola! Vi la propuesta de COFREP"+(cliente?" para "+cliente:"")+" y quiero mi carta digital.")}`;
 
