@@ -609,3 +609,12 @@ img { max-width: 100%; }
 /* Fotos propias: menos corrección que las de banco */
 .hero-foto img, .seccion-foto img, .prod-foto img { filter: saturate(.92) contrast(.98); }
 .hero-foto img { object-position: center 40%; }
+
+/* Logo de Apatheia en el encabezado (verde de día, claro de noche) */
+.top { padding-top: 10px; padding-bottom: 10px; }
+.marca-logo img { display: block; height: 56px; width: auto; }
+.marca-logo .logo-noche { display: none; }
+:root[data-tema="noche"] .marca-logo .logo-dia { display: none; }
+:root[data-tema="noche"] .marca-logo .logo-noche { display: block; }
+@media (max-width: 420px) { .marca-logo img { height: 50px; } }
+@media (max-width: 420px) { .indice { top: 71px; } }
