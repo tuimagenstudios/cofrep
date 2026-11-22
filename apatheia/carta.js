@@ -108,8 +108,8 @@
   var TXT = {
     es: {
       skip: 'Ir a la carta', seleccion: 'Selección', heroEyebrow: 'Cafetería y pastelería de especialidad',
-      heroH1: 'Café, pastelería<br><span>y un poco de calma.</span>',
-      heroBajada: 'Apatheia es armonía, paz y libertad: sentirnos vivos y completos en el momento presente. Vení a vivirlo con un café y algo dulce.',
+      heroH1: 'Un lugar para<br><span>desconectar<br>del día.</span>',
+      heroBajada: 'La apatheia es el estado de armonía, pureza, paz y libertad que siente nuestro corazón. Es el estar conectados con nosotros mismos y con el universo infinito, sentirnos vivos y completos en este momento presente. Aceptando que no existe otra cosa que no sea el ahora. La apatheia es el estado de salud de nuestra alma.',
       verCarta: 'Ver la carta <span aria-hidden="true">↓</span>', portadaAlt: 'Café para llevar de Apatheia junto a flores y una caja de pastelería',
       figcaption: 'Nuestra casa · Azul, Buenos Aires', horario: 'Horario', direccion: 'Dirección', mascotas: 'Mascotas',
       avisoDemo: 'Precios de muestra en ARS. Los precios y productos definitivos se cargan desde la planilla del local.',
@@ -134,8 +134,8 @@
     },
     en: {
       skip: 'Skip to menu', seleccion: 'My list', heroEyebrow: 'Specialty coffee & pastry shop',
-      heroH1: 'Coffee, pastries<br><span>and a little calm.</span>',
-      heroBajada: 'Apatheia means harmony, peace and freedom: feeling alive and whole in the present moment. Come and enjoy it with a coffee and something sweet.',
+      heroH1: 'A place to<br><span>unplug<br>from the day.</span>',
+      heroBajada: 'Apatheia is the state of harmony, purity, peace and freedom our heart feels. It is being connected with ourselves and with the infinite universe, feeling alive and whole in this present moment. Accepting that nothing exists but the now. Apatheia is the state of health of our soul.',
       verCarta: 'See the menu <span aria-hidden="true">↓</span>', portadaAlt: 'Apatheia takeaway coffee next to flowers and a pastry box',
       figcaption: 'Our place · Azul, Buenos Aires', horario: 'Hours', direccion: 'Address', mascotas: 'Pets',
       avisoDemo: 'Sample prices in ARS (Argentine pesos). Final prices and products are loaded from the shop’s sheet.',
