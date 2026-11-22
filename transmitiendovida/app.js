@@ -135,4 +135,62 @@
     });
   }, { rootMargin: '-45% 0px -50% 0px' });
   links.forEach(function (a) { var s = document.querySelector(a.getAttribute('href')); if (s) spy.observe(s); });
+
+  /* ---------- Avisos: visitas y reuniones especiales ----------
+     Se cargan en la planilla, pestaña «Avisos»:
+     Etiqueta · Título · Bajada · Fechas · Hasta (dd/mm/aaaa) · Hora · Lugar · Imagen (link) · Mostrar
+     Al día siguiente de «Hasta» el aviso desaparece solo. Si no hay ninguno vigente, la sección no se muestra. */
+  function imgDrive(u) {
+    u = String(u || '').trim(); var m = u.match(/drive\.google\.com\/(?:file\/d\/|open\?id=|uc\?(?:export=\w+&)?id=)([\w-]+)/);
+    return m ? 'https://drive.google.com/thumbnail?id=' + m[1] + '&sz=w1400' : u;
+  }
+  function pintarAvisos(filas) {
+    var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
+    var av = filas.map(function (r) { return { et: (r[0] || '').trim(), tit: (r[1] || '').trim(), baj: (r[2] || '').trim(), fechas: (r[3] || '').trim(), hasta: fecha(r[4]), hora: (r[5] || '').trim(), lugar: (r[6] || '').trim(), img: imgDrive(r[7]), ver: (r[8] || 'SI').trim().toUpperCase() }; })
+      .filter(function (a) { return a.tit && a.ver != 'NO' && (!a.hasta || a.hasta >= hoy); }); /* en el orden de la planilla */
+    var sec = $('avisos');
+    if (!av.length) { sec.hidden = true; return; }
+    sec.hidden = false;
+    $('avisos-lista').innerHTML = av.map(function (a, i) {
+      var foto = a.img ? '<button class="av-foto" type="button" data-img="' + esc(a.img) + '" aria-label="Ver flyer de ' + esc(a.tit) + '"><img src="' + esc(a.img) + '" alt="" loading="lazy"><span class="av-ver">Ver flyer</span></button>' : '';
+      return '<article class="av-tarjeta' + (a.img ? '' : ' sin-foto') + '" style="--i:' + i + '"' + (a.img ? ' tabindex="0" role="button" aria-label="Ver flyer de ' + esc(a.tit) + ', ' + esc(a.fechas) + '"' : '') + '>' + foto +
+        '<div class="av-info">' + (a.et ? '<span class="av-et">' + esc(a.et) + '</span>' : '') +
+        '<p class="av-fecha">' + esc(a.fechas) + (a.hora ? ' · ' + esc(a.hora) : '') + '</p>' +
+        '<h3>' + esc(a.tit) + '</h3>' + (a.baj ? '<p class="av-bajada">' + esc(a.baj) + '</p>' : '') +
+        (a.lugar ? '<p class="av-lugar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z"/><circle cx="12" cy="10" r="2.6"/></svg>' + esc(a.lugar) + '</p>' : '') +
+        '</div></article>';
+    }).join('');
+  }
+  function leerAvisos(t) { var f = csv(t); if (!f.length || !/t[ií]tulo/i.test(f[0].join(' '))) return null; return f.slice(1); }
+  try { var ca = localStorage.getItem('tv-avisos'); var fa = ca && leerAvisos(ca); if (fa) pintarAvisos(fa); } catch (e) {}
+  fetch('https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv&sheet=Avisos', { cache: 'no-store' })
+    .then(function (r) { return r.ok ? r.text() : Promise.reject(); })
+    .then(function (t) { var f = leerAvisos(t); if (!f) return; pintarAvisos(f); try { localStorage.setItem('tv-avisos', t); } catch (e) {} })
+    .catch(function () {});
+
+  /* visor de flyers */
+  var visor = $('visor'), visorImg = $('visor-img');
+  $('avisos-lista').addEventListener('click', function (e) {
+    var t = e.target.closest('.av-tarjeta'); var b = t && t.querySelector('.av-foto'); if (!b) return;
+    visorImg.src = b.getAttribute('data-img'); visorImg.alt = b.getAttribute('aria-label') || '';
+    if (visor.showModal) visor.showModal(); else window.open(visorImg.src, '_blank');
+  });
+  $('avisos-lista').addEventListener('keydown', function (e) { if ((e.key === 'Enter' || e.key === ' ') && e.target.classList.contains('av-tarjeta')) { e.preventDefault(); e.target.click(); } });
+  $('visor-cerrar').addEventListener('click', function () { visor.close(); });
+  visor.addEventListener('click', function (e) { if (e.target === visor) visor.close(); });
+
+  /* flechas de avisos (en el celular) */
+  var avL = $('avisos-lista'), avAnt = $('av-ant'), avSig = $('av-sig'), avCont = $('av-cont');
+  function avPaso() { var t = avL.querySelector('.av-tarjeta'); return t ? t.offsetWidth + 14 : avL.clientWidth; }
+  function avMarcar() {
+    var n = avL.querySelectorAll('.av-tarjeta').length, i = Math.round(avL.scrollLeft / avPaso());
+    var fin = avL.scrollLeft + avL.clientWidth >= avL.scrollWidth - 4;
+    avAnt.disabled = avL.scrollLeft < 4; avSig.disabled = fin || n < 2;
+    avCont.textContent = n > 1 ? (Math.min(i, n - 1) + 1) + ' / ' + n : '';
+  }
+  avSig.addEventListener('click', function () { avL.scrollBy({ left: avPaso(), behavior: 'smooth' }); });
+  avAnt.addEventListener('click', function () { avL.scrollBy({ left: -avPaso(), behavior: 'smooth' }); });
+  avL.addEventListener('scroll', function () { requestAnimationFrame(avMarcar); }, { passive: true });
+  addEventListener('resize', avMarcar);
+  new MutationObserver(avMarcar).observe(avL, { childList: true }); avMarcar();
 })();

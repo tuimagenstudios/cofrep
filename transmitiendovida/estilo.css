@@ -446,3 +446,79 @@ details[open] .mas { transform: rotate(45deg); background: var(--banda); }
    la barra del celular sube para que no la tape */
 .barra { bottom: calc(max(14px, env(safe-area-inset-bottom)) + 66px); }
 .pie { padding-bottom: 210px; }
+
+/* ---------- Avisos: visitas y reuniones especiales ---------- */
+.avisos { max-width: var(--max); margin: clamp(40px, 6vw, 64px) auto 0; padding: 0 var(--gutter); }
+.avisos-cab { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 20px; margin-bottom: 22px; }
+.avisos-cab .eyebrow { display: inline-flex; align-items: center; gap: 10px; margin: 0; }
+.avisos-punto { width: 10px; height: 10px; border-radius: 50%; background: var(--vino); box-shadow: 0 0 0 0 rgba(142, 52, 70, .5); animation: av-pulso 2s ease-out infinite; }
+@keyframes av-pulso { 70% { box-shadow: 0 0 0 10px rgba(142, 52, 70, 0); } 100% { box-shadow: 0 0 0 0 rgba(142, 52, 70, 0); } }
+.avisos-cab h2 { width: 100%; margin: 0; font: 300 clamp(28px, 4.4vw, 40px)/1.1 var(--display); color: var(--marca); letter-spacing: -.015em; }
+.avisos-pista { display: grid; grid-auto-flow: column; grid-auto-columns: min(86%, 360px); gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 4px 2px 14px; scrollbar-width: none; }
+.avisos-pista::-webkit-scrollbar { display: none; }
+@media (min-width: 760px) { .avisos-pista { grid-auto-flow: row; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); overflow: visible; } }
+.av-tarjeta { scroll-snap-align: start; display: flex; flex-direction: column; background: var(--superficie); border: 1px solid var(--linea); border-radius: 8px; overflow: hidden;
+  box-shadow: 0 14px 34px -22px rgba(46, 10, 20, .45); animation: entrar 900ms var(--suave) both; animation-delay: calc(300ms + var(--i, 0) * 120ms);
+  transition: transform 600ms var(--suave), box-shadow 600ms var(--suave); }
+.av-tarjeta:hover { transform: translateY(-4px); box-shadow: 0 22px 44px -24px rgba(46, 10, 20, .55); }
+.av-foto { position: relative; display: block; padding: 0; border: 0; background: var(--arena); aspect-ratio: 4 / 3; overflow: hidden; cursor: zoom-in; }
+.av-foto img { width: 100%; height: 100%; object-fit: cover; transition: transform 1200ms var(--suave); }
+.av-tarjeta:hover .av-foto img { transform: scale(1.05); }
+.av-ver { position: absolute; right: 12px; bottom: 12px; padding: 8px 12px; border-radius: 30px; background: rgba(23, 6, 11, .72); color: #FFF8F3; font: 600 12px/1 var(--sans); letter-spacing: .1em; text-transform: uppercase; backdrop-filter: blur(4px); }
+.av-info { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 22px; flex: 1; }
+.av-et { align-self: flex-start; padding: 6px 10px; border-radius: 30px; background: var(--primario); color: var(--sobre-primario); font: 600 11px/1 var(--sans); letter-spacing: .16em; text-transform: uppercase; }
+.av-fecha { margin: 4px 0 0; font: 600 15px/1.3 var(--sans); color: var(--detalle); letter-spacing: .02em; }
+.av-tarjeta h3 { margin: 0; font: 500 26px/1.15 var(--display); color: var(--marca); letter-spacing: -.01em; }
+.av-bajada { margin: 0; font-size: 15px; line-height: 1.5; color: var(--texto-2); }
+.av-lugar { margin: auto 0 0; padding-top: 12px; border-top: 1px solid var(--linea); display: flex; gap: 8px; align-items: center; font-size: 14px; color: var(--texto); }
+.av-lugar svg { width: 18px; height: 18px; flex: none; color: var(--marca); }
+/* visor del flyer */
+.visor { padding: 0; border: 0; background: transparent; max-width: min(96vw, 1100px); max-height: 92vh; overflow: visible; }
+.visor::backdrop { background: rgba(23, 6, 11, .82); }
+.visor img { display: block; max-width: 100%; max-height: 88vh; border-radius: 6px; box-shadow: 0 30px 80px rgba(0, 0, 0, .5); }
+.visor[open] { animation: entrar 500ms var(--suave); }
+.visor-cerrar { position: absolute; top: -18px; right: -12px; width: 46px; height: 46px; border-radius: 50%; border: 2px solid #FFF8F3; background: var(--bordo); color: #FFF8F3; font-size: 18px; z-index: 2; }
+@media (max-width: 600px) { .visor-cerrar { top: -56px; right: 0; } }
+@media (prefers-reduced-motion: reduce) { .avisos-punto { animation: none; } }
+
+.av-tarjeta[role="button"] { cursor: zoom-in; }
+.av-tarjeta:focus-visible { outline: 2px solid var(--detalle); outline-offset: 3px; }
+@media (max-width: 759px) {
+  .visor { max-width: 100vw; }
+  .visor img { max-height: 80vh; border-radius: 0; }
+}
+
+/* Avisos en el celular: tarjeta grande de a una, con flechas */
+.avisos-marco { position: relative; }
+.av-flecha { display: none; }
+@media (max-width: 759px) {
+  .avisos-pista { grid-auto-columns: 100%; gap: 14px; }
+  .av-flecha {
+    display: grid; place-items: center; position: absolute; top: 28%; z-index: 3; transform: translateY(-50%);
+    width: 46px; height: 46px; border-radius: 50%; background: var(--primario); color: var(--sobre-primario);
+    border: 2px solid rgba(255, 248, 243, .9); box-shadow: 0 8px 20px rgba(46, 10, 20, .35);
+    transition: opacity 400ms var(--suave), transform 400ms var(--suave);
+  }
+  .av-flecha svg { width: 22px; height: 22px; }
+  .av-ant { left: -8px; } .av-sig { right: -8px; }
+  .av-flecha:disabled { opacity: 0; pointer-events: none; }
+  .av-cont { display: block; text-align: center; margin-top: 4px; font: 600 13px/1 var(--sans); letter-spacing: .12em; color: var(--marca); }
+}
+.av-cont { display: none; }
+
+/* Flechas más chicas y finas (avisos y galería) */
+.gal-flecha, .av-flecha {
+  width: 40px; height: 40px;
+  background: rgba(255, 248, 243, .82); color: var(--bordo);
+  border: 1px solid rgba(107, 30, 46, .25);
+  box-shadow: 0 4px 14px rgba(46, 10, 20, .18);
+  backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+}
+.gal-flecha svg, .av-flecha svg { width: 18px; height: 18px; stroke-width: 2; }
+.gal-flecha:hover, .av-flecha:hover { background: var(--bordo); color: #FFF8F3; border-color: var(--bordo); transform: translateY(-50%) scale(1.06); }
+@media (min-width: 900px) { .gal-flecha { width: 48px; height: 48px; } .gal-flecha svg { width: 20px; height: 20px; } }
+@media (max-width: 759px) { .av-flecha { width: 34px; height: 34px; } .av-flecha svg { width: 16px; height: 16px; } .av-ant { left: 8px; } .av-sig { right: 8px; } }
+:root[data-tema="noche"] .gal-flecha, :root[data-tema="noche"] .av-flecha { background: rgba(23, 11, 15, .75); color: var(--marca); border-color: rgba(231, 199, 154, .35); }
+.gal-flecha, .av-flecha { background: rgba(255, 248, 243, .94); }
+.gal-flecha svg, .av-flecha svg { stroke-width: 2.3; }
+@media (max-width: 759px) { .av-flecha { width: 36px; height: 36px; } }
