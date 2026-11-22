@@ -152,7 +152,7 @@
     if (!av.length) { sec.hidden = true; return; }
     sec.hidden = false;
     $('avisos-lista').innerHTML = av.map(function (a, i) {
-      var foto = a.img ? '<button class="av-foto" type="button" data-img="' + esc(a.img) + '" aria-label="Ver flyer de ' + esc(a.tit) + '"><img src="' + esc(a.img) + '" alt="" loading="lazy"><span class="av-ver">Ver flyer</span></button>' : '';
+      var foto = a.img ? '<button class="av-foto" type="button" data-img="' + esc(a.img) + '" aria-label="Ver flyer de ' + esc(a.tit) + '"><img src="' + esc(a.img) + '" alt=""' + (i > 1 ? ' loading="lazy"' : '') + '><span class="av-ver">Ver flyer</span></button>' : '';
       return '<article class="av-tarjeta' + (a.img ? '' : ' sin-foto') + '" style="--i:' + i + '"' + (a.img ? ' tabindex="0" role="button" aria-label="Ver flyer de ' + esc(a.tit) + ', ' + esc(a.fechas) + '"' : '') + '>' + foto +
         '<div class="av-info">' + (a.et ? '<span class="av-et">' + esc(a.et) + '</span>' : '') +
         '<p class="av-fecha">' + esc(a.fechas) + (a.hora ? ' · ' + esc(a.hora) : '') + '</p>' +
