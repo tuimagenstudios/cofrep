@@ -19,5 +19,6 @@ Disallow: /apatheia/
 Disallow: /propuesta/
 Disallow: /qr/
 Disallow: /transmitiendovida/
+Disallow: /tonnarello/
 
 Sitemap: https://cofrep.com/sitemap.xml
