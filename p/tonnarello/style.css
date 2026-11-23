@@ -1,0 +1,260 @@
+/* Fuentes alojadas en el proyecto (licencia SIL OFL). Reemplazan los subconjuntos del PDF, que no tenían acentos, € ni la mayoría de las letras. */
+@font-face{font-family:'Special Elite';src:url('marca/special-elite-latin.woff2') format('woff2');font-display:swap}@font-face{font-family:Courgette;src:url('marca/courgette-latin.woff2') format('woff2');font-display:swap}
+:root{--ink:#28231f;--red:#ad1747;--paper:#e7d8ae;--green:#14664d;--type:'Special Elite','Courier New',monospace;--hand:Courgette,'Segoe Print',cursive}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:95px}body{margin:0;background:#d1c8b3;color:var(--ink);font-family:var(--type);font-size:15px;line-height:1.5}button,input{font:inherit;color:inherit}button,a{-webkit-tap-highlight-color:transparent}button{cursor:pointer}a{color:inherit;text-underline-offset:5px}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid var(--red);outline-offset:4px}button{border:0;background:none}button,a{touch-action:manipulation}.edition{max-width:1180px;margin:22px auto 13px;display:flex;justify-content:space-between;font:11px 'Courier New',monospace;letter-spacing:1.4px;padding:0 8px;color:#51493e}.paper{position:relative;max-width:1180px;margin:0 auto 45px;padding:0 58px;/* Papel construido con CSS: renglones horizontales, fibras y envejecimiento suave. */
+background-color:var(--paper);
+background-image:
+ linear-gradient(90deg,rgba(126,87,30,.11),transparent 3%,transparent 97%,rgba(126,87,30,.11)),
+ repeating-linear-gradient(to bottom,transparent 0 23px,rgba(107,119,105,.18) 23px 24px),
+ radial-gradient(ellipse at 13% 17%,rgba(255,251,227,.34),transparent 46%),
+ radial-gradient(ellipse at 83% 66%,rgba(173,127,48,.09),transparent 55%),
+ repeating-radial-gradient(ellipse at 21% 37%,rgba(107,78,33,.035) 0 .5px,transparent .8px 3.5px),
+ repeating-linear-gradient(113deg,rgba(255,255,240,.055) 0 1px,transparent 1px 5px);
+background-size:100% 100%,100% 24px,100% 960px,100% 1270px,11px 17px,7px 13px;
+background-repeat:no-repeat,repeat,repeat,repeat,repeat,repeat;
+box-shadow:0 10px 48px #49381e24;border:1px solid #a2906c}.paper:before,.paper:after{content:'';position:absolute;top:0;bottom:0;width:1px;background:#b6416470;pointer-events:none}.paper:before{left:27px}.paper:after{right:27px}.masthead{text-align:center;padding:36px 0 24px}.eyebrow{font:11px 'Courier New',monospace;letter-spacing:4px;margin:0 0 18px}.logo{width:310px;height:auto;max-width:85%;mix-blend-mode:multiply}.heading-line{display:flex;justify-content:space-between;border-top:1px solid #776d555c;margin-top:26px;padding-top:15px;font-size:11px;text-transform:uppercase;letter-spacing:1px}h1{font-family:var(--hand);font-weight:400;font-size:66px;line-height:1.15;color:var(--red);margin:24px 0 2px}.intro{margin:6px 0 0;font-size:13px}.toolbar{display:flex;align-items:center;border-top:2px solid var(--red);border-bottom:1px solid var(--red);position:sticky;top:0;z-index:3;background:#e9dcbaeF;backdrop-filter:blur(12px);min-height:60px;gap:10px}nav{display:flex;align-items:center;gap:21px;overflow-x:auto;scrollbar-width:thin;flex:1;padding:7px 2px}nav a{white-space:nowrap;text-decoration:none;min-height:44px;display:flex;align-items:center;font-size:12px}nav a:hover,nav a.active{color:var(--red);text-decoration:underline;text-decoration-thickness:2px}.search-toggle{display:flex;align-items:center;gap:8px;min-height:44px;font-size:12px;border-left:1px solid #a0896966;padding-left:16px}.search-toggle svg{width:18px;fill:none;stroke:currentColor;stroke-width:1.5}.menu-meta{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:22px 0 4px;font-size:11px}.menu-meta button{font-size:11px;color:var(--red);min-height:44px;text-decoration:underline;text-underline-offset:4px}#search-area{padding:20px 0;border-bottom:1px solid #9e8c6b}#search-area label{display:block;font-size:13px;margin-bottom:8px}.search-row{display:flex;gap:12px}.search-row input{min-width:0;flex:1;border:1px solid #79664d;background:#f5eacb;padding:12px;font-family:'Courier New',monospace}.search-row button{color:var(--red);min-height:44px}.menu-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:64px;align-items:start;padding:8px 0 30px}.category{padding-top:21px;scroll-margin-top:90px;break-inside:avoid;min-width:0}.category h2{font-family:var(--hand);font-size:43px;font-weight:400;color:var(--red);text-align:center;line-height:1.2;margin:0 0 10px}.category-number{display:block;text-align:center;font-size:10px;letter-spacing:2px;color:#73634c;margin:0 0 7px}.category .note{text-align:center;font-size:11px;max-width:370px;margin:0 auto 20px;line-height:1.7}.items{padding:0 8px}.featured .items{border-left:3px solid #ad17478c;border-right:3px solid #ad17478c;border-radius:19px 8px 15px 9px;padding:0 16px}.dish{padding:10px 0 9px;border-bottom:1px dotted #8e7a5366;break-inside:avoid}.dish:last-child{border-bottom:0}.dish-top{display:flex;align-items:baseline;justify-content:space-between;gap:14px}.dish h3{font-size:14px;font-weight:400;margin:0;line-height:1.6}.price{white-space:nowrap;font-size:14px;font-variant-numeric:tabular-nums}.dish p{font-size:11px;line-height:1.65;margin:4px 0 0}.allergens{font-family:'Courier New',monospace;font-size:10px;color:#62543e;display:block;margin-top:4px}.mark{color:var(--red)}.category[hidden],.dish[hidden],[hidden]{display:none!important}.closing{border-top:1px solid #7867477a;border-bottom:1px solid #7867477a;padding:25px 0 30px;text-align:center}.little-star{color:var(--red);font-size:23px}.closing p{font:44px var(--hand);color:var(--red);margin:3px 0}.closing>span:last-child{font-size:11px;letter-spacing:2px}footer{text-align:center;padding:15px 0 28px}.service{font-size:11px;text-transform:uppercase;line-height:1.8}footer>div{display:flex;justify-content:center;flex-wrap:wrap;gap:12px 30px;align-items:center}footer a,footer button{font-size:11px;min-height:44px;display:inline-flex;align-items:center}footer button{text-decoration:underline;text-underline-offset:5px}.source-note{font:10px/1.7 'Courier New',monospace;color:#6c5e45;margin:12px 0 0}dialog{color:var(--ink);border:1px solid var(--red);max-width:650px;width:calc(100% - 30px);max-height:85dvh;padding:35px;background:#f2e8cb;font:14px/1.7 'Courier New',monospace;box-shadow:0 15px 60px #0005}dialog::backdrop{background:#28231f99}dialog h2{font:36px var(--hand);color:var(--red);margin:10px 0 22px}dialog ol{columns:2;padding-left:23px;font-size:12px;column-gap:30px}dialog li{break-inside:avoid;padding:3px 0}.close{position:absolute;right:8px;top:8px;font:28px Arial;width:44px;height:44px}#empty{text-align:center;padding:50px 0}.skip{position:fixed;top:-100px;left:10px;z-index:10;background:var(--paper);padding:12px}.skip:focus{top:10px}.sr-only{position:absolute;clip-path:inset(50%);width:1px;height:1px;overflow:hidden}
+@media(min-width:900px){.category:nth-child(odd){border-right:1px solid #95836a55;padding-right:31px;margin-right:-32px}}
+@media(max-width:899px){body{background:var(--paper)}.edition{margin:12px 0;padding:0 18px;letter-spacing:.5px;font-size:9px;gap:12px}.edition span:last-child{text-align:right}.paper{padding:0 25px;margin:0;border:0;box-shadow:none}.paper:before{left:12px}.paper:after{right:12px}.masthead{padding:29px 0 20px}.eyebrow{font-size:10px;letter-spacing:3px;margin-bottom:16px}.logo{width:265px}.heading-line{font-size:9px;margin-top:23px;letter-spacing:0;gap:12px}h1{font-size:52px;margin-top:22px}.intro{font-size:11px}.toolbar{gap:8px;min-height:57px}nav{gap:22px}.search-toggle{padding-left:10px}.search-toggle span{display:none}nav a{font-size:12px}.menu-meta{font-size:10px;gap:9px;margin-top:14px}.menu-meta>span{max-width:45%}.menu-meta button{font-size:10px;text-align:right}.menu-grid{grid-template-columns:1fr;gap:10px;padding-top:0}.category{padding-top:22px}.category h2{font-size:42px}.category .note{font-size:11px}.dish{padding:13px 0 12px}.dish h3,.price{font-size:14px}.dish p{font-size:12px}.allergens{font-size:11px}.featured .items{padding:0 12px}.items{padding:0 2px}.closing p{font-size:39px}.service{font-size:10px}dialog{padding:28px 22px}dialog ol{columns:1}dialog h2{font-size:31px}footer>div{gap:0 15px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{body{background:white}.edition,.toolbar,.menu-meta,dialog,#search-area{display:none!important}.paper{box-shadow:none;margin:0;border:0;padding:0 20px;max-width:none}.masthead{padding-top:0}.logo{width:200px}.menu-grid{gap:30px}.category{break-inside:avoid}.source-note{display:none}}
+
+/* Un renglón cada 24 px. Los saltos de línea conservan ese mismo ritmo. */
+.paper{--renglon:24px}
+.menu-grid{row-gap:24px;padding-top:24px;padding-bottom:48px}
+.category{padding-top:24px}
+.category-number{line-height:24px;margin-bottom:0}
+.category h2{line-height:72px;margin:0}
+.category .note{line-height:24px;margin-top:0;margin-bottom:24px;font-size:12px}
+.dish{padding:12px 0;border-bottom:0}
+.dish h3{font-size:15px;line-height:24px}
+.dish-top{align-items:baseline;gap:16px}
+.price{color:#100d0a;font-size:16px;line-height:24px;font-weight:700;-webkit-text-stroke:.18px currentColor;font-variant-numeric:tabular-nums}
+.dish p{font-size:12px;line-height:24px;margin:0}
+.allergens{font-size:11px;line-height:24px;margin-top:0;color:#514431}
+.baseline-marker{display:inline-block;width:0;height:0;padding:0;margin:0;vertical-align:baseline;pointer-events:none}
+.baseline-snap{transform:translateY(var(--baseline-shift,0px))}
+@media(max-width:899px){.menu-grid{row-gap:24px;padding-top:24px}.category{padding-top:24px}.dish{padding:12px 0}.dish h3{font-size:14px;line-height:24px}.price{font-size:16px;line-height:24px}.dish p,.allergens{line-height:24px}.category h2{line-height:72px}}
+
+.closing>span:last-child{display:inline-block}
+.source-note,.service,.intro,.eyebrow,.heading-line span{line-height:24px}
+
+/* Imagen restaurada aportada por el usuario: transparencia original conservada. */
+.brand-cover{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:32px;max-width:800px;margin:0 auto}
+.brand-cover>.logo{width:340px;max-width:100%;justify-self:center}
+.heritage-photo{margin:0;line-height:0;justify-self:center;width:300px;max-width:100%;mix-blend-mode:multiply}
+.heritage-photo img{
+ display:block;width:100%;height:auto;object-fit:contain;
+ /* La máscara deja ver el papel real y sus renglones, sin pintar un marco. */
+ -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 7%,#000 68%,#0009 84%,transparent 100%),linear-gradient(to right,transparent 0%,#000 7%,#000 84%,transparent 100%);
+ mask-image:linear-gradient(to bottom,transparent 0%,#000 7%,#000 68%,#0009 84%,transparent 100%),linear-gradient(to right,transparent 0%,#000 7%,#000 84%,transparent 100%);
+ -webkit-mask-composite:source-in;
+ mask-composite:intersect;
+ -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+ -webkit-mask-size:100% 100%;mask-size:100% 100%;
+}
+@media(max-width:899px){.brand-cover{gap:12px;max-width:560px}.brand-cover>.logo{width:265px}.heritage-photo{width:230px}}
+@media(max-width:480px){.brand-cover{gap:8px;grid-template-columns:1.1fr 1fr}.brand-cover>.logo{width:180px}.heritage-photo{width:155px}}
+
+/* Portada móvil: la firma arriba y la escena como imagen principal de la hoja. */
+@media(max-width:600px){
+ .edition{display:none}
+ .masthead{padding:20px 0 24px}
+ .masthead .eyebrow{margin:0 0 12px;font-size:9px;letter-spacing:3px}
+ .brand-cover{display:flex;flex-direction:column;gap:0;max-width:none}
+ .brand-cover>.logo{width:285px;max-width:92%;align-self:center}
+ .heritage-photo{width:min(calc(100vw - 20px),480px);max-width:none;margin:12px 0 0;align-self:center}
+ .heading-line{margin-top:0;padding-top:12px;font-size:9px;gap:8px}
+ .masthead h1{font-size:clamp(30px,9vw,38px);margin:12px 0 0;line-height:48px;white-space:nowrap}
+ .masthead .intro{font-size:10px;margin:0;line-height:24px}
+}
+
+/* Siluetas vectoriales recuperadas de la carta original. */
+.dish h3{min-width:0;flex:1}
+.dish-meta{display:inline-flex;align-items:baseline;gap:8px;flex-shrink:0;white-space:nowrap}
+.food-symbols{display:inline-flex;align-items:flex-end;gap:3px;align-self:baseline;height:18px}
+.food-symbols:empty{display:none}
+.food-symbol{display:block;width:21px;height:18px;object-fit:contain;object-position:center bottom}
+.food-symbol-carciofo,.food-symbol-calamaro{width:17px;height:21px}
+.dish-meta .price{display:inline-block}
+.symbol-legend{display:flex;flex-wrap:wrap;gap:10px 20px;margin:16px 0 24px}
+.symbol-legend span{display:inline-flex;align-items:center;gap:8px;font-size:12px}
+.food-symbol-pesce{width:25px;height:18px}
+@media(max-width:600px){.dish-top{gap:10px}.dish-meta{gap:6px}.food-symbol{width:19px;height:16px}.food-symbol-pesce{width:24px;height:17px}.food-symbols{gap:3px}.food-symbol-carciofo,.food-symbol-calamaro{width:15px;height:19px}}
+
+/* Frases originales bajo los títulos, con más presencia y ritmo de 24 px. */
+.category .note:has(strong){font-size:14px;line-height:24px;color:#211c18;margin-bottom:24px}
+.category .note strong{font-weight:700}
+.category .note .note-aside{font-size:12px}
+.category .note.note-red{color:var(--red)}
+.category-symbol{display:inline-block;width:22px;height:18px;object-fit:contain;vertical-align:baseline;margin-left:9px}
+@media(max-width:600px){.category .note:has(strong){font-size:13px;line-height:24px}.category .note .note-aside{font-size:11px}}
+
+/* Separación discreta entre familias, sin numeración editorial. */
+.category{border-top:2px solid rgba(93,73,42,.65);padding-top:24px}
+
+.language-switch{display:flex;justify-content:center;gap:6px;margin:18px auto 0;padding:0;overflow:visible}
+.language-switch button{font:700 12px/24px 'Courier New',monospace;min-height:44px;padding:7px 13px;border:1px solid transparent;border-radius:2px}
+.language-switch button[aria-pressed="true"]{color:var(--red);border-color:var(--red);background:#fff7dd55}
+.language-switch button:hover{background:#fff7dd66}
+@media(max-width:600px){.language-switch{margin-top:12px;gap:4px}.language-switch button{font-size:12px;padding:7px 10px}}
+
+/* Categorías de navegación más legibles en los tres idiomas. */
+#categories a{font-size:14px;font-weight:700;line-height:24px}
+
+/* Dos niveles de acordeón, con la misma hoja, tinta y títulos manuscritos. */
+.menu-grid{display:block;padding:24px 0 48px}
+.menu-section{border-top:2px solid rgba(93,73,42,.65);margin:0 0 24px;scroll-margin-top:90px}
+.section-summary,.category-summary{display:grid;grid-template-columns:28px minmax(0,1fr) 28px;align-items:center;cursor:pointer;list-style:none;min-height:72px;gap:6px}
+.section-summary::-webkit-details-marker,.category-summary::-webkit-details-marker{display:none}
+.section-summary::marker,.category-summary::marker{content:''}
+.section-summary{padding:12px 0;min-height:96px}
+.section-title{grid-column:2;font:52px/72px var(--hand);color:var(--red);text-align:center;display:block}
+.accordion-indicator{grid-column:3;grid-row:1;font:26px/44px 'Courier New',monospace;text-align:center;color:var(--red)}
+.accordion-indicator::before{content:'+'}
+details[open]>.section-summary .accordion-indicator::before,details[open]>.category-summary .accordion-indicator::before{content:'−'}
+.section-content{padding-bottom:12px}
+.menu-section:not([open])>.section-content,.category:not([open])>.category-content{display:none}
+.section-toolbar{position:sticky;top:60px;z-index:2;background:#e9dcbaef;backdrop-filter:blur(12px);border-top:1px solid var(--red);border-bottom:1px solid var(--red);margin:0 0 24px}
+.category-nav{display:flex;gap:22px;min-height:58px;padding:6px 3px;overflow-x:auto}
+.category-nav a{font-size:14px;font-weight:700;line-height:24px;flex-shrink:0}
+.section-note{font-size:11px;line-height:24px;text-align:center;margin:0 0 24px}
+.section-categories>.category{border-right:0;margin:0 0 24px;padding:0;border-top:2px solid rgba(93,73,42,.65);scroll-margin-top:160px}
+.category-summary h2{grid-column:2;grid-row:1;text-align:center;margin:0}
+.category-content{padding:12px 0 24px}
+.category-content .items{max-width:650px;margin:0 auto}
+.category-content .note{max-width:540px}
+.section-summary:focus-visible,.category-summary:focus-visible{outline:3px solid var(--red);outline-offset:4px}
+@media(max-width:899px){.menu-grid{display:block}.section-toolbar{top:57px}.section-title{font-size:48px}.section-summary{min-height:96px}.category-content{padding-top:12px}}
+@media print{.section-toolbar{display:none}.menu-section,.category{break-inside:auto}}
+
+/* Detalles de marca de la página de bebidas del PDF. */
+.beverage-brand{text-align:center;margin:0 auto 24px;line-height:0}
+.beverage-brand img{width:108px;height:auto;max-width:100%}
+.spritz-feature{position:relative;border:3px dotted #c4597b!important;border-radius:3px;padding:12px 10px 12px 65px!important;margin:12px 0 24px}
+.spritz-feature .dish-top{align-items:flex-end;gap:8px}
+.spritz-glass{position:absolute;left:10px;top:18px;width:43px;height:auto;transform:scaleY(-1)}
+.spritz-wordmark{display:block;width:150px;max-width:100%;height:auto;margin:0 0 4px}
+.spritz-caption{display:block;font:700 12px/24px var(--type);color:#b24868;white-space:nowrap}
+.spritz-feature .allergens{position:absolute;right:9px;top:0;text-align:right;font-size:9px}
+@media(max-width:600px){.spritz-feature{padding-left:55px!important;padding-right:8px!important}.spritz-glass{left:6px;width:38px}.spritz-caption{font-size:10px}.spritz-feature .price{font-size:15px}.spritz-feature .dish-meta{gap:0}}
+
+.spritz-original{padding:0;margin:12px 0 24px;border:0}
+.spritz-artwork{display:block;width:100%;height:auto}
+.organic-word{color:#08704c}
+.category-summary h2>.organic-word{font:700 12px/24px var(--type);white-space:nowrap}
+
+/* Cierre más próximo a la última sección, sin acumular márgenes vacíos. */
+.menu-grid{padding-bottom:12px}
+.menu-section:last-child{margin-bottom:0}
+.closing{padding-top:12px;padding-bottom:18px}
+.section-summary{grid-template-columns:minmax(0,1fr) 28px}
+.section-summary>.section-title{grid-column:1;grid-row:1;white-space:nowrap}
+.section-summary>.accordion-indicator{grid-column:2}
+
+/* Carta más compacta: títulos de 48 px, alérgenos junto al nombre y barras fijas más bajas. Se mantiene el renglón de 24 px. */
+.category h2,.category-summary h2{font-size:36px;line-height:48px}
+.category-summary{min-height:48px}
+.section-summary{padding:0;min-height:72px}
+.dish h3 .allergens-inline{display:inline;font-size:11px;line-height:24px;margin-left:.45em;white-space:nowrap;color:#514431}
+.category-nav{scrollbar-width:none;padding-right:32px;-webkit-mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent);mask-image:linear-gradient(to right,#000 calc(100% - 32px),transparent)}
+.category-nav::-webkit-scrollbar{display:none}
+.category-nav a{display:flex;align-items:center;min-height:44px}
+.price{font-weight:400;-webkit-text-stroke:.35px currentColor}
+#categories a,.category-nav a,.language-switch button{font-weight:400;-webkit-text-stroke:.25px currentColor}
+.credit{font:10px/24px 'Courier New',monospace;color:#6c5e45;margin:0}
+
+/* Ritmo exacto de 24 px: cada fila de plato y cada categoría miden múltiplos del renglón, así el ajuste no salta. */
+.dish-top{align-items:flex-start}
+.dish-meta{height:24px;align-items:center}
+.food-symbols{align-self:center}
+.dish-meta .price{line-height:24px}
+.dish h3 .allergens-inline{line-height:1}
+.section-categories>.category{margin-bottom:22px}
+.menu-section{margin-bottom:22px}
+.category-summary,.section-summary{align-items:center}
+
+/* Computadora: letra más grande, hoja más amplia y platos en dos columnas. */
+@media(min-width:900px){
+ .paper{padding:0 72px}
+ /* Portada con más presencia: la foto crece y se apoya sobre la línea de «La cucina romana», como en la carta impresa. */
+ .masthead{padding-bottom:12px}
+ .brand-cover{max-width:1000px;gap:40px;grid-template-columns:1fr 1.1fr;align-items:end}
+ .brand-cover>.logo{width:420px;align-self:center;margin-top:24px}
+ .heritage-photo{width:min(480px,100%);justify-self:end;margin-bottom:-12px}
+ .heading-line{margin-top:0;position:relative}
+ .masthead h1{line-height:96px;margin:12px 0 0}
+ .masthead .intro{margin:0 0 6px}
+ .dish h3{font-size:17px}
+ .price{font-size:17px}
+ .dish p{font-size:13px}
+ .dish h3 .allergens-inline{font-size:12px}
+ .food-symbol{width:23px;height:20px}
+ .category-content .items{max-width:700px}
+ .category .note:has(strong){font-size:15px}
+ .category-nav{flex-wrap:wrap;justify-content:center;gap:0 14px;padding:4px 3px;letter-spacing:-.4px;-webkit-mask-image:none;mask-image:none;overflow:visible}
+ .category-nav a{min-height:34px;font-size:13px}
+ #categories a{font-size:15px}
+ .section-toolbar{top:60px}
+ .section-categories>.category{scroll-margin-top:var(--category-offset,150px)}
+ .accordion-indicator{line-height:48px}
+}
+@media(min-width:1100px){
+ .category-content .items{display:grid;grid-template-columns:1fr 1fr;column-gap:72px;align-items:start;max-width:none}
+ .featured .items{padding:0 28px}
+ .category-content .items>.spritz-original,.category-content .items>.spritz-feature{grid-column:1/-1;max-width:560px;justify-self:center;width:100%}
+}
+/* Tablet horizontal: categorías de bebidas un poco más juntas para que entren en dos renglones. */
+@media(min-width:900px) and (max-width:1199px){.category-nav{gap:0 10px;letter-spacing:-.6px}.category-nav a{font-size:12px}}
+/* Celulares angostos: los títulos largos de bebidas entran en un renglón. */
+@media(max-width:380px){.category h2,.category-summary h2{font-size:25px;grid-column:1}.category-summary{grid-template-columns:minmax(0,1fr) 28px;gap:4px}.category-summary .accordion-indicator{grid-column:2}.section-title{font-size:40px}}
+@media(max-width:899px){
+ .toolbar{min-height:48px}
+ #categories{padding:0 2px}
+ .section-toolbar{top:47px}
+ .category-nav{min-height:44px;padding-top:0;padding-bottom:0}
+ .category h2,.category-summary h2{font-size:28px;line-height:48px}
+ .section-title{font-size:44px}
+ .section-categories>.category{scroll-margin-top:var(--category-offset,104px)}
+ html{scroll-padding-top:56px}
+}
+
+/* Manchas de humedad y puntitos tomados del papel escaneado de la carta impresa (dos capas con distinto tamaño para que no se note la repetición), más bordes tostados. */
+.paper{
+ background-image:
+  url('marca/manchas-a.webp?v=3'),
+  url('marca/manchas-b.webp?v=3'),
+  linear-gradient(90deg,rgba(126,87,30,.11),transparent 3%,transparent 97%,rgba(126,87,30,.11)),
+  repeating-linear-gradient(to bottom,transparent 0 23px,rgba(107,119,105,.18) 23px 24px),
+  radial-gradient(ellipse at 13% 17%,rgba(255,251,227,.34),transparent 46%),
+  radial-gradient(ellipse at 83% 66%,rgba(173,127,48,.09),transparent 55%),
+  repeating-radial-gradient(ellipse at 21% 37%,rgba(107,78,33,.035) 0 .5px,transparent .8px 3.5px),
+  repeating-linear-gradient(113deg,rgba(255,255,240,.055) 0 1px,transparent 1px 5px);
+ background-size:1000px auto,1240px auto,100% 100%,100% 24px,100% 960px,100% 1270px,11px 17px,7px 13px;
+ background-position:0 0,520px 1100px,0 0,0 0,0 0,0 0,0 0,0 0;
+ background-repeat:repeat,repeat,no-repeat,repeat,repeat,repeat,repeat,repeat;
+ box-shadow:inset 0 0 110px rgba(150,104,34,.22),inset 0 0 22px rgba(120,80,25,.16),0 10px 48px #49381e24;
+}
+@media(max-width:899px){
+ .paper{background-size:560px auto,700px auto,100% 100%,100% 24px,100% 960px,100% 1270px,11px 17px,7px 13px;background-position:0 0,280px 760px,0 0,0 0,0 0,0 0,0 0,0 0;box-shadow:inset 0 0 60px rgba(150,104,34,.2),inset 0 0 14px rgba(120,80,25,.15)}
+}
+
+/* Flechas de la barra de categorías: aparecen solo del lado donde hay categorías ocultas. */
+.category-nav{-webkit-mask-image:none;mask-image:none;padding-right:3px;scroll-behavior:smooth}
+.nav-arrow{position:absolute;top:0;bottom:0;z-index:1;width:44px;display:none;align-items:center;font:26px/1 'Courier New',monospace;color:var(--red);padding:0;cursor:pointer}
+.nav-arrow.prev{left:0;justify-content:flex-start;padding-left:4px;background:linear-gradient(to right,#e9dcba 55%,#e9dcba00)}
+.nav-arrow.next{right:0;justify-content:flex-end;padding-right:4px;background:linear-gradient(to left,#e9dcba 55%,#e9dcba00)}
+.section-toolbar.can-prev .nav-arrow.prev,.section-toolbar.can-next .nav-arrow.next{display:flex}
+.nav-arrow:hover{color:#7d0f33}
+
+/* «I nostri classici»: recuadro de línea roja punteada, como el destacado del Tiramisù en la carta impresa. Todo en múltiplos del renglón de 24 px. */
+.classics{outline:2px dashed #c4597b;outline-offset:-2px;background:#f6edcf73;padding:24px 22px;margin:0 0 24px;text-align:center}
+.classics-title{font:400 40px/48px var(--hand);color:var(--red);margin:0}
+.classics-note{font-size:12px;line-height:24px;margin:0 0 24px;color:#514431}
+.classics-list{list-style:none;margin:0 auto;padding:0;max-width:560px;text-align:left}
+.classics-list a{display:flex;align-items:baseline;gap:8px;text-decoration:none;line-height:24px;min-height:44px;padding:10px 0;margin:-10px 0}
+.classics-list li+li a{margin-top:14px}
+.classics-name{font-size:15px;line-height:24px}
+.classics-dots{flex:1;min-width:16px;border-bottom:2px dotted #8e7a53aa;transform:translateY(-5px)}
+.classics-price{font-size:16px;line-height:24px;white-space:nowrap;-webkit-text-stroke:.35px currentColor}
+.classics-list a:hover .classics-name,.classics-list a:focus-visible .classics-name{color:var(--red);text-decoration:underline;text-underline-offset:4px}
+@media(min-width:900px){.classics{padding:24px 48px}.classics-title{font-size:46px}.classics-note{font-size:13px}.classics-name{font-size:17px}.classics-price{font-size:17px}.classics-list{max-width:620px}}
+@media(max-width:380px){.classics{padding:24px 14px}.classics-name{font-size:14px}}
+@media(max-width:600px){.classics{padding:24px 14px}.classics-title{font-size:32px}.classics-name{font-size:14px}.classics-price{font-size:15px}.classics-list a{gap:6px}.menu-meta button{text-wrap:balance}}
