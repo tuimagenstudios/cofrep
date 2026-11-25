@@ -1,5 +1,5 @@
-const categories = fudoCategories;
-const dishes = fudoDishes;
+const categories = menuCategories;
+const dishes = menuDishes;
 const alternatePhotos = {};
 
 const currencyOptions = { style: 'currency', currency: 'ARS' };
@@ -91,7 +91,7 @@ function viewDish(dish) {
       <p class="eyebrow">${t(...categories[dish.category].name)}</p>
       <h2 id="dish-title">${dishName(dish)}</h2>
       ${dish.description ? `<p class="dish-detail-description">${dishDescription(dish)}</p>` : ''}
-      ${dish.price === 0 ? `<p class="source-note">${t('Adicional publicado a $0 en Fudo. Confirmá con el local si está incluido.', 'Listed at $0 on Fudo. Ask the restaurant whether it is included.')}</p>` : ''}
+      ${dish.price === 0 ? `<p class="source-note">${t('Adicional publicado a $0. Confirmá con el local si está incluido.', 'Listed at $0. Ask the restaurant whether it is included.')}</p>` : ''}
       <div class="dish-actions">${dish.price === null ? '' : `<strong class="price">${money.format(dish.price)}</strong>`}
         <button class="primary" data-add="${dish.id}">${t('Sumar a mi selección', 'Add to my selection')}</button>
       </div>
