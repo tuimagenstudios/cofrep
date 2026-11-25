@@ -15,6 +15,7 @@ Allow: /
 # Buscadores y demás: no indexar propuestas ni cartas en revisión.
 User-agent: *
 Disallow: /p/
+Disallow: /oddyson/
 Disallow: /apatheia/
 Disallow: /propuesta/
 Disallow: /qr/
