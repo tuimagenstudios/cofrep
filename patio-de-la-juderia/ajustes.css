@@ -206,3 +206,25 @@ main h2,.featured-card h3,.accordion-summary h3,.accordion-summary h4,.dish h4,.
 .volver-portada:focus-visible{outline:2px solid #a60c24;outline-offset:4px}
 .volver-buscar:not([hidden])~.volver-portada{bottom:146px}
 @media(max-width:1100px){.volver-portada{right:4%;bottom:calc(80px + env(safe-area-inset-bottom,0px))}.volver-buscar:not([hidden])~.volver-portada{bottom:calc(134px + env(safe-area-inset-bottom,0px))}}
+
+/* Cabecera flotante: la página pasa por detrás y el selector nunca se oculta. */
+:root{--patio-header:104px}
+html.cabecera-compacta{--patio-header:68px}
+html{scroll-padding-top:calc(var(--patio-header) + env(safe-area-inset-top,0px) + 16px)}
+body{padding-top:calc(var(--patio-header) + env(safe-area-inset-top,0px))}
+body>header,body:not(.menu-detail-page)>header,.menu-detail-page>header{position:fixed;inset:0 0 auto;z-index:70;box-sizing:border-box;height:calc(var(--patio-header) + env(safe-area-inset-top,0px));min-height:0;padding:calc(6px + env(safe-area-inset-top,0px)) 6% 6px;background:rgba(250,246,239,.94);border-bottom:1px solid #dfcbbb;box-shadow:0 2px 0 #fff9 inset,0 8px 24px #38201914,0 1px 3px #38201912;backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);overflow:visible;transition:height .25s ease,padding .25s ease,box-shadow .25s ease}
+html.cabecera-compacta body>header{background:rgba(250,246,239,.92);box-shadow:0 1px 0 #fff9 inset,0 12px 28px #38201926,0 3px 6px #38201912}
+body>header .brand{transition:width .25s ease,height .25s ease;flex-shrink:0}
+html.cabecera-compacta body>header .brand{width:118px;height:52px}
+html.cabecera-compacta body>header nav{gap:20px}
+body>header .idioma{flex-shrink:0}
+body>header .idioma-lista{z-index:80;max-height:calc(100dvh - var(--patio-header) - 24px);overflow-y:auto}
+@media(max-width:650px){
+ :root{--patio-header:78px}
+ html.cabecera-compacta{--patio-header:60px}
+ body>header,body:not(.menu-detail-page)>header,.menu-detail-page>header{padding-inline:5%;gap:8px}
+ html.cabecera-compacta body>header .brand{width:94px;height:44px}
+ html.cabecera-compacta .menu-detail-page>header .brand{width:86px}
+ .menu-detail-page>header .back-to-menu{flex-shrink:0}
+}
+@media(prefers-reduced-motion:reduce){body>header,body>header .brand{transition:none}}
