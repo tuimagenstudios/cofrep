@@ -178,7 +178,7 @@
 
   /* ================= BOTONES MAGNÉTICOS (computadora) ================= */
   if (fino) {
-    const SEL = '.reserve, .primary, .reservation-bar a, .social-button, .footer-directions';
+    const SEL = '.reserve, .primary, .reservation-bar a, .footer-directions';
     document.addEventListener('pointermove', e => {
       const b = e.target.closest?.(SEL);
       if (!b) return;
