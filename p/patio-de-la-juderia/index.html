@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Propuesta · Carta digital del Patio de la Judería</title>
+<meta name="description" content="Propuesta privada: la carta del Patio de la Judería en versión digital, en español, inglés, francés e italiano.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cofrep.com/p/patio-de-la-juderia/">
+<meta property="og:title" content="Propuesta · Carta digital del Patio de la Judería">
+<meta property="og:description" content="Su carta, en el idioma de cada mesa. Ya funciona: pruébela desde el móvil.">
+<meta property="og:image" content="https://cofrep.com/patio-de-la-juderia/assets/tarjeta-og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#a60c24">
+<link rel="icon" href="../../patio-de-la-juderia/assets/icono.svg" type="image/svg+xml">
+<style>
+/* ---------- Propuesta COFREP para el Patio de la Judería: colores y letras de su marca ---------- */
+@font-face{font-family:'Crimson Pro';src:url('../../patio-de-la-juderia/assets/fonts/crimson-pro-normal.woff2') format('woff2');font-weight:200 900;font-display:swap}
+@font-face{font-family:'Crimson Pro';src:url('../../patio-de-la-juderia/assets/fonts/crimson-pro-italic.woff2') format('woff2');font-weight:200 900;font-style:italic;font-display:swap}
+@font-face{font-family:'Montserrat';src:url('../../patio-de-la-juderia/assets/fonts/montserrat-normal.woff2') format('woff2');font-weight:100 900;font-display:swap}
+:root{--marfil:#faf6ef;--arena:#f3e9dc;--rojo:#a60c24;--rojo-osc:#800a1c;--tinta:#28221e;--noche:#211a16;--suave:#5f4b41;--linea:#e2d4c3;--azulejo:#176174;--serif:'Crimson Pro',Georgia,serif;--sans:'Montserrat',Arial,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--marfil);color:var(--tinta);font:400 16px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+.envoltura{width:min(1180px,100% - 40px);margin:0 auto}
+.etiqueta{font:600 11px/1.2 var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--rojo)}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+h1 em,h2 em{font-style:italic;color:var(--rojo)}
+h2{font-size:clamp(36px,5vw,58px);margin:14px 0 18px}
+.bajada{font-size:clamp(16px,1.6vw,18px);color:var(--suave);max-width:640px}
+section{padding:clamp(70px,9vw,120px) 0;position:relative}
+.azulejos{height:12px;background-image:repeating-conic-gradient(from 45deg,var(--azulejo) 0% 25%,#f4ebdc 0% 50%);background-size:12px 12px;opacity:.75}
+.boton{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 26px;font:600 14px var(--sans);text-decoration:none;border:1px solid var(--rojo);transition:background .2s,color .2s,transform .2s}
+.boton.lleno{background:var(--rojo);color:#fff7ed}
+.boton.lleno:hover{background:var(--rojo-osc)}
+.boton.borde{color:var(--rojo);background:transparent}
+.boton.borde:hover{background:#f2e3db}
+.boton:active{transform:scale(.98)}
+.rev{opacity:0;transform:translateY(28px);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.rev.visto{opacity:1;transform:none}
+
+/* ---------- barra superior ---------- */
+.barra{background:var(--noche);color:#e9dccd;font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase}
+.barra .envoltura{display:flex;justify-content:space-between;gap:16px;padding:12px 0}
+.barra b{color:#fff7ed;font-weight:600}
+
+/* ---------- portada ---------- */
+.portada{padding:clamp(40px,6vw,80px) 0 clamp(60px,8vw,110px);overflow:hidden}
+.portada .envoltura{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(30px,5vw,70px);align-items:center}
+.marca{width:170px;margin-bottom:30px}
+.portada h1{font-size:clamp(46px,6.4vw,84px);font-weight:400;margin:16px 0 22px}
+.portada .bajada{margin-bottom:30px}
+.acciones{display:flex;flex-wrap:wrap;gap:12px}
+.qr{display:flex;align-items:center;gap:16px;margin-top:34px;padding:14px 18px 14px 14px;border:1px solid var(--linea);background:#fffaf3;width:max-content;max-width:100%}
+.qr img{width:92px;height:92px}
+.qr strong{display:block;font:500 20px/1.1 var(--serif)}
+.qr span{font-size:13px;color:var(--suave)}
+
+/* ---------- dispositivos ---------- */
+.escena{position:relative;padding-bottom:40px}
+.portatil{position:relative;width:100%}
+.portatil .tapa{background:#1c1714;border-radius:16px 16px 0 0;padding:2.2% 2.2% 2.6%;box-shadow:0 30px 70px #2a1b1240}
+.portatil .tapa::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:#3a302a;margin:-1.2% auto 1%}
+.portatil .pantalla{aspect-ratio:16/10;overflow:hidden;background:#fff;border-radius:2px}
+.portatil .pantalla img{width:100%;height:100%;object-fit:cover;object-position:top}
+.portatil .base{height:14px;margin:0 -5%;background:linear-gradient(#cfc6bd,#a99f96);border-radius:0 0 18px 18px;position:relative}
+.portatil .base::before{content:'';position:absolute;left:50%;top:0;width:16%;height:5px;transform:translateX(-50%);background:#958a80;border-radius:0 0 8px 8px}
+.movil{position:relative;width:var(--ancho,250px);aspect-ratio:9/19.5;background:#16110e;border-radius:calc(var(--ancho,250px)*.15);padding:calc(var(--ancho,250px)*.035);box-shadow:0 28px 60px #2a1b1250,inset 0 0 0 2px #3b322c}
+.movil::before{content:'';position:absolute;top:calc(var(--ancho,250px)*.06);left:50%;width:28%;height:calc(var(--ancho,250px)*.07);transform:translateX(-50%);background:#16110e;border-radius:20px;z-index:2}
+.movil .pantalla{width:100%;height:100%;overflow:hidden;border-radius:calc(var(--ancho,250px)*.12);background:#fff;container-type:size}
+.movil .pantalla img{width:100%;height:100%;object-fit:cover;object-position:top}
+.escena .movil{position:absolute;right:-2%;bottom:0;--ancho:clamp(130px,17vw,215px)}
+.desplaza img{height:auto!important;object-fit:initial!important;animation:desplazar 38s ease-in-out infinite alternate}
+@keyframes desplazar{0%,6%{transform:translateY(0)}94%,100%{transform:translateY(calc(-100% + 100cqh))}}
+
+/* ---------- hoy / mañana ---------- */
+.comparar{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);margin-top:50px;align-items:start}
+.comparar figure{display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px}
+.comparar .movil{--ancho:min(270px,40vw)}
+.comparar figcaption strong{display:block;font:500 26px/1.15 var(--serif);margin-bottom:6px}
+.comparar figcaption{max-width:340px;color:var(--suave);font-size:15px}
+.sello{display:inline-block;font:600 11px var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:6px 10px;margin-bottom:10px}
+.sello.hoy{background:#e9e2da;color:var(--suave)}
+.sello.manana{background:var(--rojo);color:#fff7ed}
+
+/* ---------- idiomas ---------- */
+.oscuro{background:var(--noche);color:#f3e7da}
+.oscuro .bajada{color:#cdbcab}
+.oscuro .etiqueta{color:#e3b36a}
+.oscuro h2 em{color:#e7a39a}
+.idiomas{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(12px,2.4vw,30px);margin-top:54px}
+.idiomas figure{display:flex;flex-direction:column;align-items:center;gap:16px}
+.idiomas .movil{--ancho:min(230px,21vw);box-shadow:0 24px 60px #00000070,inset 0 0 0 2px #463a32}
+.idiomas figcaption{display:flex;align-items:center;gap:10px;font:600 13px var(--sans);letter-spacing:.06em}
+.bandera{width:26px;height:17px;border-radius:2px;box-shadow:0 0 0 1px #ffffff30;background-size:cover}
+.b-es{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='3' height='2' fill='%23c60b1e'/%3E%3Crect y='.5' width='3' height='1' fill='%23ffc400'/%3E%3C/svg%3E")}
+.b-fr{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='1' height='2' fill='%23002654'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23ce1126'/%3E%3C/svg%3E")}
+.b-it{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='1' height='2' fill='%23009246'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23ce2b37'/%3E%3C/svg%3E")}
+.b-en{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='a'%3E%3Cpath d='M30 15h30v15zv15H0zH0V0zV0h30z'/%3E%3C/clipPath%3E%3Cpath d='M0 0v30h60V0z' fill='%23012169'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' clip-path='url(%23a)' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/svg%3E")}
+.nota-idiomas{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px;padding-top:34px;border-top:1px solid #ffffff1f}
+.nota-idiomas strong{display:block;font:500 22px/1.15 var(--serif);color:#fff7ed;margin-bottom:6px}
+.nota-idiomas p{font-size:14px;color:#cdbcab}
+
+/* ---------- traducciones ---------- */
+.errores{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:44px}
+.error{background:#fffaf3;border:1px solid var(--linea);padding:26px 26px 24px;display:grid;gap:14px}
+.error .idioma{display:flex;align-items:center;gap:10px;font:600 11px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--suave)}
+.error .antes{font:italic 400 21px/1.3 var(--serif);color:#8a776b;text-decoration:line-through;text-decoration-color:#c9453f;text-decoration-thickness:2px}
+.error .despues{font:500 22px/1.3 var(--serif);color:var(--tinta);display:flex;gap:10px}
+.error .despues::before{content:'→';color:var(--rojo)}
+.error small{font-size:13px;color:var(--suave)}
+
+/* ---------- beneficios ---------- */
+.beneficios{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--linea);border:1px solid var(--linea);margin-top:48px}
+.beneficio{background:var(--marfil);padding:34px 30px 32px}
+.beneficio .num{font:italic 400 18px var(--serif);color:var(--rojo)}
+.beneficio h3{font-size:28px;margin:10px 0 12px}
+.beneficio p{font-size:15px;color:var(--suave)}
+
+/* ---------- en todas partes ---------- */
+.arena{background:var(--arena)}
+.partes{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);gap:clamp(30px,5vw,70px);align-items:center;margin-top:44px}
+.lista-partes{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.parte{display:flex;gap:14px;align-items:flex-start;background:#fffaf3;border:1px solid var(--linea);padding:18px}
+.parte svg{width:26px;height:26px;flex-shrink:0;stroke:var(--rojo);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.parte strong{display:block;font:600 14px var(--sans);margin-bottom:3px}
+.parte span{font-size:13.5px;color:var(--suave);line-height:1.5}
+.chat{background:#efe7dd url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Ccircle cx='20' cy='20' r='1.2' fill='%23d8cbbb'/%3E%3C/svg%3E");border-radius:22px;padding:26px 20px;box-shadow:0 24px 60px #2a1b1225}
+.chat .cabeza{display:flex;align-items:center;gap:10px;font:600 13px var(--sans);margin-bottom:18px;color:var(--suave)}
+.chat .cabeza i{width:34px;height:34px;border-radius:50%;background:var(--rojo) url('../../patio-de-la-juderia/assets/icono.svg') center/cover}
+.burbuja{margin-left:auto;max-width:92%;background:#d9fdd3;border-radius:14px 4px 14px 14px;padding:6px;box-shadow:0 1px 1px #0000001a}
+.burbuja .vista{background:#f0f2f0;border-radius:10px;overflow:hidden}
+.burbuja .vista img{width:100%}
+.burbuja .vista div{padding:8px 10px 10px}
+.burbuja .vista b{display:block;font:600 13px/1.3 var(--sans)}
+.burbuja .vista small{display:block;font-size:12px;color:#5d6b5d;line-height:1.35;margin-top:2px}
+.burbuja .vista em{display:block;font-style:normal;font-size:11px;color:#5d6b5d;margin-top:4px}
+.burbuja p{font-size:14px;padding:8px 6px 2px;color:#123c2a;word-break:break-all}
+.burbuja time{display:block;text-align:right;font-size:11px;color:#5d6b5d;padding:0 6px 2px}
+.chat .pie-chat{text-align:center;margin-top:16px;font-size:12.5px;color:var(--suave)}
+
+/* ---------- hoja de Google ---------- */
+.navegador{margin-top:44px;border-radius:12px;overflow:hidden;border:1px solid var(--linea);box-shadow:0 30px 70px #2a1b1222;background:#fff}
+.navegador .cromo{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#f1ece6;border-bottom:1px solid var(--linea)}
+.navegador .cromo i{width:11px;height:11px;border-radius:50%;background:#d8cfc6}
+.navegador .cromo span{margin-left:12px;flex:1;max-width:480px;background:#fffaf3;border-radius:6px;padding:5px 12px;font-size:12px;color:var(--suave);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.navegador .hoja{overflow-x:auto}
+.navegador .hoja img{width:100%;min-width:760px}
+.pasos-hoja{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:40px}
+.pasos-hoja div{border-top:2px solid var(--rojo);padding-top:16px}
+.pasos-hoja strong{display:block;font:500 23px/1.15 var(--serif);margin-bottom:6px}
+.pasos-hoja p{font-size:14.5px;color:var(--suave)}
+.amarillo{background:#fff4c2;padding:0 4px}
+.gris{background:#eee9e2;padding:0 4px}
+
+/* ---------- incluye ---------- */
+.incluye{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.8fr);gap:clamp(30px,5vw,70px);align-items:center;margin-top:44px}
+.checks{list-style:none;display:grid;gap:4px}
+.checks li{display:flex;gap:14px;padding:14px 0;border-bottom:1px solid var(--linea);font-size:16px}
+.checks li::before{content:'';flex-shrink:0;width:22px;height:22px;margin-top:1px;border-radius:50%;background:var(--rojo) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23fff7ed' stroke-width='3'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") center/14px no-repeat}
+.checks small{display:block;font-size:13.5px;color:var(--suave);margin-top:2px}
+/* tarjeta de mesa con QR */
+.mesa{position:relative;display:flex;justify-content:center;padding:20px 0 40px}
+.mesa::after{content:'';position:absolute;left:8%;right:8%;bottom:20px;height:26px;background:radial-gradient(closest-side,#2a1b1240,transparent);z-index:0}
+.tarjeta-mesa{position:relative;z-index:1;width:min(330px,100%);aspect-ratio:105/148;background:#faf6ef;border:1px solid #e7dccd;box-shadow:0 30px 50px #2a1b1235;padding:26px 24px 0;display:flex;flex-direction:column;align-items:center;text-align:center;transform:perspective(900px) rotateX(6deg)}
+.tarjeta-mesa .logo{width:62%}
+.tarjeta-mesa .linea{width:42px;height:1px;background:var(--rojo);margin:14px 0 12px}
+.tarjeta-mesa .titulo{font:italic 400 24px/1.1 var(--serif);color:var(--rojo)}
+.tarjeta-mesa .idiomas-t{font:500 9.5px/1.6 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--suave);margin-top:6px}
+.tarjeta-mesa .qr-t{width:46%;margin:16px 0 10px;padding:8px;background:#fffdf8;border:1px solid #eadfce}
+.tarjeta-mesa .banderas{display:flex;gap:6px;margin-bottom:12px}
+.tarjeta-mesa .banderas .bandera{width:20px;height:13px}
+.tarjeta-mesa .azulejos{width:calc(100% + 48px);margin-top:auto}
+
+/* ---------- inversión ---------- */
+.precio{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);border:1px solid var(--linea);margin-top:44px;background:#fffaf3}
+.precio .cifra{padding:clamp(30px,4vw,50px);background:var(--rojo);color:#fff7ed;display:flex;flex-direction:column;justify-content:center}
+.precio .cifra .etiqueta{color:#f3c9c2}
+.precio .cifra b{display:block;font:400 clamp(64px,9vw,104px)/1 var(--serif);margin:14px 0 6px}
+.precio .cifra span{font-size:15px;color:#f6dcd8}
+.precio .detalle{padding:clamp(30px,4vw,50px);display:grid;gap:18px;align-content:center}
+.precio .detalle div{display:flex;gap:14px}
+.precio .detalle strong{font:600 14px var(--sans)}
+.precio .detalle p{font-size:14.5px;color:var(--suave)}
+.precio .detalle svg{width:24px;height:24px;flex-shrink:0;stroke:var(--rojo);fill:none;stroke-width:1.7}
+
+/* ---------- próximos pasos ---------- */
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:44px;counter-reset:paso}
+.paso{padding:26px 22px;border:1px solid #ffffff22;counter-increment:paso}
+.paso::before{content:'0' counter(paso);font:italic 400 42px/1 var(--serif);color:#e7a39a}
+.paso strong{display:block;font:500 22px/1.15 var(--serif);color:#fff7ed;margin:14px 0 8px}
+.paso p{font-size:14px;color:#cdbcab}
+
+/* ---------- preguntas ---------- */
+.preguntas{margin-top:36px;border-top:1px solid var(--linea)}
+.preguntas details{border-bottom:1px solid var(--linea)}
+.preguntas summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:20px;align-items:center;min-height:64px;font:500 21px/1.25 var(--serif);padding:14px 0}
+.preguntas summary::-webkit-details-marker{display:none}
+.preguntas summary::after{content:'+';flex-shrink:0;width:32px;height:32px;display:grid;place-items:center;border:1px solid #d6b7ad;color:var(--rojo);font:400 20px var(--sans);transition:transform .25s}
+.preguntas details[open] summary::after{transform:rotate(45deg)}
+.preguntas p{padding:0 0 22px;color:var(--suave);font-size:15.5px;max-width:760px}
+
+/* ---------- cierre ---------- */
+.cierre{text-align:center}
+.cierre h2{font-size:clamp(42px,6vw,76px)}
+.cierre .bajada{margin:0 auto 30px}
+.cierre .acciones{justify-content:center}
+.wa{background:#147d48!important;border-color:#147d48!important;color:#fff!important}
+.wa:hover{background:#0d6338!important}
+.wa svg,.boton svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.6}
+footer{border-top:1px solid var(--linea);padding:26px 0 34px;text-align:center;font-size:12px;color:var(--suave);letter-spacing:.04em}
+footer p+p{margin-top:6px;font-size:11px;color:#8a776b}
+
+/* ---------- celular y tablet ---------- */
+@media(max-width:980px){
+  .portada .envoltura,.partes,.incluye{grid-template-columns:1fr}
+  .escena{max-width:640px;margin:0 auto;width:100%}
+  .beneficios{grid-template-columns:1fr 1fr}
+  .pasos{grid-template-columns:1fr 1fr}
+  .idiomas{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:40px}
+  .idiomas .movil{--ancho:min(220px,40vw)}
+}
+@media(max-width:650px){
+  body{font-size:15px}
+  .barra .envoltura{flex-direction:column;gap:6px;text-align:center;letter-spacing:.1em}
+  .marca{width:160px;margin-bottom:24px}
+  .qr{display:none}
+  .acciones .boton{flex:1;justify-content:center}
+  .escena{padding-bottom:30px}
+  .escena .movil{--ancho:34vw;right:0}
+  .comparar{grid-template-columns:1fr 1fr;gap:14px}
+  .comparar .movil{--ancho:42vw}
+  .comparar figcaption strong{font-size:20px}
+  .comparar figcaption{font-size:13.5px}
+  .nota-idiomas,.pasos-hoja{grid-template-columns:1fr;gap:22px}
+  .errores,.beneficios,.lista-partes,.pasos{grid-template-columns:1fr}
+  .precio{grid-template-columns:1fr}
+  .beneficio{padding:28px 22px}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .rev{opacity:1;transform:none;transition:none}
+  .desplaza img{animation:none}
+}
+</style>
+</head>
+<body>
+
+<div class="barra"><div class="envoltura"><span>Propuesta privada para <b>Patio de la Judería</b> · Córdoba</span><span>COFREP · TuimagenStudio</span></div></div>
+
+<!-- ======================= PORTADA ======================= -->
+<header class="portada">
+  <div class="envoltura">
+    <div>
+      <img class="marca rev" src="../../patio-de-la-juderia/assets/logo.webp" alt="Restaurante Patio de la Judería · Córdoba" width="600" height="410">
+      <p class="etiqueta rev">Propuesta · Carta digital</p>
+      <h1 class="rev">Su carta, en el idioma <em>de cada mesa.</em></h1>
+      <p class="bajada rev">Hemos preparado la carta del Patio de la Judería en versión digital: sus platos, bebidas y menús con flamenco, con sus precios, en español, inglés, francés e italiano. No es un ejemplo: ya funciona y puede probarla ahora mismo.</p>
+      <div class="acciones rev">
+        <a class="boton lleno" href="https://cofrep.com/patio-de-la-juderia/" target="_blank" rel="noopener">Probar la carta <span aria-hidden="true">↗</span></a>
+        <a class="boton borde" href="#hoy">Ver la propuesta <span aria-hidden="true">↓</span></a>
+      </div>
+      <div class="qr rev">
+        <img src="img/qr-carta.svg" alt="Código QR que abre la carta digital del Patio de la Judería">
+        <div><strong>Ábrala en su móvil</strong><span>Apunte la cámara al código:<br>así la verán sus clientes.</span></div>
+      </div>
+    </div>
+    <div class="escena rev" aria-label="La carta digital en un ordenador y en un móvil">
+      <div class="portatil">
+        <div class="tapa"><div class="pantalla"><img src="img/pc-portada.webp" alt="Portada de la carta digital en un ordenador" width="1440" height="900"></div></div>
+        <div class="base"></div>
+      </div>
+      <div class="movil"><div class="pantalla"><img src="img/cel-portada.webp" alt="Portada de la carta digital en un móvil" width="780" height="1688"></div></div>
+    </div>
+  </div>
+</header>
+<div class="azulejos"></div>
+
+<!-- ======================= HOY Y MAÑANA ======================= -->
+<section id="hoy">
+  <div class="envoltura">
+    <p class="etiqueta rev">Lo que ve su cliente</p>
+    <h2 class="rev">Del PDF a una carta <em>que se lee sola.</em></h2>
+    <p class="bajada rev">Hoy, quien escanea la carta recibe un PDF pensado para imprimir. En el móvil, cada plato se lee con los dedos. Así cambia la experiencia:</p>
+    <div class="comparar">
+      <figure class="rev">
+        <div class="movil"><div class="pantalla"><img src="img/cel-pdf.webp" alt="La carta en PDF vista en un móvil: el texto queda diminuto" width="780" height="1688"></div></div>
+        <figcaption><span class="sello hoy">Hoy</span><strong>Un PDF de 18 páginas</strong>2,7 MB que tardan en abrir con datos móviles, letra diminuta y hay que ampliar para leer cada precio.</figcaption>
+      </figure>
+      <figure class="rev">
+        <div class="movil desplaza"><div class="pantalla"><img src="img/cel-largo.webp" alt="La carta digital recorriéndose en un móvil" width="780" height="8400"></div></div>
+        <figcaption><span class="sello manana">Con COFREP</span><strong>Una carta hecha para el móvil</strong>Se abre al instante, se lee sin ampliar, va por secciones, tiene buscador y botón para reservar.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= IDIOMAS ======================= -->
+<section class="oscuro">
+  <div class="envoltura">
+    <p class="etiqueta rev">Cuatro idiomas</p>
+    <h2 class="rev">Cada turista la lee <em>en su idioma.</em></h2>
+    <p class="bajada rev">La carta reconoce el idioma del móvil: un cliente francés la ve en francés sin tocar nada. Si prefiere otro, lo cambia con un toque en la bandera.</p>
+    <div class="idiomas">
+      <figure class="rev"><div class="movil"><div class="pantalla"><img src="img/cel-es.webp" alt="La carta en español" loading="lazy" width="780" height="1688"></div></div><figcaption><span class="bandera b-es"></span>Español</figcaption></figure>
+      <figure class="rev"><div class="movil"><div class="pantalla"><img src="img/cel-en.webp" alt="La carta en inglés" loading="lazy" width="780" height="1688"></div></div><figcaption><span class="bandera b-en"></span>English</figcaption></figure>
+      <figure class="rev"><div class="movil"><div class="pantalla"><img src="img/cel-fr.webp" alt="La carta en francés" loading="lazy" width="780" height="1688"></div></div><figcaption><span class="bandera b-fr"></span>Français</figcaption></figure>
+      <figure class="rev"><div class="movil"><div class="pantalla"><img src="img/cel-it.webp" alt="La carta en italiano" loading="lazy" width="780" height="1688"></div></div><figcaption><span class="bandera b-it"></span>Italiano</figcaption></figure>
+    </div>
+    <div class="nota-idiomas">
+      <div class="rev"><strong>Traducciones revisadas</strong><p>Los 110 platos y bebidas, los menús y los avisos, traducidos y revisados uno a uno para esta carta.</p></div>
+      <div class="rev"><strong>Reservar en su idioma</strong><p>El botón de WhatsApp abre un mensaje ya escrito en el idioma del cliente, listo para enviar.</p></div>
+      <div class="rev"><strong>Menos preguntas en la mesa</strong><p>El cliente entiende qué es un flamenquín o un salmorejo antes de pedir. El camarero gana tiempo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= TRADUCCIONES DEL PDF ======================= -->
+<section>
+  <div class="envoltura">
+    <p class="etiqueta rev">Detalles que se notan</p>
+    <h2 class="rev">Lo que un turista <em>lee hoy.</em></h2>
+    <p class="bajada rev">Al revisar la carta en PDF encontramos algunas traducciones que conviene corregir. Son detalles pequeños, pero un cliente extranjero los lee en su propio idioma. En la versión digital están todas revisadas.</p>
+    <div class="errores">
+      <div class="error rev"><span class="idioma"><span class="bandera b-fr"></span>Francés</span><span class="antes">Pome de ter bravas</span><span class="despues">Pommes de terre, sauce brava</span><small>«Pome de ter» no existe en francés: se escribe «pommes de terre».</small></div>
+      <div class="error rev"><span class="idioma"><span class="bandera b-it"></span>Italiano</span><span class="antes">Bonbons gras con dadi</span><span class="despues">Bonbon di foie gras con frutta secca</span><small>En italiano, «dadi» son dados o cubitos de caldo, no frutos secos.</small></div>
+      <div class="error rev"><span class="idioma"><span class="bandera b-it"></span>Italiano</span><span class="antes">Crema di pomodoro, pane, huovo e prosciutto</span><span class="despues">Crema di pomodoro, pane, uovo e prosciutto</span><small>«Huovo» no existe: huevo en italiano es «uovo».</small></div>
+      <div class="error rev"><span class="idioma"><span class="bandera b-en"></span>Inglés</span><span class="antes">Fried vinager marinated fish</span><span class="despues">Fried marinated pomfret, Córdoba style</span><small>«Vinager» es un error de escritura y el nombre no dice qué pescado es.</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= POR QUÉ ======================= -->
+<section class="arena">
+  <div class="envoltura">
+    <p class="etiqueta rev">Por qué una carta digital</p>
+    <h2 class="rev">Lo que gana <em>el Patio.</em></h2>
+    <div class="beneficios">
+      <div class="beneficio rev"><span class="num">01</span><h3>Cada cliente, en su idioma</h3><p>Español, inglés, francés e italiano, automáticos. Pedidos más claros y menos dudas en el servicio.</p></div>
+      <div class="beneficio rev"><span class="num">02</span><h3>Un precio, en un minuto</h3><p>Se cambia desde una hoja de Google, sin imprenta ni diseñador. La traducción se actualiza sola.</p></div>
+      <div class="beneficio rev"><span class="num">03</span><h3>El flamenco, en primer plano</h3><p>Los tres menús con espectáculo tienen su propia página, con precio, platos y botón de reserva.</p></div>
+      <div class="beneficio rev"><span class="num">04</span><h3>Más reservas directas</h3><p>WhatsApp y llamada en cada pantalla, con el mensaje ya escrito. Sin intermediarios ni comisiones.</p></div>
+      <div class="beneficio rev"><span class="num">05</span><h3>Su marca, su ambiente</h3><p>Sus colores, su logo, fotos del tablao y música flamenca que el cliente puede activar si lo desea.</p></div>
+      <div class="beneficio rev"><span class="num">06</span><h3>Sin aplicaciones ni cuotas</h3><p>Se abre con la cámara del móvil, sin descargar nada. Un solo pago, sin mensualidades.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= EN TODAS PARTES ======================= -->
+<section>
+  <div class="envoltura">
+    <p class="etiqueta rev">Un solo enlace, en todas partes</p>
+    <h2 class="rev">La carta trabaja <em>antes de que lleguen.</em></h2>
+    <p class="bajada rev">No es solo para las mesas. El mismo enlace sirve en cada lugar donde un turista decide dónde cenar en la Judería, y siempre muestra la carta actualizada.</p>
+    <div class="partes">
+      <div class="lista-partes">
+        <div class="parte rev"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3m4 0v4h-4m-3-3v3"/></svg><div><strong>Mesas y entrada</strong><span>Tarjeta con QR en cada mesa y en la puerta, para quien pasa por la calle.</span></div></div>
+        <div class="parte rev"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".6"/></svg><div><strong>Instagram</strong><span>En la biografía y en una historia destacada «Carta».</span></div></div>
+        <div class="parte rev"><svg viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg><div><strong>Google Maps</strong><span>En el apartado «Menú» de su ficha: lo ven quienes buscan restaurantes cerca.</span></div></div>
+        <div class="parte rev"><svg viewBox="0 0 24 24"><path d="M21 11.5a9 9 0 0 1-9 9 9.7 9.7 0 0 1-4.4-1L3 21l1.5-4.5A9 9 0 1 1 21 11.5Z"/></svg><div><strong>WhatsApp</strong><span>Para responder «¿me envían la carta?» con un enlace, y en su estado.</span></div></div>
+        <div class="parte rev"><svg viewBox="0 0 24 24"><circle cx="7" cy="13" r="4"/><circle cx="17" cy="13" r="4"/><path d="M3 9h18M12 9l-1.5-3h3z"/></svg><div><strong>TripAdvisor y su web</strong><span>El mismo enlace en su página oficial y en las reseñas.</span></div></div>
+        <div class="parte rev"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4m10-4v4M3 11h18"/></svg><div><strong>Confirmación de reservas</strong><span>Para que lleguen sabiendo qué menú quieren.</span></div></div>
+        <div class="parte rev"><svg viewBox="0 0 24 24"><path d="M3 21V8l9-5 9 5v13"/><path d="M9 21v-6h6v6"/></svg><div><strong>Hoteles y guías</strong><span>Para que recepciones y guías la recomienden a huéspedes y grupos.</span></div></div>
+        <div class="parte rev"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h10M4 17h7"/></svg><div><strong>Folletos y tarjetas</strong><span>Un QR impreso que nunca queda desactualizado.</span></div></div>
+      </div>
+      <div class="chat rev" aria-label="Así se ve el enlace al compartirlo por WhatsApp">
+        <div class="cabeza"><i></i>Patio de la Judería</div>
+        <div class="burbuja">
+          <div class="vista"><img src="../../patio-de-la-juderia/assets/tarjeta-og.jpg" alt="Vista previa del enlace con el logo del Patio y una foto del tablao" loading="lazy" width="1200" height="630">
+            <div><b>Carta · Patio de la Judería · Restaurante y flamenco en Córdoba</b><small>Carta del Patio de la Judería, restaurante con flamenco en la Judería de Córdoba…</small><em>patiodelajuderia.com</em></div></div>
+          <p>¡Hola! Aquí tiene nuestra carta: patiodelajuderia.com/carta</p>
+          <time>21:04 ✓✓</time>
+        </div>
+        <p class="pie-chat">Al compartir el enlace de su web aparece su logo y una foto del tablao.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= HOJA DE GOOGLE ======================= -->
+<section class="arena">
+  <div class="envoltura">
+    <p class="etiqueta rev">Usted tiene el control</p>
+    <h2 class="rev">Los precios los cambia usted, <em>desde una hoja de Google.</em></h2>
+    <p class="bajada rev">Nada de pedir cambios ni esperar a nadie. La carta lee una hoja de cálculo que usted maneja desde el ordenador o el móvil.</p>
+    <div class="navegador rev">
+      <div class="cromo"><i></i><i></i><i></i><span>docs.google.com · Carta Patio de la Judería</span></div>
+      <div class="hoja"><img src="img/planilla.webp" alt="Hoja de Google con los platos en español, sus precios y las columnas de inglés, francés e italiano" loading="lazy" width="1260" height="520"></div>
+    </div>
+    <div class="pasos-hoja">
+      <div class="rev"><strong>Escribe en español</strong><p>Precio, nombre o descripción, en las columnas <span class="amarillo">amarillas</span>.</p></div>
+      <div class="rev"><strong>Se traduce solo</strong><p>Las columnas <span class="gris">grises</span> de inglés, francés e italiano se actualizan automáticamente.</p></div>
+      <div class="rev"><strong>La carta se actualiza</strong><p>En unos minutos, en los cuatro idiomas. ¿Se acabó un plato? Escriba NO y desaparece.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= QUÉ INCLUYE ======================= -->
+<section>
+  <div class="envoltura">
+    <p class="etiqueta rev">Qué incluye</p>
+    <h2 class="rev">Todo listo <em>para usar.</em></h2>
+    <div class="incluye">
+      <ul class="checks rev">
+        <li><div>Carta digital completa en cuatro idiomas<small>Platos, bebidas, menús con flamenco, alérgenos y avisos.</small></div></li>
+        <li><div>Publicada en su propio dominio<small>Entregamos los archivos y las instrucciones a su programador para colocarla en patiodelajuderia.com, por ejemplo en patiodelajuderia.com/carta.</small></div></li>
+        <li><div>Hoja de Google con traducción automática<small>Creada en su propia cuenta de Google: solo ustedes tienen acceso.</small></div></li>
+        <li><div>Tarjetas con QR para las mesas<small>Diseñadas con su marca y listas para imprimir.</small></div></li>
+        <li><div>Cartel con QR para la entrada<small>Para quien pasa por la calle y quiere ver la carta.</small></div></li>
+        <li><div>Imágenes para redes y WhatsApp<small>Historia de Instagram y tarjeta para compartir el enlace.</small></div></li>
+        <li><div>Guía de uso paso a paso<small>Para usted y su equipo.</small></div></li>
+        <li><div>30 días de ajustes incluidos<small>Cualquier cambio tras la publicación, sin coste.</small></div></li>
+      </ul>
+      <div class="mesa rev" aria-label="Ejemplo de tarjeta con QR para las mesas">
+        <div class="tarjeta-mesa">
+          <img class="logo" src="../../patio-de-la-juderia/assets/logo.webp" alt="" width="600" height="410">
+          <span class="linea"></span>
+          <span class="titulo">Nuestra carta</span>
+          <span class="idiomas-t">Our menu · Notre carte · Il nostro menù</span>
+          <img class="qr-t" src="img/qr-carta.svg" alt="">
+          <div class="banderas"><span class="bandera b-es"></span><span class="bandera b-en"></span><span class="bandera b-fr"></span><span class="bandera b-it"></span></div>
+          <div class="azulejos"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= INVERSIÓN ======================= -->
+<section class="arena" id="inversion">
+  <div class="envoltura">
+    <p class="etiqueta rev">Inversión</p>
+    <h2 class="rev">Un solo pago, <em>sin cuotas.</em></h2>
+    <div class="precio rev">
+      <div class="cifra"><span class="etiqueta">Carta digital completa</span><b data-precio>350 €</b><span>Pago único · sin mensualidades</span></div>
+      <div class="detalle">
+        <div><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg><p><strong>50 % al confirmar y 50 % al publicar.</strong> Por transferencia.</p></div>
+        <div><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><p><strong>Lista para entregar en 48 horas</strong> desde la confirmación: la carta ya está hecha, solo falta su revisión.</p></div>
+        <div><svg viewBox="0 0 24 24"><path d="M12 3 4 7v5c0 5 3.5 8 8 9 4.5-1 8-4 8-9V7z"/></svg><p><strong>Todo es suyo y solo ustedes tienen acceso.</strong> La carta va en su dominio y la hoja de Google en su cuenta. Nosotros solo entramos si ustedes nos invitan.</p></div>
+        <div><svg viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16z"/></svg><p><strong>Cambios de diseño o fotos nuevas</strong> después de los 30 días: por encargo, cuando los necesite.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PRÓXIMOS PASOS ======================= -->
+<section class="oscuro">
+  <div class="envoltura">
+    <p class="etiqueta rev">Próximos pasos</p>
+    <h2 class="rev">De aquí <em>a sus mesas.</em></h2>
+    <div class="pasos">
+      <div class="paso rev"><strong>Revise la carta</strong><p>Pruébela en su móvil y díganos cualquier cambio de platos, precios o fotos.</p></div>
+      <div class="paso rev"><strong>Confirmamos</strong><p>Hacemos los ajustes y entregamos los archivos a su programador para publicarla en patiodelajuderia.com.</p></div>
+      <div class="paso rev"><strong>Le entregamos todo</strong><p>Tarjetas y cartel con QR para imprimir, imágenes para redes y su hoja de Google, creada en su propia cuenta.</p></div>
+      <div class="paso rev"><strong>A compartirla</strong><p>QR en las mesas, enlace en Instagram, Google Maps y WhatsApp. Usted la actualiza cuando quiera.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================= PREGUNTAS ======================= -->
+<section>
+  <div class="envoltura">
+    <p class="etiqueta rev">Preguntas frecuentes</p>
+    <h2 class="rev">Lo que suelen <em>preguntarnos.</em></h2>
+    <div class="preguntas rev">
+      <details><summary>¿Mis clientes tienen que descargar algo?</summary><p>No. Apuntan la cámara al QR y la carta se abre en el navegador del móvil. Funciona en cualquier teléfono, sin aplicaciones ni registros.</p></details>
+      <details><summary>¿Puedo seguir usando la carta impresa?</summary><p>Sí. Muchos restaurantes mantienen la carta impresa para quien la prefiera y usan la digital para los idiomas y para compartirla. Conviven sin problema.</p></details>
+      <details><summary>¿Qué pasa si cambio un plato o un precio?</summary><p>Lo cambia usted en la hoja de Google y la carta se actualiza en unos minutos, ya traducida. Si una traducción automática no le convence, puede corregirla en la misma hoja.</p></details>
+      <details><summary>¿Hay que pagar cada mes?</summary><p>No. Es un único pago. No hay cuotas, ni comisiones por reserva, ni alojamiento con nosotros, ni permanencia.</p></details>
+      <details><summary>¿Quién tiene acceso a la carta y a la hoja?</summary><p>Solo ustedes. La carta se publica en su propio dominio, la coloca su programador, y la hoja de Google se crea en su cuenta. No guardamos contraseñas ni accesos. Si algún día necesitan ayuda, nos invitan a la hoja y después nos quitan el permiso.</p></details>
+      <details><summary>¿Recoge datos de mis clientes?</summary><p>No. La carta no usa cookies ni publicidad, y no pide datos a nadie. Las reservas llegan directamente a su WhatsApp o a su teléfono.</p></details>
+      <details><summary>¿Quiénes son ustedes?</summary><p>COFREP es el servicio de cartas digitales de TuimagenStudio, un estudio de diseño de Argentina que trabaja a distancia con negocios de allí y del extranjero. Todo se hace por WhatsApp o por correo, sin que tenga que moverse del restaurante.</p></details>
+    </div>
+  </div>
+</section>
+
+<div class="azulejos"></div>
+<!-- ======================= CIERRE ======================= -->
+<section class="cierre">
+  <div class="envoltura">
+    <p class="etiqueta rev">¿Hablamos?</p>
+    <h2 class="rev">Su carta ya está lista. <em>Solo falta usted.</em></h2>
+    <p class="bajada rev">Escríbanos por WhatsApp con cualquier duda o cambio. Respondemos en el día.</p>
+    <div class="acciones rev">
+      <a class="boton lleno wa" href="https://wa.me/5492281565279?text=Hola%20Natalia%2C%20le%20escribo%20del%20Patio%20de%20la%20Juder%C3%ADa.%20Hemos%20visto%20la%20propuesta%20de%20la%20carta%20digital%20y%20" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M21 11.5a9 9 0 0 1-9 9 9.7 9.7 0 0 1-4.4-1L3 21l1.5-4.5A9 9 0 1 1 21 11.5Z"/></svg>Escribir por WhatsApp</a>
+      <a class="boton borde" href="https://cofrep.com/patio-de-la-juderia/" target="_blank" rel="noopener">Volver a ver la carta <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© Derechos reservados · TuimagenStudio · COFREP</p>
+  <p>Página privada: solo la ve quien tiene este enlace.</p>
+</footer>
+
+<script>
+  // Aparición suave al bajar (respeta «reducir movimiento»)
+  (function () {
+    var els = document.querySelectorAll('.rev');
+    if (!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) { els.forEach(function (e) { e.classList.add('visto'); }); return; }
+    var io = new IntersectionObserver(function (entradas) {
+      entradas.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add('visto'); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
+</body>
+</html>
