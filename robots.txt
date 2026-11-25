@@ -20,5 +20,6 @@ Disallow: /propuesta/
 Disallow: /qr/
 Disallow: /transmitiendovida/
 Disallow: /tonnarello/
+Disallow: /patio-de-la-juderia/
 
 Sitemap: https://cofrep.com/sitemap.xml

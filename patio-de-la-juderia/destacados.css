@@ -1,0 +1,53 @@
+.featured{padding:64px 6% 50px;border-bottom:1px solid #e2d7c7;background:#f3eadf}
+.featured-heading{display:flex;justify-content:space-between;align-items:end;gap:32px;margin-bottom:34px}
+.featured-heading h2{font-size:48px;line-height:1.03}
+.featured-heading h2 em{font-weight:400}
+.featured-heading .eyebrow{margin-bottom:14px}
+.featured-intro p{font-size:12px;line-height:1.8;color:#7b6857;margin-bottom:17px}
+.featured-intro>a{font-size:11px;color:#a60c24;display:inline-flex;gap:24px;border-bottom:1px solid #bd9986;padding-bottom:7px}
+.featured-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+.featured-card{display:flex;flex-direction:column;position:relative;padding:16px 17px 13px;background:#faf6ef;border:1px solid #dfceba;border-top:3px solid #a60c24;min-width:0}
+.featured-card:first-child{background:#950d24;border-color:#950d24;color:#fff5e8}
+.featured-card-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.featured-card-meta>span:first-child{font-size:8px;font-weight:500;letter-spacing:1px;color:#8c6245}
+.featured-card-meta>span:last-child{font:italic 28px/1 'Crimson Pro',Georgia,serif;color:#c4ad92}
+.featured-card h3{font:600 28px/1.05 'Crimson Pro',Georgia,serif;margin:0 0 15px;letter-spacing:-.3px}
+.featured-description{font-size:11px;font-weight:400;line-height:1.8;color:#7a695a;margin-bottom:15px}
+.featured-card-bottom{margin-top:auto;padding-top:6px}
+.featured-card .price{font-size:19px;font-weight:500}
+.featured-card .featured-minimum{display:block;font-size:9px;color:#8c7059;margin-top:6px}
+.featured-card button{display:flex;justify-content:space-between;align-items:center;gap:15px;border:0;border-top:1px solid #e0cfbb;color:#a60c24;background:transparent;padding:14px 0 0;margin-top:12px;width:100%;font-size:10px;text-align:left;cursor:pointer}
+.featured-card button:hover{text-decoration:underline;text-underline-offset:4px}
+.featured-card button>span:last-child{font-size:17px}
+.featured-card:first-child .featured-card-meta>span:first-child,.featured-card:first-child .featured-description,.featured-card:first-child .featured-minimum{color:#ead0c6}
+.featured-card:first-child .featured-card-meta>span:last-child{color:#ce9b93}
+.featured-card:first-child .price,.featured-card:first-child button{color:#fff5e8}
+.featured-card:first-child button{border-color:#b85864}
+.featured-swipe{display:none}
+.dish.from-featured{outline:2px solid #a60c24;outline-offset:8px;background:#f3e5d5;scroll-margin-top:115px}
+.dish.from-featured:focus-visible{outline:2px solid #a60c24}
+@media(min-width:1600px){.featured{padding-inline:max(6%,calc((100vw - 1320px)/2))}}
+@media(max-width:1100px){.featured-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.featured-card{min-height:0}.featured-card h3{font-size:30px}}
+@media(max-width:650px){
+.featured{padding:30px 5% 26px}
+.featured-heading{display:block;margin-bottom:20px}
+.featured-heading h2{font-size:34px}
+.featured-heading .eyebrow{font-size:8px;letter-spacing:1.3px}
+.featured-intro{margin-top:18px}
+.featured-intro p{font-size:11px;margin-bottom:10px}
+.featured-intro>a{font-size:10px}
+.featured-swipe{display:none}
+.featured-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;overflow:visible;padding:0}
+.featured-card{min-height:0;padding:12px 12px 8px;border-top-width:2px}
+.featured-card-meta{height:0;margin-bottom:0;justify-content:flex-end}
+.featured-card-meta>span:first-child{display:none}
+.featured-card-meta>span:last-child{position:absolute;top:6px;right:10px;font-size:14px}
+.featured-card h3{font-size:23px;line-height:1.04;letter-spacing:-.25px;margin-bottom:6px;padding-top:9px}
+.featured-description{font-size:10px;line-height:1.4;margin-bottom:6px}
+.featured-card-bottom{padding-top:2px}
+.featured-card .price{font-size:15px;white-space:normal;line-height:1.3}
+.featured-card .featured-minimum{font-size:8px;line-height:1.5;margin-top:3px}
+.featured-card button{font-size:10px;min-height:36px;padding:6px 0 2px;margin-top:6px;gap:8px}
+.featured-card button>span:last-child{font-size:15px}
+}
+@media(max-width:359px){.featured-card{padding:12px 10px 10px}.featured-card h3{font-size:21px}.featured-card .price{font-size:14px}}

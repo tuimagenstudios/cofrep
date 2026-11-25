@@ -1,0 +1,20 @@
+.patio-glimpse{display:grid;grid-template-columns:1fr 1fr;max-width:1000px;margin:0 auto 32px;background:#f0e5d8;border:1px solid #ddcbb7;overflow:hidden}
+.patio-glimpse figure{margin:0;min-height:195px;position:relative;background:#45301f}
+.patio-glimpse img{display:block;width:100%;height:100%;position:absolute;object-fit:cover;object-position:50% 42%}
+.glimpse-copy{padding:29px 30px;align-self:center}
+.glimpse-copy .eyebrow{font-size:8px;margin-bottom:10px}
+.glimpse-copy h2{font:500 34px/1.05 'Crimson Pro',Georgia,serif;letter-spacing:-.4px;margin-bottom:13px}
+.glimpse-copy p:last-child{font-size:11px;line-height:1.8;color:#80654f;margin:0}
+.experience.patio-with-photos{display:grid;grid-template-columns:1fr 1fr;gap:35px;padding:35px}
+.patio-with-photos .experience-copy{min-width:0}
+.patio-with-photos .experience-copy h2{font-size:37px}
+.patio-with-photos .experience-copy .primary{margin-top:22px}
+.experience-media{display:grid;grid-template-columns:1fr 1.1fr;gap:10px;align-self:stretch;min-height:285px}
+.experience-media figure{position:relative;overflow:hidden;margin:0;background:#3e2d23}
+.experience-media img{width:100%;height:100%;object-fit:cover;display:block;position:absolute}
+.experience-media .artist-image{object-position:55% 30%}
+.experience-media .entrance-image{object-position:35% center}
+.experience-media figcaption{position:absolute;bottom:0;left:0;right:0;padding:25px 12px 12px;color:#fff6e8;font-size:8px;letter-spacing:1.3px;background:linear-gradient(transparent,#20140cbb);line-height:1.7}
+@media(max-width:1150px){.patio-glimpse{margin-inline:6%}}
+@media(max-width:800px){.experience.patio-with-photos{grid-template-columns:1fr}.experience-media{min-height:220px;grid-row:1}.patio-with-photos .experience-copy h2{font-size:33px}}
+@media(max-width:650px){.patio-glimpse{grid-template-columns:1fr 1fr;margin:0 6% 25px}.patio-glimpse figure{min-height:160px}.glimpse-copy{padding:19px 14px}.glimpse-copy .eyebrow{font-size:6px;letter-spacing:1px;margin-bottom:8px}.glimpse-copy h2{font-size:25px;margin-bottom:10px}.glimpse-copy p:last-child{font-size:9px;line-height:1.7}.experience.patio-with-photos{padding:20px;gap:24px}.experience-media{min-height:200px}.experience-media figcaption{font-size:7px;padding-inline:10px}.patio-with-photos .experience-copy h2{font-size:31px}}

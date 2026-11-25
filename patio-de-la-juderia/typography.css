@@ -1,0 +1,16 @@
+/* Familias verificadas en la web oficial: Crimson Pro y Montserrat. */
+@font-face{font-family:'Crimson Pro';font-style:normal;font-weight:200 900;font-display:swap;src:url('assets/fonts/crimson-pro-normal.woff2') format('woff2')}
+@font-face{font-family:'Crimson Pro';font-style:italic;font-weight:200 900;font-display:swap;src:url('assets/fonts/crimson-pro-italic.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-style:normal;font-weight:100 900;font-display:swap;src:url('assets/fonts/montserrat-normal.woff2') format('woff2')}
+@font-face{font-family:'Montserrat';font-style:italic;font-weight:100 900;font-display:swap;src:url('assets/fonts/montserrat-italic.woff2') format('woff2')}
+body,.search kbd{font-family:'Montserrat',Helvetica,Arial,sans-serif}
+h1,h2,.photo-caption p,.aside-note p,.section-heading h3,.section-heading>span,.dish h4,.service-note strong,.empty h3,footer strong{font-family:'Crimson Pro',Georgia,serif}
+h1{font-weight:300;letter-spacing:-1.5px}
+h1 em,h2 em{font-weight:300}
+h2{font-weight:600}
+.dish h4,.section-heading h3{font-weight:600}
+header nav{font-weight:600}
+.brand{display:block;position:relative;width:185px;height:90px;overflow:hidden;flex-shrink:0}
+.brand img{position:absolute;width:150px;height:150px;max-width:none;left:17px;top:-25px;object-fit:contain;mix-blend-mode:normal}
+.intro,.section-description,.dish p{font-weight:300}
+@media(max-width:650px){h1{font-size:49px;letter-spacing:-1px}h1 br:last-of-type{display:initial}.dish h4{font-size:20px}.dish p{font-weight:400}.brand{width:139px;height:70px}.brand img{width:116px;height:116px;left:11px;top:-19px}}

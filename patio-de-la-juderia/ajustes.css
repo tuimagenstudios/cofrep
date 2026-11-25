@@ -1,0 +1,152 @@
+/* Ajustes de la auditoría del 25/11/2026 (ver AUDITORIA-CARTA.md).
+   Se carga al final para corregir sin tocar los estilos originales:
+   letra legible, contraste, zonas de toque, grosores, cabecera, barra de reservas y encuadres. */
+
+:root{--tinta-suave:#5f4b41;--tinta-etiqueta:#7a5f52}
+
+/* ---------- 3 · Etiquetas en mayúscula: mínimo 11 px ---------- */
+.eyebrow,aside>.eyebrow,.menu-intro .eyebrow,.featured-heading .eyebrow,.glimpse-copy .eyebrow,.notice-heading .eyebrow,
+.offer-copy>.eyebrow,.tasting-menu>.eyebrow,.detail-content>.eyebrow,.hero-foot,.photo-caption>span,.photo-number,
+.dish .dish-id,.featured-card-meta>span:first-child,.experience-media figcaption,.accordion-count,.result-count,.search kbd,
+.diet-tags li,.featured-card .featured-minimum,.flamenco-badge,.tasting-menu .flamenco-badge,.reservation-label small,
+.site-footer .footer-brand p,.footer-credit,.courses li:before,.detail-courses li:before,.choice-list li:before,.category span{font-size:11px}
+
+/* ---------- 3 y 4 · Textos para leer: 13–14 px y más oscuros ---------- */
+.intro,.menu-intro>p,.featured-intro p,.featured-intro>a,.glimpse-copy p:last-child,.accordion-hint,.section-description,
+.accordion-content>.section-description,.service-alert,.notice-minimum>p,.notice-body,.notice-legend>span,.notice-footnote,
+.experience p:not(.eyebrow),.site-footer .footer-contact a,.site-footer .footer-location,.site-footer .footer-hours,
+.site-footer .footer-directions,.footer-legal>summary,.back-to-menu,.detail-back,.detail-terms>p:last-child,.menu-includes p,
+.detail-price span,header nav,.legend,.service-note,.offer-description,.offer-price,.offer-toggle,.menu-card-includes,
+.tasting-menu .menu-card-summary,.category,.search input{font-size:13px}
+.dish p,.featured-description,.detail-courses p,.courses p,.detail-summary{font-size:14px;line-height:1.55}
+.primary,.tasting-menu .primary,.featured-card button,header .reserve{font-size:13px}
+@media(min-width:900px){
+  .dish p,.featured-description,.detail-courses p,.courses p,.detail-summary{font-size:15px}
+  .intro,.menu-intro>p,.featured-intro p,.glimpse-copy p:last-child,.section-description,.accordion-content>.section-description,
+  .notice-body,.experience p:not(.eyebrow),.tasting-menu .menu-card-summary,.menu-includes p{font-size:14px}
+}
+/* colores con contraste suficiente sobre marfil y beige */
+.dish p,.section-description,.accordion-content>.section-description,.accordion-hint,.result-count,.menu-intro>p,
+.featured-intro p,.featured-description,.glimpse-copy p:last-child,.intro,.site-footer .footer-brand p,.site-footer .footer-contact a,
+.site-footer .footer-hours,.footer-credit,.hero-foot,.detail-summary,.detail-courses p,.detail-terms>p:last-child{color:var(--tinta-suave)}
+.dish .dish-id,.accordion-count,.search kbd,.featured-card .featured-minimum{color:var(--tinta-etiqueta)}
+.featured-card:first-child .featured-description,.featured-card:first-child .featured-minimum{color:#f6dfe0}
+
+/* ---------- 15 · Un solo grosor para los títulos ---------- */
+.hero h1,.detail-content h1{font-weight:400}
+main h2,.featured-card h3,.accordion-summary h3,.accordion-summary h4,.dish h4,.offer-copy h3,.tasting-menu h4,
+.detail-courses h3,.notice-heading h2,.footer-brand strong{font-weight:500}
+
+/* ---------- 12 · Zonas de toque de al menos 44 px ---------- */
+
+.featured-intro>a{display:inline-flex;align-items:center;min-height:44px}
+@media(min-width:651px){header nav>a:not(.reserve){display:inline-flex;align-items:center;min-height:44px}}
+.featured-card button{min-height:44px}
+.footer-legal>summary,.service-notice summary,.notice-body details>summary{min-height:44px;display:flex;align-items:center}
+
+/* ---------- 14 · Encuadre de la foto del tablao: los artistas siempre al centro ---------- */
+.hero-photo>img{object-position:50% 52%}
+
+/* ---------- 7 · WhatsApp en computadora: botón redondo que no tapa texto ---------- */
+@media(min-width:651px){
+  .reservation-bar{right:22px;bottom:22px}
+  .reservation-call{display:none}
+  .reservation-bar>.reservation-book{display:grid;place-items:center;width:56px;height:56px;padding:0;border-radius:50%;background:#147d48;color:#fff;border:0;box-shadow:0 6px 18px #153d2833}
+  .reservation-bar>.reservation-book:hover{background:#0d6338}
+  .reservation-bar>.reservation-book svg{width:27px;height:27px}
+  .reservation-bar>.reservation-book .reservation-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .detail-content{padding-right:max(10%,96px)}
+}
+
+/* ---------- 2 y 10 · Celular: cabecera más baja y una sola barra abajo ---------- */
+@media(max-width:650px){
+  header{height:auto;min-height:72px;padding-block:8px}
+  .brand img{width:100%;height:100%}
+  header .reserve{display:none}
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom,0px))}
+  .reservation-bar{display:grid;grid-template-columns:1fr auto;gap:8px;padding:9px 4% calc(9px + env(safe-area-inset-bottom,0px)) calc(4% + 60px)}
+  .reservation-bar>a{min-height:50px;padding:8px 12px}
+  .reservation-bar>.reservation-book{background:#a60c24;border-color:#a60c24}
+  .reservation-bar>.reservation-call{background:#faf6ef;color:#a60c24;border:1px solid #a60c24;gap:7px}
+  .reservation-bar>.reservation-call:hover{background:#f2e3db}
+  .reservation-label{font-size:14px}
+  .reservation-call .reservation-label{font-size:13px}
+  .reservation-label small{color:#f2d3d6}
+}
+@media(max-width:340px){
+  .reservation-bar>.reservation-call .reservation-label{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .reservation-label small{display:none}
+}
+
+/* ---------- 13 · Número de plato sin repetir la sección (la sección vuelve al buscar) ---------- */
+#menu-results:not(.is-search) .dish-cat{display:none}
+#menu-results:not(.is-search) .dish-id.solo-seccion{display:none}
+
+/* ---------- 11 · Botón para volver al buscador ---------- */
+.volver-buscar{position:fixed;z-index:29;right:22px;bottom:92px;display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 16px 0 12px;border:1px solid #d6b7ad;border-radius:22px;background:#faf6eff2;color:#a60c24;font:600 13px/1 'Montserrat',Arial,sans-serif;box-shadow:0 4px 16px #3a221422;cursor:pointer;backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.volver-buscar[hidden]{display:none}
+.volver-buscar svg{width:18px;height:18px}
+.volver-buscar:hover{background:#a60c24;color:#fff7ed;border-color:#a60c24}
+@media(max-width:650px){.volver-buscar{right:4%;bottom:calc(80px + env(safe-area-inset-bottom,0px))}}
+
+/* ---------- 4 · Contraste dentro de «Carta de bebidas» (fondo rosado) y etiquetas ---------- */
+#section-bebidas>.accordion-summary>.accordion-count,#section-bebidas .wine-accordion>.accordion-summary>.accordion-count,
+#section-bebidas .dish-id{color:#7a4c55}
+#section-bebidas .section-description,#section-bebidas .dish p{color:#5e3f46}
+.menu-offer>.accordion-content>.section-description{color:#6b4c38}
+.diet-tags .opcion-sin-gluten{color:#5f4b41}
+
+/* ---------- 1 y 7 · Tablet y celular acostado: también la barra de abajo, para que la bocina no tape texto ---------- */
+@media(min-width:651px) and (max-width:1100px){
+  body{padding-bottom:calc(82px + env(safe-area-inset-bottom,0px))}
+  footer{padding-bottom:25px}
+  .music-control{left:max(4%,16px);bottom:calc(9px + env(safe-area-inset-bottom,0px));width:50px;height:50px}
+  .music-toggle{width:50px;height:50px;box-shadow:none}
+  .music-pop{bottom:66px}
+  .reservation-bar{left:0;right:0;bottom:0;display:flex;justify-content:flex-end;gap:10px;background:#faf6eff7;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid #decbbb;padding:9px max(4%,16px) calc(9px + env(safe-area-inset-bottom,0px)) calc(max(4%,16px) + 62px);box-shadow:0 -4px 18px #4c221410}
+  .reservation-bar>.reservation-book{width:auto;height:auto;min-height:50px;border-radius:0;padding:8px 22px;display:flex;align-items:center;gap:10px;background:#a60c24;box-shadow:none}
+  .reservation-bar>.reservation-book:hover{background:#800a1c}
+  .reservation-bar>.reservation-book .reservation-label{position:static;width:auto;height:auto;overflow:visible;clip-path:none;font-size:14px}
+  .reservation-bar>.reservation-call{display:flex;align-items:center;gap:8px;min-height:50px;padding:8px 18px;background:#faf6ef;color:#a60c24;border:1px solid #a60c24}
+  .reservation-bar>.reservation-call .reservation-label{font-size:13px}
+  .volver-buscar{right:max(4%,16px);bottom:calc(80px + env(safe-area-inset-bottom,0px))}
+  .reservation-bar svg{width:22px;height:22px}
+}
+/* el texto sobre la foto de la página del menú, más arriba que la bocina */
+@media(min-width:1101px){.detail-atmosphere p{bottom:104px;left:max(11%,96px)}}
+
+/* ---------- 12 · «Volver a los menús» con zona de toque cómoda ---------- */
+.back-to-menu,.detail-back{display:inline-flex;align-items:center;min-height:44px}
+.site-footer .social-button{min-width:44px;min-height:44px}
+
+/* ---------- 6 · Logo nuevo (WebP ya recortado, sin margen transparente) ---------- */
+.brand{width:178px;height:84px}
+.brand img{position:static;width:100%;height:100%;left:auto;top:auto;object-fit:contain;object-position:left center}
+@media(max-width:650px){.brand{width:124px;height:58px}.brand img{width:100%;height:100%}}
+@media(max-width:650px){.reservation-bar .reservation-label small{display:none}.reservation-bar>.reservation-book .reservation-label{line-height:1.25}}
+
+/* ---------- Pie compacto (sin repetir teléfonos: ya están en «Llamar») ---------- */
+.site-footer{gap:14px 16px;padding-top:22px;padding-bottom:18px}
+.site-footer .footer-brand strong{font-size:22px}
+.site-footer .footer-brand p{margin-top:4px;line-height:1.35}
+.site-footer .footer-socials{grid-column:2;grid-row:1;display:flex;gap:8px}
+.site-footer .social-button{width:44px;height:44px;min-height:44px;padding:0;display:grid;place-items:center}
+.site-footer .footer-visit{grid-column:1/-1;display:flex;flex-wrap:nowrap;align-items:center;justify-content:space-between;gap:14px;padding-top:14px}
+.site-footer .footer-visit-copy{flex:1;min-width:0}
+.site-footer .footer-location{margin:0 0 2px;font-size:13px;line-height:1.45}
+.site-footer .footer-hours{display:block;font-size:12px;line-height:1.45;margin:0}
+.site-footer .footer-hours span+span::before{content:' · '}
+.site-footer .footer-directions{flex-shrink:0;min-height:44px;padding:0 14px}
+.footer-legal{margin-top:0}
+.footer-credit{margin-top:2px}
+@media(max-width:650px){
+  .site-footer{grid-template-columns:minmax(0,1fr) auto;padding:20px 5% 16px}
+  .site-footer .footer-brand p{font-size:11px}
+  .site-footer .social-button{width:40px;height:40px;min-height:40px}
+  .site-footer .footer-socials{gap:6px}
+  .site-footer .footer-directions span:first-of-type{white-space:nowrap}
+}
+@media(max-width:350px){
+  .site-footer .footer-directions{width:44px;padding:0;justify-content:center}
+  .site-footer .footer-directions span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+}

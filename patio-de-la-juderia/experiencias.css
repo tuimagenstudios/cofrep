@@ -1,0 +1,55 @@
+.tasting-menus{grid-template-columns:repeat(3,minmax(0,1fr))}
+.tasting-menu{display:flex;flex-direction:column;position:relative;overflow:hidden;padding:28px 24px;border-top:3px solid #a60c24}
+.tasting-menu h4{font-size:29px;line-height:1.08}
+.tasting-menu>.eyebrow{font-size:8px;line-height:1.7;min-height:28px}
+.tasting-menu .flamenco-badge{font-size:9px;padding:7px 9px;margin:15px 0}
+.tasting-menu .menu-card-summary{font-size:12px;line-height:1.8;color:#796553;margin:14px 0}
+.menu-card-includes{font-size:10px;line-height:1.8;color:#796553;margin:0 0 23px}
+.tasting-menu .primary{margin-top:auto;justify-content:space-between;gap:12px;font-size:11px;padding:14px 16px}
+.tasting-menu .price{font-size:21px}
+.flamenco-badge{display:inline-block;width:fit-content;background:#e8dbc8;color:#7e402e;letter-spacing:.5px;padding:9px 14px;font-size:10px}
+.service-alert{border-left:3px solid #a60c24;padding:13px 16px;background:#f1e4d7;color:#853d35;font-size:11px;line-height:1.8;margin-bottom:22px}
+.restaurant-notice{margin:40px 0 0;background:#291f1b;color:#f4e9dc;padding:30px}
+.notice-heading .eyebrow{color:#c5a98a;font-size:8px;margin-bottom:8px}
+.notice-heading h2{font:400 35px 'Crimson Pro',Georgia,serif}
+.notice-minimum{margin:23px 0;padding:19px 0;border-block:1px solid #6b5141}
+.notice-minimum>p{font-size:11px;line-height:1.8;color:#d8c3af;margin-bottom:10px}
+.notice-minimum strong{font:500 36px 'Crimson Pro',Georgia,serif;color:#fff2df}
+.notice-minimum strong>span{font:12px 'Montserrat',Arial,sans-serif}
+.notice-body{font-size:11px;line-height:1.9;color:#d8c3af}
+.notice-body>p{margin-bottom:16px}.notice-body strong{color:#f5e6d3}
+.notice-bread{border-bottom:1px solid #6b5141;padding-bottom:20px}
+.notice-body summary{cursor:pointer;color:#f2ddc3;padding:8px 0}
+.notice-body details p{margin:8px 0 18px}
+.notice-legend{display:flex;flex-wrap:wrap;gap:15px;margin:16px 0 23px}
+.notice-legend>span{flex:1 1 170px;font-size:10px;line-height:1.6}
+.notice-legend b{display:block;font:italic 25px 'Crimson Pro',Georgia,serif;color:#fff1dc;margin-bottom:5px}
+.notice-footnote{font-size:9px;color:#b89e86}
+.back-to-menu{font-size:12px;color:#a60c24}
+.detail-layout{display:grid;grid-template-columns:minmax(0,0.8fr) minmax(0,1.2fr);align-items:start}
+.detail-atmosphere{position:sticky;top:0;height:100vh;background:#251a15;overflow:hidden}
+.detail-atmosphere img{width:100%;height:100%;object-fit:cover;filter:brightness(.6)}
+.detail-atmosphere p{position:absolute;bottom:50px;left:11%;color:#f7e9d7;font:400 53px/1.1 'Crimson Pro',Georgia,serif}
+.detail-atmosphere em{color:#e0c3a1}
+.detail-content{padding:55px 10% 65px;min-width:0}
+.detail-content h1{font:400 53px/1.03 'Crimson Pro',Georgia,serif;letter-spacing:-1px;margin-bottom:20px}
+.detail-summary{font-size:12px;line-height:1.9;color:#83705c}
+.detail-terms{padding:22px 0;margin:7px 0 25px;border-bottom:1px solid #d8c4a9}
+.detail-terms>.detail-price{font:500 41px 'Crimson Pro',Georgia,serif;color:#a60c24;margin:0 0 8px}
+.detail-price span{font:11px 'Montserrat',Arial,sans-serif}
+.detail-terms>p:last-child{font-size:10px;letter-spacing:.6px;color:#8d6b4c;margin:0}
+.detail-courses{list-style:none;padding:0;margin:0;counter-reset:detailcourse}
+.detail-courses li{position:relative;counter-increment:detailcourse;padding:0 0 24px 30px}
+.detail-courses li:before{content:counter(detailcourse,decimal-leading-zero);position:absolute;top:5px;left:0;font-size:8px;color:#aa8c6d}
+.detail-courses h3{font:600 25px/1.12 'Crimson Pro',Georgia,serif;margin:0 0 8px}
+.detail-courses p{font-size:11px;line-height:1.8;color:#83705c;margin:0}
+.course-group-title{font:600 28px 'Crimson Pro',Georgia,serif;color:#a60c24;padding:17px 0;margin:0 0 12px;border-top:1px solid #d8c4a9}
+.choice-list{background:#f0e6d7;padding:22px 20px 0;margin-bottom:24px}
+.choice-list li:before{content:'O';font-size:9px;color:#a60c24}
+.menu-includes{background:#f0e6d7;padding:22px;margin:8px 0 16px}
+.menu-includes h2{font:600 26px 'Crimson Pro',Georgia,serif;margin-bottom:12px}
+.menu-includes p{font-size:11px;line-height:1.8;margin:8px 0;color:#79604c}
+.detail-back{display:block;font-size:11px;margin-top:25px;color:#8c543b}
+.menu-detail-page .restaurant-notice{margin:0;padding:45px max(6%,calc((100vw - 1000px)/2))}
+@media(max-width:1100px){.tasting-menus{grid-template-columns:1fr}.detail-content{padding:40px 8%}.detail-content h1{font-size:44px}}
+@media(max-width:650px){.restaurant-notice{padding:25px 22px;margin-top:30px}.notice-minimum strong{font-size:35px}.notice-heading h2{font-size:32px}.notice-body{font-size:11px}.tasting-menu h4{font-size:32px}.tasting-menu>.eyebrow{min-height:0}.detail-layout{display:flex;flex-direction:column}.detail-atmosphere{display:none}.detail-content{padding:32px 7% 40px;width:100%}.detail-content h1{font-size:42px;letter-spacing:-.5px}.detail-content>.eyebrow{font-size:8px}.detail-courses h3{font-size:24px}.detail-courses p{font-size:12px}.detail-summary{font-size:12px}.back-to-menu{font-size:10px;max-width:125px;text-align:right}.menu-detail-page .restaurant-notice{padding:30px 7%}}

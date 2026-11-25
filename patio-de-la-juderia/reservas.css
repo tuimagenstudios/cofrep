@@ -1,0 +1,25 @@
+header .reserve{display:inline-flex;align-items:center;justify-content:center;gap:22px;min-height:48px;padding:14px 23px;background:#a60c24;border:1px solid #a60c24;color:#fff7ed;font-weight:600;font-size:13px;box-shadow:0 4px 12px #950d2420;transition:background .18s,box-shadow .18s}
+header .reserve span{margin:0;font-size:18px}
+header nav>a.reserve:hover{background:#800a1c;border-color:#800a1c;color:#fff7ed;box-shadow:0 5px 15px #950d2433}
+.reservation-bar{position:fixed;bottom:24px;right:28px;z-index:30}
+.reservation-book{display:none}
+.reservation-bar>.whatsapp-write{display:flex;align-items:center;gap:11px;background:#147d48;color:#fff;border:1px solid #147d48;padding:12px 19px;box-shadow:0 4px 15px #153d2825}
+.reservation-bar>.whatsapp-write:hover{background:#0d6338;border-color:#0d6338}
+.reservation-bar svg{width:24px;height:24px;flex-shrink:0}
+.reservation-label{display:flex;flex-direction:column;gap:4px;font-size:13px;font-weight:600}
+.reservation-label small{font-size:9px;font-weight:400;letter-spacing:.4px;color:#e0f4e7}
+@media(min-width:651px){body:not(.menu-detail-page)>header{position:sticky;top:0;background:#faf6eff5;backdrop-filter:blur(12px);z-index:20}html{scroll-padding-top:125px}}
+@media(max-width:650px){
+body{padding-bottom:calc(77px + env(safe-area-inset-bottom,0px))}
+header .reserve{font-size:11px;min-height:46px;padding:12px 15px;gap:12px}
+header .reserve span{font-size:17px}
+.reservation-bar{position:fixed;z-index:30;bottom:0;left:0;right:0;display:grid;grid-template-columns:1fr 1fr;gap:9px;background:#faf6eff7;backdrop-filter:blur(12px);border-top:1px solid #decbbb;padding:10px 5% calc(10px + env(safe-area-inset-bottom,0px));box-shadow:0 -4px 18px #4c221410}
+.reservation-bar>a{display:flex;align-items:center;justify-content:center;gap:8px;min-height:53px;padding:9px 10px;background:#a60c24;border:1px solid #a60c24;color:#fff7ed}
+.reservation-bar>a:hover{background:#800a1c}
+.reservation-bar svg{width:20px;height:20px;flex-shrink:0}
+.reservation-label{display:flex;flex-direction:column;gap:4px;font-size:12px;font-weight:600}
+.reservation-label small{font-size:7px;font-weight:400;letter-spacing:.3px;text-transform:uppercase;color:#efd1d4}
+.reservation-bar>.whatsapp-write{padding:9px 10px;gap:8px;box-shadow:none}
+.whatsapp-write .reservation-label small{color:#e0f4e7}
+.reservation-arrow{margin-left:auto;font-size:20px}
+}

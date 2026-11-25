@@ -1,0 +1,73 @@
+.menu-layout{display:block;max-width:1150px}
+.accordion-hint{font-size:11px;color:#8c7059;margin:0 0 19px;line-height:1.7}
+.menu-accordion{border-top:1px solid #d7c5ae;margin:0}
+.menu-accordion:last-child{border-bottom:1px solid #d7c5ae}
+.accordion-summary{display:flex;align-items:center;gap:16px;padding:23px 6px;list-style:none;cursor:pointer;user-select:none}
+.accordion-summary::-webkit-details-marker{display:none}
+.accordion-summary::marker{content:''}
+.accordion-summary h3{font:600 29px/1.1 'Crimson Pro',Georgia,serif;margin:0;flex:1}
+.accordion-summary h4{font:500 24px/1.15 'Crimson Pro',Georgia,serif;margin:0;flex:1}
+.accordion-count{font-size:9px;color:#96816b;white-space:nowrap}
+.accordion-icon{display:grid;place-items:center;border:1px solid #d5bea4;width:29px;height:29px;flex-shrink:0;font:300 22px/1 'Montserrat',Arial,sans-serif;color:#a60c24}
+.menu-accordion[open]>.accordion-summary{color:#a60c24}
+details[open]>.accordion-summary>.accordion-icon{font-size:0;background:#a60c24;color:#fff;border-color:#a60c24}
+details[open]>.accordion-summary>.accordion-icon:after{content:'−';font-size:22px}
+.accordion-summary:hover h3,.accordion-summary:hover h4{color:#a60c24}
+.accordion-content{padding:0 8px 28px}
+.accordion-content>.section-description{margin:0 0 12px}
+.wine-accordion{border-top:1px solid #e0d0bc;margin:0}
+.wine-accordion>.accordion-summary{padding:18px 6px}
+.wine-accordion .dishes{padding:0 7px 20px}
+.wine-accordion .dish-top{display:block}
+.wine-accordion .dish-top>.price{display:block;margin-top:9px;white-space:normal}
+.price-options{display:flex;flex-wrap:wrap;gap:7px 18px;margin-top:10px}
+.price-options .price{font-size:12px;white-space:normal}
+.wine-accordion>.accordion-summary>.accordion-icon{width:24px;height:24px;font-size:19px}
+.accordion-content .tasting-menus{margin-top:18px}
+#section-bebidas{background:#f3e2e3;border:1px solid #ddbbbf;margin:18px 0;padding:0 22px}
+#section-bebidas>.accordion-summary{padding:24px 0}
+#section-bebidas>.accordion-summary h3{color:#95172c}
+#section-bebidas>.accordion-summary>.accordion-count{color:#9b6a72}
+#section-bebidas>.accordion-summary>.accordion-icon{border-color:#c99aa2}
+#section-bebidas>.accordion-content{padding:0 0 24px}
+#section-bebidas .section-description{color:#936a70}
+#section-bebidas .wine-accordion{border-top-color:#dcbec2}
+#section-bebidas .wine-accordion>.accordion-summary h4{color:#753b46}
+#section-bebidas .wine-accordion>.accordion-summary>.accordion-count{color:#976a73}
+#section-bebidas .wine-accordion>.accordion-summary>.accordion-icon{border-color:#c99aa2}
+#section-bebidas .dish{border-bottom-color:#ddc3c6}
+#section-bebidas .dish-id{color:#9b7277}
+#section-bebidas .dish p{color:#80646a}
+#section-bebidas .wine-accordion[open]>.accordion-summary h4{color:#a60c24}
+#section-comida{background:#f5ecdf;border:1px solid #ddcbb7;margin:18px 0;padding:0 22px}
+#section-comida>.accordion-summary{padding:24px 0}
+#section-comida>.accordion-summary h3{color:#543b2b}
+#section-comida>.accordion-content{padding:0 0 24px}
+#section-comida .food-accordion{border-top-color:#ddcbb7}
+#section-comida .food-accordion .dish-top{display:flex}
+#section-comida .food-accordion .dish-top>.price{margin-top:0;white-space:nowrap}
+@media(max-width:650px){#section-comida{padding-inline:16px;margin-block:16px}#section-comida>.accordion-summary{padding-block:21px}#section-comida>.accordion-summary h3{font-size:25px}}
+@media(max-width:650px){#section-bebidas{padding-inline:16px;margin-block:16px}#section-bebidas>.accordion-summary{padding-block:21px}#section-bebidas>.accordion-summary h3{font-size:25px}#section-bebidas .wine-accordion>.accordion-summary h4{font-size:22px}}
+.menu-offer{margin:24px 0 0;border:0!important;background:#950d24}
+.menu-offer>.accordion-summary{padding:31px 30px;gap:25px;align-items:center;color:#fff3e3}
+.offer-copy{flex:1;min-width:0}
+.offer-copy>.eyebrow{color:#e6b993;font-size:9px;letter-spacing:2px;margin:0 0 12px}
+.menu-offer .offer-copy h3{font:500 38px/1.04 'Crimson Pro',Georgia,serif;color:#fff3e3}
+.offer-description{font-size:11px;line-height:1.8;color:#e5c3b8;margin:13px 0 0;max-width:310px}
+.offer-action{flex-shrink:0;text-align:right}
+.offer-price{font-size:10px;color:#e5c3b8;margin:0 0 16px}
+.offer-price strong{font:500 34px 'Crimson Pro',Georgia,serif;color:#fff2d9;white-space:nowrap}
+.offer-toggle{display:inline-flex;gap:17px;align-items:center;border:1px solid #dbb390;padding:10px 14px;font-size:10px;color:#ffe9cc}
+.offer-toggle .accordion-icon{width:19px;height:19px;border:0;color:inherit;font-size:20px}
+.offer-close-label{display:none}
+.menu-offer[open]>.accordion-summary{color:#fff3e3;border-bottom:1px solid #c15f6f}
+.menu-offer[open] .offer-open-label{display:none}
+.menu-offer[open] .offer-close-label{display:inline}
+.menu-offer[open]>.accordion-summary .accordion-icon{font-size:0}
+.menu-offer[open]>.accordion-summary .accordion-icon:after{content:'−';font-size:20px}
+.menu-offer>.accordion-content{background:#f1e4d4;padding:22px}
+.menu-offer>.accordion-content>.section-description{color:#85624a}
+.menu-offer>.accordion-summary:hover .offer-toggle{background:#fff0dc;color:#950d24}
+.menu-offer>.accordion-summary:hover h3{color:#fff3e3}
+@media(max-width:650px){.menu-offer{margin-top:20px}.menu-offer>.accordion-summary{display:block;padding:25px 23px}.offer-copy>.eyebrow{font-size:8px;letter-spacing:1.5px;margin-bottom:12px}.menu-offer .offer-copy h3{font-size:34px;line-height:1.05}.offer-description{font-size:11px;margin-top:12px;max-width:none}.offer-action{text-align:left;margin-top:23px;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}.offer-price{margin:0;font-size:9px}.offer-price>span{display:block}.offer-price strong{font-size:34px}.offer-toggle{padding:11px 12px;font-size:10px;gap:12px}.menu-offer>.accordion-content{padding:18px 14px}.menu-offer .tasting-menu{padding:24px 19px}}
+@media(max-width:650px){.menu-layout{padding-inline:6%}.accordion-summary{padding:20px 0;gap:10px}.accordion-summary h3{font-size:25px}.accordion-summary h4{font-size:23px}.accordion-icon{width:26px;height:26px}.accordion-count{font-size:8px}.accordion-content{padding:0 2px 22px}.accordion-content>.section-description{font-size:11px}.wine-accordion>.accordion-summary{padding:17px 3px}.wine-accordion .dishes{padding-inline:2px}.accordion-hint{font-size:10px}.accordion-content .dish.from-featured{outline-offset:3px}}
