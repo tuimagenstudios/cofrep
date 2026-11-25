@@ -6,7 +6,7 @@
   var SHEET_ID = '1v6OMN9MNn2YVPBJlNdZoEJ8KPQljNjp1qcuVv_lb1eg';
 
   var SEDES = [
-    { k: 'Capital Federal', pais: 'CABA', dir: 'Lavalle 869', q: 'Lavalle 869, CABA' },
+    { k: 'Capital Federal', pais: 'CABA', dir: 'Av. Corrientes 818 · Hotel Las Naciones', q: 'Av. Corrientes 818, CABA' },
     { k: 'San Isidro', pais: 'Buenos Aires', dir: 'Martín y Omar 399 · Teatro Stella Maris', q: 'Martín y Omar 399, San Isidro, Buenos Aires' },
     { k: 'Moreno', pais: 'Buenos Aires', dir: 'Dr. Aseff 49', q: 'Dr. Aseff 49, Moreno, Buenos Aires' },
     { k: 'La Plata', pais: 'Buenos Aires', dir: 'Calle 44 n.º 368, entre 2 y 3 · Círculo de Oficiales de Mar', q: 'Calle 44 368, La Plata, Buenos Aires' },
