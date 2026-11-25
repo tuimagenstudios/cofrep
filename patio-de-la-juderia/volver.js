@@ -9,6 +9,23 @@
   boton.setAttribute('aria-label', 'Volver al buscador y a las secciones de la carta');
   document.body.append(boton);
 
+  const portada = document.createElement('a');
+  portada.className = 'volver-portada';
+  portada.href = 'index.html';
+  portada.hidden = true;
+  portada.setAttribute('aria-label', 'Volver arriba a la portada');
+  portada.title = 'Volver a la portada';
+  portada.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20V4m-7 7 7-7 7 7"/></svg>';
+  document.body.append(portada);
+  portada.addEventListener('click', e => {
+    if (e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+    if (!document.querySelector('.hero')) return; // navigation.js vuelve desde un menú sin cortar la música.
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'});
+    document.querySelector('header .brand')?.focus({preventScroll: true});
+  });
+
+
   // Franja «Volver a la propuesta»: solo si se llegó desde la propuesta (?desde=propuesta).
   // Se recuerda durante la visita, así sigue en las páginas de los menús. No aparece al entrar por el QR.
   let desdePropuesta = false;
@@ -27,6 +44,7 @@
   let pendiente = false;
   function revisar() {
     pendiente = false;
+    portada.hidden = !document.body.classList.contains("menu-detail-page") && scrollY < 400;
     const barra = document.querySelector('.toolbar');
     const carta = document.querySelector('#menu-results');
     let ver = false;
@@ -38,6 +56,8 @@
   }
   addEventListener('scroll', () => { if (!pendiente) { pendiente = true; requestAnimationFrame(revisar); } }, { passive: true });
   addEventListener('resize', revisar);
+  new MutationObserver(revisar).observe(document.body, {childList: true});
+  revisar();
 
   boton.addEventListener('click', () => {
     const barra = document.querySelector('.toolbar');
