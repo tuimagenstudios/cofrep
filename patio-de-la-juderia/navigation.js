@@ -6,6 +6,20 @@
   let current = routeKey(new URL(location.href));
   let pending = 0;
   history.scrollRestoration = 'manual';
+  // Si se entra directo a un menú (enlace compartido, QR o pestaña nueva), no hay página anterior
+  // y el «atrás» del móvil cerraría la carta. Se pone la carta (sección de menús) como página anterior.
+  // Chrome ignora los pasos de historial agregados antes de que la persona toque la página,
+  // así que se arma con el primer toque. Mientras tanto, el botón «Menús» fijo arriba siempre lleva a la carta.
+  if (/\/menu\.html$/.test(location.pathname) && !(history.state && history.state.patio)) {
+    const sembrar = () => {
+      ['pointerup', 'touchend', 'keydown'].forEach(t => removeEventListener(t, sembrar, true));
+      if (history.state && history.state.patio) return;
+      const aqui = location.href;
+      history.replaceState({ patio: 'carta' }, '', new URL('index.html#section-menus', location.href).href);
+      history.pushState({ patio: 'menu' }, '', aqui);
+    };
+    ['pointerup', 'touchend', 'keydown'].forEach(t => addEventListener(t, sembrar, true));
+  }
 
   function remember() {
     views.set(current, {
@@ -61,7 +75,8 @@
       requestAnimationFrame(() => {
         if (version !== pending) return;
         const target = url.hash && document.getElementById(decodeURIComponent(url.hash.slice(1)));
-        if (target && push) target.scrollIntoView({behavior: 'instant'});
+        // Al volver a una página nueva con #sección (por ejemplo, de un menú a la carta), se va a esa sección.
+        if (target && (push || fresh)) target.scrollIntoView({behavior: 'instant'});
         else window.scrollTo({top: view.scroll, behavior: 'instant'});
         const heading = view.main.querySelector('h1');
         if (heading) {heading.tabIndex = -1; heading.focus({preventScroll: true});}

@@ -9,6 +9,21 @@
   boton.setAttribute('aria-label', 'Volver al buscador y a las secciones de la carta');
   document.body.append(boton);
 
+  // Franja «Volver a la propuesta»: solo si se llegó desde la propuesta (?desde=propuesta).
+  // Se recuerda durante la visita, así sigue en las páginas de los menús. No aparece al entrar por el QR.
+  let desdePropuesta = false;
+  try {
+    if (new URLSearchParams(location.search).get('desde') === 'propuesta') sessionStorage.setItem('patio-desde-propuesta', '1');
+    desdePropuesta = sessionStorage.getItem('patio-desde-propuesta') === '1';
+  } catch (e) {}
+  if (desdePropuesta) {
+    const franja = document.createElement('a');
+    franja.className = 'volver-propuesta';
+    franja.href = '../p/patio-de-la-juderia/#hoy';
+    franja.innerHTML = '<span>Está viendo una demostración</span><b>← <span>Volver a la propuesta</span></b>';
+    document.body.prepend(franja);
+  }
+
   let pendiente = false;
   function revisar() {
     pendiente = false;

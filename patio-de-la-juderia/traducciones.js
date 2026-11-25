@@ -71,6 +71,10 @@ window.PATIO_I18N = {
     'UN RINCÓN DE CÓRDOBA': ['A CORNER OF CÓRDOBA', 'UN COIN DE CORDOUE', 'UN ANGOLO DI CORDOVA'],
     '© Derechos reservados · TuimagenStudio · COFREP': ['© All rights reserved · TuimagenStudio · COFREP', '© Tous droits réservés · TuimagenStudio · COFREP', '© Tutti i diritti riservati · TuimagenStudio · COFREP'],
     '← Volver a los menús': ['← Back to the menus', '← Retour aux menus', '← Torna ai menù'],
+    'Menús': ['Menus', 'Menus', 'Menù'],
+    'Volver a los menús': ['Back to the menus', 'Retour aux menus', 'Torna ai menù'],
+    'Volver a la propuesta': ['Back to the proposal', 'Retour à la proposition', 'Torna alla proposta'],
+    'Está viendo una demostración': ['You are viewing a demo', 'Vous consultez une démonstration', 'Stai guardando una demo'],
     // atributos (lectores de pantalla, imágenes, buscador)
     'Activar música': ['Turn music on', 'Activer la musique', 'Attiva la musica'],
     'Artista flamenco actuando en el Patio de la Judería': ['Flamenco artist performing at Patio de la Judería', 'Artiste de flamenco en scène au Patio de la Judería', 'Artista di flamenco in scena al Patio de la Judería'],
