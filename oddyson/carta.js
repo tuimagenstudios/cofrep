@@ -54,7 +54,7 @@ function normalize(value) {
 }
 
 function photo(dish, { lazy = true, alt = '' } = {}) {
-  if (!dish.image) return `<span class="no-photo"><img class="fallback-logo" src="fotos/logo.webp" alt="ODDYSON" draggable="false"></span>`;
+  if (!dish.image) return `<img draggable="false" class="food sin-foto" src="fotos/sin-foto.webp" alt="${alt || dishName(dish)}" ${lazy ? 'loading="lazy"' : ''}>`;
   return `<img draggable="false" class="food ${['bebidas','tragos'].includes(dish.category) ? 'drink' : ''}" src="${escapeHtml(dish.image)}" alt="${alt || dishName(dish)}" ${lazy ? 'loading="lazy"' : ''}>`;
 }
 
