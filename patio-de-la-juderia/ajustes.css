@@ -150,3 +150,29 @@ main h2,.featured-card h3,.accordion-summary h3,.accordion-summary h4,.dish h4,.
   .site-footer .footer-directions{width:44px;padding:0;justify-content:center}
   .site-footer .footer-directions span{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
 }
+
+/* ---------- Selector de idioma con banderas ---------- */
+.idioma{position:relative;flex-shrink:0;margin-left:14px}
+.idioma-boton{display:inline-flex;align-items:center;gap:7px;min-height:44px;padding:0 10px 0 12px;border:1px solid #d6b7ad;background:#faf6ef;color:#5f2a2e;font:600 12px/1 'Montserrat',Arial,sans-serif;letter-spacing:.06em;cursor:pointer}
+.idioma-boton:hover{background:#f2e3db}
+.idioma-boton svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;transition:transform .2s}
+.idioma-boton[aria-expanded="true"] svg{transform:rotate(180deg)}
+.idioma-boton:focus-visible,.idioma-lista button:focus-visible{outline:2px solid #176174;outline-offset:2px}
+.idioma-lista{position:absolute;right:0;top:calc(100% + 6px);z-index:60;min-width:172px;margin:0;padding:6px;list-style:none;background:#faf6eff8;border:1px solid #dec4ba;box-shadow:0 10px 28px #3a221430;backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.idioma-lista[hidden]{display:none}
+.idioma-lista button{display:flex;align-items:center;gap:11px;width:100%;min-height:44px;padding:0 12px;border:0;background:none;color:#28221e;font:500 14px/1 'Montserrat',Arial,sans-serif;text-align:left;cursor:pointer}
+.idioma-lista button:hover{background:#f2e3db}
+.idioma-lista button[aria-current="true"]{color:#a60c24;font-weight:700}
+.idioma-lista button[aria-current="true"]::after{content:'✓';margin-left:auto}
+.bandera{display:inline-block;width:24px;height:16px;flex-shrink:0;border-radius:2px;box-shadow:0 0 0 1px #0000001f;background-size:cover;background-position:center}
+.bandera-es{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='3' height='2' fill='%23c60b1e'/%3E%3Crect y='.5' width='3' height='1' fill='%23ffc400'/%3E%3C/svg%3E")}
+.bandera-fr{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='1' height='2' fill='%23002654'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23ce1126'/%3E%3C/svg%3E")}
+.bandera-it{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 3 2'%3E%3Crect width='1' height='2' fill='%23009246'/%3E%3Crect x='1' width='1' height='2' fill='%23fff'/%3E%3Crect x='2' width='1' height='2' fill='%23ce2b37'/%3E%3C/svg%3E")}
+.bandera-en{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='a'%3E%3Cpath d='M30 15h30v15zv15H0zH0V0zV0h30z'/%3E%3C/clipPath%3E%3Cpath d='M0 0v30h60V0z' fill='%23012169'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0 0l60 30m0-30L0 30' clip-path='url(%23a)' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30 0v30M0 15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/svg%3E")}
+@media(max-width:650px){
+  header{gap:8px}
+  header nav:empty,header nav:not(:has(a:not(.reserve))){flex:1}
+  .idioma{margin-left:auto}
+  .idioma-boton{padding:0 8px 0 10px;gap:6px}
+  .menu-detail-page header .back-to-menu{font-size:12px}
+}

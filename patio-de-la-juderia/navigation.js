@@ -54,6 +54,8 @@
         window.PatioInitDetail();
         window.PatioInitService();
       }
+      // Textos fijos, selector de idioma y enlaces de WhatsApp de la página nueva, en el idioma elegido.
+      window.PatioIdioma?.alNavegar();
       views.set(key, view);
       document.querySelector('.navigation-error')?.remove();
       requestAnimationFrame(() => {
@@ -90,5 +92,7 @@
     event.preventDefault();
     void navigate(url, true);
   });
+  // Al cambiar de idioma se olvidan las páginas guardadas (estaban en el idioma anterior).
+  window.PatioVistas = { olvidar() { for (const k of [...views.keys()]) if (k !== current) views.delete(k); } };
   window.addEventListener('popstate', () => void navigate(new URL(location.href), false));
 })();

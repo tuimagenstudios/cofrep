@@ -268,6 +268,14 @@
     }
   };
 
+  /* ================= CAMBIO DE IDIOMA (lo usa idioma.js) =================
+     Antes de traducir se deshacen las animaciones (el titular está partido en palabras);
+     después se vuelven a armar sobre los textos nuevos. */
+  window.PatioAnimaciones = {
+    revertir() { ctx?.revert(); ctx = null; },
+    rehacer() { animarPagina(); intro.play(); ScrollTrigger.refresh(); }
+  };
+
   /* ================= ENTRADA DE LA PÁGINA (sin telón: arranca directo) ================= */
   animarPagina();
   // En celular, la primera vez hay pantalla de presentación (CSS, ~2,2 s): la portada entra justo cuando empieza a desvanecerse.

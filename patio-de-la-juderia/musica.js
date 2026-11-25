@@ -6,6 +6,7 @@
    Empieza siempre en silencio y no hay reproducción automática.
    El reproductor queda montado al navegar a los menús (navigation.js no lo reemplaza). */
 (() => {
+  const T = (x, v) => (window.PatioT ? window.PatioT(x, v) : (v ? x.replace(/\{(\w+)\}/g, (m, k) => v[k]) : x));
   const audio = document.createElement('audio');
   audio.id = 'patio-background-audio';
   audio.src = 'assets/audio/corazon-flamenco.mp3';
@@ -17,21 +18,21 @@
 
   const panel = document.createElement('section');
   panel.className = 'music-control';
-  panel.setAttribute('aria-label', 'Música de ambiente');
+  panel.setAttribute('aria-label', T('Música de ambiente'));
   panel.innerHTML = `
     <div class="music-pop" id="music-pop" hidden>
-      <button class="music-step music-up" type="button" aria-label="Subir volumen">+</button>
-      <div class="music-track" role="slider" tabindex="0" aria-label="Volumen de la música" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0 por ciento, en silencio">
+      <button class="music-step music-up" type="button" aria-label="${T('Subir volumen')}">+</button>
+      <div class="music-track" role="slider" tabindex="0" aria-label="${T('Volumen de la música')}" aria-orientation="vertical" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="${T('0 por ciento, en silencio')}">
         <span class="music-fill"></span><span class="music-thumb"></span>
       </div>
-      <button class="music-step music-down" type="button" aria-label="Bajar volumen">−</button>
+      <button class="music-step music-down" type="button" aria-label="${T('Bajar volumen')}">−</button>
       <output class="music-level" aria-hidden="true">0 %</output>
-      <button class="music-mute" type="button">Silenciar</button>
+      <button class="music-mute" type="button">${T('Silenciar')}</button>
     </div>
-    <button class="music-toggle" type="button" aria-label="Activar música" aria-expanded="false" aria-controls="music-pop" title="Música">
+    <button class="music-toggle" type="button" aria-label="${T('Activar música')}" aria-expanded="false" aria-controls="music-pop" title="${T('Música')}">
       <svg class="music-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path class="music-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="music-cross" d="m16 9 6 6m0-6-6 6"/></svg>
     </button>
-    <span class="visually-hidden music-status" aria-live="polite">Música en silencio</span>`;
+    <span class="visually-hidden music-status" aria-live="polite">${T('Música en silencio')}</span>`;
 
   const toggle = panel.querySelector('.music-toggle');
   const pop = panel.querySelector('.music-pop');
@@ -49,16 +50,16 @@
   function show(value, message) {
     level = value;
     track.setAttribute('aria-valuenow', String(value));
-    track.setAttribute('aria-valuetext', value ? `${value} por ciento` : '0 por ciento, en silencio');
+    track.setAttribute('aria-valuetext', value ? T('{n} por ciento', { n: value }) : T('0 por ciento, en silencio'));
     track.style.setProperty('--music-level', `${value}%`);
     output.value = `${value} %`;
     down.disabled = value <= 0;
     up.disabled = value >= 100;
     mute.disabled = value <= 0;
     panel.classList.toggle('is-playing', value > 0);
-    const label = value ? `Música sonando al ${value} %. Tocar para ajustar el volumen` : 'Activar música';
+    const label = value ? T('Música sonando al {n} %. Tocar para ajustar el volumen', { n: value }) : T('Activar música');
     toggle.setAttribute('aria-label', label);
-    status.textContent = message || (value ? `Música sonando al ${value} %` : 'Música en silencio');
+    status.textContent = message || (value ? T('Música sonando al {n} %', { n: value }) : T('Música en silencio'));
   }
   function silence() {
     request++;
@@ -74,12 +75,12 @@
     lastVolume = value;
     audio.volume = value / 100;
     audio.muted = false;
-    show(value, audio.paused ? 'Cargando la música…' : undefined);
+    show(value, audio.paused ? T('Cargando la música…') : undefined);
     try {
       await audio.play();
       if (current === request) show(value);
     } catch {
-      if (current === request) { silence(); status.textContent = 'Toca la bocina para escuchar'; }
+      if (current === request) { silence(); status.textContent = T('Toca la bocina para escuchar'); }
     }
   }
 
@@ -136,7 +137,19 @@
   panel.addEventListener('keydown', e => { if (e.key === 'Escape' && !pop.hidden) { cerrar(); toggle.focus(); } });
   panel.addEventListener('focusin', programarCierre);
 
-  audio.addEventListener('error', () => { silence(); status.textContent = 'Audio no disponible'; });
+  audio.addEventListener('error', () => { silence(); status.textContent = T('Audio no disponible'); });
   document.body.append(audio, panel);
   show(0);
+  // idioma.js la llama al cambiar de idioma (la música no se corta)
+  window.PatioMusica = {
+    refrescar() {
+      panel.setAttribute('aria-label', T('Música de ambiente'));
+      toggle.title = T('Música');
+      up.setAttribute('aria-label', T('Subir volumen'));
+      down.setAttribute('aria-label', T('Bajar volumen'));
+      track.setAttribute('aria-label', T('Volumen de la música'));
+      mute.textContent = T('Silenciar');
+      show(level);
+    }
+  };
 })();
