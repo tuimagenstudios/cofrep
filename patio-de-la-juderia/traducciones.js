@@ -12,6 +12,10 @@ window.PATIO_I18N = {
 
   /* Textos fijos de la página y de los scripts: «español»: [inglés, francés, italiano] */
   textos: {
+    '¿Cómo fue tu visita?': ['How was your visit?', 'Comment s’est passée votre visite ?', 'Com’è stata la tua visita?'],
+    'Déjanos una reseña en Google': ['Leave us a review on Google', 'Laissez-nous un avis sur Google', 'Lasciaci una recensione su Google'],
+    'Escribir una reseña del Patio de la Judería en Google': ['Write a review of Patio de la Judería on Google', 'Rédiger un avis sur le Patio de la Judería sur Google', 'Scrivi una recensione del Patio de la Judería su Google'],
+
     'La carta · Patio de la Judería': ['Menu · Patio de la Judería', 'Carte · Patio de la Judería', 'Menù · Patio de la Judería'],
     'Carta · Patio de la Judería · Restaurante y flamenco en Córdoba': ['Menu · Patio de la Judería · Restaurant & flamenco in Córdoba', 'Carte · Patio de la Judería · Restaurant et flamenco à Cordoue', 'Menù · Patio de la Judería · Ristorante e flamenco a Cordova'],
     'Menús con flamenco · Patio de la Judería': ['Menus with flamenco · Patio de la Judería', 'Menus avec flamenco · Patio de la Judería', 'Menù con flamenco · Patio de la Judería'],

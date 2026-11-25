@@ -228,3 +228,14 @@ body>header .idioma-lista{z-index:80;max-height:calc(100dvh - var(--patio-header
  .menu-detail-page>header .back-to-menu{flex-shrink:0}
 }
 @media(prefers-reduced-motion:reduce){body>header,body>header .brand{transition:none}}
+
+/* Invitación a compartir una reseña, sin alterar la valoración del visitante. */
+.site-footer .footer-review{grid-column:1/-1;display:flex;align-items:center;gap:13px;padding:13px 16px;width:100%;min-height:70px;border:1px solid #d6b7ad;background:#f3e2e3;color:#950d24;text-decoration:none;line-height:1.35;transition:background .18s,border-color .18s}
+.site-footer .footer-review:hover{background:#edd4d8;border-color:#a60c24}
+.site-footer .footer-review:focus-visible{outline:2px solid #a60c24;outline-offset:4px}
+.footer-review .review-icon{flex:0 0 27px;width:27px;height:27px;fill:none;stroke:currentColor;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.footer-review .review-copy{flex:1;min-width:0;display:flex;flex-direction:column;gap:3px}
+.site-footer .footer-review strong{font:500 23px/1.1 'Crimson Pro',Georgia,serif;color:#662031}
+.footer-review .review-copy>span{font:500 12px/1.5 'Montserrat',sans-serif}
+.footer-review .review-arrow{flex-shrink:0;font-size:21px}
+@media(max-width:359px){.site-footer .footer-review{padding:12px;gap:10px}.site-footer .footer-review strong{font-size:21px}.footer-review .review-copy>span{font-size:11px}}
