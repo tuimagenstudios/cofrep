@@ -7,9 +7,10 @@
   <meta name="robots" content="noindex">
   <title>ODDYSON</title>
   <link rel="icon" type="image/webp" href="fotos/logo.webp">
-  <link rel="stylesheet" href="estilo.css?v=20261125-6">
-  <script src="catalogo.js?v=20261125-6" defer></script>
-  <script src="carta.js?v=20261125-6" defer></script>
+  <link rel="stylesheet" href="estilo.css?v=20261126-1">
+  <script src="catalogo.js?v=20261126-1" defer></script>
+  <script src="carta.js?v=20261126-1" defer></script>
+  <script src="pedido.js?v=20261126-1" defer></script>
 <style>
   .wa-box{display:grid;gap:10px;margin-top:16px}
   .wa-modo{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
@@ -19,6 +20,20 @@
   .wa-btn{width:100%;padding:14px;border-radius:12px;background:#25d366!important;color:#08140f!important;border:1px solid #25d366!important;font:inherit;font-weight:800;cursor:pointer}
 </style>
 <style>.confirma{display:flex;gap:10px;align-items:flex-start;margin:12px 0;padding:12px 14px;border-radius:12px;background:rgba(37,211,102,.12);border:1px solid rgba(37,211,102,.45);font-size:.85rem;line-height:1.4}.confirma b{font-size:1.1rem;line-height:1}</style>
+<style>
+  .extra-box{display:grid;gap:8px;padding:12px;border:1px solid rgba(255,255,255,.14);border-radius:12px}
+  .extra-title{font-weight:800;font-size:.9rem}
+  .extra-row{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.88rem}
+  .extra-row input{width:110px;padding:10px;border-radius:10px;border:1px solid rgba(127,127,127,.5);background:transparent;color:inherit;font:inherit}
+  .extra-res{font-size:.88rem;line-height:1.45;color:var(--muted)}
+  .extra-res b{color:var(--yellow)}
+  .outline.mini{min-height:30px;padding:.2rem .6rem;font-size:.75rem}
+  .extra-box[hidden],.extra-box [hidden]{display:none!important}
+  .wa-modo.pago-modo{grid-template-columns:1fr 1fr}
+  .nota-item{width:100%;margin-top:6px;padding:8px 10px;border-radius:8px;border:1px solid rgba(127,127,127,.4);background:transparent;color:inherit;font:inherit;font-size:.82rem}
+  .opciones{margin:14px 0 4px;padding:12px 14px;border-left:3px solid var(--yellow);background:#ffffff0d;border-radius:6px;font-size:.88rem;line-height:1.5}
+  .opciones b{display:block;color:var(--yellow);margin-bottom:4px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase}
+</style>
 </head>
 <body>
   <header class="top">
@@ -98,6 +113,21 @@
             <button type="button" class="wa-op" data-modo="delivery" data-en="Delivery">Delivery</button>
           </div>
           <input id="wa-dato" type="text" placeholder="Número de mesa" data-en-placeholder="Table number" autocomplete="off">
+          <div id="envio-box" class="extra-box" hidden>
+            <p class="extra-title" data-en="Delivery cost">Costo de envío</p>
+            <button type="button" id="envio-gps" class="outline" data-en="📍 Calculate with my location">📍 Calcular con mi ubicación</button>
+            <label class="extra-row"><span data-en="or blocks away (approx.)">o cuadras aprox.</span> <input id="envio-cuadras" type="number" min="1" max="200" step="1" inputmode="numeric"></label>
+            <p id="envio-res" class="extra-res"></p>
+          </div>
+          <div id="pago-box" class="extra-box" hidden>
+            <p class="extra-title" data-en="How do you pay?">¿Cómo pagás?</p>
+            <div class="wa-modo pago-modo" role="group">
+              <button type="button" class="wa-op pago-op on" data-pago="efectivo" data-en="Cash">Efectivo</button>
+              <button type="button" class="wa-op pago-op" data-pago="transferencia" data-en="Bank transfer">Transferencia</button>
+            </div>
+            <label id="pago-efectivo" class="extra-row"><span data-en="Paying with (for change)">¿Con cuánto pagás?</span> <input id="paga-con" type="number" min="0" step="100" inputmode="numeric"></label>
+            <div id="pago-transf" hidden><p class="extra-res"><span data-en="Alias:">Alias:</span> <b id="alias-txt"></b> <button type="button" id="alias-copiar" class="outline mini" data-en="Copy">Copiar</button><br><small id="titular-txt"></small></p></div>
+          </div>
           <p class="confirma" role="note"><b>⏳</b><span data-en="Your order is confirmed once the restaurant replies on WhatsApp with the final total and waiting time.">Tu pedido queda confirmado cuando el local te responde por WhatsApp con el total final y la demora.</span></p>
 <button type="button" id="wa-enviar" class="wa-btn"><span data-en="Send order on WhatsApp">Enviar pedido por WhatsApp</span></button>
         </div>

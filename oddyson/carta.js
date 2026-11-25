@@ -14,6 +14,7 @@ const dishDialog = query('#dish');
 const selection = query('#selection');
 const people = query('#people');
 const quantities = new Map();
+const notas = new Map();
 let category = 'all';
 let language = 'es';
 const t = (es, en) => language === 'en' ? en : es;
@@ -91,7 +92,7 @@ function viewDish(dish) {
       <p class="eyebrow">${t(...categories[dish.category].name)}</p>
       <h2 id="dish-title">${dishName(dish)}</h2>
       ${dish.description ? `<p class="dish-detail-description">${dishDescription(dish)}</p>` : ''}
-      ${dish.price === 0 ? `<p class="source-note">${t('Adicional publicado a $0. Confirmá con el local si está incluido.', 'Listed at $0. Ask the restaurant whether it is included.')}</p>` : ''}
+      ${dish.opciones ? `<div class="opciones"><b>${t('Opciones', 'Options')}</b>${escapeHtml(dish.opciones)}<br><small>${t('Escribí lo que elegís en la aclaración del plato, en Mi selección.', 'Write your choice in the item note, in My selection.')}</small></div>` : ''}
       <div class="dish-actions">${dish.price === null ? '' : `<strong class="price">${money.format(dish.price)}</strong>`}
         <button class="primary" data-add="${dish.id}">${t('Sumar a mi selección', 'Add to my selection')}</button>
       </div>
@@ -148,7 +149,8 @@ function renderSelection() {
   const itemList = query('#selection-items');
   const focus = document.activeElement.closest('[data-change]');
   itemList.innerHTML = selected.map(dish => `<div class="selection-row">
-    <div><strong>${dishName(dish)}</strong>${dish.price === null ? '' : `<small>${money.format(dish.price * quantities.get(dish.id))}</small>`}</div>
+    <div style="flex:1"><strong>${dishName(dish)}</strong>${dish.price === null ? '' : `<small>${money.format(dish.price * quantities.get(dish.id))}</small>`}
+      <input class="nota-item" data-nota="${dish.id}" maxlength="120" value="${escapeHtml(notas.get(dish.id) || '')}" placeholder="${dish.opciones ? t('Aclaración: guarnición, doble, salsa…', 'Note: side, double, sauce…') : t('Aclaración (opcional)', 'Note (optional)')}"></div>
     <div class="stepper">
       <button data-change="-1" data-id="${dish.id}" aria-label="${t('Quitar una unidad de', 'Remove one')} ${dishName(dish)}">−</button>
       <span aria-label="${t('Cantidad', 'Quantity')}">${quantities.get(dish.id)}</span>
@@ -228,33 +230,43 @@ setLanguage(query('#language').value);
 /* ===== Pedido por WhatsApp =====
    NEGOCIO_WHATSAPP: número del local con código de país, sin + ni espacios.
    ES_PRUEBA: true mientras es propuesta (el mensaje sale marcado como prueba). */
-const NEGOCIO_WHATSAPP = '5492281366860';
-const ES_PRUEBA = true;
+let NEGOCIO_WHATSAPP = '5492281366860';
+let ES_PRUEBA = true;
 let modoPedido = 'mesa';
 const pistasPedido = { mesa: ['Número de mesa', 'Table number'], retiro: ['Tu nombre', 'Your name'], delivery: ['Dirección de entrega', 'Delivery address'] };
 const enIngles = () => document.documentElement.lang === 'en';
-document.querySelectorAll('.wa-op').forEach(boton => boton.addEventListener('click', () => {
+document.querySelectorAll('.wa-op:not(.pago-op)').forEach(boton => boton.addEventListener('click', () => {
   modoPedido = boton.dataset.modo;
-  document.querySelectorAll('.wa-op').forEach(b => b.classList.toggle('on', b === boton));
+  document.querySelectorAll('.wa-op:not(.pago-op)').forEach(b => b.classList.toggle('on', b === boton));
   const dato = document.querySelector('#wa-dato');
   dato.placeholder = pistasPedido[modoPedido][enIngles() ? 1 : 0];
   dato.value = '';
   dato.focus();
 }));
 document.querySelector('#wa-enviar').addEventListener('click', () => {
-  const items = dishes.filter(dish => quantities.has(dish.id)).map(dish => ({ cantidad: quantities.get(dish.id), nombre: dish.name, importe: dish.price === null ? '' : money.format(dish.price * quantities.get(dish.id)) }));
+  const items = dishes.filter(dish => quantities.has(dish.id)).map(dish => ({ cantidad: quantities.get(dish.id), nombre: dish.name, nota: (notas.get(dish.id) || '').trim(), importe: dish.price === null ? '' : money.format(dish.price * quantities.get(dish.id)) }));
   if (!items.length) return;
   const dato = document.querySelector('#wa-dato').value.trim();
   const etiqueta = { mesa: 'Mesa', retiro: 'Retiro a nombre de', delivery: 'Delivery a' }[modoPedido];
   const personas = Number(people.value) || 1;
+  const envio = modoPedido === 'delivery' && window.envioActual ? window.envioActual : null;
   const lineas = [
     ES_PRUEBA ? '🧪 PEDIDO DE PRUEBA · carta digital de ODDYSON (COFREP)' : 'Hola! Quiero hacer este pedido:',
     '',
-    ...items.map(i => `• ${i.cantidad} x ${i.nombre}${i.importe ? ' — ' + i.importe : ''}`),
+    ...items.map(i => `• ${i.cantidad} x ${i.nombre}${i.importe ? ' — ' + i.importe : ''}${i.nota ? '\n   ↳ ' + i.nota : ''}`),
     '',
-    `Total: ${money.format(subtotal())}`,
-    `${etiqueta}: ${dato || '(sin indicar)'}`
+    `Subtotal: ${money.format(subtotal())}`
   ];
+  if (modoPedido === 'delivery') {
+    lineas.push(envio && envio.costo !== null ? `Envío estimado (≈${envio.cuadras} cuadras): ${money.format(envio.costo)} — a confirmar` : 'Envío: a confirmar');
+    if (envio && envio.costo !== null) lineas.push(`Total estimado: ${money.format(subtotal() + envio.costo)}`);
+    if (envio && envio.mapa) lineas.push(`Ubicación: ${envio.mapa}`);
+  }
+  lineas.push(`${etiqueta}: ${dato || '(sin indicar)'}`);
+  if (modoPedido !== 'mesa') {
+    const pagaCon = Number(document.querySelector('#paga-con').value) || 0;
+    lineas.push(window.pagoActual === 'transferencia' ? 'Pago: transferencia' : `Pago: efectivo${pagaCon ? ' (paga con ' + money.format(pagaCon) + ')' : ''}`);
+  }
   if (personas > 1) lineas.push(`Dividido entre ${personas} personas`);
   lineas.push('', 'Quedo atento/a a la confirmación del pedido.');
   window.open(`https://wa.me/${NEGOCIO_WHATSAPP}?text=${encodeURIComponent(lineas.join('\n'))}`, '_blank', 'noopener');
