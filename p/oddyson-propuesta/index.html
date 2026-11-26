@@ -88,6 +88,39 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
  .cover{justify-content:flex-start}
  .ph{width:clamp(120px,40vw,180px)}
 }
+/* ===== Movimiento ===== */
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false}
+.card,.list li,.sheet,.msg,.qrbox{position:relative;isolation:isolate}
+/* borde de luz amarilla que recorre las tarjetas oscuras */
+.card,.list li{border-color:transparent;background:linear-gradient(var(--panel),var(--panel)) padding-box,conic-gradient(from var(--a),#ffffff14 0 62%,#ffda4d00 66%,#ffda4d 78%,#fff3b8 80%,#ffda4d 82%,#ffda4d00 92%,#ffffff14 96%) border-box;border-width:1.5px;animation:giro 5s linear infinite}
+.card:nth-child(2n){animation-delay:-1.7s}.card:nth-child(3n){animation-delay:-3.3s}
+.list li:nth-child(2){animation-delay:-1.6s}.list li:nth-child(3){animation-delay:-3.2s}
+.card::after,.list li::after{content:"";position:absolute;inset:-6px;padding:6px;border-radius:22px;z-index:2;pointer-events:none;background:conic-gradient(from var(--a),transparent 0 70%,#ffda4d88 80%,transparent 90%);-webkit-mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);mask:linear-gradient(#000 0 0) content-box exclude,linear-gradient(#000 0 0);filter:blur(5px);animation:inherit;animation-delay:inherit}
+@keyframes giro{to{--a:360deg}}
+.card{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.card:hover{transform:translateY(-4px)}
+/* resplandor que respira detrás de cada lámina */
+.s::before{content:"";position:absolute;width:60vmax;height:60vmax;left:-20vmax;top:-30vmax;background:radial-gradient(closest-side,#ffda4d14,transparent);pointer-events:none;animation:respira 9s ease-in-out infinite alternate;z-index:0}
+.s:nth-of-type(2n)::before{left:auto;right:-25vmax;top:auto;bottom:-30vmax;animation-delay:-4s}
+.s>*:not(.n):not(.hero){position:relative;z-index:1}
+.n,.cover .hero{z-index:1}
+@keyframes respira{from{transform:scale(.85);opacity:.6}to{transform:scale(1.1) translate(4vmax,3vmax);opacity:1}}
+/* entrada al hacer scroll */
+.js .rv{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .rv.on{opacity:1;transform:none}
+/* teléfonos flotando */
+.ph{animation:flota 6s ease-in-out infinite}
+.phones>div:nth-child(2) .ph{animation-delay:-1.5s}.phones>div:nth-child(3) .ph{animation-delay:-3s}.phones>div:nth-child(4) .ph{animation-delay:-4.5s}
+@keyframes flota{50%{transform:translateY(-10px)}}
+/* precio con brillo */
+.amount{background:linear-gradient(100deg,#ffda4d 35%,#fff6c9 50%,#ffda4d 65%) 0/250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:brillo 4s ease-in-out infinite}
+@keyframes brillo{0%,40%{background-position:100%}100%{background-position:-50%}}
+.tag{box-shadow:0 0 0 0 #ffda4d66;animation:pulso 2.6s ease-out infinite}
+@keyframes pulso{to{box-shadow:0 0 0 14px #ffda4d00}}
+.cta,.arriba{transition:transform .25s,box-shadow .25s}
+.cta:hover,.arriba:hover{transform:translateY(-3px);box-shadow:0 10px 30px #ffda4d55}
+.qrbox{box-shadow:0 0 0 3px #ffda4d,0 0 40px #ffda4d44}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}.js .rv{opacity:1;transform:none}}
 /* PDF: cada lámina es una hoja 1600x900 */
 @page{size:1600px 900px;margin:0}
 @media print{
@@ -96,6 +129,8 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
  .s{height:900px;min-height:0;page-break-after:always;break-after:page;border:0;padding:64px 96px}
  .foot{display:none}
  .noprint{display:none!important}
+ .js .rv{opacity:1!important;transform:none!important}
+ .s::before,.card::after,.list li::after{display:none}
 }
 </style>
 </head>
@@ -273,5 +308,13 @@ Pago: transferencia</div></div>
 <div class="ti-credit-wrap" style="text-align:center;margin-top:28px;font-size:12px;line-height:1.4"><span class="pie-credito" style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:center">© 2026 Derechos reservados · <a href="https://tuimagenstudios.com/" target="_blank" rel="noopener" title="Visitá tuimagenstudios.com" style="display:inline-flex;align-items:center;gap:6px;color:#fff;font-weight:700;font-size:12px;padding:4px 12px;line-height:1.4;border-radius:999px;background:#ffffff0a;border:1px solid #ffffff22;text-decoration:none"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUdWltYWdlbnN0dWRpb3MiPg0KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMiIgZmlsbD0iIzA1MDkxYSIvPg0KICA8cGF0aCBkPSJNMTUgMTdoMzF2OWgtOXYxM2MwIDgtNiAxNC0xNCAxNFM5IDQ3IDkgMzlWMjdoOXYxMmMwIDMgMiA2IDUgNnM1LTMgNS02VjI2SDE1eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDBlMGZmIiBzdHJva2Utd2lkdGg9IjMuMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPg0KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjQzIiByPSI0LjgiIGZpbGw9IiMwMGUwZmYiLz4NCiAgPHBhdGggZD0iTTQzIDE4aDZ2NmgtNnptNyA5aDV2NWgtNXptLTEwIDdoNXY1aC01em04IDdoN3Y3aC03eiIgZmlsbD0iIzAwZTBmZiIvPg0KICA8cGF0aCBkPSJNMTUgMTdoMzF2OWgtOXYxM2MwIDgtNiAxNC0xNCAxNFM5IDQ3IDkgMzlWMjdoOXYxMmMwIDMgMiA2IDUgNnM1LTMgNS02VjI2SDE1eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjRmMmZmIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9Ii44Ii8+DQo8L3N2Zz4NCg==" alt="" width="16" height="16" style="width:16px;height:16px;border-radius:3px;margin:0">TuimagenStudio</a><a href="https://cofrep.com/" target="_blank" rel="noopener" title="Visitá cofrep.com" aria-label="COFREP" style="display:inline-flex;align-items:center;gap:6px;color:#fff;font-weight:700;font-size:12px;padding:4px 12px;line-height:1.4;border-radius:999px;background:#ffffff0a;border:1px solid #ffffff22;text-decoration:none;font:800 12px/1.4 Arial,Helvetica,sans-serif;letter-spacing:.02em"><span style="color:#f3f3f3">COF</span><span style="color:#ffc21a;margin-left:-6px">REP</span></a></span></div>
 
 </footer>
+<script>
+document.documentElement.classList.add('js');
+addEventListener('DOMContentLoaded',()=>{const els=document.querySelectorAll('.s h1,.s h2,.s .k,.s p,.card,.list li,.ph,.kit figure,.sheet,.msg,.qrbox,.amount,.tag,.cta');
+els.forEach((e,i)=>{e.classList.add('rv');e.style.transitionDelay=(Array.from(e.parentNode.children).indexOf(e)%6)*70+'ms'});
+if(matchMedia('print').matches||!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('on'));return}
+const io=new IntersectionObserver(es=>es.forEach(x=>{if(x.isIntersecting){x.target.classList.add('on');io.unobserve(x.target)}}),{threshold:.15});els.forEach(e=>io.observe(e));
+addEventListener('beforeprint',()=>els.forEach(e=>e.classList.add('on')))});
+</script>
 </body>
 </html>
