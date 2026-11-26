@@ -70,6 +70,7 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
 .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:22px}
 .card b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(28px,3vw,40px);color:var(--y);line-height:1}
+.card.use b{font-size:clamp(22px,2.2vw,30px);margin-top:12px}
 .card span{display:block;margin-top:8px;color:var(--muted);font-size:15px}
 /* precio */
 .price{display:flex;flex-direction:column;align-items:center;text-align:center;gap:18px}
@@ -102,7 +103,7 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
 
 <!-- 01 Portada -->
 <section class="s cover" id="inicio">
- <span class="n">01 / 10</span>
+ <span class="n">01 / 11</span>
  <div class="txt">
   <span class="k">Propuesta · Azul · Food &amp; Drinks</span>
   <img class="logo" src="img/logo.webp" alt="ODDYSON Food y Drink's">
@@ -114,7 +115,7 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
 
 <!-- 02 Problema -->
 <section class="s">
- <span class="n">02 / 10</span>
+ <span class="n">02 / 11</span>
  <span class="k">Lo de todos los días</span>
  <h2>Lo que hoy se <em>repite</em>.</h2>
  <ul class="list">
@@ -126,7 +127,7 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
 
 <!-- 03 Solución -->
 <section class="s">
- <span class="n">03 / 10</span>
+ <span class="n">03 / 11</span>
  <div class="row">
   <div style="display:flex;flex-direction:column;gap:24px">
    <span class="k">La solución</span>
@@ -143,7 +144,7 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
 
 <!-- 04 Experiencia -->
 <section class="s">
- <span class="n">04 / 10</span>
+ <span class="n">04 / 11</span>
  <span class="k">Así la usa tu cliente</span>
  <h2>Mira, elige y <em>pide</em>.</h2>
  <div class="phones">
@@ -156,7 +157,7 @@ p.l{font-size:clamp(17px,1.6vw,22px);color:var(--muted);max-width:44ch}
 
 <!-- 05 Pedido -->
 <section class="s">
- <span class="n">05 / 10</span>
+ <span class="n">05 / 11</span>
  <div class="row">
   <div style="display:flex;flex-direction:column;gap:24px">
    <span class="k">El pedido</span>
@@ -177,7 +178,7 @@ Pago: transferencia</div></div>
 
 <!-- 06 Planilla -->
 <section class="s">
- <span class="n">06 / 10</span>
+ <span class="n">06 / 11</span>
  <div class="row">
   <div style="display:flex;flex-direction:column;gap:24px">
    <span class="k">Ustedes la manejan</span>
@@ -199,7 +200,7 @@ Pago: transferencia</div></div>
 
 <!-- 07 Kit QR -->
 <section class="s">
- <span class="n">07 / 10</span>
+ <span class="n">07 / 11</span>
  <span class="k">Para las mesas y las redes</span>
  <h2>El QR, listo para <em>usar</em>.</h2>
  <div class="kit">
@@ -209,9 +210,17 @@ Pago: transferencia</div></div>
  </div>
 </section>
 
+<!-- Usos -->
+<section class="s">
+ <span class="n">08 / 11</span>
+ <span class="k">Un link, en todos lados</span>
+ <h2>No es solo para las <em>mesas</em>.</h2>
+ <div class="grid"><div class="card use"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" style="color:#ffda4d"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor"/></svg><b>Instagram</b><span>El link en la bio y en cada historia. Quien ve una foto del plato toca y ve la carta completa.</span></div><div class="card use"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" style="color:#ffda4d"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7Z" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="9" r="2.5" fill="currentColor"/></svg><b>Google Maps</b><span>En la ficha de Google, en «Menú». Quien los busca en el mapa ve la carta antes de ir.</span></div><div class="card use"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" style="color:#ffda4d"><path d="M12 3a9 9 0 0 0-7.8 13.5L3 21l4.6-1.2A9 9 0 1 0 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><b>WhatsApp</b><span>Como respuesta rápida a «¿qué tienen?», en el estado y en el mensaje de bienvenida.</span></div><div class="card use"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" style="color:#ffda4d"><rect x="3" y="3" width="7" height="7" fill="none" stroke="currentColor" stroke-width="2"/><rect x="14" y="3" width="7" height="7" fill="none" stroke="currentColor" stroke-width="2"/><rect x="3" y="14" width="7" height="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M14 14h3v3h-3zM18 18h3v3h-3z" fill="currentColor"/></svg><b>Mesas y mostrador</b><span>El QR en cada mesa, en la caja y en la vidriera para quien pasa por la puerta.</span></div><div class="card use"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" style="color:#ffda4d"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><b>Un solo link</b><span>cofrep.com/oddyson sirve para todo y siempre muestra los precios del día.</span></div><div class="card use"><svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true" style="color:#ffda4d"><path d="M4 12h12M12 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><b>Se comparte solo</b><span>Un cliente se la manda a un amigo y el amigo puede pedir desde ahí.</span></div></div>
+</section>
+
 <!-- 08 Incluye -->
 <section class="s">
- <span class="n">08 / 10</span>
+ <span class="n">09 / 11</span>
  <span class="k">Qué incluye</span>
  <h2>Todo, <em>de una vez</em>.</h2>
  <div class="grid">
@@ -226,7 +235,7 @@ Pago: transferencia</div></div>
 
 <!-- 09 Inversión -->
 <section class="s price">
- <span class="n">09 / 10</span>
+ <span class="n">10 / 11</span>
  <span class="k">Inversión</span>
  <div class="amount">$45.000</div>
  <p class="once">Un solo pago.</p>
@@ -236,7 +245,7 @@ Pago: transferencia</div></div>
 
 <!-- 10 Cierre -->
 <section class="s">
- <span class="n">10 / 10</span>
+ <span class="n">11 / 11</span>
  <div class="row">
   <div style="display:flex;flex-direction:column;gap:24px">
    <span class="k">Siguiente paso</span>
@@ -253,7 +262,7 @@ Pago: transferencia</div></div>
  <span class="k">Descargas</span>
  <h2>Para guardar o <em>compartir</em>.</h2>
  <div class="grid">
-  <a class="card" href="Propuesta-ODDYSON.pdf" download style="text-decoration:none;color:inherit"><b>PDF</b><span>La propuesta completa · 10 láminas ↓</span></a>
+  <a class="card" href="Propuesta-ODDYSON.pdf" download style="text-decoration:none;color:inherit"><b>PDF</b><span>La propuesta completa · 11 láminas ↓</span></a>
   <a class="card" href="img/qr.png" download="QR-ODDYSON.png" style="text-decoration:none;color:inherit"><b>QR</b><span>El código de la carta para probarla ↓</span></a>
   <a class="card" href="https://cofrep.com/oddyson/" target="_blank" rel="noopener" style="text-decoration:none;color:inherit"><b>Carta</b><span>Abrir la carta funcionando →</span></a>
  </div>
