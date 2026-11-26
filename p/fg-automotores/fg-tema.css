@@ -38,8 +38,10 @@ h1 { font-weight: 800; letter-spacing: -.045em; line-height: .98; font-size: cla
 .btn:hover { transform: translateY(-3px); box-shadow: 0 14px 30px -8px #e3262e77; }
 .btn:hover::before { transform: translateX(120%); }
 .btn:active { transform: scale(.97); }
-.fg-hero .btn-linea { color: #fff; border-color: #ffffff59; background: #ffffff0d; backdrop-filter: blur(6px); }
-.fg-hero .btn-linea:hover { background: #ffffff1f; border-color: #fff; }
+.fg-hero .wrap { position: relative; z-index: 2; }
+.fg-hero .btn { z-index: 2; }
+.fg-hero .btn-linea { color: #fff; border-color: #ffffff59; background: #1a2230; backdrop-filter: blur(6px); }
+.fg-hero .btn-linea:hover { background: #263042; border-color: #fff; }
 
 /* ---------- Aviso de girar ---------- */
 .girar { border-left-color: var(--red); background: #fff; border-radius: 0 8px 8px 0; margin-top: 30px; }
