@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="COFREP · TuimagenStudio">
+  <meta property="og:locale" content="es_AR">
+  <meta property="og:title" content="Tu web y cómo usarla · FG Automotores">
+  <meta property="og:description" content="Presentación de uso paso a paso para Facundo Gomez. Descargá el PDF, los QR para imprimir y las piezas para Instagram.">
+  <meta property="og:url" content="https://cofrep.com/p/fg-automotores/">
+  <meta property="og:image" content="https://cofrep.com/p/fg-automotores/tarjeta.jpg?v=202611261411">
+  <meta property="og:image:secure_url" content="https://cofrep.com/p/fg-automotores/tarjeta.jpg?v=202611261411">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Tu web y cómo usarla · FG Automotores">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#E9E9E6">
+  <title>FG Automotores | Tu web y cómo usarla</title>
+  <link rel="icon" href="logo-original.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root { --soft:#F5F5F3; --ivory:#E9E9E6; --sand:#D9DADC; --oak:#E3262E; --char:#101720; --gris:#5F666F; --verde:#E3262E; --verde-osc:#BE1721; --ft:"Manrope"; --fx:"Manrope"; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--ivory); color: var(--char); font: 400 16px/1.6 var(--fx), Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+    a { color: inherit; }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 0 clamp(16px, 5vw, 48px); }
+    header { padding: 28px 0 12px; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    header img { height: 64px; width: auto; display: block; }
+    header span { font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gris); text-align: right; }
+    .intro { padding: clamp(32px, 7vw, 72px) 0 clamp(28px, 5vw, 48px); }
+    .eyebrow { margin: 0 0 18px; font-size: 11px; letter-spacing: .32em; text-transform: uppercase; color: var(--gris); }
+    h1 { margin: 0; font: 200 clamp(38px, 7vw, 72px)/1.04 var(--ft), var(--fx), sans-serif; letter-spacing: -.025em; }
+    h1 span { color: var(--verde); }
+    .bajada { margin: 22px 0 0; max-width: 46ch; color: var(--gris); font-size: 17px; }
+    .acciones { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .btn { display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 24px; border-radius: 2px; text-decoration: none; font-size: 12px; letter-spacing: .16em; text-transform: uppercase; transition: background-color 500ms, color 500ms, border-color 500ms; }
+    .btn-verde { background: var(--verde); color: var(--soft); border: 1px solid var(--verde); }
+    .btn-verde:hover { background: var(--verde-osc); }
+    .btn-linea { border: 1px solid var(--oak); color: var(--verde); }
+    .btn-linea:hover { background: var(--soft); }
+    .laminas { display: grid; gap: clamp(16px, 3vw, 28px); padding-bottom: 56px; }
+    .laminas figure { margin: 0; }
+    .laminas img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 3px; background: var(--sand); box-shadow: 0 18px 40px -28px rgba(41, 33, 27, .45); }
+    .laminas figcaption { margin-top: 8px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--gris); }
+    .girar { display: none; margin: 0 0 20px; padding: 12px 14px; border-left: 2px solid var(--oak); background: var(--soft); font-size: 13px; color: var(--gris); }
+    @media (max-width: 700px) and (orientation: portrait) { .girar { display: block; } }
+    .cierre { background: var(--verde); color: var(--soft); padding: clamp(40px, 7vw, 72px) 0; }
+    .cierre h2 { margin: 0 0 12px; font: 200 clamp(30px, 5vw, 48px)/1.1 var(--ft), sans-serif; }
+    .cierre p { margin: 0; opacity: .85; }
+    .cierre .btn-verde { background: var(--soft); color: var(--verde); border-color: var(--soft); }
+    .cierre .btn-linea { color: var(--soft); border-color: rgba(255, 255, 255, .5); }
+    .cierre .btn-linea:hover { background: rgba(255, 255, 255, .08); }
+    .descargas { padding: 8px 0 64px; scroll-margin-top: 16px; }
+    .descargas h2 { margin: 0 0 8px; font: 200 clamp(30px, 5vw, 44px)/1.1 var(--ft), sans-serif; letter-spacing: -.02em; }
+    .descargas h2 span { color: var(--verde); }
+    .descargas .bajada { margin: 0 0 28px; }
+    .grilla { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: clamp(14px, 2.5vw, 24px); }
+    .item { background: var(--soft); border-radius: 3px; overflow: hidden; display: flex; flex-direction: column; box-shadow: 0 18px 40px -30px rgba(41, 33, 27, .45); }
+    .item .vista { aspect-ratio: 4 / 5; background: var(--sand); overflow: hidden; }
+    .item .vista img { width: 100%; height: 100%; object-fit: cover; object-position: top; display: block; }
+    .item .vista.pdf { display: grid; place-items: center; background: var(--verde); color: var(--soft); text-align: center; padding: 24px; }
+    .item .vista.pdf b { display: block; font: 200 34px/1.1 var(--ft), sans-serif; }
+    .item .vista.pdf small { display: block; margin-top: 10px; font-size: 11px; letter-spacing: .24em; text-transform: uppercase; color: var(--sand); }
+    .item .info { padding: 16px 18px 18px; display: flex; flex-direction: column; gap: 4px; flex: 1; }
+    .item h3 { margin: 0; font: 500 16px/1.3 var(--fx), sans-serif; }
+    .item p { margin: 0; font-size: 14px; color: var(--gris); }
+    .item .btn { justify-content: center; margin-top: auto; }
+    .item .info p + .btn { margin-top: 14px; }
+    .links { margin-top: 28px; padding: 22px 24px; background: var(--soft); border-left: 2px solid var(--oak); }
+    .links h3 { margin: 0 0 10px; font-size: 11px; letter-spacing: .3em; text-transform: uppercase; color: var(--gris); font-weight: 400; }
+    .links ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; }
+    .links a { color: var(--verde); word-break: break-all; }
+    footer { padding: 24px 0 40px; font-size: 11px; letter-spacing: .1em; color: var(--gris); text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <img src="logo-color.png" alt="FG Automotores">
+      <span>Un regalo de<br>TuimagenStudio</span>
+    </header>
+
+    <section class="intro">
+      <p class="eyebrow">Para Facundo Gomez · FG Automotores</p>
+      <h1>Tu web<br><span>y cómo usarla.</span></h1>
+      <p class="bajada">Acá está todo: tu web, una guía paso a paso para manejarla sin ayuda y las piezas para Instagram.</p>
+      <div class="acciones">
+        <a class="btn btn-verde" href="https://automotoresfg.com/" target="_blank" rel="noopener">Ver mi web ↗</a>
+        <a class="btn btn-linea" href="#descargas">Descargas ↓</a>
+      </div>
+    </section>
+
+    <p class="girar">Tip: girá el celular para ver las láminas más grandes.</p>
+    <section class="laminas" aria-label="Láminas de la presentación">
+      <figure><img src="laminas/01.webp?v=202611261411" alt="Portada" width="1600" height="900"><figcaption>01 · Portada</figcaption></figure>
+      <figure><img src="laminas/02.webp?v=202611261411" alt="Probala vos" width="1600" height="900" loading="lazy"><figcaption>02 · Probala vos</figcaption></figure>
+      <figure><img src="laminas/03.webp?v=202611261411" alt="Así se ve" width="1600" height="900" loading="lazy"><figcaption>03 · Así se ve</figcaption></figure>
+      <figure><img src="laminas/04.webp?v=202611261411" alt="Qué gana FG Automotores" width="1600" height="900" loading="lazy"><figcaption>04 · Qué gana FG Automotores</figcaption></figure>
+      <figure><img src="laminas/05.webp?v=202611261411" alt="Tu próxima oportunidad" width="1600" height="900" loading="lazy"><figcaption>05 · Tu próxima oportunidad</figcaption></figure>
+      <figure><img src="laminas/06.webp?v=202611261411" alt="El control es tuyo" width="1600" height="900" loading="lazy"><figcaption>06 · El control es tuyo</figcaption></figure>
+      <figure><img src="laminas/07.webp?v=202611261411" alt="Guía de uso" width="1600" height="900" loading="lazy"><figcaption>07 · Guía de uso</figcaption></figure>
+      <figure><img src="laminas/08.webp?v=202611261411" alt="Guía A · Entrar a tu planilla" width="1600" height="900" loading="lazy"><figcaption>08 · Guía A · Entrar a tu planilla</figcaption></figure>
+      <figure><img src="laminas/09.webp?v=202611261411" alt="Guía B · Las pestañas" width="1600" height="900" loading="lazy"><figcaption>09 · Guía B · Las pestañas</figcaption></figure>
+      <figure><img src="laminas/10.webp?v=202611261411" alt="Guía C · Cargar un auto nuevo" width="1600" height="900" loading="lazy"><figcaption>10 · Guía C · Cargar un auto nuevo</figcaption></figure>
+      <figure><img src="laminas/11.webp?v=202611261411" alt="Guía D · Las fotos" width="1600" height="900" loading="lazy"><figcaption>11 · Guía D · Las fotos</figcaption></figure>
+      <figure><img src="laminas/12.webp?v=202611261411" alt="Guía E · El día a día" width="1600" height="900" loading="lazy"><figcaption>12 · Guía E · El día a día</figcaption></figure>
+      <figure><img src="laminas/13.webp?v=202611261411" alt="Guía F · La gestoría y tus datos" width="1600" height="900" loading="lazy"><figcaption>13 · Guía F · La gestoría y tus datos</figcaption></figure>
+      <figure><img src="laminas/14.webp?v=202611261411" alt="Guía G · Cómo te contacta tu cliente" width="1600" height="900" loading="lazy"><figcaption>14 · Guía G · Cómo te contacta tu cliente</figcaption></figure>
+      <figure><img src="laminas/15.webp?v=202611261411" alt="Guía H · Si algo no anda" width="1600" height="900" loading="lazy"><figcaption>15 · Guía H · Si algo no anda</figcaption></figure>
+      <figure><img src="laminas/16.webp?v=202611261411" alt="Cómo quedó" width="1600" height="900" loading="lazy"><figcaption>16 · Cómo quedó</figcaption></figure>
+      <figure><img src="laminas/17.webp?v=202611261411" alt="Inversión" width="1600" height="900" loading="lazy"><figcaption>17 · Inversión</figcaption></figure>
+      <figure><img src="laminas/18.webp?v=202611261411" alt="Cualquier duda" width="1600" height="900" loading="lazy"><figcaption>18 · Cualquier duda</figcaption></figure>
+    </section>
+
+    <section class="descargas" id="descargas" aria-labelledby="desc-h">
+      <p class="eyebrow">Para descargar</p>
+      <h2 id="desc-h">Todo listo <span>para usar.</span></h2>
+      <p class="bajada">Tocá «Descargar» y se guarda en tu celular o en tu compu.</p>
+      <div class="grilla">
+        <article class="item"><div class="vista pdf"><div><b>Guía<br>de uso</b><small>PDF · 18 láminas</small></div></div><div class="info"><h3>Guía de uso paso a paso</h3><p>Para guardar y tener a mano.</p><a class="btn btn-verde" href="Guia-de-uso-fg-automotores.pdf?v=202611261411" download="FG Automotores-Guia-de-uso.pdf">Descargar PDF ↓</a></div></article>
+        <article class="item"><div class="vista"><img src="descargas/historia-1.jpg" alt="Historia de Instagram con QR" loading="lazy"></div><div class="info"><h3>Historia 1</h3><p>Instagram · 1080 × 1920</p><a class="btn btn-verde" href="descargas/historia-1.jpg" download="FG Automotores-historia-1.jpg">Descargar ↓</a></div></article>
+        <article class="item"><div class="vista"><img src="descargas/historia-2.jpg" alt="Historia de Instagram con QR" loading="lazy"></div><div class="info"><h3>Historia 2</h3><p>Instagram · 1080 × 1920</p><a class="btn btn-verde" href="descargas/historia-2.jpg" download="FG Automotores-historia-2.jpg">Descargar ↓</a></div></article>
+        <article class="item"><div class="vista"><img src="descargas/tarjeta-qr.jpg" alt="Tarjeta con QR de la web" loading="lazy"></div><div class="info"><h3>Tarjeta con QR</h3><p>Para el feed de Instagram, WhatsApp o imprimir para el mostrador.</p><a class="btn btn-verde" href="descargas/tarjeta-qr.jpg" download="FG Automotores-tarjeta-QR.jpg">Descargar ↓</a></div></article>
+      </div>
+      <div class="links">
+        <h3>Tus links</h3>
+        <ul>
+          <li>Tu web: <a href="https://automotoresfg.com/" target="_blank" rel="noopener">automotoresfg.com</a></li>
+          <li>Tu planilla: <a href="https://docs.google.com/spreadsheets/d/1vOewNXxdsiUpET-KU3lEejm-Ojbz1-_iq1-NOZ3jqr8/edit" target="_blank" rel="noopener">abrir en Google Sheets</a></li>
+        </ul>
+      </div>
+    </section>
+  </div>
+
+  <section class="cierre">
+    <div class="wrap">
+      <h2>¿Alguna duda?</h2>
+      <p>Escribime cuando quieras y lo vemos juntos. Si algo se rompe, lo arreglo sin costo.</p>
+      <div class="acciones">
+        <a class="btn btn-verde" href="https://wa.me/5492281565279?text=Hola%20Natalia%21%20Vi%20la%20gu%C3%ADa%20de%20la%20web%20de%20FG%20Automotores." target="_blank" rel="noopener">Escribime por WhatsApp ↗</a>
+        <a class="btn btn-linea" href="https://automotoresfg.com/" target="_blank" rel="noopener">Ver mi web ↗</a>
+      </div>
+    </div>
+  </section>
+  <footer><div class="ti-credit-wrap" style="text-align:center;margin-top:0;font-size:12px;line-height:1.4"><a class="ti-credit" href="https://tuimagenstudios.com/" target="_blank" rel="noopener" title="Visitá tuimagenstudios.com" style="display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none;flex-wrap:wrap;justify-content:center">© 2026 Derechos reservados · <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJUdWltYWdlbnN0dWRpb3MiPg0KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxMiIgZmlsbD0iIzA1MDkxYSIvPg0KICA8cGF0aCBkPSJNMTUgMTdoMzF2OWgtOXYxM2MwIDgtNiAxNC0xNCAxNFM5IDQ3IDkgMzlWMjdoOXYxMmMwIDMgMiA2IDUgNnM1LTMgNS02VjI2SDE1eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjMDBlMGZmIiBzdHJva2Utd2lkdGg9IjMuMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPg0KICA8Y2lyY2xlIGN4PSIzMiIgY3k9IjQzIiByPSI0LjgiIGZpbGw9IiMwMGUwZmYiLz4NCiAgPHBhdGggZD0iTTQzIDE4aDZ2NmgtNnptNyA5aDV2NWgtNXptLTEwIDdoNXY1aC01em04IDdoN3Y3aC03eiIgZmlsbD0iIzAwZTBmZiIvPg0KICA8cGF0aCBkPSJNMTUgMTdoMzF2OWgtOXYxM2MwIDgtNiAxNC0xNCAxNFM5IDQ3IDkgMzlWMjdoOXYxMmMwIDMgMiA2IDUgNnM1LTMgNS02VjI2SDE1eiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjRmMmZmIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9Ii44Ii8+DQo8L3N2Zz4NCg==" alt="" width="18" height="18" style="width:18px;height:18px;border-radius:4px;display:inline-block;vertical-align:middle;margin:0"> <b style="color:inherit">TuimagenStudio · COFREP</b></a></div></footer>
+</body>
+</html>
