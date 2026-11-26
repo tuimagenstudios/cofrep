@@ -52,11 +52,6 @@
         '<div class="item-cuerpo"><p class="dir">' + s.dir + '</p>' + lista + '<a class="link-flecha" href="' + mapa(s.q) + '" target="_blank" rel="noopener">Cómo llegar <span aria-hidden="true">→</span></a></div></details>';
     }).join('');
 
-    var sp = ev.filter(function (e) { return e.tipo == 'especial'; }).slice(0, 10);
-    $('especiales-lista').innerHTML = sp.length ? sp.map(function (e) {
-      var lugar = e.lugar == 'otro lugar' ? (e.dir || 'Lugar a confirmar') : (e.lugarTxt + (e.dir ? ' · ' + e.dir : ''));
-      return '<div class="evento"><span class="cal"><span class="m">' + MESES[e.f.getMonth()] + '</span><span class="d">' + e.f.getDate() + '</span></span><span><b>' + esc(e.det || 'Reunión especial') + '</b><span class="muted">' + DIAS[e.f.getDay()] + ' · ' + esc(lugar) + '</span></span><span class="hr">' + hora(e.h) + '</span></div>';
-    }).join('') : '<p class="vacio">Por ahora no hay reuniones especiales programadas.<br>Seguinos en <a href="' + FB + '" target="_blank" rel="noopener">Facebook</a> para enterarte.</p>';
   }
   function leer(t) {
     var hoy = new Date(); hoy.setHours(0, 0, 0, 0);
